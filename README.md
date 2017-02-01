@@ -15,6 +15,7 @@ PLUGINS:
   - Socket.io
   - express
   - mysql
+  - border-parser
 
 **JAVASCRIPT**
   - jQuery

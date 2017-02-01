@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AASA,sBAAuB;EACrB,KAAK,EAHS,OAAO;;AAMvB,CAAE;EACA,KAAK,EATS,OAAO",
+"sources": ["colors-default.scss"],
+"names": [],
+"file": "colors-default.css"
+}

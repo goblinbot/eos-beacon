@@ -1,3 +1,16 @@
 
 // COLORS DEFAULT: dit bestand bevat bijna elke declaratie van kleuren, en de kleuren bovenaan als een variable.
 // Zo kan voor een alert heel eenvoudig een eigen kleurenschema gemaakt worden, want de kleuren hoeven maar op 1 plek aangepast te worden.
+
+$borderColor  : #FFFFFF;
+$textColor    : #FFFFFF;
+$titleColor   : #98ED00;
+$altTitleColor: #CEFF00;
+
+h1, h2, h3, h4, h5, h6 {
+  color: $altTitleColor;
+}
+
+p {
+  color: $textColor;
+}

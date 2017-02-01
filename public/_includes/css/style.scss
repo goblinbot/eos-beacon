@@ -1,6 +1,53 @@
-$defaultdonker = #222;
+$defaultdonker : #222;
 
+// SPINNER // // // // //
+@keyframes loadSpinner {
+  0%,100% {-webkit-transform: rotate(0);  transform: rotate(0); }
+  50%{-webkit-transform: rotate(360deg);  transform: rotate(360deg); }
+  75% {-webkit-transform: rotate(180deg); transform: rotate(180deg);}
+}
 
 body {
   background : $defaultdonker;
+}
+
+
+
+// loadingscreen
+#loadingScreen {
+
+  .flavor {
+    margin : {
+      left: auto;
+      right: auto;
+      top: 10rem;
+      bottom: 0;
+    }
+  }
+  .middle {
+    @extend .flavor;
+    text-align: center;
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+// herbruikbare classes
+.whitespace {
+  min-height: 8rem;
+}
+.loadCircle {
+  border : 0;
+  padding: 2.5rem;
+  -webkit-animation: loadSpinner 2s infinite;
+  -moz-animation: loadSpinner 2s infinite;
+  -animation: loadSpinner 2s infinite;
 }

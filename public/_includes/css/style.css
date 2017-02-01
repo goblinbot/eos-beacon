@@ -1,0 +1,32 @@
+@keyframes loadSpinner {
+  0%,100% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0); }
+  50% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); }
+  75% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg); } }
+body {
+  background: #222; }
+
+#loadingScreen .flavor, #loadingScreen .middle {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10rem;
+  margin-bottom: 0; }
+#loadingScreen .middle {
+  text-align: center; }
+
+.whitespace {
+  min-height: 8rem; }
+
+.loadCircle {
+  border: 0;
+  padding: 2.5rem;
+  -webkit-animation: loadSpinner 2s infinite;
+  -moz-animation: loadSpinner 2s infinite;
+  -animation: loadSpinner 2s infinite; }
+
+/*# sourceMappingURL=style.css.map */

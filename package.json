@@ -4,7 +4,7 @@
   "description": "Eos broadcasting System",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "MAATI ONLINE"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "author": "Thijs Boerma",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.16.0",
     "express": "^4.14.1",
     "mysql": "^2.13.0",
     "socket.io": "^1.7.2"

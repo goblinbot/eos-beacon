@@ -1,20 +1,71 @@
+<!DOCTYPE HTML>
 <html>
-  <head>
+<head>
 
-  </head>
+  <title>[BEACON]</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport" />
+  <link rel="stylesheet" type="text/css" href="/_includes/bs3-css/bootstrap.min.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="/_includes/css/hex.css" /> -->
+  <link rel="stylesheet" type="text/css" href="/_includes/css/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="/_includes/css/colors-default.css" />
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+
+</head>
 
 <body>
+<div class="container-fluid">
+<div class="container-fluid">
+  <!-- BOVENSTE BALK -->
+  <div class="row topHeader">
+    <div class="col-xs-6">
+      <h1>[BEACON]</h1>
+    </div>
+    <div class="col-xs-6 text-right">
+      <h1>EOS BASTION</h1>
+    </div>
+  </div>
+
+  <!-- MAIN :: hier gaan we onze algemene container inladen. -->
+  <div id="main" class="row">
+
+    <!-- hier definen we de loadingscreen eerst, gezien we deze toch al hebben geopend.
+    We overschrijven deze later door #main te emptyen en een nieuwe erover heen te laden. -->
+    <div id="loadingScreen">
+      <div class="xs-hidden sm-hidden col-md-2 col-lg-3">
+        &nbsp;
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+        <div class="whitespace col-xs-12">&nbsp;</div>
+
+        <div class="middle col-xs-12">
+          <img class="loadCircle" src="/images/fourpoint.png"/>
+        </div>
+
+        <div class="flavor col-xs-12">
+          <p>FLAVOR TEKST</p>
+        </div>
+      </div>
+
+      <div class="xs-hidden sm-hidden col-md-2 col-lg-3">
+        &nbsp;
+      </div>
+    </div>
+
+  </div>
 
 
 
+</div>
+</div>
 
+<script type="text/javascript" src="/_includes/js/jquery.min.js"></script>
+<script type="text/javascript" src="/_includes/bs3-js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="/_includes/js/functions.js"></script>
 </body>
-
-  <script>
-
-
-
-
-  </script>
-
 </html>
