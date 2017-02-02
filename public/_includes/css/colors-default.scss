@@ -5,14 +5,12 @@
 // huidig actief:
 $borderColor  : #FFFFFF;
 $textColor    : #FFFFFF;
-$titleColor   : #98ED00;
-$altTitleColor: #CEFF00;
+$titleColor   : #6FC0BA;
+$altTitleColor: #005B8E;
 
-// voorbeeld kleuren:
-$gubatGeel    : #FFCC00;
-$holoBlauw    : #6FC0BA;
-$holoContract : #FF9933;
-$aquilaBlauw  : #005B8E;
+// opmaak
+
+
 
 //statussen
 $statusOnline  : rgb(0,128,0);
@@ -20,9 +18,15 @@ $statusOffline : #737373;
 $statusCritical: #990000;
 $statusUnknown : #880088;
 
+// voorbeeld kleuren:
+$gubatGeel    : #FFCC00;
+$holoBlauw    : #6FC0BA;
+$holoContract : #FF9933;
+$aquilaBlauw  : #005B8E;
+
 
 h1, h2, h3, h4, h5, h6 {
-  color: $altTitleColor;
+  color: $titleColor;
 }
 
 p {

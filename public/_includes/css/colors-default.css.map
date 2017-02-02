@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAuBA,sBAAuB;EACrB,KAAK,EAhBS,OAAO;;AAmBvB,CAAE;EACA,KAAK,EAtBS,OAAO",
+"mappings": "AA2BA,sBAAuB;EACrB,KAAK,EArBS,OAAO;;AAwBvB,CAAE;EACA,KAAK,EA1BS,OAAO",
 "sources": ["colors-default.scss"],
 "names": [],
 "file": "colors-default.css"
