@@ -2,7 +2,7 @@
 <html>
 <head>
 
-  <title>[BEACON]</title>
+  <title>BEACON - BROADCASTING&INFORMATION SYSTEMS</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport" />
   <link rel="stylesheet" type="text/css" href="/_includes/bs3-css/bootstrap.min.css" />
@@ -63,9 +63,25 @@
 </div>
 </div>
 
+<!-- houdt aantal navigaties/broadcasts bij om te voorkomen dat het systeem helemaal vol raakt. -->
+<input type='hidden' id="navCount" class="hidden"></input>
+
 <script type="text/javascript" src="/_includes/js/jquery.min.js"></script>
 <script type="text/javascript" src="/_includes/bs3-js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="/_includes/js/functions.js"></script>
+<script>
+
+$(document).ready(function(){
+
+
+
+
+  setTimeout(function(){
+    // Eerste keer? Laad dan mainscreen gelijk.
+    navigate('mainScreen');
+  },2500);
+});
+</script>
 </body>
 </html>

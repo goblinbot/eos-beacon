@@ -1,6 +1,6 @@
 {
   "name": "eos-beacon",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "Eos broadcasting System",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,8 @@
     "information",
     "terminal",
     "GUI",
+    "scifi",
+    "sci-fi",
     "fantasy"
   ],
   "author": "Thijs Boerma",
@@ -23,6 +25,7 @@
   "dependencies": {
     "body-parser": "^1.16.0",
     "express": "^4.14.1",
+    "ip": "^1.1.4",
     "jquery": "^3.1.1",
     "mysql": "^2.13.0",
     "socket.io": "^1.7.2"

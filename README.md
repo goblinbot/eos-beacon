@@ -11,11 +11,12 @@ Door: Thijs Boerma (IC: Maati Infor Danam)*
 [BEACON] is afhankelijk van verschillende externe plugins/frameworks/luiheden, die hieronder staan gelijst.
 
 **NODE.JS**
-PLUGINS:
+PLUGINS ( Installeren via NPM ):
   - Socket.io
   - express
   - mysql
   - border-parser
+  - ip
 
 **JAVASCRIPT**
   - jQuery

@@ -2,6 +2,16 @@ var socket      = io();
 
 
 
+
+
+
+function navigate(target) {
+  if(target != "") {
+    $('#main').load(target+'.html');
+  }
+}
+
+// CLOCK
 function updateClock() {
  	var currentTime = new Date();
   	var currentHours   = currentTime.getHours ( );
@@ -16,17 +26,10 @@ function updateClock() {
   	currentHours = ( currentHours == 0 ) ? 12 : currentHours;
 
   	/* Compose the string for display */
-  	var currentTimeString ="[&nbsp;" + currentHours + ":" + currentMinutes + ":" + currentSeconds + "&nbsp;]";
+  	var currentTimeString ="[&nbsp;" + currentHours + ":" + currentMinutes + ":" + currentSeconds + "&nbsp;ECT&nbsp;]";
 
    	$("#clock").html(currentTimeString);
  }
-
-
-
-
-
-
-
  $(document).ready(function() {
     setInterval('updateClock()', 1000);
     // setInterval('holiday()'    , 1000);

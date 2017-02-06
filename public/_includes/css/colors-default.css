@@ -1,7 +1,22 @@
+body {
+  background: #000000; }
+
+.topHeader {
+  background: #000000; }
+
 h1, h2, h3, h4, h5, h6 {
   color: #6FC0BA; }
 
 p {
   color: #FFFFFF; }
+
+.text-white {
+  color: #FFFFFF; }
+
+.block {
+  background: #243c3a; }
+
+#main .middle .right-bar {
+  background: #000000; }
 
 /*# sourceMappingURL=colors-default.css.map */

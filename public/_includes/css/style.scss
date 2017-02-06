@@ -1,4 +1,5 @@
-$defaultdonker : #222;
+$defaultpadding: 0.8rem;
+$whitespace    : 1.5rem;
 
 // SPINNER // // // // //
 @keyframes loadSpinner {
@@ -8,14 +9,16 @@ $defaultdonker : #222;
 }
 
 body {
-  background : $defaultdonker;
+
 }
 
+.block {
+  padding: $defaultpadding;
+}
 
 
 // loadingscreen
 #loadingScreen {
-
   .flavor {
     margin : {
       left: auto;
@@ -28,11 +31,35 @@ body {
     @extend .flavor;
     text-align: center;
   }
-
-
 }
 
+#main {
 
+  .middle {
+
+    .left-bar {
+      height: auto;
+    }
+
+    .middle-bar {
+      height: auto;
+    }
+
+    .right-bar {
+      height: auto;
+    }
+
+
+  }// einde middle/top van main
+
+  .footer {
+    margin-top: $whitespace;
+
+    .block {
+
+    }
+  }//einde footer
+}
 
 
 

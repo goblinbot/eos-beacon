@@ -7,9 +7,13 @@ $borderColor  : #FFFFFF;
 $textColor    : #FFFFFF;
 $titleColor   : #6FC0BA;
 $altTitleColor: #005B8E;
+$blocks       : #243c3a;
 
-// opmaak
+$defaultdonker: #000000;
+$minderdonker : #222222;
 
+$rightbar     : #000000;
+$topbar       : #000000;
 
 
 //statussen
@@ -25,10 +29,40 @@ $holoContract : #FF9933;
 $aquilaBlauw  : #005B8E;
 
 
+body {
+  background : $defaultdonker;
+}
+
+.topHeader {
+  background : $topbar;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: $titleColor;
 }
 
 p {
   color: $textColor;
+}
+
+.text-white {
+  color: $textColor;
+}
+
+.block {
+  background: $blocks;
+}
+
+#main {
+  .middle {
+    .left-bar {
+
+    }
+    .middle-bar{
+
+    }
+    .right-bar{
+      background: $rightbar;
+    }
+  }
 }
