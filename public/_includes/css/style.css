@@ -8,8 +8,26 @@
   75% {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg); } }
-.block {
-  padding: 0.8rem; }
+body {
+  font-size: 1.4rem; }
+
+.round {
+  border-radius: 100%; }
+
+.whitespace {
+  min-height: 3rem; }
+
+.headerblock {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-left: -15px;
+  margin-right: -15px; }
+  .headerblock h1, .headerblock h2, .headerblock h3 {
+    font-size: 1.8rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem; }
 
 #loadingScreen .flavor, #loadingScreen .middle {
   margin-left: auto;
@@ -21,15 +39,31 @@
 
 #main .middle .left-bar {
   height: auto; }
+  #main .middle .left-bar .block {
+    border: none;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem; }
+    #main .middle .left-bar .block h1, #main .middle .left-bar .block p {
+      margin: 1.6rem; }
+    #main .middle .left-bar .block #clock, #main .middle .left-bar .block h1#clock {
+      font-size: 4.68rem; }
 #main .middle .middle-bar {
   height: auto; }
 #main .middle .right-bar {
   height: auto; }
 #main .footer {
-  margin-top: 1.5rem; }
-
-.whitespace {
-  min-height: 8rem; }
+  margin-top: 3rem; }
+  #main .footer .item:first-child {
+    padding-left: 0; }
+  #main .footer .item .bottom-right {
+    text-align: right; }
+    #main .footer .item .bottom-right img {
+      -webkit-animation: loadSpinner 2s infinite;
+      -moz-animation: loadSpinner 2s infinite;
+      -animation: loadSpinner 2s infinite;
+      width: 6rem;
+      height: 6rem;
+      margin-right: 1rem; }
 
 .loadCircle {
   border: 0;

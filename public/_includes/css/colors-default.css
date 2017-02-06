@@ -1,8 +1,5 @@
 body {
-  background: #000000; }
-
-.topHeader {
-  background: #000000; }
+  background: #012324; }
 
 h1, h2, h3, h4, h5, h6 {
   color: #39DBCC; }
@@ -14,13 +11,27 @@ p {
   color: #FFFFFF; }
 
 .block {
-  background: #012324; }
+  background: #042A34;
+  border: 1px solid #39DBCC; }
 
-#main .middle .left-bar #clock {
-  color: #f2A83B; }
-  #main .middle .left-bar #clockh1 {
+.block-light {
+  background: #0B5E66; }
+
+.block-medium {
+  background: #053A47; }
+
+.headerblock {
+  border-top: 1px solid #0B5E66;
+  border-bottom: 1px solid #0B5E66;
+  background: #053A47; }
+  .headerblock h1, .headerblock h2, .headerblock h3 {
+    color: #39DBCC; }
+
+#main .middle .left-bar {
+  background: #042A34; }
+  #main .middle .left-bar #clock {
     color: #f2A83B; }
-#main .middle .right-bar {
-  background: #000000; }
+    #main .middle .left-bar #clockh1 {
+      color: #f2A83B; }
 
 /*# sourceMappingURL=colors-default.css.map */

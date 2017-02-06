@@ -3,22 +3,22 @@
 // Zo kan voor een alert heel eenvoudig een eigen kleurenschema gemaakt worden, want de kleuren hoeven maar op 1 plek aangepast te worden.
 
 // huidig actief:
-$borderColor  : #FFFFFF;
+$borderColor  : #39DBCC;
 $textColor    : #FFFFFF;
 $titleColor   : #39DBCC;
 $altTitleColor: #f2A83B;
 $statusUnknown: #880088;
-
-$defaultdonker: #000000;
-$minderdonker : #222222;
-
-$rightbar     : #000000;
-$topbar       : #000000;
+$defaultdonker: #222222;
 
 
 // kleuren van nationalgeographic's MARS
-$blocks         : #012324;
+
+$background     : #012324;
+$blocks         : #042A34;
+$blocksmedium   : #053A47;
+$blockslight    : #0B5E66;
 $statusCritical : #4b1002;
+
 
 
 // voorbeeld kleuren:
@@ -29,11 +29,11 @@ $aquilaBlauw  : #005B8E;
 
 
 body {
-  background : $defaultdonker;
+  background : $background;
 }
 
 .topHeader {
-  background : $topbar;
+  // background : $topbar;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -49,12 +49,29 @@ p {
 }
 
 .block {
-  background: $blocks;
+  background  : $blocks;
+  border      : 1px solid $borderColor;
+}
+.block-light {
+  background  : $blockslight;
+}
+.block-medium {
+  background  : $blocksmedium;
+}
+.headerblock {
+  border-top    : 1px solid $blockslight;
+  border-bottom : 1px solid $blockslight;
+  background    : $blocksmedium;
+  h1, h2, h3 {
+    color       : $titleColor;
+  }
 }
 
 #main {
   .middle {
     .left-bar {
+      background: $blocks;
+
       #clock {
         color: $altTitleColor;
         &h1 {
@@ -66,7 +83,7 @@ p {
 
     }
     .right-bar{
-      background: $rightbar;
+      // background: $rightbar;
     }
   }
 }

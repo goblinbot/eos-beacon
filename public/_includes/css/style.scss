@@ -1,5 +1,7 @@
 $defaultpadding: 0.8rem;
-$whitespace    : 1.5rem;
+$whitespace    : 3rem;
+$fontsize      : 1.4rem;
+$titlefontsize : 3.6rem;
 
 // SPINNER // // // // //
 @keyframes loadSpinner {
@@ -9,11 +11,40 @@ $whitespace    : 1.5rem;
 }
 
 body {
-
+  font-size: $fontsize;
 }
 
 .block {
-  padding: $defaultpadding;
+  // padding: $defaultpadding;
+  // margin : $defaultpadding;
+}
+
+.round {
+  border-radius: 100%;
+}
+
+.whitespace {
+  min-height: ($whitespace);
+}
+
+.headerblock {
+  padding : {
+    top   : 0;
+    bottom: 0;
+    right : 15px;
+    left  : 15px;
+  }
+  margin-left: -15px;
+  margin-right: -15px;
+
+  h1, h2, h3 {
+    font-size : ($titlefontsize * 0.5);
+    margin : {
+      top   : 0.4rem;
+      bottom: 0.4rem;
+    }
+  }
+
 }
 
 
@@ -39,6 +70,22 @@ body {
 
     .left-bar {
       height: auto;
+
+      .block {
+        border  : none;
+
+        margin : {
+          top: $defaultpadding;
+          bottom: $defaultpadding;
+        }
+        h1, p {
+          margin : ($defaultpadding*2);
+        }
+        #clock,h1#clock{
+          font-size: ($titlefontsize * 1.3);
+        }
+
+      }
     }
 
     .middle-bar {
@@ -55,22 +102,34 @@ body {
   .footer {
     margin-top: $whitespace;
 
-    .block {
+    .item {
 
+      &:first-child {
+        padding-left : 0;
+      }
+
+      .block {
+
+      }
+
+      .bottom-right {
+        text-align:right;
+        img {
+          -webkit-animation: loadSpinner 2s infinite;
+          -moz-animation: loadSpinner 2s infinite;
+          -animation: loadSpinner 2s infinite;
+          width:6rem;
+          height:6rem;
+          margin-right:1rem;
+        }
+      }
     }
+
+
   }//einde footer
 }
 
 
-
-
-
-
-
-// herbruikbare classes
-.whitespace {
-  min-height: 8rem;
-}
 .loadCircle {
   border : 0;
   padding: 2.5rem;
