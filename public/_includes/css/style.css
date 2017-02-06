@@ -11,11 +11,30 @@
 body {
   font-size: 1.4rem; }
 
+.block {
+  height: 100%; }
+
 .round {
   border-radius: 100%; }
 
 .whitespace {
   min-height: 3rem; }
+
+.text-inline {
+  display: inline;
+  position: relative;
+  top: 15px; }
+  .text-inline h1, .text-inline h2, .text-inline h3, .text-inline h4, .text-inline h5, .text-inline h6, .text-inline p {
+    display: inline;
+    margin-top: 0.8rem;
+    margin-right: 0.8rem; }
+  .text-inline h1 {
+    font-weight: strong;
+    font-size: 4.788rem; }
+  .text-inline h2 {
+    font-size: 2.7rem; }
+  .text-inline h3 {
+    font-size: 1.8rem; }
 
 .headerblock {
   padding-top: 0;
@@ -55,9 +74,15 @@ body {
   margin-top: 3rem; }
   #main .footer .item:first-child {
     padding-left: 0; }
+  #main .footer .item .block .content {
+    padding: 1.5rem; }
+    #main .footer .item .block .content h1, #main .footer .item .block .content h2, #main .footer .item .block .content h3 {
+      margin: 0 0 4px 4px; }
   #main .footer .item .bottom-right {
-    text-align: right; }
+    text-align: center; }
     #main .footer .item .bottom-right img {
+      position: relative;
+      top: 3rem;
       -webkit-animation: loadSpinner 2s infinite;
       -moz-animation: loadSpinner 2s infinite;
       -animation: loadSpinner 2s infinite;

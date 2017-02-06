@@ -17,6 +17,7 @@ body {
 .block {
   // padding: $defaultpadding;
   // margin : $defaultpadding;
+  height      : 100%;
 }
 
 .round {
@@ -25,6 +26,27 @@ body {
 
 .whitespace {
   min-height: ($whitespace);
+}
+
+.text-inline {
+  display   : inline;
+  position  : relative;
+  top       : 15px;
+  h1, h2, h3, h4, h5, h6, p {
+    display: inline;
+    margin-top: $defaultpadding;
+    margin-right: $defaultpadding;
+  }
+  h1 {
+    font-weight: strong;
+    font-size: ($titlefontsize * 1.33);
+  }
+  h2 {
+    font-size: ($titlefontsize * 0.75);
+  }
+  h3 {
+    font-size: ($titlefontsize * 0.50);
+  }
 }
 
 .headerblock {
@@ -110,11 +132,19 @@ body {
 
       .block {
 
-      }
+        .content {
+          padding: 1.5rem;
+          h1,h2,h3 {
+            margin: 0 0 4px 4px;
+          }
+        }
 
+      }
       .bottom-right {
-        text-align:right;
+        text-align:center;
         img {
+          position: relative;
+          top: 3rem;
           -webkit-animation: loadSpinner 2s infinite;
           -moz-animation: loadSpinner 2s infinite;
           -animation: loadSpinner 2s infinite;
@@ -123,6 +153,8 @@ body {
           margin-right:1rem;
         }
       }
+
+
     }
 
 

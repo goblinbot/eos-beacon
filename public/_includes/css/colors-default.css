@@ -3,6 +3,10 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: #39DBCC; }
+  h1.alt-color, h2.alt-color, h3.alt-color, h4.alt-color, h5.alt-color, h6.alt-color {
+    color: #f2A83B; }
+  h1.dark-color, h2.dark-color, h3.dark-color, h4.dark-color, h5.dark-color, h6.dark-color {
+    color: #0B5E66; }
 
 p {
   color: #FFFFFF; }

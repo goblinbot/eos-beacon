@@ -10,6 +10,11 @@ function navigate(target) {
   }
 }
 
+function updateFooter() {
+  // $(".item").css('height',($('#firstFooterBlock').height()));
+  $(".item").height($('#firstFooterBlock').height());
+}
+
 // CLOCK
 function updateClock() {
  	var currentTime = new Date();
@@ -31,5 +36,4 @@ function updateClock() {
  }
  $(document).ready(function() {
     setInterval('updateClock()', 1000);
-    // setInterval('holiday()'    , 1000);
  });

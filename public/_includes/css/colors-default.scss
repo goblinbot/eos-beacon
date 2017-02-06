@@ -37,26 +37,32 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: $titleColor;
+  color : $titleColor;
+  &.alt-color {
+    color : $altTitleColor;
+  }
+  &.dark-color {
+    color : $blockslight;
+  }
 }
 
 p {
-  color: $textColor;
+  color : $textColor;
 }
 
 .text-white {
-  color: #FFFFFF;
+  color : #FFFFFF;
 }
 
 .block {
-  background  : $blocks;
+  background    : $blocks;
   // border      : 1px solid $borderColor;
 }
 .block-light {
-  background  : $blockslight;
+  background    : $blockslight;
 }
 .block-medium {
-  background  : $blocksmedium;
+  background    : $blocksmedium;
 }
 .headerblock {
   border-top    : 1px solid $blockslight;
