@@ -5,9 +5,9 @@
 // huidig actief:
 $borderColor  : #FFFFFF;
 $textColor    : #FFFFFF;
-$titleColor   : #6FC0BA;
-$altTitleColor: #005B8E;
-$blocks       : #243c3a;
+$titleColor   : #39DBCC;
+$altTitleColor: #f2A83B;
+$statusUnknown: #880088;
 
 $defaultdonker: #000000;
 $minderdonker : #222222;
@@ -16,15 +16,14 @@ $rightbar     : #000000;
 $topbar       : #000000;
 
 
-//statussen
-$statusOnline  : rgb(0,128,0);
-$statusOffline : #737373;
-$statusCritical: #990000;
-$statusUnknown : #880088;
+// kleuren van nationalgeographic's MARS
+$blocks         : #012324;
+$statusCritical : #4b1002;
+
 
 // voorbeeld kleuren:
 $gubatGeel    : #FFCC00;
-$holoBlauw    : #6FC0BA;
+$holoBlauw    : #39DBCC;
 $holoContract : #FF9933;
 $aquilaBlauw  : #005B8E;
 
@@ -46,7 +45,7 @@ p {
 }
 
 .text-white {
-  color: $textColor;
+  color: #FFFFFF;
 }
 
 .block {
@@ -56,7 +55,12 @@ p {
 #main {
   .middle {
     .left-bar {
-
+      #clock {
+        color: $altTitleColor;
+        &h1 {
+          color: $altTitleColor;
+        }
+      }
     }
     .middle-bar{
 

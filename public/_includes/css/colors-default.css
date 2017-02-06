@@ -5,7 +5,7 @@ body {
   background: #000000; }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #6FC0BA; }
+  color: #39DBCC; }
 
 p {
   color: #FFFFFF; }
@@ -14,8 +14,12 @@ p {
   color: #FFFFFF; }
 
 .block {
-  background: #243c3a; }
+  background: #012324; }
 
+#main .middle .left-bar #clock {
+  color: #f2A83B; }
+  #main .middle .left-bar #clockh1 {
+    color: #f2A83B; }
 #main .middle .right-bar {
   background: #000000; }
 

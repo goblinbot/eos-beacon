@@ -25,7 +25,8 @@
       <h1>[BEACON]</h1>
     </div>
     <div class="col-xs-6 text-right">
-      <h1>EOS BASTION</h1>
+      <!-- hier komt het IP met port als duidelijkheidje -->
+      <h1 id="localIP" class="text-white"></h1>
     </div>
   </div>
 
@@ -74,6 +75,10 @@
 
 $(document).ready(function(){
 
+  // zorgt ervoor dat de titel rechtsboven de lokale IP laat zien
+  socket.on('showIP', function(value){
+    $('#localIP').html(value);
+  });
 
 
 

@@ -4,7 +4,6 @@ var socket      = io();
 
 
 
-
 function navigate(target) {
   if(target != "") {
     $('#main').load(target+'.html');

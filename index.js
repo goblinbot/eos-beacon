@@ -8,7 +8,10 @@ var ip      = require('ip');
 var bodyParser = require('body-parser');
 
 /* data */
+var port          = process.env.PORT || 5000;
 var countClients  = 0;
+var localaddress  = ip.address() +':'+ port;
+
 var appnaam1      = 'BEACON';
 var appnaam2      = 'beacon';
 var appnaam3      = 'Beacon';
@@ -24,19 +27,16 @@ app.use('_includes', express.static('public'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var port = process.env.PORT || 5000;
 http.listen(port, function(){
-  console.log(' ');
   console.log('. ');
   console.log('. ');
-  console.log('.. ');
   console.log('.. ');
   console.log('// '+appnaam1+' ////////////');
   console.log('# Initialising ..' );
   console.log('# Loading dependancies ..');
   console.log('-------------------------');
   console.log('# CONNECT DEVICES//USERS TO :');
-  console.log(' ? External IP : ' + ip.address() +':'+ port );
+  console.log(' ? External IP : ' + localaddress );
   console.log(' ? Internal IP : localhost:'+ port + ' | ' + '127.0.0.1:'+ port );
   console.log('-------------------------');
   console.log('THANK YOU FOR USING '+appnaam1+' INFORMATION & BROADCASTING SERVICES');
@@ -47,4 +47,22 @@ http.listen(port, function(){
 /* pathing / routing */
 app.get('/', function(req, res){
   res.sendFile('index.html', {"root": __dirname+'/public/'});
+});
+
+
+io.on('connection', function (socket) {
+
+  countClients++;
+  console.log('Device connected. '+countClients+' active clients.');
+
+  // stuurt IP naar de index pagina zodat deze bovenin kan worden laten zien.
+  socket.emit('showIP', 'IP: ' + localaddress);
+
+
+
+  socket.on('disconnect', function(){
+    countClients = (countClients-1);
+    console.log('DISCONNECT// .. ' +countClients+' active clients.');
+  });
+
 });
