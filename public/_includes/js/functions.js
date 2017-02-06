@@ -17,7 +17,15 @@ function updateFooter() {
 
 // CLOCK
 function updateClock() {
- 	var currentTime = new Date();
+	var currentTime = new Date();
+    var dd = currentTime.getDate();
+    var mm = currentTime.getMonth()+1; //January is 0!
+    // var dow = currenTime.prototype.getDay();
+    if(dd < 10){
+      dd='0'+dd;
+    }
+
+
   	var currentHours   = currentTime.getHours ( );
   	var currentMinutes = currentTime.getMinutes ( );
   	var currentSeconds = currentTime.getSeconds ( );
@@ -33,6 +41,8 @@ function updateClock() {
   	var currentTimeString ="[&nbsp;" + currentHours + ":" + currentMinutes + ":" + currentSeconds + "&nbsp;ECT&nbsp;]";
 
    	$("#clock").html(currentTimeString);
+    $("#dd").html(dd);
+    // $("#dow").html(dow);
  }
  $(document).ready(function() {
     setInterval('updateClock()', 1000);
