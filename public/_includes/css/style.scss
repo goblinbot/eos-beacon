@@ -165,6 +165,10 @@ body {
 
     .middle-bar {
       height: auto;
+      min-height: 16rem;
+      .block {
+        height: 100%;
+      }
     }
 
     .right-bar {
@@ -213,6 +217,13 @@ body {
 
   }//einde footer
 }
+
+#notificationContainer {
+  h1 {
+    margin-top: 0;
+  }
+}
+
 
 
 .loadCircle {

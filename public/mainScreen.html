@@ -24,8 +24,8 @@
 
   <!-- centraal blok -->
   <div class="middle-bar col-xs-11 col-sm-11 col-md-7 col-lg-8">
-    <div id="notificationContainer" class="block">
-
+    <div class="block">
+      <div id="notificationContainer"></div>
     </div>
   </div>
 
@@ -76,5 +76,20 @@
 </div>
 
 <script>
+$(document).ready(function(){
   updateFooter();
+
+  var broadcastTest = ["testBroadcast","0","0"];
+
+  setTimeout(function(){
+    console.log('broadcastSend');
+    socket.emit('broadcastSend', broadcastTest);
+  },500);
+
+  socket.on('broadcastReceive', function(){
+    console.log('broadcastReceive');
+    $('#notificationContainer').html('<h1 style="font-size:100px;"> PORTAL INCOMING </h1>');
+  });
+
+});
 </script>

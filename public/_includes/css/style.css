@@ -90,7 +90,10 @@ body {
     #main .middle .left-bar .block #clock, #main .middle .left-bar .block h1#clock {
       font-size: 4.68rem; }
 #main .middle .middle-bar {
-  height: auto; }
+  height: auto;
+  min-height: 16rem; }
+  #main .middle .middle-bar .block {
+    height: 100%; }
 #main .middle .right-bar {
   height: auto; }
 #main .footer {
@@ -112,6 +115,9 @@ body {
       width: 6rem;
       height: 6rem;
       margin-right: 1rem; }
+
+#notificationContainer h1 {
+  margin-top: 0; }
 
 .loadCircle {
   border: 0;

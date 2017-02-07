@@ -60,6 +60,12 @@ io.on('connection', function (socket) {
 
 
 
+
+  socket.on('broadcastSend', function(value){
+    console.log(value);
+    socket.emit('broadcastReceive', 'testBroadcast');
+  });
+
   socket.on('disconnect', function(){
     countClients = (countClients-1);
     console.log('DISCONNECT// .. ' +countClients+' active clients.');
