@@ -1,13 +1,3 @@
-@keyframes loadSpinner {
-  0%,100% {
-    -webkit-transform: rotate(0);
-    transform: rotate(0); }
-  50% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); }
-  75% {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg); } }
 body {
   font-size: 1.4rem; }
 
@@ -55,6 +45,39 @@ body {
   margin-bottom: 0; }
 #loadingScreen .middle {
   text-align: center; }
+#loadingScreen .block {
+  padding-top: 3.2rem;
+  padding-bottom: 6.4rem; }
+  #loadingScreen .block .headerblock {
+    margin-bottom: 3.2rem;
+    margin-top: -3.2rem; }
+#loadingScreen .rightflavor {
+  visibility: hidden;
+  -webkit-animation: showHidden 0.3s linear;
+  -moz-animation: showHidden 0.3s linear;
+  -animation: showHidden 0.3s linear;
+  animation: showHidden 0.3s linear;
+  animation-fill-mode: forwards; }
+  #loadingScreen .rightflavor.load2 {
+    animation-delay: 0.3s;
+    -moz-animation-delay: 0.3s;
+    -webkit-animation-delay: 0.3s; }
+  #loadingScreen .rightflavor.load3 {
+    animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    -webkit-animation-delay: 0.6s; }
+  #loadingScreen .rightflavor.load4 {
+    animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    -webkit-animation-delay: 1s; }
+  #loadingScreen .rightflavor.load5 {
+    animation-delay: 1.3s;
+    -moz-animation-delay: 1.3s;
+    -webkit-animation-delay: 1.3s; }
+  #loadingScreen .rightflavor.load6 {
+    animation-delay: 1.5s;
+    -moz-animation-delay: 1.5s;
+    -webkit-animation-delay: 1.5s; }
 
 #main .middle .left-bar {
   height: auto; }

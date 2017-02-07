@@ -24,7 +24,7 @@ $statusCritical : #4b1002;
 // voorbeeld kleuren:
 $gubatGeel    : #FFCC00;
 $holoBlauw    : #39DBCC;
-$holoContract : #FF9933;
+$holoContrast : #FF9933;
 $aquilaBlauw  : #005B8E;
 
 
@@ -52,6 +52,10 @@ p {
 
 .text-white {
   color : #FFFFFF;
+}
+
+.holoContrast {
+  color : $holoContrast;
 }
 
 .block {

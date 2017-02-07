@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport" />
   <link rel="stylesheet" type="text/css" href="/_includes/bs3-css/bootstrap.min.css" />
   <!-- <link rel="stylesheet" type="text/css" href="/_includes/css/hex.css" /> -->
+  <link rel="stylesheet" type="text/css" href="/_includes/css/keyframes.css" />
   <link rel="stylesheet" type="text/css" href="/_includes/css/style.css" />
 
   <link rel="stylesheet" type="text/css" href="/_includes/css/colors-default.css" />
@@ -56,7 +57,11 @@
           </div>
         </div>
 
-        <div class="xs-hidden col-sm-4 col-md-2 col-lg-3 text-white">
+        <div class="xs-hidden col-sm-4 col-md-2 col-lg-3 block text-white">
+          <div class="headerblock">
+            <h2><span class="glyphicon glyphicon-console"></span></h2>
+          </div>
+
           <div class="rightflavor load1">
             <div class="col-xs-9">$ -i applicationPool EOS-BCN</div>
             <div class="col-xs-3">... OK</div>
@@ -68,7 +73,7 @@
             <div class="col-xs-9">init CONNSTRING</div>
             <div class="col-xs-3">... OK</div>
             <div class="col-xs-9">$ OVERLOAD[<span class="holoContrast">6101</span>]</div>
-            <div class="col-xs-3">... OK</div>
+            <div class="col-xs-3">... <span class="glyphicon glyphicon-warning"></span></div>
           </div>
 
           <div class="rightflavor load3">
@@ -92,8 +97,8 @@
             <div class="col-xs-3">... OK</div>
           </div>
           <div class="rightflavor load6">
-            <div class="col-xs-12">NAVIGATE->MAINSCREEN();</div>
-            <div class="col-xs-12">. . .</div>
+            <div class="col-xs-9 holoContrast">NAVIGATE->MAINSCREEN();</div>
+            <div class="col-xs-3 holoContrast">... <span class="glyphicon glyphicon-hourglass"></span></div>
           </div>
         </div>
       </div>

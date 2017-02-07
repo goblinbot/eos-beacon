@@ -3,12 +3,24 @@ $whitespace    : 3rem;
 $fontsize      : 1.4rem;
 $titlefontsize : 3.6rem;
 
-// SPINNER // // // // //
-@keyframes loadSpinner {
-  0%,100% {-webkit-transform: rotate(0);  transform: rotate(0); }
-  50%{-webkit-transform: rotate(360deg);  transform: rotate(360deg); }
-  75% {-webkit-transform: rotate(180deg); transform: rotate(180deg);}
+// OP TE ROEPEN MET :
+// @include animation( KEYFRAMENAAM TIJD(bijv. 2.0s) RICHTING(bijv. linear) DURATION (bijv infinite) );
+// @include animation(blinkText 1.6s linear infinite);
+@mixin animation($values) {
+  -webkit-animation   : $values;
+  -moz-animation      : $values;
+  -animation          : $values;
+  animation           : $values;
 }
+
+// voorbeeld: $delaytimer == 0.4s
+@mixin animationdelay($delaytimer) {
+  animation-delay         : $delaytimer;
+  -moz-animation-delay    : $delaytimer;
+  -webkit-animation-delay : $delaytimer;
+}
+
+
 
 body {
   font-size: $fontsize;
@@ -84,6 +96,47 @@ body {
     @extend .flavor;
     text-align: center;
   }
+
+  .block {
+    padding : {
+      top     : ($defaultpadding * 4);
+      bottom  : ($defaultpadding * 8);
+    }
+    .headerblock {
+      margin : {
+        bottom  :   ($defaultpadding * 4);
+        top     :  -($defaultpadding * 4);
+      }
+    }
+  }
+
+  .rightflavor {
+
+    visibility: hidden;
+    @include animation(showHidden 0.3s linear);
+    animation-fill-mode: forwards;
+
+    &.load1 {
+
+    }
+    &.load2 {
+      @include animationdelay(0.3s);
+    }
+    &.load3 {
+      @include animationdelay(0.6s);
+    }
+    &.load4 {
+      @include animationdelay(1.0s);
+    }
+    &.load5 {
+      @include animationdelay(1.3s);
+    }
+    &.load6 {
+      @include animationdelay(1.5s);
+    }
+
+  }
+
 }
 
 #main {
