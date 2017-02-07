@@ -79,16 +79,17 @@
 $(document).ready(function(){
   updateFooter();
 
-  var broadcastTest = ["testBroadcast","0","0"];
+  var broadcastTest = ["testBroadcast","0","0","0","0"];
 
   setTimeout(function(){
     console.log('broadcastSend');
     socket.emit('broadcastSend', broadcastTest);
   },500);
 
-  socket.on('broadcastReceive', function(){
+  socket.on('broadcastReceive', function(location){
     console.log('broadcastReceive');
-    $('#notificationContainer').html('<h1 style="font-size:100px;"> PORTAL INCOMING </h1>');
+    console.log(location);
+    $('#notificationContainer').load('/broadcasts/'+location[0]+'.html');
   });
 
 });

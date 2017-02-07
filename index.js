@@ -63,7 +63,7 @@ io.on('connection', function (socket) {
 
   socket.on('broadcastSend', function(value){
     console.log(value);
-    socket.emit('broadcastReceive', 'testBroadcast');
+    socket.emit('broadcastReceive', value);
   });
 
   socket.on('disconnect', function(){
