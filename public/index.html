@@ -1,3 +1,18 @@
+<!--
+==== =================================================================
+
+==    INDEX.HTML    ==
+==    Dit is de landingspagina voor bezoekers, maar nog niet de 'home'.
+=     We roepen hier eerst externe gegevens aan en bouwen de hoofdopmaak op,
+=     vervolgens displayen we een 'loading' pagina in de #loadingScreen <div>.
+=     Na 2.5 seconden 'loading' pagina flavor animaties laden we MAINSCREEN.HTML in de hoofdcontainer.
+
+==== =================================================================
+==    Door Thijs Boerma, th.boerma@gmail.com | 2017                 ==
+==== =================================================================
+-->
+
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -18,97 +33,99 @@
 </head>
 
 <body>
+<!-- TWEE keer container fluid? Ja: we willen lui de buitenste witruimte creeëren op deze manier. -->
 <div class="container-fluid">
-<div class="container-fluid">
-  <!-- BOVENSTE BALK -->
-  <div class="row topHeader">
-    <div class="col-xs-6 text-inline">
-      <h1>BEACON</h1><h2 class="dark-color">/ EOS BASTION INFORMATION SERVICE</h2>
-    </div>
-    <div class="col-xs-6 text-right">
-      <!-- hier komt het IP met port als duidelijkheidje -->
-      <h1 id="localIP"></h1>
-    </div>
-  </div>
+  <div class="container-fluid">
 
-  <div class="whitespace"></div>
-
-  <!-- MAIN :: hier gaan we onze algemene container inladen. -->
-  <div class="row">
-    <div id="main" class="col-xs-12">
-
-      <!-- hier definen we de loadingscreen eerst, gezien we deze toch al hebben geopend.
-      We overschrijven deze later door #main te emptyen en een nieuwe erover heen te laden. -->
-      <div id="loadingScreen">
-        <div class="xs-hidden sm-hidden col-md-2 col-lg-3">
-          &nbsp;
-        </div>
-
-        <div class="col-xs-12 col-sm-9 col-md-8 col-lg-6">
-          <div class="whitespace col-xs-12">&nbsp;</div>
-
-          <div class="middle col-xs-12">
-            <img class="loadCircle" src="/images/fourpoint.png"/>
-          </div>
-
-          <div class="flavor col-xs-12">
-            <h3>BEACON - broadcasting & information services. Powered by EOS IT.</h3>
-            <h3>Please stand by.</h3>
-          </div>
-        </div>
-
-        <div class="xs-hidden col-sm-4 col-md-2 col-lg-3 block text-white">
-          <div class="headerblock">
-            <h2><span class="glyphicon glyphicon-console"></span></h2>
-          </div>
-
-          <div class="rightflavor load1">
-            <div class="col-xs-9">$ -i applicationPool EOS-BCN</div>
-            <div class="col-xs-3">... OK</div>
-            <div class="col-xs-9">$ EOS-BCN /init</div>
-            <div class="col-xs-3">... OK</div>
-          </div>
-
-          <div class="rightflavor load2">
-            <div class="col-xs-9">init CONNSTRING</div>
-            <div class="col-xs-3">... OK</div>
-            <div class="col-xs-9">$ OVERLOAD[<span class="holoContrast">6101</span>]</div>
-            <div class="col-xs-3">... <span class="glyphicon glyphicon-warning"></span></div>
-          </div>
-
-          <div class="rightflavor load3">
-            <div class="col-xs-12">. . . </div>
-            <div class="col-xs-12">. . . </div>
-            <div class="col-xs-12">Compatible devices found</div>
-            <div class="col-xs-12">Compatible intelligence found</div>
-          </div>
-          <div class="rightflavor load4">
-            <div class="col-xs-12">? NEURAL_PATH 66271.8878R</div>
-          </div>
-
-          <div class="rightflavor load5">
-            <div class="col-xs-9">init commCOLONY?ver=1.19</div>
-            <div class="col-xs-3">... OK</div>
-            <div class="col-xs-9">set_planet('EOS')</div>
-            <div class="col-xs-3">... OK</div>
-            <div class="col-xs-9">set_name('Bastion')</div>
-            <div class="col-xs-3">... OK</div>
-            <div class="col-xs-9">set_timezone('EOS-ECT')</div>
-            <div class="col-xs-3">... OK</div>
-          </div>
-          <div class="rightflavor load6">
-            <div class="col-xs-9 holoContrast">NAVIGATE->MAINSCREEN();</div>
-            <div class="col-xs-3 holoContrast">... <span class="glyphicon glyphicon-hourglass"></span></div>
-          </div>
-        </div>
+    <!-- BOVENSTE BALK -->
+    <div class="row topHeader">
+      <div class="col-xs-6 text-inline">
+        <h1>BEACON</h1><h2 class="dark-color">/ EOS BASTION INFORMATION SERVICE</h2>
       </div>
+      <div class="col-xs-6 text-right">
 
+        <!-- hier komt het IP met PORT te staan. -->
+        <h1 id="localIP"></h1>
+
+      </div>
     </div>
+
+    <div class="whitespace"></div>
+
+    <!-- MAIN :: hier gaan we onze algemene container inladen. -->
+    <div class="row">
+      <div id="main" class="col-xs-12">
+
+        <!-- hier definen we de loadingscreen eerst, gezien we deze toch al hebben geopend.
+        We overschrijven deze later door #main te emptyen en een nieuwe erover heen te laden. -->
+        <div id="loadingScreen">
+          <div class="xs-hidden sm-hidden col-md-2 col-lg-3">
+            &nbsp;
+          </div>
+
+          <div class="col-xs-12 col-sm-9 col-md-8 col-lg-6">
+            <div class="whitespace col-xs-12">&nbsp;</div>
+
+            <div class="middle col-xs-12">
+              <img class="loadCircle" src="/images/fourpoint.png"/>
+            </div>
+
+            <div class="flavor col-xs-12">
+              <h3>BEACON - broadcasting & information services. Powered by EOS IT.</h3>
+              <h3>Please stand by.</h3>
+            </div>
+          </div>
+
+          <div class="xs-hidden col-sm-4 col-md-2 col-lg-3 block text-white">
+            <div class="headerblock">
+              <h2><span class="glyphicon glyphicon-console"></span></h2>
+            </div>
+
+            <div class="rightflavor load1">
+              <div class="col-xs-9">$ -i applicationPool EOS-BCN</div>
+              <div class="col-xs-3">... OK</div>
+              <div class="col-xs-9">$ EOS-BCN /init</div>
+              <div class="col-xs-3">... OK</div>
+            </div>
+
+            <div class="rightflavor load2">
+              <div class="col-xs-9">init CONNSTRING</div>
+              <div class="col-xs-3">... OK</div>
+              <div class="col-xs-9">$ OVERLOAD[<span class="holoContrast">6101</span>]</div>
+              <div class="col-xs-3">... <span class="glyphicon glyphicon-warning"></span></div>
+            </div>
+
+            <div class="rightflavor load3">
+              <div class="col-xs-12">. . . </div>
+              <div class="col-xs-12">. . . </div>
+              <div class="col-xs-12">Compatible devices found</div>
+              <div class="col-xs-12">Compatible intelligence found</div>
+            </div>
+            <div class="rightflavor load4">
+              <div class="col-xs-12">? NEURAL_PATH 66271.8878R</div>
+            </div>
+
+            <div class="rightflavor load5">
+              <div class="col-xs-9">init commCOLONY?ver=1.19</div>
+              <div class="col-xs-3">... OK</div>
+              <div class="col-xs-9">set_planet('EOS')</div>
+              <div class="col-xs-3">... OK</div>
+              <div class="col-xs-9">set_name('Bastion')</div>
+              <div class="col-xs-3">... OK</div>
+              <div class="col-xs-9">set_timezone('EOS-ECT')</div>
+              <div class="col-xs-3">... OK</div>
+            </div>
+            <div class="rightflavor load6">
+              <div class="col-xs-9 holoContrast">NAVIGATE->MAINSCREEN();</div>
+              <div class="col-xs-3 holoContrast">... <span class="glyphicon glyphicon-hourglass"></span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
-
-
-
-</div>
 </div>
 
 <!-- houdt aantal navigaties/broadcasts bij om te voorkomen dat het systeem helemaal vol raakt. -->
