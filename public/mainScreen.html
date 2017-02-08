@@ -91,7 +91,14 @@
 $(document).ready(function(){
   updateFooter();
 
-  var broadcastTest = ["Broadcasting Test","testBroadcast","0","0","0"];
+  // var broadcastTest = ["Broadcasting Test","testBroadcast","0","0","0"];
+  var broadcastTest = {
+    title:"Broadcast Test",
+    file:"testBroadcast",
+    priority:"1",
+    duration:"0",
+    colorscheme:"0"
+  };
 
   setTimeout(function(){
     console.log('broadcastSend');
@@ -109,12 +116,20 @@ $(document).ready(function(){
     var currentTimeString = currentHours + ":" + currentMinutes + ":" + "&nbsp;ECT";
 
     /* update 'Last broadcast' */
-    $("#lastBroadcastTitle").html(location[0]);
+
+    // $("#lastBroadcastTitle").html(location[0]);
+    // $("#lastBroadcastTime").html(currentTimeString);
+    //
+    // console.log('broadcastReceive');
+    // console.log(location);
+    // $('#notificationContainer').load('/broadcasts/'+location[1]+'.html');
+
+    $("#lastBroadcastTitle").html(location['title']);
     $("#lastBroadcastTime").html(currentTimeString);
 
     console.log('broadcastReceive');
     console.log(location);
-    $('#notificationContainer').load('/broadcasts/'+location[1]+'.html');
+    $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
   });
 
 });

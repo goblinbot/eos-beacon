@@ -33,22 +33,27 @@ PLUGINS ( Installeren via NPM ):
 Broadcasts bestaan uit verschillende waardes.
 bijvoorbeeld:
 
-**broadcastTest = ["Broadcasting Test","testBroadcast","0","1","60000"]**
-Uitleg van de waardes tussen de [ ] brackets, tellend van 1 tot en met 4:
+var broadcastTest = {
+  title:"Broadcast Test",
+  file:"testBroadcast",
+  priority:"1",
+  duration:"0",
+  colorscheme:"0"
+};
 
-  **0 => De titel** van de broadcast/notificatie/alert. Een korte omschrijving, het liefst.
+  **'title' => De titel** van de broadcast/notificatie/alert. Een korte omschrijving, het liefst.
 
-  **1 => De naam van het HTML bestand** dat bij de broadcast word ingeladen
+  **'file' => De naam van het HTML bestand** dat bij de broadcast word ingeladen. Hier word automatisch .html achter gezet.
 
-  **2 => Het kleurenschema** dat word aangeroepen bij de broadcast.
+  **'colorscheme' => Het kleurenschema** dat word aangeroepen bij de broadcast.
   - Als deze **0** is, dan pakt hij gewoon de default kleuren of reset hij naar default.
   - Als deze **PREV** is, dan houdt hij de vorige kleuren aan en reset hij niet.
   - Al voer je een andere waarde in, bijvoorbeeld, *PORTAL* dan probeerd hij het CSS bestand colors-*PORTAL*.css in te laden.
 
-  **3 => De "Prioriteit"** van de broadcast (1 tot en met 10). Hogere broadcasts kunnen lagere overschrijven:
+  **'priority' => De "Prioriteit"** van de broadcast (1 tot en met 10). Hogere broadcasts kunnen lagere overschrijven:
   zo kan belangrijker nieuws als "we worden aangevallen" getoond worden en niet overschreven worden door "Jantje pietje heeft Post".
 
-  **4 => De duratie (in miliseconden)**. Hoe lang de notificatie actief blijft staan.
+  **'duration' => De duratie (in miliseconden)**. Hoe lang de notificatie actief blijft staan.
   Bij **0** blijft de notificatie staan tot overschreven/ALL CLEAR word gegeven.
   **vuistregels:**
   - 0 = oneindig
