@@ -3,6 +3,8 @@ $whitespace    : 3rem;
 $fontsize      : 1.4rem;
 $titlefontsize : 3.6rem;
 
+$minhoogte     : 68vh;
+
 // OP TE ROEPEN MET :
 // @include animation( KEYFRAMENAAM TIJD(bijv. 2.0s) RICHTING(bijv. linear) DURATION (bijv infinite) );
 // @include animation(blinkText 1.6s linear infinite);
@@ -30,6 +32,10 @@ body {
   // padding: $defaultpadding;
   // margin : $defaultpadding;
   height      : 100%;
+}
+
+.blinkContent {
+  @include animation(blinkText 1.5s linear infinite);
 }
 
 .round {
@@ -173,6 +179,7 @@ body {
 
     .right-bar {
       height: auto;
+      min-height: $minhoogte;
     }
 
 
@@ -219,9 +226,7 @@ body {
 }
 
 #notificationContainer {
-  h1 {
-    margin-top: 0;
-  }
+  min-height: $minhoogte;
 }
 
 
