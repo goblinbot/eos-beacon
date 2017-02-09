@@ -58,12 +58,20 @@ io.on('connection', function (socket) {
   // stuurt IP naar de index pagina zodat deze bovenin kan worden laten zien.
   socket.emit('showIP', 'IP: ' + localaddress);
 
+  // CLEARALL :: reset broadcasts.
+  socket.on('ClearAll', function() {
+    io.emit('allclear');
+  });
 
+  // FORCE RESET ::
+  socket.on('forceReset', function() {
+    io.emit('F5');
+  });
 
 
   socket.on('broadcastSend', function(value){
     console.log(value);
-    socket.emit('broadcastReceive', value);
+    io.emit('broadcastReceive', value);
   });
 
   socket.on('disconnect', function(){

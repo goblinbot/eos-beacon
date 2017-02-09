@@ -144,6 +144,11 @@ $(document).ready(function(){
     $('#localIP').html(value);
   });
 
+  // ForceReset. F5'd de pagina.
+  socket.on('F5', function(){
+    location.reload();
+  });
+
 
 
   setTimeout(function(){
