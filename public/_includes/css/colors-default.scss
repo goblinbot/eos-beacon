@@ -36,6 +36,12 @@ body {
   // background : $topbar;
 }
 
+//////////////////////////////////////////////////////////////////
+// Animatie ??????????????????                                  //
+// transition: 0.4s;                                            //
+// box-shadow: inset -1px -1px 18rem 5px #FFF                   //
+//////////////////////////////////////////////////////////////////
+
 h1, h2, h3, h4, h5, h6 {
   color : $titleColor;
   &.alt-color {
@@ -61,6 +67,7 @@ p {
 .block {
   background    : $blocks;
   // border      : 1px solid $borderColor;
+  box-shadow    : -1px -1px 5px 6px $blockslight;
 }
 .block-light {
   background    : $blockslight;

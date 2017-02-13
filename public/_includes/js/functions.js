@@ -18,6 +18,10 @@ var defaultBroadcast  = new broadcastObj("Broadcast Initialise","standby","1","0
 var testBroadcast     = new broadcastObj(":: TESTING BROADCAST ::","test","1","2000","0");
 var resetBroadcast    = new broadcastObj("Clear","standby","10","0","0");
 
+
+
+// einde pre-sets
+
 // deze word overschreven door de laatste broadcast
 var activeBroadcast   = new broadcastObj("-","-","1","0","0");
 
@@ -50,7 +54,7 @@ function broadCast(location) {
   // stuurt de nieuwste hier naar de backend.
   socket.emit('changeActiveBroadcast',activeBroadcast);
 
-  console.log('active: '+ activeBroadcast['title']);
+  // console.log('active: '+ activeBroadcast['title']);
 
   if(location) {
 
@@ -102,7 +106,7 @@ function updateFooter() {
 }
 
 // functie om de duration toch wel werkend te krijgen - oftewel een broadcast CLEAREN na ingestelde tijd.
-function clearBroadcast(duration){  
+function clearBroadcast(duration){
 
   if(duration != "" && duration != null) {
     // timer? Gebruik die mooie timer en DAN resetten we de broadcast.

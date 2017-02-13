@@ -10,23 +10,13 @@
       <p>&nbsp;</p>
       <p>&nbsp;</p>
 
-      <p style="font-size: 26px;">Something went wrong. Please wait 15 seconds.</p>
+      <p style="font-size: 26px;">Something went wrong. Please wait 12 seconds.</p>
       <p style="font-size: 26px;">An employee will find you shortly. <span class="holoContrast">Trust us</span>.</p>
 
     </div>
   </div>
 </div>
 
-
 <script>
-setTimeout(function(){
-  broadcast = {
-    title:"Broadcast Initialise",
-    file:"standby",
-    priority:"1",
-    duration:"0",
-    colorscheme:"0"
-  };
-  socket.emit('broadcastSend', broadcast);
-},15000);
+  clearBroadcast(12000);
 </script>

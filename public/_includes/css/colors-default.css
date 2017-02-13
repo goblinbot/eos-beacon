@@ -18,7 +18,8 @@ p {
   color: #FF9933; }
 
 .block {
-  background: #042A34; }
+  background: #042A34;
+  box-shadow: -1px -1px 5px 6px #0B5E66; }
 
 .block-light {
   background: #0B5E66; }

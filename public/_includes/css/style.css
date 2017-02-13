@@ -2,6 +2,7 @@ body {
   font-size: 1.4rem; }
 
 .block {
+  transition: 1.3s;
   height: 100%; }
 
 .blinkContent {
