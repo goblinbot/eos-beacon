@@ -2,13 +2,29 @@ var socket      = io();
 var selector    = "";
 var target      = "";
 var navLimit    = 0;
-var activeBroadcast = {
-  title:"-",
-  file:"-",
-  priority:"1",
-  duration:"0",
-  colorscheme:"0"
-};
+
+// BROADCAST OBJECTEN
+// constructor:
+function broadcastObj(title, file, priority, duration, colorscheme) {
+
+  if(!title) {title = "Untitled Broadcast"}
+  if(!file) {file = "404"}
+  if(!priority) {priority = "1"}
+  if(!duration) {duration = "0"}
+  if(!colorscheme) {colorscheme = "0"}
+
+  this.title    = title;
+  this.fileName = file;
+  this.priority = priority;
+  this.duration = duration; // LET OP : DURATION WORD NIET GEBRUIKT.
+  this.colorscheme = colorscheme;
+}
+
+// PRE-SET broadcasts!
+
+var testBroadcast     = new broadcastObj(":: TESTING BROADCAST ::","test","1","2000","0");
+var defaultBroadcast  = new broadcastObj("Broadcast Initialise","standby","1","0","0");
+var activeBroadcast   = new broadcastObj("-","-","1","0","0");
 
 
 // navigeerd - een functie geerft uit www.gubat.nl, word eigenlijk maar eenmaal
@@ -20,28 +36,31 @@ function navigate(target) {
 }
 
 function broadCastTest() {
-  broadcast = {
-    title:"MEME MEME",
-    file:"test",
-    priority:"1",
-    duration:"2000",
-    colorscheme:"0"
-  };
-  socket.emit('broadcastSend', broadcast);
+  // broadcast = {
+  //   title:":: TESTING BROADCAST ::",
+  //   file:"test",
+  //   priority:"1",
+  //   duration:"2000",
+  //   colorscheme:"0"
+  // };
+  // socket.emit('broadcastSend', broadcast);
+  broadCast(testBroadcast);
 
 }
 
 // function: broadcast .
 function broadCast(location) {
-
-  activeBroadcast = {
-    title       :location['title'],
-    file        :location['file'],
-    priority    :location['priority'],
-    duration    :location['duration'],
-    colorscheme :location['colorscheme']
-  }
-  console.log('active: '+ activeBroadcast);
+  //
+  // activeBroadcast = {
+  //   title       :location['title'],
+  //   file        :location['file'],
+  //   priority    :location['priority'],
+  //   duration    :location['duration'],
+  //   colorscheme :location['colorscheme']
+  // }
+  activeBroadcast.empty();
+  activeBroadcast = new broadcastObj(location['title'],location['file'],location['priority'],location['duration'],location['colorscheme']);
+  console.log('active: '+ activeBroadcast['title']);
 
   if(location) {
 
