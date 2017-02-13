@@ -45,6 +45,10 @@
 
   <!-- rechter minibar -->
   <div class="right-bar col-xs-1 col-sm-1 col-md-1 col-lg-1">
+    <div class="row block">
+      <h2 class="text-center"><i class="glyphicon glyphicon-user"></i></h2>
+      <h2 class="text-center" id="countClientsCounter">-</h2>
+    </div>
 
   </div>
 </div>
@@ -125,7 +129,9 @@ $(document).ready(function(){
 
   // en update hem hier.
   socket.on('updateDynamicData', function(dynamicData){
+    console.log(dynamicData);
     $('#securityAlertLevel').html(dynamicData['alertLevel']);
+    $('#countClientsCounter').html(dynamicData['countClients']);
     // meer toevoegen.
     // broadcast Last Active, als een soort resume ??
   });

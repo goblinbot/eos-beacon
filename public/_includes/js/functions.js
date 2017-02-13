@@ -16,6 +16,7 @@ function broadcastObj(title, file, priority, duration, colorscheme) {
 // PRE-SET broadcasts!
 var defaultBroadcast  = new broadcastObj("Broadcast Initialise","standby","1","0","0");
 var testBroadcast     = new broadcastObj(":: TESTING BROADCAST ::","test","1","2000","0");
+var resetBroadcast    = new broadcastObj("Clear","standby","10","0","0");
 
 // deze word overschreven door de laatste broadcast
 var activeBroadcast   = new broadcastObj("-","-","1","0","0");
@@ -51,7 +52,7 @@ function broadCast(location) {
 
   console.log('active: '+ activeBroadcast['title']);
 
-  if(activeBroadcast) {
+  if(location) {
 
     navLimit = (navLimit+1);
 
@@ -64,11 +65,10 @@ function broadCast(location) {
     var currentTimeString = currentHours + ":" + currentMinutes + ":" + "&nbsp;ECT";
 
     /* update 'Last broadcast' */
-    if(location['title'] != "") {
-      $("#lastBroadcastTitle").html(location['title']);
+    if(location['title'] != "" && location['title'] != "Clear") {
+      $("#lastBroadcastTitle").html("<i class='glyphicon glyphicon-bell'></i>&nbsp;" + location['title']);
+      $("#lastBroadcastTime").html(currentTimeString);
     }
-
-    $("#lastBroadcastTime").html(currentTimeString);
 
     $.get('/broadcasts/'+location['file']+'.html')
       .done(function(){
@@ -101,22 +101,20 @@ function updateFooter() {
   $(".item").height($('#firstFooterBlock').height());
 }
 
-function resetBroadcast(duration){
-  console.log('test4:'+duration);
+// functie om de duration toch wel werkend te krijgen - oftewel een broadcast CLEAREN na ingestelde tijd.
+function clearBroadcast(duration){  
 
-  broadcast = {
-    title:"Clear",
-    file:"standby",
-    priority:"10",
-    duration:"0",
-    colorscheme:"0"
-  };
+  if(duration != "" && duration != null) {
+    // timer? Gebruik die mooie timer en DAN resetten we de broadcast.
+    setTimeout(function(){
+      socket.emit('broadcastSend', resetBroadcast);
+    },duration);
 
-  setTimeout(function(){
-    broadCast(broadcast);
-  },duration);
+  } else {
+    // geen timer? Gewoon resetten.
+    socket.emit('broadcastSend', resetBroadcast);
+  }
 
-  socket.emit('broadcastSend', broadcast);
 }
 
 // CLOCK //////////////////////////////////////////////////////
