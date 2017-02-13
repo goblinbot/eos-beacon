@@ -87,36 +87,34 @@
 
 </div>
 
+
 <script>
+
 
 $(document).ready(function(){
 
   // functie: maak blokken footer even groot.
   updateFooter();
 
-  // EERSTE BROADCAST ::
-  var broadcast = {
-    title:"Broadcast Initialise",
-    file:"standby",
-    priority:"1",
-    duration:"0",
-    colorscheme:"0"
-  };
+  // na een halve seconde, stuur de default broadcast naar =alleen= deze client.
+  // de defaultBroadcast staat hier dubbel gedefineerd :: ik ben er nog niet achter waarom deze niet word geërf uit functions.js .
+  var defaultBroadcast  = new broadcastObj("Broadcast Initialise","standby","1","0","0");
 
-  // na een halve seconde, stuur de broadcast die hier boven defined is.
   setTimeout(function(){
-    // emit een 'broadcastSend' : deze word gepinged naar de backend, en
-    // gereturned als 'broadcastReceive' .
-    socket.emit('broadcastSend', broadcast);
+
+    broadCast(defaultBroadcast);
+
   },500);
 
-  // hier ontvangen we hem dus weer van de backend
+  // hier defineren we de realtime update: als de =socket= een broadcast ontvangt, dan voert de client deze uit.
   socket.on('broadcastReceive', function(location){
 
     console.log(activeBroadcast);
-    console.log('! BROADCAST RECEIVED');
+    console.log('!! BROADCAST RECEIVED !!');
+    console.log('########################');
     console.log(location);
     broadCast(location);
+    console.log('########################');
     console.log('... OK');
   });
 

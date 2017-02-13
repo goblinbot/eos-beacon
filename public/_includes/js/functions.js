@@ -6,24 +6,18 @@ var navLimit    = 0;
 // BROADCAST OBJECTEN
 // constructor:
 function broadcastObj(title, file, priority, duration, colorscheme) {
-
-  if(!title) {title = "Untitled Broadcast"}
-  if(!file) {file = "404"}
-  if(!priority) {priority = "1"}
-  if(!duration) {duration = "0"}
-  if(!colorscheme) {colorscheme = "0"}
-
-  this.title    = title;
-  this.fileName = file;
-  this.priority = priority;
-  this.duration = duration; // LET OP : DURATION WORD NIET GEBRUIKT.
-  this.colorscheme = colorscheme;
+  this.title        = title;
+  this.file         = file;
+  this.priority     = priority;
+  this.duration     = duration; // LET OP : DURATION WORD NIET GEBRUIKT.
+  this.colorscheme  = colorscheme;
 }
 
 // PRE-SET broadcasts!
-
-var testBroadcast     = new broadcastObj(":: TESTING BROADCAST ::","test","1","2000","0");
 var defaultBroadcast  = new broadcastObj("Broadcast Initialise","standby","1","0","0");
+var testBroadcast     = new broadcastObj(":: TESTING BROADCAST ::","test","1","2000","0");
+
+// deze word overschreven door de laatste broadcast
 var activeBroadcast   = new broadcastObj("-","-","1","0","0");
 
 
@@ -35,34 +29,29 @@ function navigate(target) {
   }
 }
 
+// stuurt 'TEST' op commando op alle verbonden clients.
 function broadCastTest() {
-  // broadcast = {
-  //   title:":: TESTING BROADCAST ::",
-  //   file:"test",
-  //   priority:"1",
-  //   duration:"2000",
-  //   colorscheme:"0"
-  // };
-  // socket.emit('broadcastSend', broadcast);
-  broadCast(testBroadcast);
-
+  // broadCast(testBroadcast);
+  socket.emit('broadcastSend',testBroadcast);
 }
 
-// function: broadcast .
+// function: broadcast . CLIENT SIDE.
 function broadCast(location) {
-  //
-  // activeBroadcast = {
-  //   title       :location['title'],
-  //   file        :location['file'],
-  //   priority    :location['priority'],
-  //   duration    :location['duration'],
-  //   colorscheme :location['colorscheme']
-  // }
-  activeBroadcast.empty();
+
+  if(location['title'] == null)         {   location['title'] = "Untitled Broadcast"}
+  if(location['file'] == null)          {   location['file'] = "404"      }
+  if(location['priority'] == null)      {   location['priority'] = "1"    }
+  if(location['duration'] == null)      {   location['duration'] = "0"    }
+  if(location['colorscheme'] == null)   {   location['colorscheme'] = "0" }
+
+  // update de laatst activeBroadcast naar de ontvange 'location'
   activeBroadcast = new broadcastObj(location['title'],location['file'],location['priority'],location['duration'],location['colorscheme']);
+  // stuurt de nieuwste hier naar de backend.
+  socket.emit('changeActiveBroadcast',activeBroadcast);
+
   console.log('active: '+ activeBroadcast['title']);
 
-  if(location) {
+  if(activeBroadcast) {
 
     navLimit = (navLimit+1);
 
