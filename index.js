@@ -7,14 +7,23 @@ var $       = require('jquery');
 var ip      = require('ip');
 var bodyParser = require('body-parser');
 
-/* data */
-var port          = process.env.PORT || 5000;
-var countClients  = 0;
-var localaddress  = ip.address() +':'+ port;
 
-var appnaam1      = 'BEACON';
-var appnaam2      = 'beacon';
-var appnaam3      = 'Beacon';
+/* CONFIGURATIE: vaste gegevens bij start up. */
+var port          = process.env.PORT || 5000;
+var globalSettings = {
+  appnaam1      : 'BEACON',
+  appnaam2      : 'beacon',
+  appnaam3      : 'Beacon',
+  appdescription: '/ EOS BASTION INFORMATION SERVICE',
+  localaddress  : ip.address() +':'+ port,
+}
+
+/* DYNAMIC DATA: data die bij setup worden gebruikt en constant kunnen worden aangepast. */
+var dynamicData = {
+  countClients  : 0,
+  alertLevel    : "regular"
+}
+
 
 
 /* INITIALISEN VAN APP */
@@ -31,15 +40,15 @@ http.listen(port, function(){
   console.log('. ');
   console.log('. ');
   console.log('.. ');
-  console.log('// '+appnaam1+' ////////////');
+  console.log('// '+globalSettings['appnaam1']+' ////////////');
   console.log('# Initialising ..' );
   console.log('# Loading dependancies ..');
   console.log('-------------------------');
   console.log('# CONNECT DEVICES//USERS TO :');
-  console.log(' ? External IP : ' + localaddress );
-  console.log(' ? Internal IP : localhost:'+ port + ' | ' + '127.0.0.1:'+ port );
+  console.log(' ? External IP : ' + globalSettings['localaddress'] );
+  console.log(' ? Internal IP : localhost:'+ port  + ' | ' + '127.0.0.1:'+ port );
   console.log('-------------------------');
-  console.log('THANK YOU FOR USING '+appnaam1+' INFORMATION & BROADCASTING SERVICES');
+  console.log('THANK YOU FOR USING '+globalSettings['appnaam1']+' INFORMATION & BROADCASTING SERVICES');
 });
 
 
@@ -52,11 +61,12 @@ app.get('/', function(req, res){
 
 io.on('connection', function (socket) {
 
-  countClients++;
-  console.log('Device connected. '+countClients+' active clients.');
+  dynamicData['countClients']++;
+  console.log('Device connected. '+dynamicData['countClients']+' active clients.');
 
   // stuurt IP naar de index pagina zodat deze bovenin kan worden laten zien.
-  socket.emit('showIP', 'IP: ' + localaddress);
+  // socket.emit('showIP', 'IP: ' + localaddress);
+  socket.emit('startConfig', globalSettings);
 
   // CLEARALL :: reset broadcasts.
   socket.on('ClearAll', function() {
@@ -68,6 +78,10 @@ io.on('connection', function (socket) {
     io.emit('F5');
   });
 
+  socket.on('requestDynamicData', function (){
+    io.emit('updateDynamicData', dynamicData);
+  });
+
 
   socket.on('broadcastSend', function(value){
     console.log(value);
@@ -75,8 +89,8 @@ io.on('connection', function (socket) {
   });
 
   socket.on('disconnect', function(){
-    countClients = (countClients-1);
-    console.log('DISCONNECT// .. ' +countClients+' active clients.');
+    dynamicData['countClients'] = (dynamicData['countClients']-1);
+    console.log('DISCONNECT// .. ' +dynamicData['countClients']+' active clients.');
   });
 
 });

@@ -66,7 +66,7 @@
     <div class="block">
       <div class="content">
         <h1>ALERT LEVEL</h1>
-        <h3>-</h3>
+        <h3 id="securityAlertLevel">-</h3>
       </div>
     </div>
   </div>
@@ -111,11 +111,23 @@ $(document).ready(function(){
 
     console.log(activeBroadcast);
     console.log('!! BROADCAST RECEIVED !!');
-    console.log('########################');
+    console.log('\\ \\ \\');
     console.log(location);
     broadCast(location);
-    console.log('########################');
+    console.log('// // //');
     console.log('... OK');
+  });
+
+
+
+  // vraagt dynamische data op, zoals security level en actieve gebruikers.
+  socket.emit('requestDynamicData');
+
+  // en update hem hier.
+  socket.on('updateDynamicData', function(dynamicData){
+    $('#securityAlertLevel').html(dynamicData['alertLevel']);
+    // meer toevoegen.
+    // broadcast Last Active, als een soort resume ??
   });
 
 });

@@ -40,7 +40,9 @@
     <!-- BOVENSTE BALK -->
     <div class="row topHeader">
       <div class="col-xs-6 text-inline">
-        <h1>BEACON</h1><h2 class="dark-color">/ EOS BASTION INFORMATION SERVICE</h2>
+        <!-- waardes zijn default, worden overschreven door JS -->
+        <!-- <h1 id="appTitle">BEACON</h1><h2 id="appDescription" class="dark-color">/ EOS BASTION INFORMATION SERVICE</h2> -->
+        <h1 id="appTitle">-</h1><h2 id="appDescription" class="dark-color">/ -</h2>
       </div>
       <div class="col-xs-6 text-right">
 
@@ -139,9 +141,11 @@
 
 $(document).ready(function(){
 
-  // zorgt ervoor dat de titel rechtsboven de lokale IP laat zien
-  socket.on('showIP', function(value){
-    $('#localIP').html(value);
+  // update on load alle titels, descriptions en het IP adres rechtsboven.
+  socket.on('startConfig', function(settings){
+    $('#appTitle').html(settings['appnaam1']);
+    $('#appDescription').html(settings['appdescription']);
+    $('#localIP').html(settings['localaddress']);
   });
 
   // ForceReset. F5'd de pagina.
