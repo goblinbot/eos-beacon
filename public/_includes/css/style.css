@@ -1,5 +1,18 @@
+@font-face {
+  font-family: 'Titillium-Regular';
+  src: url(/_includes/fonts/Titillium-Regular.otf); }
+@font-face {
+  font-family: 'Titillium-Bold';
+  src: url(/_includes/fonts/Titillium-Bold.otf); }
+@font-face {
+  font-family: 'Titillium-Light';
+  src: url(/_includes/fonts/Titillium-Light.otf); }
+@font-face {
+  font-family: 'ProFontWindows';
+  src: url(/_includes/fonts/ProFontWindows.ttf); }
 body {
-  font-size: 1.4rem; }
+  font-size: 1.4rem;
+  font-family: "Titillium-Regular", Helvetica, sans-serif; }
 
 .block {
   transition: 1.3s;
@@ -17,21 +30,24 @@ body {
 .whitespace {
   min-height: 3rem; }
 
-.text-inline {
+.topHeader .text-inline {
   display: inline;
   position: relative;
-  top: 15px; }
-  .text-inline h1, .text-inline h2, .text-inline h3, .text-inline h4, .text-inline h5, .text-inline h6, .text-inline p {
+  top: 15px;
+  font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif; }
+  .topHeader .text-inline h1, .topHeader .text-inline h2, .topHeader .text-inline h3, .topHeader .text-inline h4, .topHeader .text-inline h5, .topHeader .text-inline h6, .topHeader .text-inline p {
     display: inline;
     margin-top: 0.8rem;
     margin-right: 0.8rem; }
-  .text-inline h1 {
+  .topHeader .text-inline h1 {
     font-weight: strong;
     font-size: 4.788rem; }
-  .text-inline h2 {
+  .topHeader .text-inline h2 {
     font-size: 2.7rem; }
-  .text-inline h3 {
+  .topHeader .text-inline h3 {
     font-size: 1.8rem; }
+.topHeader .text-right {
+  font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif; }
 
 .headerblock {
   padding-top: 0;
@@ -95,6 +111,7 @@ body {
     #main .middle .left-bar .block h1, #main .middle .left-bar .block p {
       margin: 1.6rem; }
     #main .middle .left-bar .block #clock, #main .middle .left-bar .block h1#clock {
+      font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif;
       font-size: 4.68rem; }
 #main .middle .middle-bar {
   height: auto;
@@ -104,8 +121,11 @@ body {
 #main .middle .right-bar {
   height: auto;
   min-height: 68vh; }
+  #main .middle .right-bar #countClientsCounter {
+    font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif; }
 #main .footer {
-  margin-top: 3rem; }
+  margin-top: 3rem;
+  font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif; }
   #main .footer .item:first-child {
     padding-left: 0; }
   #main .footer .item .block .content {

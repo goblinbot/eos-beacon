@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Titillium-Regular';
+  src: url(/_includes/fonts/Titillium-Regular.otf); }
+@font-face {
+  font-family: 'Titillium-Bold';
+  src: url(/_includes/fonts/Titillium-Bold.otf); }
+@font-face {
+  font-family: 'Titillium-Light';
+  src: url(/_includes/fonts/Titillium-Light.otf); }
+@font-face {
+  font-family: 'ProFontWindows';
+  src: url(/_includes/fonts/ProFontWindows.ttf); }
+
+/*# sourceMappingURL=fonts.css.map */

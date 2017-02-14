@@ -45,7 +45,10 @@
 
   <!-- rechter minibar -->
   <div class="right-bar col-xs-1 col-sm-1 col-md-1 col-lg-1">
-    <div class="row block">
+    <div class="block col-xs-12">
+      <div class="headerblock">
+        <h2>Clients</h2>
+      </div>
       <h2 class="text-center"><i class="glyphicon glyphicon-user"></i></h2>
       <h2 class="text-center" id="countClientsCounter">-</h2>
     </div>
@@ -112,14 +115,14 @@ $(document).ready(function(){
 
   // hier defineren we de realtime update: als de =socket= een broadcast ontvangt, dan voert de client deze uit.
   socket.on('broadcastReceive', function(location){
-
     console.log(activeBroadcast);
-    console.log('!! BROADCAST RECEIVED !!');
-    console.log('\\ \\ \\');
+    console.log('# BROADCAST RECEIVED !');
+    console.log('# ...');
     console.log(location);
-    broadCast(location);
-    console.log('// // //');
-    console.log('... OK');
+
+      // uitvoeren op client.
+      broadCast(location);
+      console.log('# ... OK');
   });
 
 
