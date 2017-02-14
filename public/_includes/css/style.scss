@@ -253,6 +253,17 @@ body {
 
 #notificationContainer {
   min-height: $minhoogte;
+
+  .broadcast {
+
+    .fixed-bottom {
+      position  : absolute;
+      bottom    : 0;
+      margin    : 2rem;
+    }
+
+  }
+
 }
 
 

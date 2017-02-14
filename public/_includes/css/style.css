@@ -146,6 +146,10 @@ body {
 
 #notificationContainer {
   min-height: 68vh; }
+  #notificationContainer .broadcast .fixed-bottom {
+    position: absolute;
+    bottom: 0;
+    margin: 2rem; }
 
 .loadCircle {
   border: 0;
