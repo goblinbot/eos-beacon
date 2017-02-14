@@ -40,6 +40,14 @@ function broadCastTest() {
   socket.emit('broadcastSend',testBroadcast);
 }
 
+function FlashBlocks() {
+  if( $('.block').hasClass('flash') ) {
+    $('.block').removeClass('flash');
+  } else {
+    $('.block').addClass('flash');
+  }
+}
+
 // function: broadcast . CLIENT SIDE.
 function broadCast(location) {
 
@@ -84,10 +92,15 @@ function broadCast(location) {
             $("#notificationContainer").empty();
               $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
 
-              // if(location['duration'] && location['duration'] > 0 && !isNaN(location['duration'])) {
-              //   console.log('test3'+location['duration']);
-              //   resetBroadcast(location['duration']);
-              // }
+              if(location['duration'] && location['duration'] > 0 && !isNaN(location['duration'])) {
+                console.log(location['duration']);
+                clearBroadcast(location['duration']);
+              }
+
+              FlashBlocks();
+              setTimeout(function(){
+                FlashBlocks();
+              },1200);
           }
         }
       })

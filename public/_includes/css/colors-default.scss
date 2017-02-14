@@ -26,6 +26,7 @@ $gubatGeel    : #FFCC00;
 $holoBlauw    : #39DBCC;
 $holoContrast : #FF9933;
 $aquilaBlauw  : #005B8E;
+$holohalf     : rgba(57, 219, 204, 0.5);
 
 
 body {
@@ -36,11 +37,6 @@ body {
   // background : $topbar;
 }
 
-//////////////////////////////////////////////////////////////////
-// Animatie ??????????????????                                  //
-// transition: 0.4s;                                            //
-// box-shadow: inset -1px -1px 18rem 5px #FFF                   //
-//////////////////////////////////////////////////////////////////
 
 h1, h2, h3, h4, h5, h6 {
   color : $titleColor;
@@ -64,11 +60,25 @@ p {
   color : $holoContrast;
 }
 
+
+//////////////////////////////////////////////////////////////////
+// Animatie ??????????????????                                  //
+// transition: 0.4s;                                            //
+// box-shadow: inset -1px -1px 18rem 5px #FFF                   //
+//////////////////////////////////////////////////////////////////
+
 .block {
+  transition    : 0.5s;
   background    : $blocks;
   // border      : 1px solid $borderColor;
-  box-shadow    : -1px -1px 5px 6px $blockslight;
+  // box-shadow    : -1px -1px 5px 6px $blockslight;
+  //  ZIE HIERBOVEN ANIMATES JIJ PLEB
 }
+//temp toevoeging:
+.flash {
+  box-shadow: inset -1px -1px 3rem 5px $holohalf;
+}
+
 .block-light {
   background    : $blockslight;
 }
