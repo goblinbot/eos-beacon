@@ -10,6 +10,27 @@
   75% {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg); } }
+@keyframes circleSpin {
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(180deg); }
+  100% {
+    transform: rotate(360deg); } }
+@-moz-keyframes circleSpin {
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(180deg); }
+  100% {
+    transform: rotate(360deg); } }
+@-webkit-keyframes circleSpin {
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(180deg); }
+  100% {
+    transform: rotate(360deg); } }
 @-webkit-keyframes expandBlock {
   0% {
     -webkit-transform: scale(0);

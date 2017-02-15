@@ -33,6 +33,11 @@ body {
   background : $background;
 }
 
+.spinner {
+  border      : 16px solid $orbitLight;
+  border-left : 16px solid $orbitNormal;
+}
+
 .topHeader {
   // background : $topbar;
 }

@@ -25,10 +25,22 @@ body {
   animation: blinkText 1.5s linear infinite; }
 
 .round {
-  border-radius: 100%; }
+  border-radius: 50%; }
 
 .whitespace {
   min-height: 3rem; }
+
+.spinCircle {
+  position: relative;
+  left: 25%;
+  margin: 32px;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  -webkit-animation: circleSpin 1.4s linear infinite;
+  -moz-animation: circleSpin 1.4s linear infinite;
+  -animation: circleSpin 1.4s linear infinite;
+  animation: circleSpin 1.4s linear infinite; }
 
 .topHeader .text-inline {
   display: inline;
