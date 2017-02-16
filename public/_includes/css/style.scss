@@ -53,6 +53,9 @@ body {
 .round {
   border-radius: 50%;
 }
+.pZero {
+  padding: 0;
+}
 
 .whitespace {
   min-height: ($whitespace);
@@ -183,6 +186,12 @@ body {
 
     .left-bar {
       height: auto;
+      margin : {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: ($defaultpadding * 2);
+      }
 
       .block {
         border  : none;

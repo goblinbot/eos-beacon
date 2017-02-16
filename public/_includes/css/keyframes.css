@@ -6,10 +6,11 @@
   50% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
-    -moz-transform: rotate(0); }
+    -moz-transform: rotate(360deg); }
   75% {
     -webkit-transform: rotate(180deg);
-    transform: rotate(180deg); } }
+    transform: rotate(180deg);
+    -moz-transform: rotate(180deg); } }
 @keyframes circleSpin {
   0% {
     transform: rotate(0deg); }

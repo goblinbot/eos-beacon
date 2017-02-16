@@ -5,8 +5,8 @@
 
 @keyframes loadSpinner {
   0%,100% {-webkit-transform: rotate(0);  transform: rotate(0); -moz-transform: rotate(0)}
-  50%{-webkit-transform: rotate(360deg);  transform: rotate(360deg); -moz-transform: rotate(0) }
-  75% {-webkit-transform: rotate(180deg); transform: rotate(180deg);}
+  50%{-webkit-transform: rotate(360deg);  transform: rotate(360deg); -moz-transform: rotate(360deg) }
+  75% {-webkit-transform: rotate(180deg); transform: rotate(180deg); -moz-transform: rotate(180deg) }
 }
 
 // DRAAI //
