@@ -85,7 +85,7 @@ body {
       font-weight: strong;
       font-size: ($titlefontsize * 1.33);
       @media(max-width:900px) {
-        font-size: ($fontsize * 1.25);
+        font-size: ($fontsize * 3);
       }
     }
     h2 {
@@ -103,6 +103,13 @@ body {
   }
   .text-right {
     font-family : $altFontStack;
+    h1 {
+      font-weight: strong;
+      font-size: ($titlefontsize * 1.33);
+      @media(max-width:900px) {
+        font-size: ($fontsize * 1.25);
+      }
+    }
   }
 }
 
