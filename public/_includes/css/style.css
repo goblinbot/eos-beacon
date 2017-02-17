@@ -150,6 +150,9 @@ body {
     border: none;
     margin-top: 0.8rem;
     margin-bottom: 0.8rem; }
+    @media (max-width: 900px) {
+      #main .middle .left-bar .block.clockblock {
+        padding: 1px; } }
     #main .middle .left-bar .block h1, #main .middle .left-bar .block p {
       margin: 1.6rem; }
       @media (max-width: 900px) {

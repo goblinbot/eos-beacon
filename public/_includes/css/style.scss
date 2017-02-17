@@ -215,6 +215,11 @@ body {
           top: $defaultpadding;
           bottom: $defaultpadding;
         }
+        &.clockblock {
+          @media(max-width:900px) {
+            padding: 1px;
+          }
+        }
         h1, p {
           margin : ($defaultpadding * 2);
           @media(max-width:900px) {
