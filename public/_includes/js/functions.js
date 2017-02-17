@@ -41,6 +41,11 @@ function broadCastTest() {
 }
 
 function FlashBlocks() {
+
+  if($(window).width() < 769) {
+    return false;
+  }
+
   if( $('.block').hasClass('flash') ) {
     $('.block').removeClass('flash');
   } else {
@@ -115,6 +120,9 @@ function broadCast(location) {
 
 // maakt de footer blokken equally groot aan de eerste.
 function updateFooter() {
+  if($(window).width() < 769) {
+    return false;
+  }
   $(".item").height($('#firstFooterBlock').height());
 }
 

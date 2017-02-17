@@ -5,6 +5,7 @@ $titlefontsize : 3.6rem;
 
 $minhoogte     : 68vh;
 
+
 // haalt alle fonts die we includen op.
 @import 'fonts';
 $fontStack      : 'Titillium-Regular', Helvetica, sans-serif;
@@ -201,11 +202,14 @@ body {
           bottom: $defaultpadding;
         }
         h1, p {
-          margin : ($defaultpadding*2);
+          margin : ($defaultpadding * 2);
         }
         #clock,h1#clock{
           font-family : $altFontStack;
-          font-size: ($titlefontsize * 1.3);
+          font-size: ($titlefontsize);
+          @media(max-width:900px) {
+            font-size: ($titlefontsize);
+          }
         }
 
       }
@@ -217,11 +221,19 @@ body {
       .block {
         height: 100%;
       }
+      @media(max-width:900px) {
+        margin-left: 0;
+        margin-right: 0;
+      }
     }
 
     .right-bar {
       height: auto;
       min-height: $minhoogte;
+      @media(max-width: 768px) {
+        min-height: 0;
+        margin-top: ($defaultpadding*2);
+      }
 
       #countClientsCounter {
         font-family: $altFontStack;
@@ -236,9 +248,13 @@ body {
     font-family: $altFontStack;
 
     .item {
-
+      @media(max-width:998px) {
+        margin-bottom:0.6rem;
+      }
       &:first-child {
-        padding-left : 0;
+        @media(min-width:998px) {
+          padding-left : 0;
+        }
       }
 
       .block {
@@ -281,6 +297,13 @@ body {
       position  : absolute;
       bottom    : 0;
       margin    : 2rem;
+    }
+
+    @media(max-width:768px) {
+      margin: 0 0 0.5rem 0;
+      .fixed-bottom {
+        position: relative;
+      }
     }
 
   }

@@ -39,12 +39,12 @@
 
     <!-- BOVENSTE BALK -->
     <div class="row topHeader">
-      <div class="col-xs-6 text-inline">
+      <div class="col-xs-4 col-sm-6 text-inline">
         <!-- waardes zijn default, worden overschreven door JS -->
         <!-- <h1 id="appTitle">BEACON</h1><h2 id="appDescription" class="dark-color">/ EOS BASTION INFORMATION SERVICE</h2> -->
-        <h1 id="appTitle">BEACON</h1><h2 id="appDescription" class="dark-color">/ EOS BASTION INFORMATION SERVICE</h2>
+        <h1 id="appTitle">BEACON</h1><h2 id="appDescription" class="hidden-xs dark-color">/ EOS BASTION INFORMATION SERVICE</h2>
       </div>
-      <div class="col-xs-6 text-right">
+      <div class="col-xs-8 col-sm-6 text-right">
 
         <!-- hier komt het IP met PORT te staan. -->
         <h1 id="localIP"></h1>
@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <div class="whitespace"></div>
+    <div class="whitespace hidden-xs"></div>
 
     <!-- MAIN :: hier gaan we onze algemene container inladen. -->
     <div class="row">
@@ -61,24 +61,24 @@
         <!-- hier definen we de loadingscreen eerst, gezien we deze toch al hebben geopend.
         We overschrijven deze later door #main te emptyen en een nieuwe erover heen te laden. -->
         <div id="loadingScreen">
-          <div class="xs-hidden sm-hidden col-md-2 col-lg-3">
+          <div class="hidden-xs hidden-sm hidden-md col-lg-3">
             &nbsp;
           </div>
 
-          <div class="col-xs-12 col-sm-9 col-md-8 col-lg-6">
-            <div class="whitespace col-xs-12">&nbsp;</div>
+          <div class=" hidden-xs col-sm-8 col-md-8 col-lg-6">
+            <div class="whitespace col-sm-12 hidden-xs">&nbsp;</div>
 
-            <div class="middle col-xs-12">
+            <div class="middle hidden-xs col-sm-12">
               <img class="loadCircle" src="/images/orbit.png"/>
             </div>
 
-            <div class="flavor col-xs-12">
+            <div class="flavor hidden-xs col-sm-12">
               <h3>BEACON - broadcasting & information services. Powered by EOS IT.</h3>
               <h3>Please stand by.</h3>
             </div>
           </div>
 
-          <div class="xs-hidden col-sm-4 col-md-2 col-lg-3 block text-white">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 block text-white">
             <div class="headerblock">
               <h2><span class="glyphicon glyphicon-console"></span></h2>
             </div>

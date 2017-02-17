@@ -143,22 +143,37 @@ body {
       margin: 1.6rem; }
     #main .middle .left-bar .block #clock, #main .middle .left-bar .block h1#clock {
       font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif;
-      font-size: 4.68rem; }
+      font-size: 3.6rem; }
+      @media (max-width: 900px) {
+        #main .middle .left-bar .block #clock, #main .middle .left-bar .block h1#clock {
+          font-size: 3.6rem; } }
 #main .middle .middle-bar {
   height: auto;
   min-height: 16rem; }
   #main .middle .middle-bar .block {
     height: 100%; }
+  @media (max-width: 900px) {
+    #main .middle .middle-bar {
+      margin-left: 0;
+      margin-right: 0; } }
 #main .middle .right-bar {
   height: auto;
   min-height: 68vh; }
+  @media (max-width: 768px) {
+    #main .middle .right-bar {
+      min-height: 0;
+      margin-top: 1.6rem; } }
   #main .middle .right-bar #countClientsCounter {
     font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif; }
 #main .footer {
   margin-top: 3rem;
   font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif; }
-  #main .footer .item:first-child {
-    padding-left: 0; }
+  @media (max-width: 998px) {
+    #main .footer .item {
+      margin-bottom: 0.6rem; } }
+  @media (min-width: 998px) {
+    #main .footer .item:first-child {
+      padding-left: 0; } }
   #main .footer .item .block .content {
     padding: 1.5rem; }
     #main .footer .item .block .content h1, #main .footer .item .block .content h2, #main .footer .item .block .content h3 {
@@ -181,6 +196,11 @@ body {
     position: absolute;
     bottom: 0;
     margin: 2rem; }
+  @media (max-width: 768px) {
+    #notificationContainer .broadcast {
+      margin: 0 0 0.5rem 0; }
+      #notificationContainer .broadcast .fixed-bottom {
+        position: relative; } }
 
 /* extra buttons */
 .btn-primary-outline {
