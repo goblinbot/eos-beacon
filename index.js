@@ -91,6 +91,7 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function(){
     dynamicData['countClients'] = (dynamicData['countClients']-1);
     console.log('DISCONNECT// .. ' +dynamicData['countClients']+' active clients.');
+    io.emit('updateDynamicData', dynamicData);
   });
 
 });

@@ -182,6 +182,62 @@ body {
     bottom: 0;
     margin: 2rem; }
 
+/* extra buttons */
+.btn-primary-outline {
+  color: #0275D8;
+  border-color: #0275D8;
+  background-image: none;
+  background-color: transparent; }
+
+.btn-secondary-outline {
+  color: #CCCCCC;
+  border-color: #CCCCCC;
+  background-image: none;
+  background-color: transparent; }
+
+.btn-success-outline {
+  color: #5CB85C;
+  border-color: #5CB85C;
+  background-image: none;
+  background-color: transparent; }
+
+.btn-warning-outline {
+  color: #F0AD4E;
+  border-color: #F0AD4E;
+  background-image: none;
+  background-color: transparent; }
+
+.btn-danger-outline {
+  color: #D9534F;
+  border-color: #D9534F;
+  background-image: none;
+  background-color: transparent; }
+
+.btn-primary-outline:hover {
+  color: #FFF;
+  border-color: #0275D8;
+  background-color: #0275D8; }
+
+.btn-secondary-outline:hover {
+  color: #FFF;
+  border-color: #CCCCCC;
+  background-color: #CCCCCC; }
+
+.btn-success-outline:hover {
+  color: #FFF;
+  border-color: #5CB85C;
+  background-color: #5CB85C; }
+
+.btn-warning-outline:hover {
+  color: #FFF;
+  border-color: #F0AD4E;
+  background-color: #F0AD4E; }
+
+.btn-danger-outline:hover {
+  color: #FFF;
+  border-color: #D9534F;
+  background-color: #D9534F; }
+
 .loadCircle {
   border: 0;
   padding: 2.5rem;

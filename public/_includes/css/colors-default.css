@@ -51,4 +51,41 @@ p {
     #main .middle .left-bar #clockh1 {
       color: #f2A83B; }
 
+.btn-ui.btn-ui-holo {
+  color: #39DBCC;
+  border-color: #39DBCC;
+  background-image: none;
+  background-color: transparent; }
+  .btn-ui.btn-ui-holo .glyphicon {
+    color: #39DBCC;
+    border-color: #39DBCC;
+    background-image: none;
+    background-color: transparent; }
+  .btn-ui.btn-ui-holo:hover, .btn-ui.btn-ui-holo.active {
+    color: #222222;
+    border-color: #39DBCC;
+    background-color: #39DBCC; }
+    .btn-ui.btn-ui-holo:hover .glyphicon, .btn-ui.btn-ui-holo.active .glyphicon {
+      color: #222222;
+      border-color: #39DBCC;
+      background-color: #39DBCC; }
+.btn-ui.btn-ui-holo-alt {
+  color: #FF9933;
+  border-color: #FF9933;
+  background-image: none;
+  background-color: transparent; }
+  .btn-ui.btn-ui-holo-alt .glyphicon {
+    color: #FF9933;
+    border-color: #FF9933;
+    background-image: none;
+    background-color: transparent; }
+  .btn-ui.btn-ui-holo-alt:hover, .btn-ui.btn-ui-holo-alt.active {
+    color: #222222;
+    border-color: #FF9933;
+    background-color: #FF9933; }
+    .btn-ui.btn-ui-holo-alt:hover .glyphicon, .btn-ui.btn-ui-holo-alt.active .glyphicon {
+      color: #222222;
+      border-color: #FF9933;
+      background-color: #FF9933; }
+
 /*# sourceMappingURL=colors-default.css.map */

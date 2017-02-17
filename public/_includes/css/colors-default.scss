@@ -122,3 +122,55 @@ p {
     }
   }
 }
+
+// custom buttons :: zijn TOEVOEGINGEN bovenop de outline buttons.
+.btn-ui {
+  &.btn-ui-holo {
+    color           : $holoBlauw;
+    border-color    : $holoBlauw;
+    background-image: none;
+    background-color: transparent;
+    .glyphicon {
+      color           : $holoBlauw;
+      border-color    : $holoBlauw;
+      background-image: none;
+      background-color: transparent;
+    }
+
+    &:hover, &.active {
+      color: $defaultdonker;
+      border-color    : $holoBlauw;
+      background-color: $holoBlauw;
+      .glyphicon {
+        color: $defaultdonker;
+        border-color    : $holoBlauw;
+        background-color: $holoBlauw;
+      }
+    }
+  }
+  &.btn-ui-holo-alt {
+    color           : $holoContrast;
+    border-color    : $holoContrast;
+    background-image: none;
+    background-color: transparent;
+    .glyphicon {
+      color           : $holoContrast;
+      border-color    : $holoContrast;
+      background-image: none;
+      background-color: transparent;
+    }
+
+    &:hover, &.active {
+      color: $defaultdonker;
+      border-color    : $holoContrast;
+      background-color: $holoContrast;
+      .glyphicon {
+        color: $defaultdonker;
+        border-color    : $holoContrast;
+        background-color: $holoContrast;
+      }
+    }
+
+  }
+
+}
