@@ -4,6 +4,7 @@
   "description": "Eos broadcasting System",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "MAATI ONLINE"
   },
   "repository": {
