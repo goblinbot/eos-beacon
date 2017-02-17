@@ -146,6 +146,9 @@ body {
     margin-bottom: 0.8rem; }
     #main .middle .left-bar .block h1, #main .middle .left-bar .block p {
       margin: 1.6rem; }
+      @media (max-width: 900px) {
+        #main .middle .left-bar .block h1, #main .middle .left-bar .block p {
+          margin: 0.8rem; } }
     #main .middle .left-bar .block #clock, #main .middle .left-bar .block h1#clock {
       font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif;
       font-size: 3.6rem; }
