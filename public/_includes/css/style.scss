@@ -81,14 +81,12 @@ body {
     position  : relative;
     top       : 15px;
     font-family : $altFontStack;
-    h1, h2, h3, h4, h5, h6, p {
-      display: inline;
-      margin-top: $defaultpadding;
-      margin-right: $defaultpadding;
-    }
     h1 {
       font-weight: strong;
       font-size: ($titlefontsize * 1.33);
+      @media(max-width:900px) {
+        font-size: ($fontsize * 1.25);
+      }
     }
     h2 {
       font-size: ($titlefontsize * 0.75);
@@ -96,6 +94,12 @@ body {
     h3 {
       font-size: ($titlefontsize * 0.50);
     }
+    h1, h2, h3, h4, h5, h6, p {
+      display: inline;
+      margin-top: $defaultpadding;
+      margin-right: $defaultpadding;
+    }
+
   }
   .text-right {
     font-family : $altFontStack;
@@ -117,6 +121,9 @@ body {
     margin : {
       top   : 0.4rem;
       bottom: 0.4rem;
+    }
+    &.bold, .bold {
+      font-family : $boldFontStack;
     }
   }
 

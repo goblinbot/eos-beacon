@@ -62,17 +62,20 @@ body {
   position: relative;
   top: 15px;
   font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif; }
-  .topHeader .text-inline h1, .topHeader .text-inline h2, .topHeader .text-inline h3, .topHeader .text-inline h4, .topHeader .text-inline h5, .topHeader .text-inline h6, .topHeader .text-inline p {
-    display: inline;
-    margin-top: 0.8rem;
-    margin-right: 0.8rem; }
   .topHeader .text-inline h1 {
     font-weight: strong;
     font-size: 4.788rem; }
+    @media (max-width: 900px) {
+      .topHeader .text-inline h1 {
+        font-size: 1.75rem; } }
   .topHeader .text-inline h2 {
     font-size: 2.7rem; }
   .topHeader .text-inline h3 {
     font-size: 1.8rem; }
+  .topHeader .text-inline h1, .topHeader .text-inline h2, .topHeader .text-inline h3, .topHeader .text-inline h4, .topHeader .text-inline h5, .topHeader .text-inline h6, .topHeader .text-inline p {
+    display: inline;
+    margin-top: 0.8rem;
+    margin-right: 0.8rem; }
 .topHeader .text-right {
   font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif; }
 
@@ -87,6 +90,8 @@ body {
     font-size: 1.8rem;
     margin-top: 0.4rem;
     margin-bottom: 0.4rem; }
+    .headerblock h1.bold, .headerblock h1 .bold, .headerblock h2.bold, .headerblock h2 .bold, .headerblock h3.bold, .headerblock h3 .bold {
+      font-family: "Titillium-Bold", Helvetica, sans-serif; }
 
 #loadingScreen .flavor, #loadingScreen .middle {
   margin-left: auto;
