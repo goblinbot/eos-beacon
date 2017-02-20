@@ -1,7 +1,19 @@
 // ADMIN SPECIFIEKE STYLE SHEET. PUUR OM RUIMTE TE BESPAREN. ///////////////////
 
-#cPanel {
-  min-height: 2rem;
+.adm-container {
+
+  .block {
+
+    .headerblock {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+  }
+
+  #cPanel {
+    min-height: 2rem;
 
 
+  }
 }

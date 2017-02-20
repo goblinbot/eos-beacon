@@ -5,6 +5,10 @@ body {
   border: 16px solid #b3fffc;
   border-left: 16px solid #2bede6; }
 
+hr {
+  background-color: #39DBCC;
+  border-color: #39DBCC; }
+
 h1, h2, h3, h4, h5, h6 {
   color: #39DBCC; }
   h1.alt-color, h2.alt-color, h3.alt-color, h4.alt-color, h5.alt-color, h6.alt-color {
