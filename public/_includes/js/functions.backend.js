@@ -8,6 +8,11 @@ function navigateADM(target) {
 }
 
 
+
+function forceReset() {
+  socket.emit('forceReset');
+}
+
 // ..
 // Internet's meest generieke, gecopypaste en gestolen functie allertijden :
 function setCookie(cname, cvalue, exdays) {
@@ -29,4 +34,10 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+
+
+function logout() {
+  setCookie('auth','false','-1');
+  location.href = "/adm/index.html";
 }

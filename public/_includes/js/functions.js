@@ -56,7 +56,7 @@ function FlashBlocks() {
 // function: broadcast . CLIENT SIDE.
 function broadCast(location) {
 
-  if(location['title'] == null)         {   location['title'] = "Untitled Broadcast"}
+  if(location['title'] == null)         {   location['title'] = "Untitled Broadcast" }
   if(location['file'] == null)          {   location['file'] = "404"      }
   if(location['priority'] == null)      {   location['priority'] = "1"    }
   if(location['duration'] == null)      {   location['duration'] = "0"    }
