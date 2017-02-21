@@ -117,6 +117,11 @@ function broadCast(location) {
 
 }
 
+// VERSTUURD DE BROADCAST: kleine hack om vanaf de admin op knop een alert te kunnen posten.
+function sendBroadCast(location) {
+  socket.emit('broadcastSend',location);
+}
+
 
 // maakt de footer blokken equally groot aan de eerste.
 function updateFooter() {

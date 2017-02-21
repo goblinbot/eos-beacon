@@ -1,15 +1,43 @@
+<!--  -->
+
 
 <div id="admBROADCAST" class="adm-tab default-border col-xs-12">
+  <div class="whitespace">&nbsp;</div>
 
-  <p>HEY</p>
+
+
+  <div class="col-xs-12">
+    <div class="btn btn-ui btn-ui-holo-red btn-lg" onclick="sendBroadCast('444444')">
+      <i class="glyphicon glyphicon-warning"></i>&nbsp;TEST BROADCAST : 404
+    </div>
+  </div>
+  <hr/>
+  <div class="col-xs-12">
+    <div class="btn btn-ui btn-ui-holo btn-lg" onclick="clearBroadcast()">
+      <i class="glyphicon glyphicon-check"></i>&nbsp;CLEAR BROADCASTS
+    </div>
+  </div>
 
 </div>
+
+
+<!--  -->
+
 
 <div id="admCHAT" class="adm-tab default-border hidden col-xs-12">
+<div class="whitespace">&nbsp;</div>
 
-  <p>WHAT IS NEW</p>
+  <form id="adm-send-chat">
+    <input type="text" name="chat-username" class="form-control" placeholder="username"></input>
+    <textarea class="form-control" name="chat-message" placeholder="type your message."></textarea>
+    <div class="btn btn-success">Submit Message</div>
+  </form>
 
 </div>
+
+
+<!--  -->
+
 
 
 <div id="admSECURITY" class="adm-tab default-border hidden col-xs-12">
@@ -59,6 +87,12 @@
   </div>
 
 </div>
+
+
+
+<!--  -->
+
+
 
 <div id="admCMD" class="adm-tab default-border hidden col-xs-12">
 

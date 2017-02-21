@@ -175,7 +175,7 @@ body {
       margin-right: 0; } }
 #main .middle .right-bar {
   height: auto;
-  min-height: 72vh; }
+  min-height: 68vh; }
   @media (max-width: 768px) {
     #main .middle .right-bar {
       min-height: 0;
@@ -208,7 +208,7 @@ body {
       margin-right: 1rem; }
 
 #notificationContainer {
-  min-height: 72vh; }
+  min-height: 68vh; }
   #notificationContainer .broadcast .fixed-bottom {
     position: absolute;
     bottom: 0;
