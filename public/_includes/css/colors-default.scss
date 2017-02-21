@@ -73,18 +73,12 @@ p {
 }
 
 
-//////////////////////////////////////////////////////////////////
-// Animatie ??????????????????                                  //
-// transition: 0.4s;                                            //
-// box-shadow: inset -1px -1px 18rem 5px #FFF                   //
-//////////////////////////////////////////////////////////////////
-
 .block {
   transition    : 0.5s;
   background    : $blocks;
-  // border      : 1px solid $borderColor;
-  // box-shadow    : -1px -1px 5px 6px $blockslight;
-  //  ZIE HIERBOVEN ANIMATES JIJ PLEB
+}
+.default-border {
+  border      : 1px solid $borderColor;
 }
 //temp toevoeging:
 .flash {
@@ -177,4 +171,12 @@ p {
 
   }
 
+}
+
+
+// BACKEND KLEUREN /////
+.adm-tab {
+  p {
+    color: $titleColor;
+  }
 }

@@ -32,6 +32,9 @@ p {
   transition: 0.5s;
   background: #042A34; }
 
+.default-border {
+  border: 1px solid #39DBCC; }
+
 .flash {
   box-shadow: inset -1px -1px 3rem 5px rgba(57, 219, 204, 0.5); }
 
@@ -91,5 +94,8 @@ p {
       color: #222222;
       border-color: #FF9933;
       background-color: #FF9933; }
+
+.adm-tab p {
+  color: #39DBCC; }
 
 /*# sourceMappingURL=colors-default.css.map */

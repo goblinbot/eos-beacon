@@ -1,4 +1,5 @@
 // ADMIN SPECIFIEKE STYLE SHEET. PUUR OM RUIMTE TE BESPAREN. ///////////////////
+$defaultpadding: 0.8rem;
 
 .adm-container {
 
@@ -14,6 +15,21 @@
   #cPanel {
     min-height: 2rem;
 
+    .admMENU {
+      .btn, .adm-nav {
+
+      }
+    }
 
   }
+
+  #main {
+    .adm-tab {
+      border-radius: 5px;
+      margin-top: $defaultpadding;
+      transition: 0.4s;
+      min-height: 50vh;
+    }
+  }
+
 }
