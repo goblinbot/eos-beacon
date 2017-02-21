@@ -160,10 +160,7 @@ body {
           margin: 0.8rem; } }
     #main .middle .left-bar .block #clock, #main .middle .left-bar .block h1#clock {
       font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif;
-      font-size: 3.6rem; }
-      @media (max-width: 900px) {
-        #main .middle .left-bar .block #clock, #main .middle .left-bar .block h1#clock {
-          font-size: 3.6rem; } }
+      font-size: 24px; }
 #main .middle .middle-bar {
   height: auto;
   min-height: 16rem; }

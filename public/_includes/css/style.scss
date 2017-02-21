@@ -228,10 +228,7 @@ body {
         }
         #clock,h1#clock{
           font-family : $altFontStack;
-          font-size: ($titlefontsize);
-          @media(max-width:900px) {
-            font-size: ($titlefontsize);
-          }
+          font-size: 24px;
         }
 
       }
