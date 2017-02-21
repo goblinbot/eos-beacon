@@ -89,6 +89,16 @@ $defaultpadding: 0.8rem;
         // }
       }
     }
+    &#admCHAT {
+      input, textarea, .btn {
+        margin-top    : $defaultpadding;
+        margin-bottom : ($defaultpadding * 2);
+      }
+
+
+
+    }
+
   }
 
 }

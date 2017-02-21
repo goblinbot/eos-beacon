@@ -38,5 +38,8 @@
   .adm-container .adm-tab#admSECURITY .btn {
     margin-top: 0.8rem;
     margin-bottom: 0.8rem; }
+  .adm-container .adm-tab#admCHAT input, .adm-container .adm-tab#admCHAT textarea, .adm-container .adm-tab#admCHAT .btn {
+    margin-top: 0.8rem;
+    margin-bottom: 1.6rem; }
 
 /*# sourceMappingURL=adm.css.map */
