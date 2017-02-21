@@ -1,6 +1,35 @@
 // ADMIN SPECIFIEKE STYLE SHEET. PUUR OM RUIMTE TE BESPAREN. ///////////////////
 $defaultpadding: 0.8rem;
 
+#admkeypad {
+  .error {
+    margin-bottom: (0.8rem * 4);
+  }
+}
+
+.keypad-row {
+  .btn.btn-keypad {
+    padding-top:28px;
+    padding-bottom:28px;
+    font-size: 2rem;
+    border-radius: 0;
+  }
+  #writekeys {
+    background      : #CCC;
+    color           : #222;
+    font-size       : 32px;
+    font-size       : 2rem;
+    padding         : 4px;
+    max-width       : 100%;
+    border-radius   : 5px;
+    margin-bottom   : 2rem;
+  }
+}
+
+
+
+
+
 .adm-container {
 
   .block {
@@ -23,12 +52,42 @@ $defaultpadding: 0.8rem;
 
   }
 
-  #main {
-    .adm-tab {
-      border-radius: 5px;
-      margin-top: $defaultpadding;
-      transition: 0.4s;
-      min-height: 50vh;
+  .adm-tab {
+    border-radius: 5px;
+    margin-top: $defaultpadding;
+    transition: 0.4s;
+    min-height: 50vh;
+
+    &#admSECURITY {
+
+      // .glyphicon, .btn {
+      //  color        : #FFF;
+      //  border-color : #FFF;
+      // }
+
+      .row {
+        margin-top: ($defaultpadding*3);
+        margin-bottom: ($defaultpadding*3);
+      }
+      .form-control {
+        margin-top: ($defaultpadding);
+        margin-bottom: ($defaultpadding);
+        background: #222;
+        color: #FFF;
+        border: 1px solid #FFF;
+      }
+      .btn {
+        margin-top: ($defaultpadding);
+        margin-bottom: ($defaultpadding);
+        // &:hover{
+        //   background: #FFF;
+        //   color     : #222;
+        //   .glyphicon {
+        //     background: #FFF;
+        //     color     : #222;
+        //   }
+        // }
+      }
     }
   }
 

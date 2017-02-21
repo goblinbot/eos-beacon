@@ -48,7 +48,44 @@
       <!-- dit is MAIN : hier laden we de subpaginas in. -->
       <div id="main" class="col-xs-12">
 
-        <div class="btn btn-block btn-ui btn-ui-holo-alt" onclick="authAdm('00451');">RUN: TEST AUTHENTICATION</div>
+        <br/>
+        <div id="admkeypad" class="noselect">
+
+          <div class="row keypad-row col-xs-12">
+            <form id="keypad_login">
+                <textarea id="writekeys" name="submitKeycode" rows="1" cols="6" maximum="5" readonly="readonly" class="noselect text-center form-control"></textarea>
+            </form>
+          </div>
+
+          <div class="row">
+            <h1 class="error holoContrast text-center">Login.</h1>
+          </div>
+
+          <div class="row keypad-row">
+            <div class="btn btn-keypad btn-ui btn-ui-holo btn-lg col-xs-4">1</div>
+            <div class="btn btn-keypad btn-ui btn-ui-holo btn-lg col-xs-4">2</div>
+            <div class="btn btn-keypad btn-ui btn-ui-holo btn-lg col-xs-4">3</div>
+          </div>
+
+          <div class="row keypad-row">
+            <div class="btn btn-keypad btn-ui btn-ui-holo btn-lg col-xs-4">4</div>
+            <div class="btn btn-keypad btn-ui btn-ui-holo btn-lg col-xs-4">5</div>
+            <div class="btn btn-keypad btn-ui btn-ui-holo btn-lg col-xs-4">6</div>
+          </div>
+
+          <div class="row keypad-row">
+            <div class="btn btn-keypad btn-ui btn-ui-holo btn-lg col-xs-4">7</div>
+            <div class="btn btn-keypad btn-ui btn-ui-holo btn-lg col-xs-4">8</div>
+            <div class="btn btn-keypad btn-ui btn-ui-holo btn-lg col-xs-4">9</div>
+          </div>
+
+          <div class="row keypad-row">
+            <div class="btn btn-keypad btn-ui btn-ui-holo btn-lg delete col-xs-4"><i class="glyphicon glyphicon-refresh"></i></div>
+            <div class="btn btn-keypad btn-ui btn-ui-holo btn-lg col-xs-4">0</div>
+            <div class="btn btn-keypad btn-ui btn-ui-holo btn-lg submit col-xs-4"><i class="glyphicon glyphicon-ok"></i></div>
+          </div>
+
+      </div>
 
       </div>
 
@@ -62,5 +99,85 @@
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="/_includes/js/functions.js"></script>
 <script type="text/javascript" src="/_includes/js/functions.backend.js"></script>
+<script>
+  /*KEYPAD*/
+  var KeysPressed = 0;
+  var attempts    = 0;
+
+  $('#admkeypad .btn-keypad').click(function(){
+
+    var $write = $('#writekeys');
+
+    var $this = $(this), character = $this.text();
+
+    if($this.hasClass('delete')) {
+        var html = $write.html();
+
+        $write.html(html.substr(0, html.length - 5));
+        $('.error').html("Clear.");
+        KeysPressed = 0;
+        return false;
+    }
+    if($this.hasClass('submit')) {
+        if (KeysPressed < 5) {
+           $('.error').html("Insufficient amount of characters.");
+        } else if (KeysPressed == 5) {
+          $('#keypad_login').submit();
+        } else {
+            $('.error').html("Something went horribly wrong.");
+        }
+
+    } else {
+      if (KeysPressed < 5) {
+          /* voeg tekens toe aan blok */
+          $write.html($write.html() + character);
+          KeysPressed++;
+      } else if (KeysPressed >= 5) {
+          $('.error').html("Max characters reached.");
+      } else {
+          $('.error').html("Something went horribly wrong.");
+      }
+    }
+  });
+
+  $("#keypad_login").submit(function(e) {
+      e.preventDefault();
+      var keycode = $('#writekeys').html();
+      console.log(keycode);
+
+      socket.emit('auth', keycode);
+  });
+
+  socket.on('authFalse', function(){
+    attempts++;
+    $('.error').html("Incorrect pin entered. Strike "+attempts+".");
+
+    if(attempts > 3) {
+      location.reload();
+    }
+  });
+
+  socket.on('authTrue', function(keycode){
+    attempts = 0;
+    setCookie('auth','TRUE','1');
+    setCookie('usercode',keycode,'1');
+    $('#cPanel').load('/adm/cpanel.html');
+    navigate('/adm/adminPanel');
+  });
+
+  $(document).ready(function() {
+    var admAUTH = getCookie('auth');
+    var admUSER = getCookie('user');
+
+    if(admAUTH == 'TRUE') {
+      $('#cPanel').load('/adm/cpanel.html');
+      navigate('/adm/adminPanel');
+    }
+  });
+
+
+</script>
+
+
 </body>
 </html>

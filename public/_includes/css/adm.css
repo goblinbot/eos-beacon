@@ -1,12 +1,42 @@
+#admkeypad .error {
+  margin-bottom: 3.2rem; }
+
+.keypad-row .btn.btn-keypad {
+  padding-top: 28px;
+  padding-bottom: 28px;
+  font-size: 2rem;
+  border-radius: 0; }
+.keypad-row #writekeys {
+  background: #CCC;
+  color: #222;
+  font-size: 32px;
+  font-size: 2rem;
+  padding: 4px;
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 2rem; }
+
 .adm-container .block .headerblock {
   margin-left: 0;
   margin-right: 0; }
 .adm-container #cPanel {
   min-height: 2rem; }
-.adm-container #main .adm-tab {
+.adm-container .adm-tab {
   border-radius: 5px;
   margin-top: 0.8rem;
   transition: 0.4s;
   min-height: 50vh; }
+  .adm-container .adm-tab#admSECURITY .row {
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem; }
+  .adm-container .adm-tab#admSECURITY .form-control {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    background: #222;
+    color: #FFF;
+    border: 1px solid #FFF; }
+  .adm-container .adm-tab#admSECURITY .btn {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem; }
 
 /*# sourceMappingURL=adm.css.map */

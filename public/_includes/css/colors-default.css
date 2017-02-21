@@ -94,6 +94,24 @@ p {
       color: #222222;
       border-color: #FF9933;
       background-color: #FF9933; }
+.btn-ui.btn-ui-holo-red {
+  color: #ed3737;
+  border-color: #ed3737;
+  background-image: none;
+  background-color: transparent; }
+  .btn-ui.btn-ui-holo-red .glyphicon {
+    color: #ed3737;
+    border-color: #ed3737;
+    background-image: none;
+    background-color: transparent; }
+  .btn-ui.btn-ui-holo-red:hover, .btn-ui.btn-ui-holo-red.active {
+    color: #222222;
+    border-color: #ed3737;
+    background-color: #ed3737; }
+    .btn-ui.btn-ui-holo-red:hover .glyphicon, .btn-ui.btn-ui-holo-red.active .glyphicon {
+      color: #222222;
+      border-color: #ed3737;
+      background-color: #ed3737; }
 
 .adm-tab p {
   color: #39DBCC; }

@@ -170,7 +170,29 @@ p {
     }
 
   }
+  &.btn-ui-holo-red {
+    color           : $orbitRed;
+    border-color    : $orbitRed;
+    background-image: none;
+    background-color: transparent;
+    .glyphicon {
+      color           : $orbitRed;
+      border-color    : $orbitRed;
+      background-image: none;
+      background-color: transparent;
+    }
 
+    &:hover, &.active {
+      color: $defaultdonker;
+      border-color    : $orbitRed;
+      background-color: $orbitRed;
+      .glyphicon {
+        color: $defaultdonker;
+        border-color    : $orbitRed;
+        background-color: $orbitRed;
+      }
+    }
+  }
 }
 
 

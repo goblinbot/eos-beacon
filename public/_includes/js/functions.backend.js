@@ -7,13 +7,26 @@ function navigateADM(target) {
   $('#btn-'+target).addClass('active');
 }
 
-// momenteel niet meer dan een test:
-// authenticeerd de "login", als we het atm zo mogen noemen.
-function authAdm(code) {
 
-  // idee: socket emit 'code', en stuur een SUCCESS // FALSE terug? ///////////////////////
-  if(code == '00451') {
-    $('#cPanel').load('/adm/cpanel.html');
-    navigate('/adm/adminPanel');
-  }
+// ..
+// Internet's meest generieke, gecopypaste en gestolen functie allertijden :
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
 }

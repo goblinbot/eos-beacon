@@ -94,4 +94,15 @@ io.on('connection', function (socket) {
     io.emit('updateDynamicData', dynamicData);
   });
 
+
+  socket.on('auth', function(keycode){
+    console.log('authentication code received: '+keycode);
+
+    if(keycode == '00451') {
+      socket.emit('authTrue', keycode);
+    } else {
+      socket.emit('authFalse');
+    }
+  });
+
 });
