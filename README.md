@@ -5,7 +5,8 @@
 *Dit is een kleine JS applicatie bedoelt voor sci-fi larp Eos.
 Door: Thijs Boerma (IC: Maati Infor Danam)*
 
--
+# online mirror
+https://eos-beacon.herokuapps.com/
 
 # Onderdelen
 [BEACON] is afhankelijk van verschillende externe plugins/frameworks/luiheden, die hieronder staan gelijst.

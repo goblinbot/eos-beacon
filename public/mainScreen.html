@@ -26,13 +26,13 @@
         <h1 id="clock" class="text-center">[ 00:00:00 ECT ]</h1>
       </div>
 
-      <div class="block block-medium hidden-xs col-sm-12">
+      <div class="block block-medium hidden-xs  col-sm-12">
         <p>Last notification:</p>
         <p><span id="lastBroadcastTitle">N/A</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="lastBroadcastTime">00:00</span></p>
       </div>
     </div>
 
-    <div class="left-bar no-bg col-xs-12">
+    <div class="left-bar no-bg hidden-xs hidden-sm col-md-12">
       <div class="headerblock">
         <h2>Colony Messages</h2>
       </div>
@@ -152,6 +152,7 @@ $(document).ready(function(){
   setTimeout(function(){
 
     broadCast(defaultBroadcast);
+    socket.emit('requestDynamicData');
 
   },500);
 
@@ -170,7 +171,6 @@ $(document).ready(function(){
 
 
   // vraagt dynamische data op, zoals security level en actieve gebruikers.
-  socket.emit('requestDynamicData');
 
   // en update hem hier.
   socket.on('updateDynamicData', function(dynamicData){

@@ -51,6 +51,10 @@ p {
   .headerblock h1, .headerblock h2, .headerblock h3 {
     color: #39DBCC; }
 
+.hexIn {
+  background-color: #053A47;
+  color: #222222; }
+
 #main .middle .left-bar {
   background: #042A34; }
   #main .middle .left-bar #clock {
