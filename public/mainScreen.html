@@ -32,13 +32,34 @@
       </div>
     </div>
 
-    <div class="left-bar col-xs-12">
+    <div class="left-bar no-bg col-xs-12">
       <div class="headerblock">
         <h2>Colony Messages</h2>
       </div>
-      <p>#  bleep</p>
-      <p>## bleep</p>
-      <p># bbleep</p>
+
+      <ul id="colony-feed">
+        <li class="feed-item" data-listnumber="1">
+          <p class="feed-top"><span class="feed-timestamp">00:00</span>&nbsp;<span class="feed-user">MAATI_P.ASSISTANT_1</span></p>
+          <p class="feed-message">DIT IS EEN TESTBERICHT. DANKU VOOR UW AANDACHT.</p>
+        </li>
+        <li class="feed-item" data-listnumber="2">
+          <p class="feed-top"><span class="feed-timestamp">00:00</span>&nbsp;<span class="feed-user">MAATI_P.ASSISTANT_3</span></p>
+          <p class="feed-message">DIT IS EEN TESTBERICHT. DANKU VO_R UW AANDACHT.</p>
+        </li>
+        <li class="feed-item" data-listnumber="3">
+          <p class="feed-top"><span class="feed-timestamp">00:00</span>&nbsp;<span class="feed-user">MAATI_P.ASSISTANT_4</span></p>
+          <p class="feed-message">DIT IS EEN TE_______HT. DANKU VOOR ___AANDACHT.</p>
+        </li>
+        <li class="feed-item" data-listnumber="4">
+          <p class="feed-top"><span class="feed-timestamp">00:00</span>&nbsp;<span class="feed-user">MAATI_P.ASSISTANT_4</span></p>
+          <p class="feed-message">DIT I))EEN TE_______HT. DA)K_ VOOR ___AAN(A)HT.</p>
+        </li>
+        <li class="feed-item" data-listnumber="5">
+          <p class="feed-top"><span class="feed-timestamp">00:00</span>&nbsp;<span class="feed-user">MAATI_P.ASSISTANT_2</span></p>
+          <p class="feed-message">DIT IS EEN TESTBERICHT. DANKU VOOR UW AANDACHT.</p>
+        </li>
+
+      </ul>
     </div>
 
 </div>
@@ -49,8 +70,9 @@
 
 
   <!-- centraal blok -->
-  <div class="middle-bar col-xs-12 col-sm-10 col-md-7 col-lg-8">
-    <div class="block">
+  <!-- <div class="middle-bar col-xs-12 col-sm-10 col-md-8 col-lg-9"> -->
+  <div class="middle-bar col-xs-12 col-sm-12 col-md-8 col-lg-9">
+    <div class="block no-bg">
       <div id="notificationContainer"></div>
     </div>
   </div>
@@ -58,7 +80,7 @@
 
 
   <!-- rechter minibar -->
-  <div class="right-bar col-xs-12 col-sm-2 col-md-1 col-lg-1">
+  <!-- <div class="right-bar col-xs-12 col-sm-2 col-md-1 col-lg-1">
     <div class="block col-xs-4 col-sm-12">
       <div class="headerblock">
         <h2>Clients</h2>
@@ -67,7 +89,7 @@
       <h2 class="text-center" id="countClientsCounter">-</h2>
     </div>
 
-  </div>
+  </div> -->
 </div>
 
 <!-- onderste helft ----------------------------------------------------------->
@@ -92,8 +114,14 @@
     </div>
   </div>
 
-  <div class="item hidden-xs col-sm-12 col-md-4 col-lg-2">
-    <div class="block">&nbsp;</div>
+  <div class="item col-xs-12 col-sm-12 col-md-4 col-lg-2">
+    <div class="block">
+      <div class="headerblock margin-zero">
+        <h2 class="regularfont">Active Clients</h2>
+      </div>
+      <h2 class="text-center"><i class="glyphicon glyphicon-user"></i></h2>
+      <h2 class="text-center alt-color" id="countClientsCounter">-</h2>
+    </div>
   </div>
 
   <div class="item hidden-xs col-sm-12 col-md-9 col-lg-5">

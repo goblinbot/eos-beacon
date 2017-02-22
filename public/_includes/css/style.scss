@@ -54,8 +54,8 @@ body {
 .round {
   border-radius: 50%;
 }
-.pZero {
-  padding: 0;
+.regularfont {
+  font-family: $fontStack;
 }
 
 .whitespace {
@@ -122,6 +122,13 @@ body {
   }
   margin-left: -15px;
   margin-right: -15px;
+
+  &.margin-zero {
+    margin : {
+      left: 0;
+      right: 0;
+    }
+  }
 
   h1, h2, h3 {
     font-size : ($titlefontsize * 0.5);
@@ -307,22 +314,58 @@ body {
   }//einde footer
 }
 
+// chatbox
+#colony-feed {
+  margin-top      : $defaultpadding;
+  margin-left     : 0;
+  padding         : 0;
+  list-style-type : none;
+  max-height      : 40vh;
+  overflow        : hidden;
+
+  li {
+    border-radius : 5px;
+    margin-bottom : $defaultpadding;
+    padding       : ($defaultpadding / 2);
+    .feed-top {
+
+      margin: 1px 0 1px 4px;
+
+      .feed-timestamp {
+        float: left;
+      }
+      .feed-user {
+        float: right;
+      }
+    }
+
+    .feed-message {
+
+    }
+  }
+
+}
+
+
+
+
+
 #notificationContainer {
   min-height: $minhoogte;
 
   .broadcast {
 
     .fixed-bottom {
-      position  : absolute;
+      position  : relative;
       bottom    : 0;
       margin    : 2rem;
     }
 
     @media(max-width:768px) {
       margin: 0 0 0.5rem 0;
-      .fixed-bottom {
-        position: relative;
-      }
+      // .fixed-bottom {
+      //   position: relative;
+      // }
     }
 
   }
@@ -351,4 +394,17 @@ body {
   -webkit-animation: loadSpinner 2s infinite;
   -moz-animation: loadSpinner 2s infinite;
   -animation: loadSpinner 2s infinite;
+}
+
+
+
+// OVERRIDE CLASSES
+.pZero {
+  padding: 0;
+}
+.margin-zero {
+  margin : {
+    left: 0;
+    right: 0;
+  }
 }

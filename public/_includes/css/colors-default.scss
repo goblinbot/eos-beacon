@@ -10,6 +10,7 @@ $statusUnknown: #880088; //404 pagina, bijvoorbeeld.
 $defaultdonker: #222222;
 $holoContrast : #FF9933;
 $holohalf     : rgba(57, 219, 204, 0.5);
+$textmuted    : #DDDDDD;
 
 // kleuren van nationalgeographic's MARS
 $background     : #012324;
@@ -102,6 +103,7 @@ p {
 
 #main {
   .middle {
+
     .left-bar {
       background: $blocks;
 
@@ -111,14 +113,40 @@ p {
           color: $altTitleColor;
         }
       }
+      &.no-bg {
+        background: none;
+      }
     }
     .middle-bar{
-
+      .block.no-bg {
+        background: none;
+      }
     }
     .right-bar{
       // background: $rightbar;
     }
   }
+}
+
+#colony-feed {
+  border-bottom   : 4px solid $blocksmedium;
+
+  li {
+    border: 1px solid $blockslight;
+    .feed-top {
+
+      .feed-timestamp {
+        color: $altTitleColor;
+      }
+      .feed-user {
+        color : $textmuted;
+      }
+    }
+    .feed-message {
+      color : $textmuted;
+    }
+  }
+
 }
 
 // custom buttons :: zijn TOEVOEGINGEN bovenop de outline buttons.

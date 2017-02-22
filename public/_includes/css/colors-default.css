@@ -57,6 +57,21 @@ p {
     color: #f2A83B; }
     #main .middle .left-bar #clockh1 {
       color: #f2A83B; }
+  #main .middle .left-bar.no-bg {
+    background: none; }
+#main .middle .middle-bar .block.no-bg {
+  background: none; }
+
+#colony-feed {
+  border-bottom: 4px solid #053A47; }
+  #colony-feed li {
+    border: 1px solid #0B5E66; }
+    #colony-feed li .feed-top .feed-timestamp {
+      color: #f2A83B; }
+    #colony-feed li .feed-top .feed-user {
+      color: #DDDDDD; }
+    #colony-feed li .feed-message {
+      color: #DDDDDD; }
 
 .btn-ui.btn-ui-holo {
   color: #39DBCC;
