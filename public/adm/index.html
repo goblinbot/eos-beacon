@@ -45,6 +45,11 @@
       <!-- hier laden we wanneer ""ingelogd"" de navigeer buttons in. -->
       <div id="cPanel" class="col-xs-12"></div>
 
+      <!-- Error / Status success berichten hier -->
+      <div class="col-xs-12">
+        <p id="cPanel-status">&nbsp;</p>
+      </div>
+
       <!-- dit is MAIN : hier laden we de subpaginas in. -->
       <div id="main" class="col-xs-12">
 
@@ -114,17 +119,17 @@
         var html = $write.html();
 
         $write.html(html.substr(0, html.length - 5));
-        $('.error').html("Clear.");
+        $('#cPanel-status').html("Clear.");
         KeysPressed = 0;
         return false;
     }
     if($this.hasClass('submit')) {
         if (KeysPressed < 5) {
-           $('.error').html("Insufficient amount of characters.");
+           $('#cPanel-status').html("Insufficient amount of characters.");
         } else if (KeysPressed == 5) {
           $('#keypad_login').submit();
         } else {
-            $('.error').html("Something went horribly wrong.");
+            $('#cPanel-status').html("Something went horribly wrong.");
         }
 
     } else {
@@ -133,9 +138,9 @@
           $write.html($write.html() + character);
           KeysPressed++;
       } else if (KeysPressed >= 5) {
-          $('.error').html("Max characters reached.");
+          $('#cPanel-status').html("Max characters reached.");
       } else {
-          $('.error').html("Something went horribly wrong.");
+          $('#cPanel-status').html("Something went horribly wrong.");
       }
     }
   });
@@ -150,7 +155,7 @@
 
   socket.on('authFalse', function(){
     attempts++;
-    $('.error').html("Incorrect pin entered. Strike "+attempts+".");
+    $('#cPanel-status').html("Incorrect pin entered. Strike "+attempts+".");
 
     if(attempts > 3) {
       location.reload();

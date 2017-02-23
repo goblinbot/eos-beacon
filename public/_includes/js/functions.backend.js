@@ -13,6 +13,18 @@ function forceReset() {
   socket.emit('forceReset');
 }
 
+
+
+function cpanelStatus(message) {
+  if(message != null && message != "") {
+    $('#cPanel-status').empty();
+    $('#cPanel-status').html(message);
+  }
+}
+
+
+
+
 // ..
 // Internet's meest generieke, gecopypaste en gestolen functie allertijden :
 function setCookie(cname, cvalue, exdays) {
