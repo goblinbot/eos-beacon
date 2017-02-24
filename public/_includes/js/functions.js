@@ -2,6 +2,7 @@ var socket      = io();
 var selector    = "";
 var target      = "";
 var navLimit    = 0;
+var activeColorScheme = '0';
 
 // BROADCAST OBJECTEN
 // constructor:
@@ -18,6 +19,9 @@ var defaultBroadcast  = new broadcastObj("Broadcast Initialise","standby","1","0
 var testBroadcast     = new broadcastObj(":: TESTING BROADCAST ::","test","1","2000","0");
 var resetBroadcast    = new broadcastObj("Clear","standby","10","0","0");
 
+
+var hazardBroadcast       = new broadcastObj("Envirnomental Hazard detected","biohazard","8","0","1");
+var psyWarningBroadcast   = new broadcastObj("Psy-hazard detected","psyhazard","8","0","1");
 
 
 // einde pre-sets
@@ -96,6 +100,29 @@ function broadCast(location) {
           } else {
             $("#notificationContainer").empty();
               $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
+
+              /* kleurenschema. */
+              /* default probeerd default te worden, OF de colorschemes zijn gelijk? */
+              if((activeColorScheme == '0' && location['colorscheme'] == '0') || (activeColorScheme == location['colorscheme'])) {
+                /* verander niks .*/
+
+              } else if (activeColorScheme != '0'  && location['colorscheme'] == '0') {
+                /* UNLOAD DE VORIGE COLORSCHEME, VERVOLGENS: */
+                /**/
+                activeColorScheme = '0';
+
+              /* actief = default > broadcast = niet-default: */
+              } else if (activeColorScheme == '0' && location['colorscheme'] != '0') {
+
+                /* inladen die zooi. */
+                activeColorScheme = location['colorscheme'];
+
+              } else if (location['colorscheme'] != '0' && activeColorScheme != location['colorscheme']) {
+
+                /* laad ACTIVE uit, laad LOCATION in */
+                activeColorScheme = location['colorscheme'];
+              }
+              
 
               if(location['duration'] && location['duration'] > 0 && !isNaN(location['duration'])) {
                 console.log(location['duration']);

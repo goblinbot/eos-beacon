@@ -13,6 +13,9 @@ function forceReset() {
   socket.emit('forceReset');
 }
 
+function resetSecStatus() {
+  socket.emit('clearAll');
+}
 
 
 function cpanelStatus(message) {

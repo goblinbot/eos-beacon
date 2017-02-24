@@ -4,16 +4,24 @@
 <div id="admBROADCAST" class="adm-tab default-border col-xs-12">
   <div class="whitespace">&nbsp;</div>
 
+  <div class="btn-group">
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(broadCastPortalIncoming); cpanelStatus('Broadcast: portal incoming');">
+      <i class="glyphicon glyphicon-warning"></i>&nbsp;PORTAL INCOMING
+    </div>
+    <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(broadCastPortalOutgoing); cpanelStatus('Broadcast: portal outgoing');">
+      <i class="glyphicon glyphicon-warning"></i>&nbsp;PORTAL OUTGOING
+    </div>
+  </div>
 
-
-  <div class="col-xs-12">
-    <div class="btn btn-ui btn-ui-holo-red btn-lg" onclick="sendBroadCast('444444'); cpanelStatus('Broadcast sent.');">
+  <div class="btn-group">
+    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast('444444'); cpanelStatus('Broadcast sent.');">
       <i class="glyphicon glyphicon-warning"></i>&nbsp;TEST BROADCAST : 404
     </div>
   </div>
-  <hr/>
-  <div class="col-xs-12">
-    <div class="btn btn-ui btn-ui-holo btn-lg" onclick="clearBroadcast(); cpanelStatus('Broadcasts CLEARED');">
+
+
+  <div class="btn-group">
+    <div class="btn btn-ui btn-ui-holo" onclick="clearBroadcast(); cpanelStatus('Broadcasts CLEARED');">
       <i class="glyphicon glyphicon-check"></i>&nbsp;CLEAR BROADCASTS
     </div>
   </div>
@@ -82,7 +90,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <div class="btn btn-lg btn-ui btn-ui-holo-red" onclick="cpanelStatus('Security level reset.');">
+      <div class="btn btn-lg btn-ui btn-ui-holo-red" onclick="resetSecStatus(); cpanelStatus('Security level reset.');">
         <i class="glyphicon glyphicon-refresh"></i>&nbsp;RESET
       </div>
     </div>
