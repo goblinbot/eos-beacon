@@ -3,7 +3,6 @@ var selector    = "";
 var target      = "";
 var navLimit    = 0;
 var clearIsActive = undefined;
-var activeColorScheme = '0';
 
 // BROADCAST OBJECTEN
 // constructor:
@@ -21,9 +20,6 @@ var testBroadcast     = new broadcastObj(":: TESTING BROADCAST ::","test","1","2
 var resetBroadcast    = new broadcastObj("Clear","standby","10","0","0");
 var portalIncBroadcast= new broadcastObj("Portal Incoming","portalincoming","3","30000","0");
 var portalOutBroadcast= new broadcastObj("Portal Outgoing","portaloutgoing","3","17500","0");
-var hazardBroadcast       = new broadcastObj("Envirnomental Hazard detected","biohazard","8","0","1");
-var psyWarningBroadcast   = new broadcastObj("Psy-hazard detected","psyhazard","8","0","1");
-
 
 
 // einde pre-sets
@@ -108,29 +104,7 @@ function broadCast(location) {
                 if(clearIsActive != undefined) {
                   clearTimeout('clearIsActive');
                 }
-
-              /* kleurenschema. */
-              /* default probeerd default te worden, OF de colorschemes zijn gelijk? */
-              if((activeColorScheme == '0' && location['colorscheme'] == '0') || (activeColorScheme == location['colorscheme'])) {
-                /* verander niks .*/
-
-              } else if (activeColorScheme != '0'  && location['colorscheme'] == '0') {
-                /* UNLOAD DE VORIGE COLORSCHEME, VERVOLGENS: */
-                /**/
-                activeColorScheme = '0';
-
-              /* actief = default > broadcast = niet-default: */
-              } else if (activeColorScheme == '0' && location['colorscheme'] != '0') {
-
-                /* inladen die zooi. */
-                activeColorScheme = location['colorscheme'];
-
-              } else if (location['colorscheme'] != '0' && activeColorScheme != location['colorscheme']) {
-
-                /* laad ACTIVE uit, laad LOCATION in */
-                activeColorScheme = location['colorscheme'];
               }
-              
 
               if(location['duration'] && location['duration'] > 0 && !isNaN(location['duration'])) {
                 console.log(location['duration']);
@@ -168,7 +142,7 @@ function updateFooter() {
 
 // functie om de duration toch wel werkend te krijgen - oftewel een broadcast CLEAREN na ingestelde tijd.
 function clearBroadcast(duration){
-  console.log('clear in :' + duration);
+  console.log('clear in :' + duration)
 
   if(duration != "" && duration != null) {
 
