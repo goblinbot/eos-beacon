@@ -227,6 +227,21 @@ body {
 
 #notificationContainer {
   min-height: 68vh; }
+  #notificationContainer .broadcast .portalCircleContainer {
+    min-height: 10rem; }
+    #notificationContainer .broadcast .portalCircleContainer .portalCircle {
+      position: relative;
+      left: 50%;
+      border: 16px solid transparent;
+      margin-left: -32px;
+      margin-top: 32px;
+      height: 64px;
+      width: 64px;
+      border-radius: 50%;
+      -webkit-animation: portalCircleAnimation 1.4s linear infinite;
+      -moz-animation: portalCircleAnimation 1.4s linear infinite;
+      -animation: portalCircleAnimation 1.4s linear infinite;
+      animation: portalCircleAnimation 1.4s linear infinite; }
   #notificationContainer .broadcast .fixed-bottom {
     position: relative;
     bottom: 0;

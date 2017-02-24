@@ -355,6 +355,22 @@ body {
 
   .broadcast {
 
+    .portalCircleContainer {
+      min-height: 10rem;
+      .portalCircle {
+        position    : relative;
+        left        : 50%;
+        border      : 16px solid transparent;
+        margin-left : -32px;
+        margin-top  : 32px;
+        height      : 64px;
+        width       : 64px;
+        border-radius: 50%;
+        @include animation(portalCircleAnimation 1.4s linear infinite);
+      }
+    }
+
+
     .fixed-bottom {
       position  : relative;
       bottom    : 0;
