@@ -232,6 +232,9 @@ body {
         float: right; }
 
 #securityAlertLevel {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   word-wrap: break-word; }
 
 #notificationContainer {
