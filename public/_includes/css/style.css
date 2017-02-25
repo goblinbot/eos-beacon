@@ -198,6 +198,7 @@ body {
     #main .footer .item:first-child {
       padding-left: 0; } }
   #main .footer .item .block .content {
+    overflow: hidden;
     padding: 1.5rem; }
     #main .footer .item .block .content h1, #main .footer .item .block .content h2, #main .footer .item .block .content h3 {
       margin: 0 0 4px 4px; }
@@ -232,7 +233,6 @@ body {
         float: right; }
 
 #securityAlertLevel {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word; }

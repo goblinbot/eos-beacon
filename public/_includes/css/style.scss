@@ -292,6 +292,7 @@ body {
       .block {
 
         .content {
+          overflow: hidden;
           padding: 1.5rem;
           h1,h2,h3 {
             margin: 0 0 4px 4px;
@@ -353,7 +354,6 @@ body {
 }
 
 #securityAlertLevel {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap:break-word;
