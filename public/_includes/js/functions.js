@@ -160,7 +160,14 @@ function broadCast(location) {
       if(activeColorScheme != '0' && activeColorScheme != 'default') {
         $('link[rel=stylesheet][href~="/_includes/css/colors-'+activeColorScheme+'.css"]').remove();
       }
-      activeColorScheme = '0';
+      
+      FlashBlocks('.block');
+      setTimeout(function(){
+        FlashBlocks('.block');
+      },1200);
+
+      activeColorScheme   = '0';
+      activeBroadcast     = 1;
 
       $("#notificationContainer").empty();
         $("#notificationContainer").load('/broadcasts/404.html');
