@@ -4,6 +4,7 @@ var target      = "";
 var navLimit    = 0;
 var clearIsActive = undefined;
 var activeColorScheme = '0';
+var activeBroadcast   = 1;
 
 // BROADCAST OBJECTEN
 // constructor:
@@ -16,21 +17,15 @@ function broadcastObj(title, file, priority, duration, colorscheme) {
 }
 
 // PRE-SET broadcasts!
-var defaultBroadcast  = new broadcastObj("Broadcast Initialise","standby","1","0","0");
-var testBroadcast     = new broadcastObj(":: TESTING BROADCAST ::","test","1","2000","0");
-var resetBroadcast    = new broadcastObj("Clear","standby","10","0","0");
-var broadCastPortalIncoming = new broadcastObj("Portal Incoming","portalincoming","3","30000","0");
-var broadCastPortalOutgoing= new broadcastObj("Portal Outgoing","portaloutgoing","3","17500","0");
-var hazardBroadcast       = new broadcastObj("Envirnomental Hazard detected","biohazard","8","0","hazard");
-var psyWarningBroadcast   = new broadcastObj("Psy-hazard detected","psyhazard","8","0","hazard");
-var lowpowerBroadcast   = new broadcastObj("POWER SUPPLY WARNING","emergencypower","9","0","gray");
-
-
-
-// einde pre-sets
-
-// deze word overschreven door de laatste broadcast
-var activeBroadcast   = new broadcastObj("-","-","1","0","0");
+var defaultBroadcast  = new broadcastObj("Broadcast Initialise","standby",1,"0","0");
+var testBroadcast     = new broadcastObj(":: TESTING BROADCAST ::","test",1,"2000","0");
+var resetBroadcast    = new broadcastObj("Clear","standby",99,"0","0");
+var broadCastPortalIncoming = new broadcastObj("Portal Incoming","portalincoming",3,"30000","0");
+var broadCastPortalOutgoing= new broadcastObj("Portal Outgoing","portaloutgoing",3,"17500","0");
+var hazardBroadcast       = new broadcastObj("Envirnomental Hazard detected","biohazard",7,"0","hazard");
+var psyWarningBroadcast   = new broadcastObj("Psy-hazard detected","psyhazard",7,"0","hazard");
+var broadCastEnemyContact = new broadcastObj("Enemy Contact","enemycontact",8,"0","attack");
+var lowpowerBroadcast   = new broadcastObj("POWER SUPPLY WARNING","emergencypower",9,"0","gray");
 
 
 // navigeerd - een functie geerft uit www.gubat.nl, word eigenlijk maar eenmaal
@@ -41,22 +36,20 @@ function navigate(target) {
   }
 }
 
-// stuurt 'TEST' op commando op alle verbonden clients.
-function broadCastTest() {
-  // broadCast(testBroadcast);
-  socket.emit('broadcastSend',testBroadcast);
-}
+function FlashBlocks(div) {
 
-function FlashBlocks() {
+  if(div == "" || div == undefined) {
+    div = '.block';
+  }
 
   if($(window).width() < 769) {
     return false;
   }
 
-  if( $('.block').hasClass('flash') ) {
-    $('.block').removeClass('flash');
+  if( $(div).hasClass('flash') ) {
+    $(div).removeClass('flash');
   } else {
-    $('.block').addClass('flash');
+    $(div).addClass('flash');
   }
 }
 
@@ -68,11 +61,6 @@ function broadCast(location) {
   if(location['priority'] == null)      {   location['priority'] = "1"    }
   if(location['duration'] == null)      {   location['duration'] = "0"    }
   if(location['colorscheme'] == null)   {   location['colorscheme'] = "0" }
-
-  // update de laatst activeBroadcast naar de ontvange 'location'
-  activeBroadcast = new broadcastObj(location['title'],location['file'],location['priority'],location['duration'],location['colorscheme']);
-  // stuurt de nieuwste hier naar de backend.
-  socket.emit('changeActiveBroadcast',activeBroadcast);
 
   // console.log('active: '+ activeBroadcast['title']);
 
@@ -88,30 +76,26 @@ function broadCast(location) {
     currentHours = ( currentHours == 0 ) ? 12 : currentHours;
     var currentTimeString = currentHours + ":" + currentMinutes + ":" + "&nbsp;ECT";
 
-    /* update 'Last broadcast' */
-    if(location['title'] != "" && location['title'] != "Clear") {
-      $("#lastBroadcastTitle").html("<i class='glyphicon glyphicon-bell'></i>&nbsp;" + location['title']);
-      $("#lastBroadcastTime").html(currentTimeString);
-    }
-
     $.get('/broadcasts/'+location['file']+'.html')
       .done(function(){
 
         if(location['priority'] > 0 && !isNaN(location['duration'])) {
 
-          if(location['priority'] < activeBroadcast['priority']) {
+          if(location['priority'] < activeBroadcast) {
+
             return false;
 
           } else {
+            //
+            // // update de laatst activeBroadcast naar de ontvange 'location'
+            // activeBroadcast = new broadcastObj(location['title'],location['file'],location['priority'],location['duration'],location['colorscheme']);
+            //
+            // // stuurt de nieuwste hier naar de backend.
+            // socket.emit('changeActiveBroadcast',activeBroadcast);
 
             /* foolproof controle: als DEFAULT word opgegeven telt hij ook als '0' */
-            if(location['colorscheme'] == 'default') {
-              location['colorscheme'] = '0';
-            }
-            /* hetzelfde voor active */
-            if(activeColorScheme == 'default') {
-              activeColorScheme = '0';
-            }
+            if(location['colorscheme']  == 'default') { location['colorscheme'] = '0'; }
+            if(activeColorScheme        == 'default') { activeColorScheme       = '0'; }
 
             /* kleurenschema. */
             /* default probeerd default te worden, OF de colorschemes zijn gelijk? */
@@ -142,28 +126,42 @@ function broadCast(location) {
             $("#notificationContainer").empty();
               $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
 
-              activeBroadcast['priority'] = location['priority'];
 
-              console.log('test clear:'+clearIsActive);
+              //* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
+              if(location['priority'] == 99) { location['priority'] = 1; }
+              /* update 'Last broadcast' */
+              activeBroadcast = location['priority'];
+
+              if(location['title'] != "" /*&& location['title'] != "Clear"*/) {
+                $("#lastBroadcastTitle").html("<i class='glyphicon glyphicon-bell'></i>&nbsp;" + location['title']);
+                $("#lastBroadcastTime").html(currentTimeString);
+              }
+
               if(location['duration'] && location['duration'] == 0) {
-                if(clearIsActive != undefined) {
+                /*if(clearIsActive != undefined) {
                   clearTimeout('clearIsActive');
-                }
+                }*/
+                clearBroadcast(0);
+              }
 
               if(location['duration'] && location['duration'] > 0 && !isNaN(location['duration'])) {
                 console.log(location['duration']);
                 clearBroadcast(location['duration']);
               }
 
-              FlashBlocks();
-              setTimeout(function(){
-                FlashBlocks();
-              },1200);
+            FlashBlocks('.block');
+            setTimeout(function(){
+              FlashBlocks('.block');
+            },1200);
           }
         }
-      }
-    })
+      })
     .fail(function(){
+      if(activeColorScheme != '0' && activeColorScheme != 'default') {
+        $('link[rel=stylesheet][href~="/_includes/css/colors-'+activeColorScheme+'.css"]').remove();
+      }
+      activeColorScheme = '0';
+
       $("#notificationContainer").empty();
         $("#notificationContainer").load('/broadcasts/404.html');
     });
@@ -173,6 +171,10 @@ function broadCast(location) {
 
 // VERSTUURD DE BROADCAST: kleine hack om vanaf de admin op knop een alert te kunnen posten.
 function sendBroadCast(location) {
+  FlashBlocks('.adm-tab');
+  setTimeout(function(){
+    FlashBlocks('.adm-tab');
+  },1200);
   socket.emit('broadcastSend',location);
 }
 
@@ -204,6 +206,9 @@ function clearBroadcast(duration){
       console.log('clear == nullified');
       clearTimeout(clearIsActive);
       clearIsActive = undefined;
+    } else if (undefined && duration == 0) {
+
+      // niks !
 
     } else {
       clearIsActive = setTimeout(function(){
@@ -213,8 +218,20 @@ function clearBroadcast(duration){
     }
 
   } else {
-    // geen timer? Gewoon resetten.
-    socket.emit('broadcastSend', resetBroadcast);
+
+    if(duration === 0) {
+      console.log('raakvlak 3 ' + duration);
+      clearTimeout(clearIsActive);
+      clearIsActive = undefined;
+    } else {
+      // geen timer? Gewoon resetten.
+      socket.emit('broadcastSend', resetBroadcast);
+      clearTimeout(clearIsActive);
+      clearIsActive = undefined;
+    }
+
+
+
   }
 
 }

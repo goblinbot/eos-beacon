@@ -18,22 +18,12 @@ var globalSettings = {
   localaddress  : ip.address() +':'+ port,
 }
 var default_security_level = "Code green - All clear";
-/* SS13 VOORBEELDEN : */
-/*
-  Code Blue - Confirmed Threat. Weapons may be visible.
-  Code Red - Immediate Threat
-  Code Delta - Imminent Destruction
-  PSY-hazard?
-  BIO-hazard?
-*/
 
 /* DYNAMIC DATA: data die bij setup worden gebruikt en constant kunnen worden aangepast. */
 var dynamicData = {
   countClients  : 0,
   alertLevel    : default_security_level
 }
-
-
 
 /* INITIALISEN VAN APP */
 
@@ -77,10 +67,15 @@ io.on('connection', function (socket) {
   // socket.emit('showIP', 'IP: ' + localaddress);
   socket.emit('startConfig', globalSettings);
 
-  // CLEARALL :: reset broadcasts.
+  // CLEARALL :: reset sec status.
   socket.on('ClearAll', function() {
     dynamicData['alertLevel'] = default_security_level;
-    io.emit('allclear', dynamicData['alertLevel']);
+    io.emit('updateDynamicData', dynamicData);
+  });
+
+  socket.on('updateSecurity', function(secLevel){
+    dynamicData['alertLevel'] = secLevel;
+    io.emit('updateDynamicData', dynamicData);
   });
 
   // FORCE RESET ::
@@ -101,7 +96,7 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function(){
     dynamicData['countClients'] = (dynamicData['countClients']-1);
     console.log('DISCONNECT// .. ' +dynamicData['countClients']+' active clients.');
-    io.emit('updateDynamicData', dynamicData);
+    io.emit('updateDynamicData', dynamicData );
   });
 
 

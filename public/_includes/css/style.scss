@@ -47,6 +47,12 @@ body {
   height      : 100%;
 }
 
+.danger-line {
+  height  : ($defaultpadding * 2);
+  width   : 100%;
+  margin  : { top: 3px; bottom: 3px; }
+}
+
 .blinkContent {
   @include animation(blinkText 1.5s linear infinite);
 }

@@ -34,6 +34,10 @@ body {
   background : $background;
 }
 
+.danger-line {
+  background : #ed3737;
+}
+
 .spinner {
   border      : 16px solid $orbitLight;
   border-left : 16px solid $orbitNormal;

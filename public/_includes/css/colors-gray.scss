@@ -6,7 +6,7 @@ $altTitleColor: #DDDDDD;
 $statusUnknown: #880088; //404 pagina, bijvoorbeeld.
 $defaultdonker: #222222;
 $holoContrast : #DDDDDD;
-$holohalf     : rgba(57, 219, 204, 0.5);
+$holohalf     : rgba(191, 159, 130, 0.5);
 $textmuted    : #DDDDDD;
 
 // kleuren van nationalgeographic's MARS
@@ -35,6 +35,11 @@ $orbitRed     : #ed3737;
 body {
   background : $background;
 }
+
+.danger-line {
+  background : $orbitRed;
+}
+
 
 .spinner {
   border      : 16px solid $orbitLight;

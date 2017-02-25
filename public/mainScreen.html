@@ -152,31 +152,30 @@ $(document).ready(function(){
 
   // hier defineren we de realtime update: als de =socket= een broadcast ontvangt, dan voert de client deze uit.
   socket.on('broadcastReceive', function(location){
-    console.log(activeBroadcast);
+    // console.log(activeBroadcast);
     console.log('# BROADCAST RECEIVED !');
     console.log('# ...');
-    console.log(location);
-
-      // uitvoeren op client.
-      broadCast(location);
-      console.log('# ... OK');
+    // uitvoeren op client.
+    broadCast(location);
+    console.log('# ... OK');
   });
 
 
-  socket.on('allclear', function(resetAlertValue){
-    $('#securityAlertLevel').html(resetAlertValue);
-  });
+  // socket.on('allclear', function(resetAlertValue){
+  //   $('#securityAlertLevel').html(resetAlertValue);
+  // });
 
 
   // vraagt dynamische data op, zoals security level en actieve gebruikers.
 
   // en update hem hier.
   socket.on('updateDynamicData', function(dynamicData){
-    console.log(dynamicData);
     $('#securityAlertLevel').html(dynamicData['alertLevel']);
     $('#countClientsCounter').html(dynamicData['countClients']);
     // meer toevoegen.
     // broadcast Last Active, als een soort resume ??
+
+
   });
 
 });

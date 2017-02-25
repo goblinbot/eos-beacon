@@ -1,3 +1,6 @@
+// COLORS DEFAULT: dit bestand bevat bijna elke declaratie van kleuren, en de kleuren bovenaan als een variable.
+// Zo kan voor een alert heel eenvoudig een eigen kleurenschema gemaakt worden, want de kleuren hoeven maar op 1 plek aangepast te worden.
+
 // huidig actief:
 $borderColor  : #39DBCC;
 $textColor    : #FFFFFF;
@@ -27,13 +30,12 @@ $orbitNormal  : #2bede6;
 $orbitGreen   : #4fe38b;
 $orbitRed     : #ed3737;
 
-
-
-
-
-
 body {
   background : $background;
+}
+
+.danger-line {
+  background : $orbitRed;
 }
 
 .spinner {
@@ -227,6 +229,25 @@ p {
         background-color: $orbitRed;
       }
     }
+  }
+}
+
+// spinner voor portal incoming
+@keyframes portalCircleAnimation {
+  0% {
+    border: 16px solid transparent;
+  }
+  25% {
+    border-left: 16px solid $holoBlauw;
+  }
+  50% {
+    border-top: 16px solid $holoBlauw;
+  }
+  75% {
+    border-right: 16px solid $holoBlauw;
+  }
+  100% {
+    border-bottom: 16px solid $holoBlauw;
   }
 }
 

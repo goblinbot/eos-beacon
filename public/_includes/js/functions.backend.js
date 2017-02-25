@@ -13,16 +13,27 @@ function forceReset() {
   socket.emit('forceReset');
 }
 
-function resetSecStatus() {
-  socket.emit('clearAll');
-}
-
 
 function cpanelStatus(message) {
   if(message != null && message != "") {
     $('#cPanel-status').empty();
     $('#cPanel-status').html(message);
   }
+}
+
+function updateSecurity(selector) {
+  var newSecLevel = $('#'+selector).val();
+
+  if(newSecLevel && newSecLevel != "") {
+
+    socket.emit( 'updateSecurity', newSecLevel );
+    FlashBlocks('.adm-tab');
+    setTimeout(function(){
+      FlashBlocks('.adm-tab');
+    },1200);
+
+  }
+
 }
 
 

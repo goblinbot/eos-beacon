@@ -1,6 +1,9 @@
 body {
   background: #222222; }
 
+.danger-line {
+  background: #ed3737; }
+
 .spinner {
   border: 16px solid #b3fffc;
   border-left: 16px solid #2bede6; }
@@ -36,7 +39,7 @@ p {
   border: 1px solid #CCCCCC; }
 
 .flash {
-  box-shadow: inset -1px -1px 3rem 5px rgba(57, 219, 204, 0.5); }
+  box-shadow: inset -1px -1px 3rem 5px rgba(191, 159, 130, 0.5); }
 
 .block-light {
   background: #3F3F3F; }

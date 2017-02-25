@@ -1,6 +1,9 @@
 body {
   background: #012324; }
 
+.danger-line {
+  background: #ed3737; }
+
 .spinner {
   border: 16px solid #b3fffc;
   border-left: 16px solid #2bede6; }
