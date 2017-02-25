@@ -17,20 +17,11 @@ var globalSettings = {
   appdescription: '/ EOS BASTION INFORMATION SERVICE',
   localaddress  : ip.address() +':'+ port,
 }
-var default_security_level = "Code green - All clear";
-/* SS13 VOORBEELDEN : */
-/*
-  Code Blue - Confirmed Threat. Weapons may be visible.
-  Code Red - Immediate Threat
-  Code Delta - Imminent Destruction
-  PSY-hazard?
-  BIO-hazard?
-*/
 
 /* DYNAMIC DATA: data die bij setup worden gebruikt en constant kunnen worden aangepast. */
 var dynamicData = {
   countClients  : 0,
-  alertLevel    : default_security_level
+  alertLevel    : "regular"
 }
 
 
@@ -79,8 +70,7 @@ io.on('connection', function (socket) {
 
   // CLEARALL :: reset broadcasts.
   socket.on('ClearAll', function() {
-    dynamicData['alertLevel'] = default_security_level;
-    io.emit('allclear', dynamicData['alertLevel']);
+    io.emit('allclear');
   });
 
   // FORCE RESET ::
