@@ -34,8 +34,6 @@ var psyWarningBroadcast   = new broadcastObj("Psy-hazard detected","psyhazard",7
 var broadCastEnemyContact = new broadcastObj("Enemy Contact","enemycontact",8,"0","attack");
 var lowpowerBroadcast   = new broadcastObj("POWER SUPPLY WARNING","emergencypower",9,"0","gray");
 
-var easterlist = new broadcastObj("meme","eastereggtest",9,"0","gray");
-
 
 // navigeerd - een functie geerft uit www.gubat.nl, word eigenlijk maar eenmaal
 // gebruikt om MAINSCREEN.HTML in te laden maar kan gebruikt worden.
