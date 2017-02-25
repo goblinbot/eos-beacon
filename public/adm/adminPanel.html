@@ -20,11 +20,16 @@
 
   <p>Priority: High</p>
   <div class="btn-group">
-    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(lowpowerBroadcast); cpanelStatus('Broadcast sent.');">
-      <i class="glyphicon glyphicon-alert"></i>&nbsp;LOW POWER WARNING
-    </div>
-    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(enemyContact); cpanelStatus('Broadcast sent.');">
+    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(broadCastEnemyContact); cpanelStatus('Broadcast sent.');">
       <i class="glyphicon glyphicon-alert"></i>&nbsp;ENEMY CONTACT
+    </div>
+    <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(hazardBroadcast); cpanelStatus('Broadcast sent.');">
+      <i class="glyphicon glyphicon-alert"></i>&nbsp;BIOHAZARD
+    </div>
+  </div>
+  <div class="btn-group">
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(lowpowerBroadcast); cpanelStatus('Broadcast sent.');">
+      <i class="glyphicon glyphicon-alert"></i>&nbsp;LOW POWER WARNING
     </div>
   </div>
 

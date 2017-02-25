@@ -2,27 +2,27 @@
 // Zo kan voor een alert heel eenvoudig een eigen kleurenschema gemaakt worden, want de kleuren hoeven maar op 1 plek aangepast te worden.
 
 // huidig actief:
-$borderColor  : #39DBCC;
+$borderColor  : #ed3737;
 $textColor    : #FFFFFF;
-$titleColor   : #39DBCC;
+$titleColor   : #f2A83B;
 $altTitleColor: #f2A83B;
 $statusUnknown: #880088; //404 pagina, bijvoorbeeld.
 $defaultdonker: #222222;
 $holoContrast : #FF9933;
-$holohalf     : rgba(57, 219, 204, 0.5);
+$holohalf     : rgba(219, 57, 57, 0.5);
 $textmuted    : #DDDDDD;
 
 // kleuren van nationalgeographic's MARS
-$background     : #012324;
-$blocks         : #042A34;
-$blocksmedium   : #053A47;
-$blockslight    : #0B5E66;
+$background     : #222222;
+$blocks         : #4b1002;
+$blocksmedium   : #661604;
+$blockslight    : #ed3737;
 $statusCritical : #4b1002;
 
 // misc voorbeeld kleuren:
 $gubatGeel    : #FFCC00;
 $aquilaBlauw  : #005B8E;
-$holoBlauw    : #39DBCC;
+$holoBlauw    : #FFCC00;
 
 /// 'orbit ui' kleuren
 $orbitLight   : #b3fffc;
