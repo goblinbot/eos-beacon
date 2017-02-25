@@ -19,10 +19,11 @@ function broadcastObj(title, file, priority, duration, colorscheme) {
 var defaultBroadcast  = new broadcastObj("Broadcast Initialise","standby","1","0","0");
 var testBroadcast     = new broadcastObj(":: TESTING BROADCAST ::","test","1","2000","0");
 var resetBroadcast    = new broadcastObj("Clear","standby","10","0","0");
-var portalIncBroadcast= new broadcastObj("Portal Incoming","portalincoming","3","30000","0");
-var portalOutBroadcast= new broadcastObj("Portal Outgoing","portaloutgoing","3","17500","0");
-var hazardBroadcast       = new broadcastObj("Envirnomental Hazard detected","biohazard","8","0","1");
-var psyWarningBroadcast   = new broadcastObj("Psy-hazard detected","psyhazard","8","0","1");
+var broadCastPortalIncoming = new broadcastObj("Portal Incoming","portalincoming","3","30000","0");
+var broadCastPortalOutgoing= new broadcastObj("Portal Outgoing","portaloutgoing","3","17500","0");
+var hazardBroadcast       = new broadcastObj("Envirnomental Hazard detected","biohazard","8","0","hazard");
+var psyWarningBroadcast   = new broadcastObj("Psy-hazard detected","psyhazard","8","0","hazard");
+var lowpowerBroadcast   = new broadcastObj("POWER SUPPLY WARNING","emergencypower","9","0","gray");
 
 
 
@@ -97,40 +98,57 @@ function broadCast(location) {
       .done(function(){
 
         if(location['priority'] > 0 && !isNaN(location['duration'])) {
+
           if(location['priority'] < activeBroadcast['priority']) {
             return false;
+
           } else {
+
+            /* foolproof controle: als DEFAULT word opgegeven telt hij ook als '0' */
+            if(location['colorscheme'] == 'default') {
+              location['colorscheme'] = '0';
+            }
+            /* hetzelfde voor active */
+            if(activeColorScheme == 'default') {
+              activeColorScheme = '0';
+            }
+
+            /* kleurenschema. */
+            /* default probeerd default te worden, OF de colorschemes zijn gelijk? */
+            if((activeColorScheme == '0' && location['colorscheme'] == '0') || (activeColorScheme == location['colorscheme'])) {
+              /* verander niks .*/
+
+            } else if (activeColorScheme != '0'  && location['colorscheme'] == '0') {
+              /* UNLOAD DE VORIGE COLORSCHEME, VERVOLGENS: */
+              $('link[rel=stylesheet][href~="/_includes/css/colors-'+activeColorScheme+'.css"]').remove();
+              activeColorScheme = '0';
+
+            /* actief = default > broadcast = niet-default: */
+            } else if (activeColorScheme == '0' && location['colorscheme'] != '0') {
+
+              $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/colors-'+location['colorscheme']+'.css') );
+              activeColorScheme = location['colorscheme'];
+
+            } else if (location['colorscheme'] != '0' && activeColorScheme != location['colorscheme']) {
+
+              /* laad ACTIVE uit, laad LOCATION in */
+              $('link[rel=stylesheet][href~="/_includes/css/colors-'+activeColorScheme+'.css"]').remove();
+              $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/colors-'+location['colorscheme']+'.css') );
+              activeColorScheme = location['colorscheme'];
+            }
+
+
+
             $("#notificationContainer").empty();
               $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
+
+              activeBroadcast['priority'] = location['priority'];
 
               console.log('test clear:'+clearIsActive);
               if(location['duration'] && location['duration'] == 0) {
                 if(clearIsActive != undefined) {
                   clearTimeout('clearIsActive');
                 }
-
-              /* kleurenschema. */
-              /* default probeerd default te worden, OF de colorschemes zijn gelijk? */
-              if((activeColorScheme == '0' && location['colorscheme'] == '0') || (activeColorScheme == location['colorscheme'])) {
-                /* verander niks .*/
-
-              } else if (activeColorScheme != '0'  && location['colorscheme'] == '0') {
-                /* UNLOAD DE VORIGE COLORSCHEME, VERVOLGENS: */
-                /**/
-                activeColorScheme = '0';
-
-              /* actief = default > broadcast = niet-default: */
-              } else if (activeColorScheme == '0' && location['colorscheme'] != '0') {
-
-                /* inladen die zooi. */
-                activeColorScheme = location['colorscheme'];
-
-              } else if (location['colorscheme'] != '0' && activeColorScheme != location['colorscheme']) {
-
-                /* laad ACTIVE uit, laad LOCATION in */
-                activeColorScheme = location['colorscheme'];
-              }
-              
 
               if(location['duration'] && location['duration'] > 0 && !isNaN(location['duration'])) {
                 console.log(location['duration']);
@@ -143,11 +161,12 @@ function broadCast(location) {
               },1200);
           }
         }
-      })
-      .fail(function(){
-        $("#notificationContainer").empty();
-          $("#notificationContainer").load('/broadcasts/404.html');
-      });
+      }
+    })
+    .fail(function(){
+      $("#notificationContainer").empty();
+        $("#notificationContainer").load('/broadcasts/404.html');
+    });
   }
 
 }

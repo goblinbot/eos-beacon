@@ -14,8 +14,14 @@
   </div>
 
   <div class="btn-group">
-    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast('444444'); cpanelStatus('Broadcast sent.');">
+    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast('NIET_GELDIGE_WAARDE'); cpanelStatus('Broadcast sent.');">
       <i class="glyphicon glyphicon-warning"></i>&nbsp;TEST BROADCAST : 404
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(lowpowerBroadcast); cpanelStatus('Broadcast sent.');">
+      <i class="glyphicon glyphicon-alert"></i>&nbsp;LOW POWER WARNING
     </div>
   </div>
 
