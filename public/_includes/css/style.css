@@ -231,6 +231,9 @@ body {
       #colony-feed li .feed-top .feed-user {
         float: right; }
 
+#securityAlertLevel {
+  word-wrap: break-word; }
+
 #notificationContainer {
   min-height: 68vh; }
   #notificationContainer .broadcast .portalCircleContainer {
