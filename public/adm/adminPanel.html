@@ -2,14 +2,15 @@
 
 
 <div id="admBROADCAST" class="adm-tab default-border col-xs-12">
-  <div class="whitespace">&nbsp;</div>
   <h2>Broadcasts</h2>
   <p><span class="holoContrast">Note:</span> Low priority cannot overrule high priority broadcasts.</p>
   <p><span class="holoContrast">'CLEAR BROADCASTS'</span> resets the broadcasting screen.</p>
 
-  <br/>
-  <p>Priority: low</p>
-  <div class="btn-group">
+  <hr/>
+
+  <div class="col-xs-12">
+    <p>Priority: low</p>
+
     <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(broadCastPortalIncoming); cpanelStatus('Broadcast: portal incoming');">
       <i class="glyphicon glyphicon-warning"></i>&nbsp;PORTAL INCOMING
     </div>
@@ -18,28 +19,28 @@
     </div>
   </div>
 
-  <p>Priority: High</p>
-  <div class="btn-group">
+  <div class="whitespace">&nbsp;</div>
+  <div class="col-xs-12">
+    <p>Priority: High</p>
+
     <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(broadCastEnemyContact); cpanelStatus('Broadcast sent.');">
       <i class="glyphicon glyphicon-alert"></i>&nbsp;ENEMY CONTACT
     </div>
     <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(hazardBroadcast); cpanelStatus('Broadcast sent.');">
       <i class="glyphicon glyphicon-alert"></i>&nbsp;BIOHAZARD
     </div>
-  </div>
-  <div class="btn-group">
     <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(lowpowerBroadcast); cpanelStatus('Broadcast sent.');">
       <i class="glyphicon glyphicon-alert"></i>&nbsp;LOW POWER WARNING
     </div>
   </div>
 
-  <p>Priority: Other.</p>
-  <div class="btn-group">
+  <div class="whitespace">&nbsp;</div>
+  <div class="col-xs-12">
+    <p>Priority: Other.</p>
+
     <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(resetBroadcast); cpanelStatus('Broadcasts CLEARED');">
       <i class="glyphicon glyphicon-check"></i>&nbsp;CLEAR BROADCASTS
     </div>
-  </div>
-  <div class="btn-group">
     <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast('NIET_GELDIGE_WAARDE'); cpanelStatus('Broadcast sent.');">
       <i class="glyphicon glyphicon-warning"></i>&nbsp;TEST INVALID
     </div>

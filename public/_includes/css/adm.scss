@@ -100,8 +100,12 @@ $defaultpadding: 0.8rem;
         margin-top    : $defaultpadding;
         margin-bottom : ($defaultpadding * 2);
       }
+    }
+    &#admBROADCAST {
 
-
+      .btn {
+        margin : ($defaultpadding / 2);
+      }
 
     }
 

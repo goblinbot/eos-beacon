@@ -7,13 +7,13 @@ var $       = require('jquery');
 var ip      = require('ip');
 var bodyParser = require('body-parser');
 
+/* VALIDE LOGIN CODES */
+var valid_logincodes = ['00451','12345','67890','07311'];
 
 /* CONFIGURATIE: vaste gegevens bij start up. */
 var port          = process.env.PORT || 5000;
 var globalSettings = {
   appnaam1      : 'BEACON',
-  appnaam2      : 'beacon',
-  appnaam3      : 'Beacon',
   appdescription: '/ EOS BASTION INFORMATION SERVICE',
   localaddress  : ip.address() +':'+ port,
 }
@@ -101,9 +101,21 @@ io.on('connection', function (socket) {
 
 
   socket.on('auth', function(keycode){
+    var checklogincode = 0;
     console.log('authentication code received: '+keycode);
 
-    if(keycode == '00451') {
+    // $.each( valid_logincodes, function(i, val) {
+    //     if(val == keycode) {
+    //       checklogincode = 1;
+    //     }
+    // });
+    for (var i in valid_logincodes) {
+      if(valid_logincodes[i] == keycode) {
+        checklogincode = 1;
+      }
+    }
+
+    if(checklogincode == 1) {
       socket.emit('authTrue', keycode);
     } else {
       socket.emit('authFalse');
