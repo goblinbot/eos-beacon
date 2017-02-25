@@ -132,17 +132,6 @@ p {
       border-color: #ed3737;
       background-color: #ed3737; }
 
-@keyframes portalCircleAnimation {
-  0% {
-    border: 16px solid transparent; }
-  25% {
-    border-left: 16px solid #39DBCC; }
-  50% {
-    border-top: 16px solid #39DBCC; }
-  75% {
-    border-right: 16px solid #39DBCC; }
-  100% {
-    border-bottom: 16px solid #39DBCC; } }
 .adm-tab p {
   color: #39DBCC; }
 
