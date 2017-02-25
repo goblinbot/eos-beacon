@@ -77,9 +77,9 @@
 <div id="admCHAT" class="adm-tab default-border hidden col-xs-12">
 <div class="whitespace">&nbsp;</div>
 
-  <input type="text" name="chat-username" class="form-control" placeholder="username"></input>
-  <textarea class="form-control" name="chat-message" placeholder="type your message."></textarea>
-  <div class="btn btn-success" onclick="cpanelStatus('Message succesfully submit.');">
+  <input id="chat-username" type="text" name="chat-username" class="form-control" placeholder="username"></input>
+  <textarea id="chat-message" class="form-control" name="chat-message" placeholder="type your message."></textarea>
+  <div class="btn btn-success" onclick="submitChat(); cpanelStatus('Message succesfully submit.');">
     Submit Message
   </div>
 

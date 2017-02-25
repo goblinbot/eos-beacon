@@ -13,6 +13,17 @@ function forceReset() {
   socket.emit('forceReset');
 }
 
+function submitChat(){
+  var chatmessage = [];
+  var chatmessage[0] = $('#chat-username').val();
+  var chatmessage[1] = $('#chat-message').val();
+
+  if(chatmessage[0] != "" && chatmessage[0] != undefined && chatmessage[1] != "" && chatmessage[1] != undefined ) {
+    socket.emit('sendChatMessage', chatmessage );
+  }
+
+
+}
 
 function cpanelStatus(message) {
   if(message != null && message != "") {

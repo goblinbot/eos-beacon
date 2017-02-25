@@ -197,11 +197,13 @@ body {
   @media (min-width: 998px) {
     #main .footer .item:first-child {
       padding-left: 0; } }
-  #main .footer .item .block .content {
-    overflow: hidden;
-    padding: 1.5rem; }
-    #main .footer .item .block .content h1, #main .footer .item .block .content h2, #main .footer .item .block .content h3 {
-      margin: 0 0 4px 4px; }
+  #main .footer .item .block {
+    overflow: hidden; }
+    #main .footer .item .block .content {
+      overflow: hidden;
+      padding: 1.5rem; }
+      #main .footer .item .block .content h1, #main .footer .item .block .content h2, #main .footer .item .block .content h3 {
+        margin: 0 0 4px 4px; }
   #main .footer .item .bottom-right {
     text-align: center; }
     #main .footer .item .bottom-right img {

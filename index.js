@@ -74,7 +74,9 @@ io.on('connection', function (socket) {
   });
 
   socket.on('updateSecurity', function(secLevel){
-    dynamicData['alertLevel'] = secLevel;
+    var outString = secLevel.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+
+    dynamicData['alertLevel'] = outString;
     io.emit('updateDynamicData', dynamicData);
   });
 
@@ -82,6 +84,16 @@ io.on('connection', function (socket) {
   socket.on('forceReset', function() {
     io.emit('F5');
   });
+
+  // chat bericht
+  // socket.on('sendChatMessage', function(message) {
+  //
+  //   message
+  //
+  //
+  //   // io.emit('F5');
+  // });
+
 
   socket.on('requestDynamicData', function (){
     io.emit('updateDynamicData', dynamicData);
