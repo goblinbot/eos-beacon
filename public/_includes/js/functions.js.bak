@@ -3,7 +3,6 @@ var selector    = "";
 var target      = "";
 var navLimit    = 0;
 var clearIsActive = undefined;
-var activeColorScheme = '0';
 
 // BROADCAST OBJECTEN
 // constructor:
@@ -21,9 +20,6 @@ var testBroadcast     = new broadcastObj(":: TESTING BROADCAST ::","test","1","2
 var resetBroadcast    = new broadcastObj("Clear","standby","10","0","0");
 var portalIncBroadcast= new broadcastObj("Portal Incoming","portalincoming","3","30000","0");
 var portalOutBroadcast= new broadcastObj("Portal Outgoing","portaloutgoing","3","17500","0");
-var hazardBroadcast       = new broadcastObj("Envirnomental Hazard detected","biohazard","8","0","1");
-var psyWarningBroadcast   = new broadcastObj("Psy-hazard detected","psyhazard","8","0","1");
-
 
 
 // einde pre-sets
