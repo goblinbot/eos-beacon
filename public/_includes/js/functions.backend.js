@@ -14,7 +14,7 @@ function forceReset() {
 }
 
 function submitChat(){
-  var chatmessage = [];
+  var chatmessage;
   var chatmessage[0] = $('#chat-username').val();
   var chatmessage[1] = $('#chat-message').val();
 
