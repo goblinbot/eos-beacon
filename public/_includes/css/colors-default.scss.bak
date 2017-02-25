@@ -228,25 +228,6 @@ p {
   }
 }
 
-// spinner voor portal incoming
-@keyframes portalCircleAnimation {
-  0% {
-    border: 16px solid transparent;
-  }
-  25% {
-    border-left: 16px solid $holoBlauw;
-  }
-  50% {
-    border-top: 16px solid $holoBlauw;
-  }
-  75% {
-    border-right: 16px solid $holoBlauw;
-  }
-  100% {
-    border-bottom: 16px solid $holoBlauw;
-  }
-}
-
 
 // BACKEND KLEUREN /////
 .adm-tab {
