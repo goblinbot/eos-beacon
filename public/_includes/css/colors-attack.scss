@@ -2,7 +2,7 @@
 // Zo kan voor een alert heel eenvoudig een eigen kleurenschema gemaakt worden, want de kleuren hoeven maar op 1 plek aangepast te worden.
 
 // huidig actief:
-$borderColor  : #ed0000;
+$borderColor  : #bc0000;
 $textColor    : #FFFFFF;
 $titleColor   : #f2A83B;
 $altTitleColor: #f2A83B;
@@ -16,7 +16,7 @@ $textmuted    : #DDDDDD;
 $background     : #222222;
 $blocks         : #550000;
 $blocksmedium   : #660000;
-$blockslight    : #ed0000;
+$blockslight    : #bc0000;
 $statusCritical : #550000;
 
 // misc voorbeeld kleuren:
@@ -28,7 +28,7 @@ $holoBlauw    : #FFCC00;
 $orbitLight   : #b3fffc;
 $orbitNormal  : #2bede6;
 $orbitGreen   : #4fe38b;
-$orbitRed     : #ed0000;
+$orbitRed     : #bc0000;
 
 body {
   background : $background;
