@@ -9,6 +9,17 @@
   <hr/>
 
   <div class="col-xs-12">
+    <p>Priority: Other.</p>
+
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(resetBroadcast); cpanelStatus('Broadcasts CLEARED');">
+      <i class="glyphicon glyphicon-check"></i>&nbsp;CLEAR BROADCASTS
+    </div>
+    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast('NIET_GELDIGE_WAARDE'); cpanelStatus('Broadcast sent.');">
+      <i class="glyphicon glyphicon-warning"></i>&nbsp;TEST INVALID
+    </div>
+  </div>
+
+  <div class="col-xs-12">
     <p>Priority: low</p>
 
     <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(broadCastPortalIncoming); cpanelStatus('Broadcast: portal incoming');">
@@ -17,6 +28,16 @@
     <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(broadCastPortalOutgoing); cpanelStatus('Broadcast: portal outgoing');">
       <i class="glyphicon glyphicon-warning"></i>&nbsp;PORTAL OUTGOING
     </div>
+  </div>
+
+  <div class="whitespace">&nbsp;</div>
+  <div class="col-xs-12">
+    <p>Priority: Medium.</p>
+
+    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(broadCastBlood); cpanelStatus('Broadcast: Requesting blood donations');">
+      <i class="glyphicon glyphicon-check"></i>&nbsp;REQUEST BLOOD DONATIONS
+    </div>
+
   </div>
 
   <div class="whitespace">&nbsp;</div>
@@ -38,16 +59,21 @@
   <div class="col-xs-12">
     <p>Priority: Other.</p>
 
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(resetBroadcast); cpanelStatus('Broadcasts CLEARED');">
-      <i class="glyphicon glyphicon-check"></i>&nbsp;CLEAR BROADCASTS
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(broadCastHydrate); cpanelStatus('PSA sent');">
+      <i class="glyphicon glyphicon-info-sign"></i>&nbsp;HYDRATION PSA
     </div>
-    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast('NIET_GELDIGE_WAARDE'); cpanelStatus('Broadcast sent.');">
-      <i class="glyphicon glyphicon-warning"></i>&nbsp;TEST INVALID
+
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast('broadCastLunch'); cpanelStatus('PSA sent.');">
+      <i class="glyphicon glyphicon-info-sign"></i>&nbsp;LUNCH TIME
     </div>
+
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast('broadCastDinner'); cpanelStatus('PSA sent.');">
+      <i class="glyphicon glyphicon-info-sign"></i>&nbsp;DINNER TIME
+    </div>
+
   </div>
 
 </div>
-
 
 <!--  -->
 

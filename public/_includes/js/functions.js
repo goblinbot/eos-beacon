@@ -20,12 +20,21 @@ function broadcastObj(title, file, priority, duration, colorscheme) {
 var defaultBroadcast  = new broadcastObj("Broadcast Initialise","standby",1,"0","0");
 var testBroadcast     = new broadcastObj(":: TESTING BROADCAST ::","test",1,"2000","0");
 var resetBroadcast    = new broadcastObj("Clear","standby",99,"0","0");
+
+var broadCastLunch        = new broadcastObj("Lunch announcement","lunch",2,"0","0");
+var broadCastDinner        = new broadcastObj("Dinner announcement","dinner",2,"0","0");
+var broadCastHydrate        = new broadcastObj("Hydration Reminder","hydratePSA",2,"0","0");
+
 var broadCastPortalIncoming = new broadcastObj("Portal Incoming","portalincoming",3,"30000","0");
 var broadCastPortalOutgoing= new broadcastObj("Portal Outgoing","portaloutgoing",3,"17500","0");
+var broadCastBlood        = new broadcastObj("Medical Request","bloodrequest",4,"0","0");
+
 var hazardBroadcast       = new broadcastObj("Envirnomental Hazard detected","biohazard",7,"0","hazard");
 var psyWarningBroadcast   = new broadcastObj("Psy-hazard detected","psyhazard",7,"0","hazard");
 var broadCastEnemyContact = new broadcastObj("Enemy Contact","enemycontact",8,"0","attack");
 var lowpowerBroadcast   = new broadcastObj("POWER SUPPLY WARNING","emergencypower",9,"0","gray");
+
+var easterlist = new broadcastObj("meme","eastereggtest",9,"0","gray");
 
 
 // navigeerd - een functie geerft uit www.gubat.nl, word eigenlijk maar eenmaal
@@ -160,7 +169,7 @@ function broadCast(location) {
       if(activeColorScheme != '0' && activeColorScheme != 'default') {
         $('link[rel=stylesheet][href~="/_includes/css/colors-'+activeColorScheme+'.css"]').remove();
       }
-      
+
       FlashBlocks('.block');
       setTimeout(function(){
         FlashBlocks('.block');
