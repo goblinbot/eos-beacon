@@ -75,7 +75,6 @@ io.on('connection', function (socket) {
 
   socket.on('updateSecurity', function(secLevel){
     var outString = secLevel.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
-
     dynamicData['alertLevel'] = outString;
     io.emit('updateDynamicData', dynamicData);
   });
@@ -86,13 +85,13 @@ io.on('connection', function (socket) {
   });
 
   // chat bericht
-  // socket.on('sendChatMessage', function(message) {
-  //
-  //   message
-  //
-  //
-  //   // io.emit('F5');
-  // });
+  socket.on('sendChatMessage', function(message) {
+
+    message[0] = message[0].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+    message[1] = message[1].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, ''); 
+    io.emit('globalChatMessage',message);
+    // io.emit('F5');
+  });
 
 
   socket.on('requestDynamicData', function (){

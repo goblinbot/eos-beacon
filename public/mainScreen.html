@@ -37,38 +37,11 @@
         <h2>Colony Messages</h2>
       </div>
 
-      <ul id="colony-feed">
-        <!-- <li class="feed-item" data-listnumber="1">
-          <p class="feed-top"><span class="feed-timestamp">00:00</span>&nbsp;<span class="feed-user">MAATI_P.ASSISTANT_1</span></p>
-          <p class="feed-message">DIT IS EEN TESTBERICHT. DANKU VOOR UW AANDACHT.</p>
-        </li>
-        <li class="feed-item" data-listnumber="2">
-          <p class="feed-top"><span class="feed-timestamp">00:00</span>&nbsp;<span class="feed-user">MAATI_P.ASSISTANT_3</span></p>
-          <p class="feed-message">DIT IS EEN TESTBERICHT. DANKU VO_R UW AANDACHT.</p>
-        </li>
-        <li class="feed-item" data-listnumber="3">
-          <p class="feed-top"><span class="feed-timestamp">00:00</span>&nbsp;<span class="feed-user">MAATI_P.ASSISTANT_4</span></p>
-          <p class="feed-message">DIT IS EEN TE_______HT. DANKU VOOR ___AANDACHT.</p>
-        </li>
-        <li class="feed-item" data-listnumber="4">
-          <p class="feed-top"><span class="feed-timestamp">00:00</span>&nbsp;<span class="feed-user">MAATI_P.ASSISTANT_4</span></p>
-          <p class="feed-message">DIT I))EEN TE_______HT. DA)K_ VOOR ___AAN(A)HT.</p>
-        </li>
-        <li class="feed-item" data-listnumber="5">
-          <p class="feed-top"><span class="feed-timestamp">00:00</span>&nbsp;<span class="feed-user">MAATI_P.ASSISTANT_2</span></p>
-          <p class="feed-message">DIT IS EEN TESTBERICHT. DANKU VOOR UW AANDACHT.</p>
-        </li> -->
-        
+      <ul id="colony-feed"></ul>
 
-      </ul>
     </div>
 
 </div>
-
-
-
-
-
 
   <!-- centraal blok -->
   <!-- <div class="middle-bar col-xs-12 col-sm-10 col-md-8 col-lg-9"> -->
@@ -78,19 +51,6 @@
     </div>
   </div>
 
-
-
-  <!-- rechter minibar -->
-  <!-- <div class="right-bar col-xs-12 col-sm-2 col-md-1 col-lg-1">
-    <div class="block col-xs-4 col-sm-12">
-      <div class="headerblock">
-        <h2>Clients</h2>
-      </div>
-      <h2 class="text-center"><i class="glyphicon glyphicon-user"></i></h2>
-      <h2 class="text-center" id="countClientsCounter">-</h2>
-    </div>
-
-  </div> -->
 </div>
 
 <!-- onderste helft ----------------------------------------------------------->
@@ -136,6 +96,8 @@
 
 
 $(document).ready(function(){
+  var activeMessages = 0;
+  var printresult;
 
   // functie: maak blokken footer even groot.
   updateFooter();
@@ -162,9 +124,23 @@ $(document).ready(function(){
   });
 
 
-  // socket.on('allclear', function(resetAlertValue){
-  //   $('#securityAlertLevel').html(resetAlertValue);
-  // });
+  socket.on('globalChatMessage', function(message) {
+    activeMessages = (activeMessages+1);
+
+    var currentTimeString = getCurrentTime();
+    var printresult = '<li class="feed-item" data-listnumber="'+activeMessages+'">';
+    printresult = (printresult + '<p class="feed-top"><span class="feed-timestamp"><i class="glyphicon glyphicon-time"></i>&nbsp;'+currentTimeString+'</span>&nbsp;<span class="feed-user"><i class="glyphicon glyphicon-user"></i>&nbsp;'+message[0]+'</span></p>');
+    printresult = (printresult + '<p class="feed-message">'+message[1]+'</p>');
+    printresult = (printresult + '</li>');
+
+    $('#colony-feed').prepend(printresult);
+
+    if(activeMessages > 7) {
+      var removeThis = (activeMessages-7);
+      $("li[data-listnumber='" + removeThis +"']").remove();
+    }
+
+  });
 
 
   // vraagt dynamische data op, zoals security level en actieve gebruikers.
@@ -175,7 +151,6 @@ $(document).ready(function(){
     $('#countClientsCounter').html(dynamicData['countClients']);
     // meer toevoegen.
     // broadcast Last Active, als een soort resume ??
-
 
   });
 

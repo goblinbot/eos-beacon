@@ -60,6 +60,16 @@ function FlashBlocks(div) {
   }
 }
 
+function getCurrentTime() {
+  var currentTime = new Date();
+  var currentHours   = currentTime.getHours ( );
+  var currentMinutes = currentTime.getMinutes ( );
+  currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+  currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+  var currentTimeString = currentHours + ":" + currentMinutes + ":" + "&nbsp;ECT";
+  return currentTimeString;
+}
+
 // function: broadcast . CLIENT SIDE.
 function broadCast(location) {
 
@@ -75,13 +85,7 @@ function broadCast(location) {
 
     navLimit = (navLimit+1);
 
-    /* maakt een timestamp zoals bij de clock update, maar korter. */
-    var currentTime = new Date();
-    var currentHours   = currentTime.getHours ( );
-    var currentMinutes = currentTime.getMinutes ( );
-    currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
-    currentHours = ( currentHours == 0 ) ? 12 : currentHours;
-    var currentTimeString = currentHours + ":" + currentMinutes + ":" + "&nbsp;ECT";
+    var currentTimeString = getCurrentTime();
 
     $.get('/broadcasts/'+location['file']+'.html')
       .done(function(){
@@ -103,6 +107,9 @@ function broadCast(location) {
             /* foolproof controle: als DEFAULT word opgegeven telt hij ook als '0' */
             if(location['colorscheme']  == 'default') { location['colorscheme'] = '0'; }
             if(activeColorScheme        == 'default') { activeColorScheme       = '0'; }
+
+            var outString = location['colorscheme'].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+            location['colorscheme'] = outString;
 
             /* kleurenschema. */
             /* default probeerd default te worden, OF de colorschemes zijn gelijk? */
@@ -140,6 +147,10 @@ function broadCast(location) {
               activeBroadcast = location['priority'];
 
               if(location['title'] != "" /*&& location['title'] != "Clear"*/) {
+
+                var outString = location['title'].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+                location['title'] = outString;
+
                 $("#lastBroadcastTitle").html("<i class='glyphicon glyphicon-bell'></i>&nbsp;" + location['title']);
                 $("#lastBroadcastTime").html(currentTimeString);
               }

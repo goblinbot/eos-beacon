@@ -79,7 +79,7 @@
 
   <input id="chat-username" type="text" name="chat-username" class="form-control" placeholder="username"></input>
   <textarea id="chat-message" class="form-control" name="chat-message" placeholder="type your message."></textarea>
-  <div class="btn btn-success" onclick="submitChat(); cpanelStatus('Message succesfully submit.');">
+  <div id="chat-button" class="btn btn-success" onclick="submitChat(); cpanelStatus('Message succesfully submit.');">
     Submit Message
   </div>
 
@@ -94,7 +94,6 @@
 
   <h2>COLONY SECURITY LEVEL</h2>
   <p>Select a pre-defined security levels.</p>
-  <br/>
   <div class="row">
 
     <div class="col-xs-12">
@@ -103,7 +102,7 @@
         <option value="Code Blue - Confirmed Threat. Weapons may be visible.">Code Blue - Confirmed Threat. Weapons may be visible.</option>
         <option value="Code Red - Immediate Threat. Weapons ready.">Code Red - Immediate Threat. Weapons ready.</option>
         <option value="Code Silver - VIP on colony. Security elevated.">Code Silver - VIP on colony. Security elevated.</option>
-        <option value="Class 4 Psychic Hazard">Psychic Hazard</option>
+        <option value="Class 4 Psychic Hazard">Class 4 Psychic Hazard</option>
         <option value="Class 5 Hazard Outbreak">Class 5 Hazard Outbreak</option>
       </select>
     </div>
@@ -116,7 +115,6 @@
 
   </div>
 
-  <br/>
   <p>...Or, set a custom security level.</p>
   <div class="row">
     <div class="col-xs-12">
