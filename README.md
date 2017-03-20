@@ -15,7 +15,6 @@ https://eos-beacon.herokuapps.com/
 PLUGINS ( Installeren via NPM ):
   - Socket.io
   - express
-  - mysql ( nog ongebruikt )
   - border-parser
   - ip
 
@@ -26,27 +25,37 @@ PLUGINS ( Installeren via NPM ):
   - Bootstrap 3.3+
   - Een SCSS compiler (bij schrijven/bijwerken)
 
-**DATABASE**
-  - MySQL : al word momenteel nog niks gedaan met een database.
-
-
 # Alert/Broadcast/Notificaties uitleg:
-Broadcasts bestaan uit verschillende waardes.
-bijvoorbeeld:
 
-var broadcastTest = {
-  title:"Broadcast Test",
-  file:"testBroadcast",
-  priority:"1",
-  duration:"0",
-  colorscheme:"0"
-};
+**HET MAKEN VAN EEN CUSTOM BROADCAST**
+De broadcasts (ALERTS) bestaan uit drie onderdelen:
 
-  **'title' => De titel** van de broadcast/notificatie/alert. Een korte omschrijving, het liefst.
+- De HTML pagina => In de /public/broadcasts/ folder.
+  Dit is de pagina die zal verschijnen als alert, en alles wat hiermee word genomen. Bijvoorbeeld geluid, of filmpjes.
 
-  **'file' => De naam van het HTML bestand** dat bij de broadcast word ingeladen. Hier word automatisch .html achter gezet.
+- De CSS opmaak => In de /public/\_includes/css/ folder
+  Standaard pakt deze "colors-default.css". Er kan een custom kleurenpallet gekozen door deze aan te maken & te roepen in het javascript object, als volgt:
 
-  **'colorscheme' => Het kleurenschema** dat word aangeroepen bij de broadcast.
+- Het javascript object => Gedefineerd in /public/broadcasts.js
+  Dit bevat alle gegevens om een alert/broadcasts op te roepen.
+
+**Het BROADCAST object:**
+Bestaat uit vijf waardes. Als voorbeeld kijken we naar **3** voorgekauwde broadcasts:
+
+- var defaultBroadcast  = new broadcastObj("Broadcast Initialise","standby",1,"0","0");
+- var broadCastPortalIncoming = new broadcastObj("Portal Incoming","portalincoming",3,"30000","0");
+- var broadCastEnemyContact = new broadcastObj("Enemy Contact","enemycontact",8,"0","attack");
+
+Deze staan gedefineerd in **broadcasts.js** in de public folder, en hier zijn toevoegingen makkelijk mogelijk.
+
+Een **broadcastObj** is op de volgende manier opgebouwd:
+*broadcastObj(title, file, priority, duration, colorscheme)*
+
+**title => de titel**, een korte omschrijving het liefst.
+
+**file  => de naam van het HTML bestand** dat moet worden ingeladen. (Bijvoorbeeld: default . HTML word automatisch erachter aan toegevoegd.)
+
+**colorscheme => het kleurenschema(CSS opmaak)** dat moet worden ingeladen.
   - Als deze **0** is, dan pakt hij gewoon de default kleuren of reset hij naar default.
   - Als deze **PREV** is, dan houdt hij de vorige kleuren aan en reset hij niet.
   - Al voer je een andere waarde in, bijvoorbeeld, *PORTAL* dan probeerd hij het CSS bestand colors-*PORTAL*.css in te laden.
