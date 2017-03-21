@@ -13,6 +13,13 @@ function forceReset() {
   socket.emit('forceReset');
 }
 
+function setSoundSettings(option) {
+  if(!option || option > 2 || option < 0 || option == "") {
+    option = '2';
+  }
+  socket.emit('setSoundSetting', option);
+}
+
 function submitChat(){
 
   var chatmessage = [ $('#chat-username').val() , $('#chat-message').val() ];
@@ -27,7 +34,6 @@ function submitChat(){
       $('#chat-button').show();
     },15000);
   }
-
 
 }
 

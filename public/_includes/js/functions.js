@@ -69,12 +69,6 @@ function broadCast(location) {
             return false;
 
           } else {
-            //
-            // // update de laatst activeBroadcast naar de ontvange 'location'
-            // activeBroadcast = new broadcastObj(location['title'],location['file'],location['priority'],location['duration'],location['colorscheme']);
-            //
-            // // stuurt de nieuwste hier naar de backend.
-            // socket.emit('changeActiveBroadcast',activeBroadcast);
 
             /* foolproof controle: als DEFAULT word opgegeven telt hij ook als '0' */
             if(location['colorscheme']  == 'default') { location['colorscheme'] = '0'; }
@@ -112,11 +106,21 @@ function broadCast(location) {
             $("#notificationContainer").empty();
               $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
 
-              // if(location['file'] !== 'default') {
-                if ($('.extra-audio').html() == false || $('.extra-audio').html() == null) {
-                  $('#default-audio').trigger('play');
+              if(location['file'] !== 'standby') {
+                var soundSetting = $('#dynamicSoundSetting').html();
+                console.log('SOUND: '+soundSetting);
+                if(soundSetting && soundSetting > 0) {
+                  if ($('.extra-audio').html() == false || $('.extra-audio').html() == null) {
+                    $('#default-audio').trigger('play');
+                  }/* else {
+                    $('.extra-audio').trigger('play');
+                  }
+                } else if (soundSetting && soundSetting == 1) {
+                */
                 }
-              // }
+
+
+              }
 
 
               //* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */

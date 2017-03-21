@@ -86,12 +86,14 @@
   </div>
 
   <div class="item hidden-xs col-sm-12 col-md-12 col-lg-5">
-    <div class="block">&nbsp;</div>
+    <div class="block">
+
+    </div>
   </div>
 
 </div>
 
-
+<div id="dynamicSoundSetting" class="hidden"></div>
 <script>
 
 
@@ -149,6 +151,7 @@ $(document).ready(function(){
   socket.on('updateDynamicData', function(dynamicData){
     $('#securityAlertLevel').html(dynamicData['alertLevel']);
     $('#countClientsCounter').html(dynamicData['countClients']);
+    $('#dynamicSoundSetting').html(dynamicData['soundsEnabled']);
     // meer toevoegen.
     // broadcast Last Active, als een soort resume ??
 

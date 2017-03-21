@@ -18,11 +18,13 @@ var globalSettings = {
   localaddress  : ip.address() +':'+ port,
 }
 var default_security_level = "Code green - All clear";
+var default_sound_setting = 2;
 
 /* DYNAMIC DATA: data die bij setup worden gebruikt en constant kunnen worden aangepast. */
 var dynamicData = {
   countClients  : 0,
-  alertLevel    : default_security_level
+  alertLevel    : default_security_level,
+  soundsEnabled : default_sound_setting
 }
 
 // var savedChatMessages = [];
@@ -84,6 +86,12 @@ io.on('connection', function (socket) {
     io.emit('updateDynamicData', dynamicData);
   });
 
+  socket.on('setSoundSetting', function(option){
+    var option = option.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+    dynamicData['soundsEnabled'] = option;
+    io.emit('updateDynamicData', dynamicData);
+  });
+
   // FORCE RESET ::
   socket.on('forceReset', function() {
     io.emit('F5');
@@ -95,23 +103,9 @@ io.on('connection', function (socket) {
     message[0] = message[0].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
     message[1] = message[1].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
 
-    // savedChatMessages[countChatMessages] = message;
-    //
-    // console.log(savedChatMessages);
-    // console.log(savedChatMessages[countChatMessages]);
-    //
-    // console.log(savedChatMessages.slice(0,7));
-    //
-    // countChatMessages = (countChatMessages+1);
-    // countChatLimit = (countChatLimit+1);
-
     io.emit('globalChatMessage',message);
-    // io.emit('F5');
-  });
 
-  // if(countChatMessages > 0) {
-  //   io.emit('reloadChat',savedChatMessages);
-  // }
+  });
 
 
   socket.on('requestDynamicData', function (){

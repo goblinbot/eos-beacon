@@ -178,6 +178,12 @@
     var admAUTH = getCookie('auth');
     var admUSER = getCookie('user');
 
+    setTimeout(function(){
+
+      socket.emit('requestDynamicData');
+
+    },500);
+
     if(admAUTH == 'TRUE') {
       $('#cPanel').load('/adm/cpanel.html');
       navigate('/adm/adminPanel');
