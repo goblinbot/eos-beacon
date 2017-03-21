@@ -13,10 +13,6 @@ function forceReset() {
   socket.emit('forceReset');
 }
 
-function setSoundSettings(option) {
-  socket.emit('changeSoundEnabled', option);
-}
-
 function submitChat(){
 
   var chatmessage = [ $('#chat-username').val() , $('#chat-message').val() ];

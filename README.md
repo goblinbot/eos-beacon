@@ -93,3 +93,5 @@ De meeste broadcasts staan in /public/adm/adminPanel.html (de achter inlog verst
 *<div class="btn btn-outline-success btn-lg btn-block" onclick="sendBroadCast(resetBroadcast); cpanelStatus('Broadcasts CLEARED');">
   <i class="glyphicon glyphicon-check"></i>&nbsp;CLEAR BROADCASTS
 </div>*
+
+(De functie cpanelstatus('TEXT') past tekst aan in de linkerhelft van BEACON.)
