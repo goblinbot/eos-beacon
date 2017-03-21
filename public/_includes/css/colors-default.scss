@@ -76,15 +76,7 @@ p {
 .holoContrast {
   color : $holoContrast;
 }
-.text-holo {
-  color: $holoBlauw;
-  &p {
-    color: $holoBlauw;
-  }
-  a {
-    color: $holoBlauw;
-  }
-}
+
 
 .block {
   transition    : 0.5s;

@@ -89,5 +89,7 @@ Deze roepen we dus aan met:
 **sendBroadCast(broadCastEnemyContact);**
 Deze functie kunnen we binden aan HTML knoppen/links _( onclick="sendBroadCast(broadCastEnemyContact);" )_ of we typen dit direct in **console** van je browser. Deze is in de meeste browsers te bereiken door op de pagina te rechtklikken (element inspecteren) of F12.
 
-De meeste broadcasts staan in /public/adm/adminPanel.html (de achter inlog verstopte backend) in de vorm van buttons, met daarop onclick de functies.
-voorbeeld: *onclick="sendBroadCast(resetBroadcast); cpanelStatus('Broadcasts CLEARED');"*
+De meeste broadcasts staan in /public/adm/adminPanel.html (de achter inlog verstopte backend) in de vorm van buttons, bijvoorbeeld:
+*<div class="btn btn-outline-success btn-lg btn-block" onclick="sendBroadCast(resetBroadcast); cpanelStatus('Broadcasts CLEARED');">
+  <i class="glyphicon glyphicon-check"></i>&nbsp;CLEAR BROADCASTS
+</div>*
