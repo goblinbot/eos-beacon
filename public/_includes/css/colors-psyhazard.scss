@@ -1,0 +1,247 @@
+// COLORS DEFAULT: dit bestand bevat bijna elke declaratie van kleuren, en de kleuren bovenaan als een variable.
+// Zo kan voor een alert heel eenvoudig een eigen kleurenschema gemaakt worden, want de kleuren hoeven maar op 1 plek aangepast te worden.
+
+// huidig actief:
+$borderColor  : #FFCC00;
+$textColor    : #FFFFFF;
+$titleColor   : #FFCC00;
+$altTitleColor: #FFCC00;
+$statusUnknown: #BB00BB; //404 pagina, bijvoorbeeld.
+$defaultdonker: #222222;
+$holoContrast : #FFCC00;
+$holohalf     : rgba(244, 00, 244, 0.5);
+$textmuted    : #DDDDDD;
+
+// kleuren van nationalgeographic's MARS
+$background     : #240120;
+$blocks         : #330033;
+$blocksmedium   : #470047;
+$blockslight    : #660066;
+$statusCritical : #ed3737;
+
+// misc voorbeeld kleuren:
+$gubatGeel    : #FFCC00;
+$aquilaBlauw  : #005B8E;
+$holoBlauw    : #FFCC00;
+
+/// 'orbit ui' kleuren
+$orbitLight   : #FFCC00;
+$orbitNormal  : #FFCC00;
+$orbitGreen   : #4fe38b;
+$orbitRed     : #ed3737;
+
+body {
+  background : $background;
+}
+
+.danger-line {
+  background : #ed3737;
+}
+
+.spinner {
+  border      : 16px solid $orbitLight;
+  border-left : 16px solid $orbitNormal;
+}
+
+.topHeader {
+  // background : $topbar;
+}
+
+hr {
+  background-color: $titleColor;
+  border-color    : $titleColor;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color : $titleColor;
+  &.alt-color {
+    color : $altTitleColor;
+  }
+  &.dark-color {
+    color : $altTitleColor;
+  }
+}
+
+p {
+  color : $textColor;
+}
+
+.text-white {
+  color : #FFFFFF;
+}
+.text-red {
+  color : $orbitRed;
+}
+
+.holoContrast {
+  color : $holoContrast;
+}
+
+
+.block {
+  transition    : 0.5s;
+  background    : $blocks;
+}
+.default-border {
+  border      : 1px solid $borderColor;
+}
+//temp toevoeging:
+.flash {
+  box-shadow: inset -1px -1px 3rem 5px $holohalf;
+}
+
+.block-light {
+  background    : $blockslight;
+}
+.block-medium {
+  background    : $blocksmedium;
+}
+.headerblock {
+  border-top    : 1px solid $blockslight;
+  border-bottom : 1px solid $blockslight;
+  background    : $blocksmedium;
+  h1, h2, h3 {
+    color       : $titleColor;
+  }
+}
+
+#main {
+  .middle {
+
+    .left-bar {
+      background: $blocks;
+
+      #clock {
+        color: $altTitleColor;
+        &h1 {
+          color: $altTitleColor;
+        }
+      }
+      &.no-bg {
+        background: none;
+      }
+    }
+    .middle-bar{
+      .block.no-bg {
+        background: none;
+      }
+    }
+    .right-bar{
+      // background: $rightbar;
+    }
+  }
+}
+
+#colony-feed {
+  border-bottom   : 4px solid $blocksmedium;
+
+  li {
+    border: 1px solid $blockslight;
+    .feed-top {
+
+      .feed-timestamp {
+        color: $altTitleColor;
+      }
+      .feed-user {
+        color : $textmuted;
+      }
+    }
+    .feed-message {
+      color : $textmuted;
+    }
+  }
+
+}
+
+// custom buttons :: zijn TOEVOEGINGEN bovenop de outline buttons.
+.btn-ui {
+  &.btn-ui-holo {
+    color           : $holoBlauw;
+    border-color    : $holoBlauw;
+    background-image: none;
+    background-color: transparent;
+    .glyphicon {
+      color           : $holoBlauw;
+      border-color    : $holoBlauw;
+      background-image: none;
+      background-color: transparent;
+    }
+
+    &:hover, &.active {
+      color: $defaultdonker;
+      border-color    : $holoBlauw;
+      background-color: $holoBlauw;
+      .glyphicon {
+        color: $defaultdonker;
+        border-color    : $holoBlauw;
+        background-color: $holoBlauw;
+      }
+    }
+  }
+  &.btn-ui-holo-alt {
+    color           : $holoContrast;
+    border-color    : $holoContrast;
+    background-image: none;
+    background-color: transparent;
+    .glyphicon {
+      color           : $holoContrast;
+      border-color    : $holoContrast;
+      background-image: none;
+      background-color: transparent;
+    }
+
+    &:hover, &.active {
+      color: $defaultdonker;
+      border-color    : $holoContrast;
+      background-color: $holoContrast;
+      .glyphicon {
+        color: $defaultdonker;
+        border-color    : $holoContrast;
+        background-color: $holoContrast;
+      }
+    }
+
+  }
+  &.btn-ui-holo-red {
+    color           : $orbitRed;
+    border-color    : $orbitRed;
+    background-image: none;
+    background-color: transparent;
+    .glyphicon {
+      color           : $orbitRed;
+      border-color    : $orbitRed;
+      background-image: none;
+      background-color: transparent;
+    }
+
+    &:hover, &.active {
+      color: $defaultdonker;
+      border-color    : $orbitRed;
+      background-color: $orbitRed;
+      .glyphicon {
+        color: $defaultdonker;
+        border-color    : $orbitRed;
+        background-color: $orbitRed;
+      }
+    }
+  }
+}
+
+// spinner voor portal incoming
+@keyframes portalCircleAnimation {
+  0% {
+    border: 16px solid transparent;
+  }
+  25% {
+    border-left: 16px solid $holoBlauw;
+  }
+  50% {
+    border-top: 16px solid $holoBlauw;
+  }
+  75% {
+    border-right: 16px solid $holoBlauw;
+  }
+  100% {
+    border-bottom: 16px solid $holoBlauw;
+  }
+}

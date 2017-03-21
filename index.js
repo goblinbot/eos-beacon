@@ -25,6 +25,11 @@ var dynamicData = {
   alertLevel    : default_security_level
 }
 
+// var savedChatMessages = [];
+// var countChatMessages = 0;
+// var countChatLimit    = -7;
+
+
 /* INITIALISEN VAN APP */
 
 // connection.connect();
@@ -88,10 +93,25 @@ io.on('connection', function (socket) {
   socket.on('sendChatMessage', function(message) {
 
     message[0] = message[0].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
-    message[1] = message[1].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, ''); 
+    message[1] = message[1].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+
+    // savedChatMessages[countChatMessages] = message;
+    //
+    // console.log(savedChatMessages);
+    // console.log(savedChatMessages[countChatMessages]);
+    //
+    // console.log(savedChatMessages.slice(0,7));
+    //
+    // countChatMessages = (countChatMessages+1);
+    // countChatLimit = (countChatLimit+1);
+
     io.emit('globalChatMessage',message);
     // io.emit('F5');
   });
+
+  // if(countChatMessages > 0) {
+  //   io.emit('reloadChat',savedChatMessages);
+  // }
 
 
   socket.on('requestDynamicData', function (){
@@ -115,11 +135,6 @@ io.on('connection', function (socket) {
     var checklogincode = 0;
     console.log('authentication code received: '+keycode);
 
-    // $.each( valid_logincodes, function(i, val) {
-    //     if(val == keycode) {
-    //       checklogincode = 1;
-    //     }
-    // });
     for (var i in valid_logincodes) {
       if(valid_logincodes[i] == keycode) {
         checklogincode = 1;

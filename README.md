@@ -5,8 +5,10 @@
 *Dit is een kleine JS applicatie bedoelt voor sci-fi larp Eos.
 Door: Thijs Boerma (IC: Maati Infor Danam)*
 
+
 # online mirror
 https://eos-beacon.herokuapps.com/
+
 
 # Onderdelen
 [BEACON] is afhankelijk van verschillende externe plugins/frameworks/luiheden, die hieronder staan gelijst.
@@ -25,6 +27,8 @@ PLUGINS ( Installeren via NPM ):
   - Bootstrap 3.3+
   - Een SCSS compiler (bij schrijven/bijwerken)
 
+
+
 # Alert/Broadcast/Notificaties uitleg:
 
 **HET MAKEN VAN EEN CUSTOM BROADCAST**
@@ -40,7 +44,7 @@ De broadcasts (ALERTS) bestaan uit drie onderdelen:
   Dit bevat alle gegevens om een alert/broadcasts op te roepen.
 
 **Het BROADCAST object:**
-Bestaat uit vijf waardes. Als voorbeeld kijken we naar **3** voorgekauwde broadcasts:
+Bestaat uit zes waardes. Als voorbeeld kijken we naar **3** voorgekauwde broadcasts:
 
 - var defaultBroadcast  = new broadcastObj("Broadcast Initialise","standby",1,"0","0");
 - var broadCastPortalIncoming = new broadcastObj("Portal Incoming","portalincoming",3,"30000","0");
@@ -49,7 +53,10 @@ Bestaat uit vijf waardes. Als voorbeeld kijken we naar **3** voorgekauwde broadc
 Deze staan gedefineerd in **broadcasts.js** in de public folder, en hier zijn toevoegingen makkelijk mogelijk.
 
 Een **broadcastObj** is op de volgende manier opgebouwd:
-*broadcastObj(title, file, priority, duration, colorscheme)*
+
+*var UNIEKENAAM = new broadcastObj(title, file, priority, duration, colorscheme)*
+
+**VAR UNIEKENAAM** => Een unieke naam om de broadcast mee aan te roepen.
 
 **title => de titel**, een korte omschrijving het liefst.
 
@@ -70,3 +77,21 @@ Een **broadcastObj** is op de volgende manier opgebouwd:
   - 1000 = 1 seconde
   - 60000 = 1 minuut
   - 360000 = 1 uur
+
+
+# Aanroepen van BROADCASTS:
+
+Broadcasts worden naar alle verbonden clients verstuurd via de functie **sendBroadCast(NAAM)** (Case Sensitive).
+
+**(NAAM)** is de **VAR UNIEKENAAM** die we hebben gedefineerd in broadcasts.js, zoals bijvoorbeeld, de broadcast 'broadCastEnemyContact'.
+Deze roepen we dus aan met:
+
+**sendBroadCast(broadCastEnemyContact);**
+Deze functie kunnen we binden aan HTML knoppen/links _( onclick="sendBroadCast(broadCastEnemyContact);" )_ of we typen dit direct in **console** van je browser. Deze is in de meeste browsers te bereiken door op de pagina te rechtklikken (element inspecteren) of F12.
+
+De meeste broadcasts staan in /public/adm/adminPanel.html (de achter inlog verstopte backend) in de vorm van buttons, bijvoorbeeld:
+*<div class="btn btn-outline-success btn-lg btn-block" onclick="sendBroadCast(resetBroadcast); cpanelStatus('Broadcasts CLEARED');">
+  <i class="glyphicon glyphicon-check"></i>&nbsp;CLEAR BROADCASTS
+</div>*
+
+(De functie cpanelstatus('TEXT') past tekst aan in de linkerhelft van BEACON.)

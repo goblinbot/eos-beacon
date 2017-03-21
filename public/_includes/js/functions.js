@@ -112,6 +112,12 @@ function broadCast(location) {
             $("#notificationContainer").empty();
               $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
 
+              // if(location['file'] !== 'default') {
+                if ($('.extra-audio').html() == false || $('.extra-audio').html() == null) {
+                  $('#default-audio').trigger('play');
+                }
+              // }
+
 
               //* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
               if(location['priority'] == 99) { location['priority'] = 1; }
