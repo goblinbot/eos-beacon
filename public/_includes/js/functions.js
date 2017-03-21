@@ -248,20 +248,24 @@ function updateClock() {
   var dow;
 	var currentTime = new Date();
     var dd = currentTime.getDate();
-    var mm = currentTime.getMonth()+1; //January is 0!
+    var mm = currentTime.getMonth()+2; //January is 0!
     // var dow = currenTime.prototype.getDay();
     if(dd < 10){
       dd='0'+dd;
     }
 
     if (dd == 24) {
-      dow = 'FRIDAY';
+      dd    = 01;
+      dow   = 'FRIDAY';
     } else if (dd == 25) {
-      dow = 'SATURDAY';
+      dd    = 02;
+      dow   = 'SATURDAY';
     } else if (dd == 26) {
-      dow = 'SUNDAY';
+      dd    = 03;
+      dow   = 'SUNDAY';
     } else {
-      dow = 'FRIDAY';
+      dd    = 01;
+      dow   = 'FRIDAY';
     }
 
   	var currentHours   = currentTime.getHours ( );
