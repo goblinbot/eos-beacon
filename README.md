@@ -7,7 +7,7 @@ Door: Thijs Boerma (IC: Maati Infor Danam)*
 
 
 # online mirror
-https://eos-beacon.herokuapps.com/
+https://eos-beacon.herokuapp.com/
 
 
 # Onderdelen
@@ -26,6 +26,10 @@ PLUGINS ( Installeren via NPM ):
 **OPMAAK (CSS/SCSS)**
   - Bootstrap 3.3+
   - Een SCSS compiler (bij schrijven/bijwerken)
+
+
+# Lokaal runnen
+Om BEACON lokaal te runnen, zul je **nodeJS** moeten downloaden en runnen. Dan vervolgens via het command prompt van de OS zelf navigeren (in windows: CMD) naar de map waar BEACON is gedownload (bijvoorbeeld: cd C:/nodeapps/eos-beacon/) en vervolgens het programma runnen met het commando **node index**.
 
 
 
@@ -89,9 +93,5 @@ Deze roepen we dus aan met:
 **sendBroadCast(broadCastEnemyContact);**
 Deze functie kunnen we binden aan HTML knoppen/links _( onclick="sendBroadCast(broadCastEnemyContact);" )_ of we typen dit direct in **console** van je browser. Deze is in de meeste browsers te bereiken door op de pagina te rechtklikken (element inspecteren) of F12.
 
-De meeste broadcasts staan in /public/adm/adminPanel.html (de achter inlog verstopte backend) in de vorm van buttons, bijvoorbeeld:
-*<div class="btn btn-outline-success btn-lg btn-block" onclick="sendBroadCast(resetBroadcast); cpanelStatus('Broadcasts CLEARED');">
-  <i class="glyphicon glyphicon-check"></i>&nbsp;CLEAR BROADCASTS
-</div>*
-
-(De functie cpanelstatus('TEXT') past tekst aan in de linkerhelft van BEACON.)
+De meeste broadcasts staan in /public/adm/adminPanel.html (de achter inlog verstopte backend) in de vorm van buttons, met daarop onclick de functies.
+voorbeeld: *onclick="sendBroadCast(resetBroadcast); cpanelStatus('Broadcasts CLEARED');"*
