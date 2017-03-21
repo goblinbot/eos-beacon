@@ -7,7 +7,7 @@ Door: Thijs Boerma (IC: Maati Infor Danam)*
 
 
 # online mirror
-https://eos-beacon.herokuapp.com/
+https://eos-beacon.herokuapps.com/
 
 
 # Onderdelen
