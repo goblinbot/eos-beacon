@@ -91,13 +91,14 @@
 
 </div>
 
-
+<input type='hidden' id="soundSetting" class="hidden"></input>
 <script>
 
 
 $(document).ready(function(){
   var activeMessages = 0;
   var printresult;
+  var soundsettings = 0;
 
   // functie: maak blokken footer even groot.
   updateFooter();
@@ -149,6 +150,7 @@ $(document).ready(function(){
   socket.on('updateDynamicData', function(dynamicData){
     $('#securityAlertLevel').html(dynamicData['alertLevel']);
     $('#countClientsCounter').html(dynamicData['countClients']);
+    $('#soundSetting').html(dynamicData['soundEnabled']);
     // meer toevoegen.
     // broadcast Last Active, als een soort resume ??
 

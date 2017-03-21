@@ -5,6 +5,7 @@ var navLimit    = 0;
 var clearIsActive = undefined;
 var activeColorScheme = '0';
 var activeBroadcast   = 1;
+var soundSettings     = 2;
 
 
 // navigeerd - een functie geerft uit www.gubat.nl, word eigenlijk maar eenmaal
@@ -112,11 +113,19 @@ function broadCast(location) {
             $("#notificationContainer").empty();
               $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
 
-              // if(location['file'] !== 'default') {
-                if ($('.extra-audio').html() == false || $('.extra-audio').html() == null) {
+              soundSettings = ($('#soundSetting').html());
+
+              if(soundSettings && soundSettings > 0 ){
+                if ($('.extra-audio').html() == false || $('.extra-audio').html() == null && soundSettings == 2) {
                   $('#default-audio').trigger('play');
+
+                } else if($('.extra-audio').html() && soundSettings > 0) {
+                  $('.extra-audio').trigger('play');
+
+                } else {
+                  // niks doen
                 }
-              // }
+              }
 
 
               //* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */

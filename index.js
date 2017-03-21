@@ -18,11 +18,13 @@ var globalSettings = {
   localaddress  : ip.address() +':'+ port,
 }
 var default_security_level = "Code green - All clear";
+var default_sound_enabled  = 2;
 
 /* DYNAMIC DATA: data die bij setup worden gebruikt en constant kunnen worden aangepast. */
 var dynamicData = {
   countClients  : 0,
-  alertLevel    : default_security_level
+  alertLevel    : default_security_level,
+  soundEnabled  : default_sound_enabled
 }
 
 // var savedChatMessages = [];
@@ -87,6 +89,17 @@ io.on('connection', function (socket) {
   // FORCE RESET ::
   socket.on('forceReset', function() {
     io.emit('F5');
+  });
+
+  // Geluid aan en uit zetten
+  socket.on('changeSoundEnabled', function(soundOption) {
+
+    if(is_numeric(soundOption) && (soundOption == 0 || soundOption == 1 || soundOption == 2)) {
+      dynamicData['soundEnabled'] = soundOption;
+    }
+
+    io.emit('updateDynamicData', dynamicData);
+
   });
 
   // chat bericht
