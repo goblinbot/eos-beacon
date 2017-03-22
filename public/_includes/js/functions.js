@@ -255,16 +255,16 @@ function updateClock() {
     }
 
     if (dd == 24) {
-      dd    = 01;
+      dd    = '01';
       dow   = 'FRIDAY';
     } else if (dd == 25) {
-      dd    = 02;
+      dd    = '02';
       dow   = 'SATURDAY';
     } else if (dd == 26) {
-      dd    = 03;
+      dd    = '03';
       dow   = 'SUNDAY';
     } else {
-      dd    = 01;
+      dd    = '01';
       dow   = 'FRIDAY';
     }
 
