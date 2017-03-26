@@ -248,7 +248,7 @@ function updateClock() {
   var dow;
 	var currentTime = new Date();
     var dd = currentTime.getDate();
-    var mm = currentTime.getMonth()+2; //January is 0!
+    var mm = currentTime.getMonth()+1; //January is 0!
     // var dow = currenTime.prototype.getDay();
     if(dd < 10){
       dd='0'+dd;
