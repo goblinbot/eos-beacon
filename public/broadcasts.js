@@ -38,4 +38,4 @@ var psyWarningBroadcast   = new broadcastObj("Psy-hazard detected","psyhazard",7
 var broadCastEnemyContact = new broadcastObj("Enemy Contact","enemycontact",8,"0","attack");
 var lowpowerBroadcast   = new broadcastObj("POWER SUPPLY WARNING","emergencypower",9,"0","gray");
 
-var lowpowerBroadcast   = new broadcastObj("SWEET MAIR MAKE IT STOP","StopMaati",9,"0","gray");
+var broadcasteaster   = new broadcastObj("SWEET MAIR MAKE IT STOP","StopMaati",9,"0","gray");
