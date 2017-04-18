@@ -41,8 +41,7 @@ De broadcasts (ALERTS) bestaan uit drie onderdelen:
 - De HTML pagina => In de /public/broadcasts/ folder.
   Dit is de pagina die zal verschijnen als alert, en alles wat hiermee word genomen. Bijvoorbeeld geluid, of filmpjes.
 
-- De CSS opmaak => In de /public/\_includes/css/ folder
-  Standaard pakt deze "colors-default.css". Er kan een custom kleurenpallet gekozen door deze aan te maken & te roepen in het javascript object, als volgt:
+- **CSS: Dit is in release MiddleManagementDino herschreven, mail me als je dit wilt weten voordat ik het heb kunnen uitschrijven!**
 
 - Het javascript object => Gedefineerd in /public/broadcasts.js
   Dit bevat alle gegevens om een alert/broadcasts op te roepen.
