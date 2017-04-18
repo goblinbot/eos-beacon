@@ -1,37 +1,9 @@
-// COLORS DEFAULT: dit bestand bevat bijna elke declaratie van kleuren, en de kleuren bovenaan als een variable.
-// Zo kan voor een alert heel eenvoudig een eigen kleurenschema gemaakt worden, want de kleuren hoeven maar op 1 plek aangepast te worden.
-
-// huidig actief:
-$borderColor  : #39DBCC;
-$textColor    : #FFFFFF;
-$titleColor   : #39DBCC;
-$altTitleColor: #f2A83B;
-$statusUnknown: #880088; //404 pagina, bijvoorbeeld.
-$defaultdonker: #222222;
-$holoContrast : #FF9933;
-$holohalf     : rgba(57, 219, 204, 0.5);
-$textmuted    : #DDDDDD;
-
-// kleuren van nationalgeographic's MARS
-$background     : #012324;
-$blocks         : #042A34;
-$blocksmedium   : #053A47;
-$blockslight    : #0B5E66;
-$statusCritical : #4b1002;
-
-// misc voorbeeld kleuren:
-$gubatGeel    : #FFCC00;
-$aquilaBlauw  : #005B8E;
-$holoBlauw    : #39DBCC;
-
-/// 'orbit ui' kleuren
-$orbitLight   : #b3fffc;
-$orbitNormal  : #2bede6;
-$orbitGreen   : #4fe38b;
-$orbitRed     : #ed3737;
-
 body {
   background : $background;
+}
+
+.danger-line {
+  background : $orbitRed;
 }
 
 .spinner {
@@ -99,11 +71,6 @@ p {
   h1, h2, h3 {
     color       : $titleColor;
   }
-}
-
-.hexIn {
-  background-color: $blocksmedium;
-  color           : $defaultdonker;
 }
 
 #main {
@@ -228,10 +195,21 @@ p {
   }
 }
 
-
-// BACKEND KLEUREN /////
-.adm-tab {
-  p {
-    color: $titleColor;
+// spinner voor portal incoming
+@keyframes portalCircleAnimation {
+  0% {
+    border: 16px solid transparent;
+  }
+  25% {
+    border-left: 16px solid $holoBlauw;
+  }
+  50% {
+    border-top: 16px solid $holoBlauw;
+  }
+  75% {
+    border-right: 16px solid $holoBlauw;
+  }
+  100% {
+    border-bottom: 16px solid $holoBlauw;
   }
 }

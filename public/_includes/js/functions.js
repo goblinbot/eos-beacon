@@ -84,20 +84,20 @@ function broadCast(location) {
 
             } else if (activeColorScheme != '0'  && location['colorscheme'] == '0') {
               /* UNLOAD DE VORIGE COLORSCHEME, VERVOLGENS: */
-              $('link[rel=stylesheet][href~="/_includes/css/colors-'+activeColorScheme+'.css"]').remove();
+              $('link[rel=stylesheet][href~="/_includes/css/alert-'+activeColorScheme+'.css"]').remove();
               activeColorScheme = '0';
 
             /* actief = default > broadcast = niet-default: */
             } else if (activeColorScheme == '0' && location['colorscheme'] != '0') {
 
-              $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/colors-'+location['colorscheme']+'.css') );
+              $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/alert-'+location['colorscheme']+'.css') );
               activeColorScheme = location['colorscheme'];
 
             } else if (location['colorscheme'] != '0' && activeColorScheme != location['colorscheme']) {
 
               /* laad ACTIVE uit, laad LOCATION in */
-              $('link[rel=stylesheet][href~="/_includes/css/colors-'+activeColorScheme+'.css"]').remove();
-              $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/colors-'+location['colorscheme']+'.css') );
+              $('link[rel=stylesheet][href~="/_includes/css/alert-'+activeColorScheme+'.css"]').remove();
+              $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/alert-'+location['colorscheme']+'.css') );
               activeColorScheme = location['colorscheme'];
             }
 
