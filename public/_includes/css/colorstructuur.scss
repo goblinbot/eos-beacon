@@ -213,3 +213,51 @@ p {
     border-bottom: 16px solid $holoBlauw;
   }
 }
+
+.glitch {
+  position: relative;
+  color: #FFF;
+  margin: 0 auto;
+}
+.glitch::before,.glitch::after{
+  content : attr(data-text);
+  position: absolute;
+  top     : 0;
+  left    : 0;
+  width   : 100%;
+  height  : 100%;
+}
+
+.glitch::before {
+  left          : 2px;
+  text-shadow   : 1px 0 $orbitRed;
+  background    : $defaultdonker;
+
+  clip:rect(0,900px,0,0);
+  animation: glitch-anim-1 3s infinite linear alternate-reverse;
+}
+.glitch::after {
+  left          : -2px;
+  text-shadow   : 1px 0 $holoBlauw;
+  background    : $defaultdonker;
+
+  clip:rect(0,900px,0,0);
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+    }
+  }
+}
+@keyframes glitch-anim-2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+    }
+  }
+}
