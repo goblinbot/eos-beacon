@@ -1,2 +1,154 @@
-body{background:#222}.danger-line{background:#ed3737}.spinner{border:16px solid #b3fffc;border-left:16px solid #2bede6}hr{background-color:#ddd;border-color:#ddd}h1,h2,h3,h4,h5,h6{color:#ddd}h1.alt-color,h2.alt-color,h3.alt-color,h4.alt-color,h5.alt-color,h6.alt-color{color:#ddd}h1.dark-color,h2.dark-color,h3.dark-color,h4.dark-color,h5.dark-color,h6.dark-color{color:#3F3F3F}p{color:#fff}.text-white{color:#FFFFFF}.text-red{color:#ed3737}.holoContrast{color:#ddd}.block{transition:0.5s;background:#333}.default-border{border:1px solid #ccc}.flash{box-shadow:inset -1px -1px 3rem 5px rgba(191,159,130,0.5)}.block-light{background:#3F3F3F}.block-medium{background:#3A3A3A}.headerblock{border-top:1px solid #3F3F3F;border-bottom:1px solid #3F3F3F;background:#3A3A3A}.headerblock h1,.headerblock h2,.headerblock h3{color:#ddd}#main .middle .left-bar{background:#333}#main .middle .left-bar #clock{color:#ddd}#main .middle .left-bar #clockh1{color:#ddd}#main .middle .left-bar.no-bg{background:none}#main .middle .middle-bar .block.no-bg{background:none}#colony-feed{border-bottom:4px solid #3A3A3A}#colony-feed li{border:1px solid #3F3F3F}#colony-feed li .feed-top .feed-timestamp{color:#ddd}#colony-feed li .feed-top .feed-user{color:#ddd}#colony-feed li .feed-message{color:#ddd}.btn-ui.btn-ui-holo{color:#39DBCC;border-color:#39DBCC;background-image:none;background-color:transparent}.btn-ui.btn-ui-holo .glyphicon{color:#39DBCC;border-color:#39DBCC;background-image:none;background-color:transparent}.btn-ui.btn-ui-holo:hover,.btn-ui.btn-ui-holo.active{color:#222;border-color:#39DBCC;background-color:#39DBCC}.btn-ui.btn-ui-holo:hover .glyphicon,.btn-ui.btn-ui-holo.active .glyphicon{color:#222;border-color:#39DBCC;background-color:#39DBCC}.btn-ui.btn-ui-holo-alt{color:#ddd;border-color:#ddd;background-image:none;background-color:transparent}.btn-ui.btn-ui-holo-alt .glyphicon{color:#ddd;border-color:#ddd;background-image:none;background-color:transparent}.btn-ui.btn-ui-holo-alt:hover,.btn-ui.btn-ui-holo-alt.active{color:#222;border-color:#ddd;background-color:#ddd}.btn-ui.btn-ui-holo-alt:hover .glyphicon,.btn-ui.btn-ui-holo-alt.active .glyphicon{color:#222;border-color:#ddd;background-color:#ddd}.btn-ui.btn-ui-holo-red{color:#ed3737;border-color:#ed3737;background-image:none;background-color:transparent}.btn-ui.btn-ui-holo-red .glyphicon{color:#ed3737;border-color:#ed3737;background-image:none;background-color:transparent}.btn-ui.btn-ui-holo-red:hover,.btn-ui.btn-ui-holo-red.active{color:#222;border-color:#ed3737;background-color:#ed3737}.btn-ui.btn-ui-holo-red:hover .glyphicon,.btn-ui.btn-ui-holo-red.active .glyphicon{color:#222;border-color:#ed3737;background-color:#ed3737}@keyframes portalCircleAnimation{0%{border:16px solid transparent}25%{border-left:16px solid #39DBCC}50%{border-top:16px solid #39DBCC}75%{border-right:16px solid #39DBCC}100%{border-bottom:16px solid #39DBCC}}.glitch{position:relative;color:#FFF;margin:0 auto}.glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%}.glitch::before{left:2px;text-shadow:1px 0 #ed3737;background:#222;clip:rect(0, 900px, 0, 0);animation:glitch-anim-1 3s infinite linear alternate-reverse}.glitch::after{left:-2px;text-shadow:1px 0 #39DBCC;background:#222;clip:rect(0, 900px, 0, 0);animation:glitch-anim-2 3s infinite linear alternate-reverse}@keyframes glitch-anim-1{0%{clip:rect(23px, 9999px, 38px, 0)}5%{clip:rect(96px, 9999px, 89px, 0)}10%{clip:rect(63px, 9999px, 6px, 0)}15.0%{clip:rect(14px, 9999px, 86px, 0)}20%{clip:rect(49px, 9999px, 57px, 0)}25%{clip:rect(5px, 9999px, 23px, 0)}30.0%{clip:rect(70px, 9999px, 51px, 0)}35%{clip:rect(50px, 9999px, 65px, 0)}40%{clip:rect(91px, 9999px, 53px, 0)}45%{clip:rect(40px, 9999px, 3px, 0)}50%{clip:rect(54px, 9999px, 75px, 0)}55.0%{clip:rect(87px, 9999px, 42px, 0)}60.0%{clip:rect(67px, 9999px, 79px, 0)}65%{clip:rect(26px, 9999px, 87px, 0)}70%{clip:rect(61px, 9999px, 25px, 0)}75%{clip:rect(58px, 9999px, 13px, 0)}80%{clip:rect(15px, 9999px, 34px, 0)}85.0%{clip:rect(24px, 9999px, 28px, 0)}90%{clip:rect(53px, 9999px, 95px, 0)}95%{clip:rect(15px, 9999px, 76px, 0)}100%{clip:rect(5px, 9999px, 66px, 0)}}@keyframes glitch-anim-2{0%{clip:rect(1px, 9999px, 67px, 0)}5%{clip:rect(75px, 9999px, 71px, 0)}10%{clip:rect(18px, 9999px, 27px, 0)}15.0%{clip:rect(9px, 9999px, 94px, 0)}20%{clip:rect(19px, 9999px, 45px, 0)}25%{clip:rect(24px, 9999px, 97px, 0)}30.0%{clip:rect(13px, 9999px, 87px, 0)}35%{clip:rect(43px, 9999px, 45px, 0)}40%{clip:rect(90px, 9999px, 97px, 0)}45%{clip:rect(30px, 9999px, 34px, 0)}50%{clip:rect(72px, 9999px, 19px, 0)}55.0%{clip:rect(21px, 9999px, 69px, 0)}60.0%{clip:rect(50px, 9999px, 20px, 0)}65%{clip:rect(2px, 9999px, 83px, 0)}70%{clip:rect(69px, 9999px, 41px, 0)}75%{clip:rect(86px, 9999px, 88px, 0)}80%{clip:rect(5px, 9999px, 35px, 0)}85.0%{clip:rect(55px, 9999px, 52px, 0)}90%{clip:rect(51px, 9999px, 79px, 0)}95%{clip:rect(53px, 9999px, 69px, 0)}100%{clip:rect(67px, 9999px, 36px, 0)}}
+body {
+  background: #222222; }
+
+.danger-line {
+  background: #ed3737; }
+
+.spinner {
+  border: 16px solid #b3fffc;
+  border-left: 16px solid #2bede6; }
+
+hr {
+  background-color: #DDDDDD;
+  border-color: #DDDDDD; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #DDDDDD; }
+  h1.alt-color, h2.alt-color, h3.alt-color, h4.alt-color, h5.alt-color, h6.alt-color {
+    color: #DDDDDD; }
+  h1.dark-color, h2.dark-color, h3.dark-color, h4.dark-color, h5.dark-color, h6.dark-color {
+    color: #3F3F3F; }
+
+p {
+  color: #FFFFFF; }
+
+.text-white {
+  color: #FFFFFF; }
+
+.text-red {
+  color: #ed3737; }
+
+.holoContrast {
+  color: #DDDDDD; }
+
+.holoRegular {
+  color: #DDDDDD; }
+
+.block {
+  transition: 0.5s;
+  background: #333333; }
+
+.default-border {
+  border: 1px solid #CCCCCC; }
+
+.flash {
+  box-shadow: inset -1px -1px 3rem 5px rgba(191, 159, 130, 0.5); }
+
+.block-light {
+  background: #3F3F3F; }
+
+.block-medium {
+  background: #3A3A3A; }
+
+.headerblock {
+  border-top: 1px solid #3F3F3F;
+  border-bottom: 1px solid #3F3F3F;
+  background: #3A3A3A; }
+  .headerblock h1, .headerblock h2, .headerblock h3 {
+    color: #DDDDDD; }
+
+#main .middle .left-bar {
+  background: #333333; }
+  #main .middle .left-bar #clock {
+    color: #DDDDDD; }
+    #main .middle .left-bar #clockh1 {
+      color: #DDDDDD; }
+  #main .middle .left-bar.no-bg {
+    background: none; }
+  #main .middle .left-bar .portalstatus h4 {
+    color: #DDDDDD; }
+  #main .middle .left-bar .portalstatus .portalstatus-icon .glyphicon {
+    color: #DDDDDD; }
+#main .middle .middle-bar .block.no-bg {
+  background: none; }
+#main .footer .item .block::before {
+  border-color: transparent #222222 #222222 transparent; }
+
+.btn-ui.btn-ui-holo {
+  color: #39DBCC;
+  border-color: #39DBCC;
+  background-image: none;
+  background-color: transparent; }
+  .btn-ui.btn-ui-holo .glyphicon {
+    color: #39DBCC;
+    border-color: #39DBCC;
+    background-image: none;
+    background-color: transparent; }
+  .btn-ui.btn-ui-holo:hover, .btn-ui.btn-ui-holo.active {
+    color: #222222;
+    border-color: #39DBCC;
+    background-color: #39DBCC; }
+    .btn-ui.btn-ui-holo:hover .glyphicon, .btn-ui.btn-ui-holo.active .glyphicon {
+      color: #222222;
+      border-color: #39DBCC;
+      background-color: #39DBCC; }
+.btn-ui.btn-ui-holo-alt {
+  color: #DDDDDD;
+  border-color: #DDDDDD;
+  background-image: none;
+  background-color: transparent; }
+  .btn-ui.btn-ui-holo-alt .glyphicon {
+    color: #DDDDDD;
+    border-color: #DDDDDD;
+    background-image: none;
+    background-color: transparent; }
+  .btn-ui.btn-ui-holo-alt:hover, .btn-ui.btn-ui-holo-alt.active {
+    color: #222222;
+    border-color: #DDDDDD;
+    background-color: #DDDDDD; }
+    .btn-ui.btn-ui-holo-alt:hover .glyphicon, .btn-ui.btn-ui-holo-alt.active .glyphicon {
+      color: #222222;
+      border-color: #DDDDDD;
+      background-color: #DDDDDD; }
+.btn-ui.btn-ui-holo-red {
+  color: #ed3737;
+  border-color: #ed3737;
+  background-image: none;
+  background-color: transparent; }
+  .btn-ui.btn-ui-holo-red .glyphicon {
+    color: #ed3737;
+    border-color: #ed3737;
+    background-image: none;
+    background-color: transparent; }
+  .btn-ui.btn-ui-holo-red:hover, .btn-ui.btn-ui-holo-red.active {
+    color: #222222;
+    border-color: #ed3737;
+    background-color: #ed3737; }
+    .btn-ui.btn-ui-holo-red:hover .glyphicon, .btn-ui.btn-ui-holo-red.active .glyphicon {
+      color: #222222;
+      border-color: #ed3737;
+      background-color: #ed3737; }
+
+@keyframes portalCircleAnimation {
+  0% {
+    border: 16px solid transparent; }
+  25% {
+    border-left: 16px solid #39DBCC; }
+  50% {
+    border-top: 16px solid #39DBCC; }
+  75% {
+    border-right: 16px solid #39DBCC; }
+  100% {
+    border-bottom: 16px solid #39DBCC; } }
+.glitch {
+  color: #FFFFFF; }
+
+.glitch::before {
+  text-shadow: 1px 0 #ed3737;
+  background: #222222; }
+
+.glitch::after {
+  text-shadow: 1px 0 #39DBCC;
+  background: #222222; }
+
 /*# sourceMappingURL=alert-gray.css.map */

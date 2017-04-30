@@ -27,21 +27,29 @@
       </div>
 
       <div class="block block-medium hidden-xs  col-sm-12">
-        <p>Last notification:</p>
-        <p><span id="lastBroadcastTitle">N/A</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="lastBroadcastTime">00:00</span></p>
+        <p>Last notification:<br/><span id="lastBroadcastTitle">N/A</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="lastBroadcastTime">00:00</span></p>
       </div>
     </div>
 
-    <div class="left-bar no-bg hidden-xs hidden-sm col-md-12">
+    <div class="left-bar no-bg hidden-xs col-sm-12 col-md-12">
       <div class="headerblock">
-        <h2>Colony Messages</h2>
+        <h2>Portal Status</h2>
       </div>
 
-      <ul id="colony-feed"></ul>
+      <div class="portalstatus">
+        <div class="col-xs-6 col-sm-5 col-md-3">
+          <span class="portalstatus-icon"><i class="glyphicon glyphicon-check"></i></span>
+        </div>
+        <div class="col-xs-6 col-sm-7 col-md-9">
+          <h4 class="portalstatus-title">Operational.</h4>
+          <p class="portalstatus-text">Nothing to report.</p>
+        </div>
+      </div>
+      <!-- <ul id="colony-feed"></ul> -->
 
     </div>
 
-</div>
+  </div>
 
   <!-- centraal blok -->
   <!-- <div class="middle-bar col-xs-12 col-sm-10 col-md-8 col-lg-9"> -->
@@ -59,29 +67,41 @@
   <div class="item col-xs-12 col-sm-12 col-md-4 col-lg-2">
     <div id="firstFooterBlock" class="block">
       <div class="content">
-        <h1 id="dd">01</h1>
-        <h1 id="dow">FRIDAY</h1>
+
+        <h1 id="dd">
+          <span class="glitch" data-text="00">00</span>
+        </h1>
+
+        <h1 id="dow">
+          <span class="glitch" data-text="J2405130">J2405130</span>
+        </h1>
+
         <h3 id="customdate">FEBRUARY 240NT</h3>
+
       </div>
     </div>
   </div>
 
-  <div class="item col-xs-12 col-sm-12 col-md-4 col-lg-3">
+  <div class="item col-xs-12 col-sm-12 col-md-5 col-lg-3">
     <div class="block">
       <div class="content">
         <h1>ALERT LEVEL</h1>
-        <h3 id="securityAlertLevel">-</h3>
+        <h3 id="securityAlertLevel">
+          <span class="glitch" data-text="$p infomorph#02 ..">$p infomorph#02 ..</span>
+        </h3>
       </div>
     </div>
   </div>
 
-  <div class="item col-xs-12 col-sm-12 col-md-4 col-lg-2">
+  <div class="item col-xs-12 col-sm-12 col-md-3 col-lg-2">
     <div class="block">
       <div class="headerblock margin-zero">
-        <h2 class="regularfont">Active Clients</h2>
+        <h2 class="regularfont">Open Connections</h2>
       </div>
       <h2 class="text-center"><i class="glyphicon glyphicon-user"></i></h2>
-      <h2 class="text-center alt-color" id="countClientsCounter">-</h2>
+      <h2 class="text-center alt-color" id="countClientsCounter">
+        <span class="glitch" data-text="0">0</span>
+      </h2>
     </div>
   </div>
 
@@ -126,23 +146,23 @@ $(document).ready(function(){
   });
 
 
-  socket.on('globalChatMessage', function(message) {
-    activeMessages = (activeMessages+1);
-
-    var currentTimeString = getCurrentTime();
-    var printresult = '<li class="feed-item" data-listnumber="'+activeMessages+'">';
-    printresult = (printresult + '<p class="feed-top"><span class="feed-timestamp"><i class="glyphicon glyphicon-time"></i>&nbsp;'+currentTimeString+'</span>&nbsp;<span class="feed-user"><i class="glyphicon glyphicon-user"></i>&nbsp;'+message[0]+'</span></p>');
-    printresult = (printresult + '<p class="feed-message">'+message[1]+'</p>');
-    printresult = (printresult + '</li>');
-
-    $('#colony-feed').prepend(printresult);
-
-    if(activeMessages > 7) {
-      var removeThis = (activeMessages-7);
-      $("li[data-listnumber='" + removeThis +"']").remove();
-    }
-
-  });
+  // socket.on('globalChatMessage', function(message) {
+  //   activeMessages = (activeMessages+1);
+  //
+  //   var currentTimeString = getCurrentTime();
+  //   var printresult = '<li class="feed-item" data-listnumber="'+activeMessages+'">';
+  //   printresult = (printresult + '<p class="feed-top"><span class="feed-timestamp"><i class="glyphicon glyphicon-time"></i>&nbsp;'+currentTimeString+'</span>&nbsp;<span class="feed-user"><i class="glyphicon glyphicon-user"></i>&nbsp;'+message[0]+'</span></p>');
+  //   printresult = (printresult + '<p class="feed-message">'+message[1]+'</p>');
+  //   printresult = (printresult + '</li>');
+  //
+  //   $('#colony-feed').prepend(printresult);
+  //
+  //   if(activeMessages > 7) {
+  //     var removeThis = (activeMessages-7);
+  //     $("li[data-listnumber='" + removeThis +"']").remove();
+  //   }
+  //
+  // });
 
 
   // vraagt dynamische data op, zoals security level en actieve gebruikers.

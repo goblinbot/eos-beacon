@@ -1,6 +1,6 @@
 /*
 Error: Undefined variable: "$background".
-        on line 2 of C:\NODE\eos-beacon\public\_includes\css\colorstructuur.scss
+        on line 2 of C:\Users\GGBOT\nodeapps\eos-beacon\public\_includes\css\colorstructuur.scss
 
 1: body {
 2:   background : $background;
@@ -11,7 +11,7 @@ Error: Undefined variable: "$background".
 7: }
 
 Backtrace:
-C:\NODE\eos-beacon\public\_includes\css\colorstructuur.scss:2
+C:\Users\GGBOT\nodeapps\eos-beacon\public\_includes\css\colorstructuur.scss:2
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/variable.rb:49:in `_perform'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/node.rb:50:in `perform'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:384:in `visit_prop'
@@ -58,4 +58,4 @@ C:/Program Files (x86)/Koala/bin/sass:18:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$background\".\A         on line 2 of C:\NODE\eos-beacon\public\_includes\css\colorstructuur.scss\A \A 1: body {\A 2:   background : $background;\A 3: }\A 4: \A 5: .danger-line {\A 6:   background : $orbitRed;\A 7: }"; }
+  content: "Error: Undefined variable: \"$background\".\A         on line 2 of C:\Users\GGBOT\nodeapps\eos-beacon\public\_includes\css\colorstructuur.scss\A \A 1: body {\A 2:   background : $background;\A 3: }\A 4: \A 5: .danger-line {\A 6:   background : $orbitRed;\A 7: }"; }

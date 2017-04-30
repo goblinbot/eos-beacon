@@ -44,6 +44,9 @@ p {
 .holoContrast {
   color : $holoContrast;
 }
+.holoRegular {
+  color : $titleColor;
+}
 
 
 .block {
@@ -88,6 +91,14 @@ p {
       &.no-bg {
         background: none;
       }
+      .portalstatus {
+        h4 {
+          color: $altTitleColor;
+        }
+        .portalstatus-icon .glyphicon {
+          color: $altTitleColor;
+        }
+      }
     }
     .middle-bar{
       .block.no-bg {
@@ -98,28 +109,48 @@ p {
       // background: $rightbar;
     }
   }
-}
 
-#colony-feed {
-  border-bottom   : 4px solid $blocksmedium;
+  .footer {
+    .item {
+      .block {
+        // border-top: 1px solid $blockslight;
+        // border-right: 1px solid $blockslight;
+        &::before {
+          // border-color: $background transparent transparent $background;
+          border-color: transparent $background $background transparent;
 
-  li {
-    border: 1px solid $blockslight;
-    .feed-top {
-
-      .feed-timestamp {
-        color: $altTitleColor;
+          // border-bottom: 1px solid $blockslight;
+          // border-left: 2px solid $blockslight;
+        }
+        // &::after {
+        //   border-left: 2px solid $blockslight;
+        // }
       }
-      .feed-user {
-        color : $textmuted;
-      }
-    }
-    .feed-message {
-      color : $textmuted;
     }
   }
 
 }
+
+// #colony-feed {
+//   border-bottom   : 4px solid $blocksmedium;
+//
+//   li {
+//     border: 1px solid $blockslight;
+//     .feed-top {
+//
+//       .feed-timestamp {
+//         color: $altTitleColor;
+//       }
+//       .feed-user {
+//         color : $textmuted;
+//       }
+//     }
+//     .feed-message {
+//       color : $textmuted;
+//     }
+//   }
+//
+// }
 
 // custom buttons :: zijn TOEVOEGINGEN bovenop de outline buttons.
 .btn-ui {
@@ -215,49 +246,14 @@ p {
 }
 
 .glitch {
-  position: relative;
-  color: #FFF;
-  margin: 0 auto;
-}
-.glitch::before,.glitch::after{
-  content : attr(data-text);
-  position: absolute;
-  top     : 0;
-  left    : 0;
-  width   : 100%;
-  height  : 100%;
+  color: $textColor;
 }
 
 .glitch::before {
-  left          : 2px;
   text-shadow   : 1px 0 $orbitRed;
   background    : $defaultdonker;
-
-  clip:rect(0,900px,0,0);
-  animation: glitch-anim-1 3s infinite linear alternate-reverse;
 }
 .glitch::after {
-  left          : -2px;
   text-shadow   : 1px 0 $holoBlauw;
   background    : $defaultdonker;
-
-  clip:rect(0,900px,0,0);
-  animation: glitch-anim-2 3s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim-1 {
-  $steps: 20;
-  @for $i from 0 through $steps {
-    #{percentage($i*(1/$steps))} {
-      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
-    }
-  }
-}
-@keyframes glitch-anim-2 {
-  $steps: 20;
-  @for $i from 0 through $steps {
-    #{percentage($i*(1/$steps))} {
-      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
-    }
-  }
 }

@@ -16,7 +16,7 @@ function broadcastObj(title, file, priority, duration, colorscheme) {
   this.title        = title;
   this.file         = file;
   this.priority     = priority;
-  this.duration     = duration; // LET OP : DURATION WORD NIET GEBRUIKT.
+  this.duration     = duration;
   this.colorscheme  = colorscheme;
 }
 
@@ -33,9 +33,9 @@ var broadCastPortalIncoming = new broadcastObj("Portal Incoming","portalincoming
 var broadCastPortalOutgoing= new broadcastObj("Portal Outgoing","portaloutgoing",3,"17500","0");
 var broadCastBlood        = new broadcastObj("Medical Request","bloodrequest",4,"0","0");
 
-var hazardBroadcast       = new broadcastObj("Envirnomental Hazard detected","biohazard",7,"0","hazard");
-var psyWarningBroadcast   = new broadcastObj("Psy-hazard detected","psyhazard",7,"0","psyhazard");
+var hazardBroadcast       = new broadcastObj("Envirnomental Hazard detected","biohazard",8,"0","hazard");
+var psyWarningBroadcast   = new broadcastObj("Psy-hazard detected","psyhazard",8,"0","psyhazard");
 var broadCastEnemyContact = new broadcastObj("Enemy Contact","enemycontact",8,"0","attack");
-var lowpowerBroadcast   = new broadcastObj("POWER SUPPLY WARNING","emergencypower",9,"0","gray");
+var lowpowerBroadcast   = new broadcastObj("POWER SUPPLY WARNING","emergencypower",8,"0","gray");
 
-var broadcasteaster   = new broadcastObj("SWEET MAIR MAKE IT STOP","StopMaati",9,"0","gray");
+var broadcasteaster   = new broadcastObj("SWEET MAIR MAKE IT STOP","StopMaati",8,"0","gray");

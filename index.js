@@ -27,10 +27,6 @@ var dynamicData = {
   soundsEnabled : default_sound_setting
 }
 
-// var savedChatMessages = [];
-// var countChatMessages = 0;
-// var countChatLimit    = -7;
-
 
 /* INITIALISEN VAN APP */
 
@@ -72,7 +68,11 @@ io.on('connection', function (socket) {
 
   // stuurt IP naar de index pagina zodat deze bovenin kan worden laten zien.
   // socket.emit('showIP', 'IP: ' + localaddress);
-  socket.emit('startConfig', globalSettings);
+
+  setTimeout(function(){
+    socket.emit('startConfig', globalSettings);
+  },500);
+
 
   // CLEARALL :: reset sec status.
   socket.on('ClearAll', function() {
@@ -98,14 +98,14 @@ io.on('connection', function (socket) {
   });
 
   // chat bericht
-  socket.on('sendChatMessage', function(message) {
-
-    message[0] = message[0].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
-    message[1] = message[1].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
-
-    io.emit('globalChatMessage',message);
-
-  });
+    // socket.on('sendChatMessage', function(message) {
+    //
+    //   message[0] = message[0].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+    //   message[1] = message[1].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+    //
+    //   io.emit('globalChatMessage',message);
+    //
+    // });
 
 
   socket.on('requestDynamicData', function (){
