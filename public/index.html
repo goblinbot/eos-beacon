@@ -19,7 +19,7 @@
 
   <title>BEACON - BROADCASTING & INFORMATION SYSTEMS</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5" name="viewport" />
   <link rel="stylesheet" type="text/css" href="/_includes/bs3-css/bootstrap.min.css" />
   <!-- <link rel="stylesheet" type="text/css" href="/_includes/css/hex.css" /> -->
   <link rel="stylesheet" type="text/css" href="/_includes/css/keyframes.css" />
@@ -78,7 +78,7 @@
             <div class="whitespace col-sm-12 hidden-xs">&nbsp;</div>
 
             <div class="middle hidden-xs col-sm-12">
-              <img class="loadCircle" src="/images/orbit.png"/>
+              <img class="loadCircle" src="/images/orbit.png" alt="Loading .."/>
             </div>
 
             <div class="flavor hidden-xs col-sm-12">
@@ -142,9 +142,6 @@
   </div>
 </div>
 
-<!-- houdt aantal navigaties/broadcasts bij om te voorkomen dat het systeem helemaal vol raakt. -->
-<input type='hidden' id="navCount" class="hidden"></input>
-
 <script type="text/javascript" src="/_includes/js/jquery.min.js"></script>
 <script type="text/javascript" src="/broadcasts.js"></script>
 <script type="text/javascript" src="/_includes/bs3-js/bootstrap.min.js"></script>
@@ -165,8 +162,6 @@ $(document).ready(function(){
   socket.on('F5', function(){
     location.reload();
   });
-
-
 
   setTimeout(function(){
     // Eerste keer? Laad dan mainscreen gelijk.
