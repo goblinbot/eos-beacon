@@ -22,7 +22,6 @@ $boldFontStack  : 'Titillium-Bold', Helvetica, sans-serif;
 @mixin animation($values) {
   -webkit-animation   : $values;
   -moz-animation      : $values;
-  -animation          : $values;
   animation           : $values;
 }
 
