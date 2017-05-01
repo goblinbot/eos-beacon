@@ -1,0 +1,41 @@
+BROADCASTS:
+
+bestaan uit verschillende onderdelen, de eerste 2 essentïeel.
+
+===============================================================================
+
+de html paginas/broadcasts (/public/broadcasts/ folder)
+
+  * maak bestand jouwbroadcastnaam.html aan.
+  * voeg eerst de standaard opmaak toe: zie hieronder
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+
+
+      </div>
+    </div>
+  </div>
+
+  * schrijf je teksten en opmaak tussen '<div class="col-xs-12 text-center">' en '</div>', bijvoorbeeld: '<h1>Hallo Eos!</h1>'
+
+===============================================================================
+
+het javascript object (dus alle eigenschappen bij elkaar, in broadcasts.js in de /public/ folder )
+
+* voeg een nieuwe regel toe :
+
+  var UNIEKENAAM  = new broadcastObj("KORTE OMSCHRIJVING","DOELPAGINA",1,"0","0");
+
+  - "UNIEKENAAM" is de unieke verzamelnaam, deze roepen we aan om de alert af te laten gaan.
+  - "DOELPAGINA" is de bestandsnaam die je hierboven hebt aangemaakt, zonder .html erachter.
+  - " 1 " is een waarde van 1 tot en met 10, dit is het prioriteits niveau van je broadcast. een incoming attack is bijvoorbeeld 8, want die is heel belangrijk.
+  - "0" (de eerste) is de levensduur van de alert in miliseconden. 0 blijft staan tot hij word overschreven, maar 3000 blijft bijvoorbeeld 3 seconden.
+  - "0" (de tweede) is de naam van het kleurenschema wat hij moet gebruiken, 0 is default, "low power warning" gebruikt dan weer 'Gray', om alert-gray.css als opmaak in te voegen.
+
+===============================================================================
+
+SCSS/CSS KLEURENSCHEMAS
+
+bla
