@@ -145,23 +145,35 @@ $(document).ready(function(){
     console.log('# ... OK');
   });
 
+  var defaultSoundFile = "/sounds/Menu_Select_00.wav";
+
+  if ($(window).width() > 960) {
+    $('.audiocontrol').html('<audio id="default-audio" controls="controls" class="hidden">'
+    + '<source src="'+ defaultSoundFile +'" type="audio/mpeg">'
+    +'</audio>');
+  }
+
+
+
+
+
   /*
   socket.on('globalChatMessage', function(message) {
     activeMessages = (activeMessages+1);
-  
+
     var currentTimeString = getCurrentTime();
     var printresult = '<li class="feed-item" data-listnumber="'+activeMessages+'">';
     printresult = (printresult + '<p class="feed-top"><span class="feed-timestamp"><i class="glyphicon glyphicon-time"></i>&nbsp;'+currentTimeString+'</span>&nbsp;<span class="feed-user"><i class="glyphicon glyphicon-user"></i>&nbsp;'+message[0]+'</span></p>');
     printresult = (printresult + '<p class="feed-message">'+message[1]+'</p>');
     printresult = (printresult + '</li>');
-  
+
     $('#colony-feed').prepend(printresult);
-  
+
     if(activeMessages > 7) {
       var removeThis = (activeMessages-7);
       $("li[data-listnumber='" + removeThis +"']").remove();
     }
-  
+
   });
   */
 
