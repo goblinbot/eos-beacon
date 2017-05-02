@@ -94,7 +94,7 @@
               <div class="col-xs-3">... OK</div>
               <div class="col-xs-9">$ EOS-BCN /init</div>
               <div class="col-xs-3">... OK</div>
-              <div class="col-xs-9 blinkText">$ starttime->nanotime();</div>
+              <div class="col-xs-9 blinkText">$ starttime->format(nanotime());</div>
               <div class="col-xs-3">... OK</div>
             </div>
 
@@ -108,8 +108,8 @@
             <div class="rightflavor load3">
               <div class="col-xs-12">. . . </div>
               <div class="col-xs-12">. . . </div>
-              <div class="col-xs-12">Compatible devices detected</div>
-              <div class="col-xs-12">Compatible infomorph detected</div>
+              <div class="col-xs-12">Compatible device(s) detected</div>
+              <div class="col-xs-12">Compatible infomorph(s) detected</div>
               <div class="col-xs-12 text-red">err: non-standard infomorph, reroute()</div>
             </div>
             <div class="rightflavor load4">
@@ -117,11 +117,11 @@
             </div>
 
             <div class="rightflavor load5">
-              <div class="col-xs-9">init commCOLONY?ver=1.19</div>
+              <div class="col-xs-9">init commCOLONY?ver=1.21</div>
               <div class="col-xs-3">... OK</div>
               <div class="col-xs-9">set_planet('EOS')</div>
               <div class="col-xs-3">... OK</div>
-              <div class="col-xs-9">set_name('Bastion')</div>
+              <div class="col-xs-9">set_name(\'Bastion\')</div>
               <div class="col-xs-3">... OK</div>
               <div class="col-xs-9">set_timezone('EOS-ECT')</div>
               <div class="col-xs-3">... OK</div>
@@ -147,19 +147,18 @@
 <script>
 
 $(document).ready(function(){
-
-  // update on load alle titels, descriptions en het IP adres rechtsboven.
+  /* update on load alle titels, descriptions en het IP adres rechtsboven.*/
   socket.on('startConfig', function(settings){
     $('#localIP').html(settings['localaddress']);
   });
 
-  // ForceReset. F5'd de pagina.
+  /* ForceReset. F5'd de pagina.*/
   socket.on('F5', function(){
     location.reload();
   });
 
   setTimeout(function(){
-    // Eerste keer? Laad dan mainscreen gelijk.
+    /* Eerste keer? Laadt dan mainscreen gelijk.*/
     navigate('mainScreen');
   },2500);
 });
