@@ -156,7 +156,7 @@ p.text-lg, .text-lg {
 
 // loadingscreen
 #loadingScreen {
-  .flavor {
+  .flavor, .middle {
     margin : {
       left: auto;
       right: auto;
@@ -165,7 +165,6 @@ p.text-lg, .text-lg {
     }
   }
   .middle {
-    @extend .flavor;
     text-align: center;
   }
 
