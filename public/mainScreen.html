@@ -55,7 +55,12 @@
   <!-- <div class="middle-bar col-xs-12 col-sm-10 col-md-8 col-lg-9"> -->
   <div class="middle-bar col-xs-12 col-sm-12 col-md-8 col-lg-9">
     <div class="block no-bg">
-      <div id="notificationContainer"></div>
+      <div id="notificationContainer">
+        <!-- placehold spincircle: loading 800ms lang ivm jquery. -->
+        <div class="portalCircleContainer" style="margin-top:25%;">
+          <div class="portalCircle">&nbsp;</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -133,7 +138,7 @@ $(document).ready(function(){
     broadCast(defaultBroadcast);
     socket.emit('requestDynamicData');
 
-  },500);
+  },800);
 
   // hier defineren we de realtime update: als de =socket= een broadcast ontvangt, dan voert de client deze uit.
   socket.on('broadcastReceive', function(location){
