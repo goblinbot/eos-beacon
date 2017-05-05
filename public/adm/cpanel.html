@@ -27,3 +27,28 @@
 
 <br/>
 <p>///: kleine context hierboven met de extra knoppen: knoppen worden zometeen op inlog rank zichtbaar/ontzichtbaar. Dag~</p>
+
+<script>
+$(document).ready(function(){
+
+    var admRANK = getCookie('rank');
+
+    if((admRANK < 1) || (admRANK > 4)) {
+
+      logout();
+
+    } else {
+      switch(admRANK) {
+        case '1': case '2': default:
+          $('.overlord').empty();
+          $('.officer').empty();
+          break;
+        case '3':
+          $('.overlord').empty();
+          break;
+        case '4':
+          break;
+      }
+    }
+});
+</script>
