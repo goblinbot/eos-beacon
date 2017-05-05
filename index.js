@@ -10,7 +10,7 @@ var session = require('client-sessions');
 
 
 /* CONFIGURATIE: vaste gegevens bij start up. */
-var port          = process.env.PORT || 5000;
+var port          = process.env.PORT || 5001;
 var globalSettings = {
   appnaam1      : 'BEACON',
   appdescription: '/ EOS BASTION INFORMATION SERVICE',
@@ -34,11 +34,11 @@ function accountObj(logincode,loginrank) {
   this.loginrank = loginrank;
 }
 var valid_accounts = [];
-    valid_accounts[0] = new accountObj('00451','4');
-    valid_accounts[1] = new accountObj('07311','4');
-    valid_accounts[2] = new accountObj('12345','3');
-    valid_accounts[3] = new accountObj('67890','1');
-
+    valid_accounts[0] = (new accountObj('00451','4'));
+    valid_accounts[1] = (new accountObj('07311','4'));
+    valid_accounts[2] = (new accountObj('12345','3'));
+    valid_accounts[3] = (new accountObj('67890','1'));
+console.log(valid_accounts);
 
 /* INITIALISEN VAN APP */
 
@@ -137,18 +137,38 @@ io.on('connection', function (socket) {
   });
 
 
+  // socket.on('auth', function(keycode){
+  //   var checklogincode = 0;
+  //   console.log('authentication code received: '+keycode);
+  //
+  //   for (var i in valid_logincodes) {
+  //     if(valid_logincodes[i] == keycode) {
+  //       checklogincode = 1;
+  //     }
+  //   }
+  //
+  //   if(checklogincode == 1) {
+  //     socket.emit('authTrue', keycode);
+  //   } else {
+  //     socket.emit('authFalse');
+  //   }
+  // });
   socket.on('auth', function(keycode){
     var checklogincode = 0;
+    var loginrank = 0;
     console.log('authentication code received: '+keycode);
 
-    for (var i in valid_logincodes) {
-      if(valid_logincodes[i] == keycode) {
+    for (var i in valid_accounts) {
+
+      if(valid_accounts[i].logincode == keycode) {
         checklogincode = 1;
+        console.log(valid_accounts[i]);
+        loginrank = valid_accounts[i].loginrank;
       }
     }
 
     if(checklogincode == 1) {
-      socket.emit('authTrue', keycode);
+      socket.emit('authTrue', keycode, loginrank);
     } else {
       socket.emit('authFalse');
     }

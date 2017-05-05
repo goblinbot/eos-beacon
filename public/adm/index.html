@@ -165,10 +165,11 @@
     }
   });
 
-  socket.on('authTrue', function(keycode){
+  socket.on('authTrue', function(keycode,loginrank){
     attempts = 0;
     setCookie('auth','TRUE','1');
     setCookie('usercode',keycode,'1');
+    setCookie('rank',loginrank,'1');
     $('#cPanel').load('/adm/cpanel.html');
     navigate('/adm/adminPanel');
   });
@@ -176,6 +177,7 @@
   $(document).ready(function() {
     var admAUTH = getCookie('auth');
     var admUSER = getCookie('usercode');
+    var admRANK = getCookie('rank');
 
     setTimeout(function(){
 
