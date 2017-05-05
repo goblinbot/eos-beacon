@@ -6,9 +6,8 @@ var io      = require('socket.io')(http);
 var $       = require('jquery');
 var ip      = require('ip');
 var bodyParser = require('body-parser');
+var session = require('client-sessions');
 
-/* VALIDE LOGIN CODES */
-var valid_logincodes = ['00451','12345','67890','07311'];
 
 /* CONFIGURATIE: vaste gegevens bij start up. */
 var port          = process.env.PORT || 5000;
@@ -26,6 +25,19 @@ var dynamicData = {
   alertLevel    : default_security_level,
   soundsEnabled : default_sound_setting
 }
+
+/* accounts */
+var valid_logincodes = ['00451','12345','67890','07311'];
+
+function accountObj(logincode,loginrank) {
+  this.logincode = logincode;
+  this.loginrank = loginrank;
+}
+var valid_accounts = [];
+    valid_accounts[0] = new accountObj('00451','4');
+    valid_accounts[1] = new accountObj('07311','4');
+    valid_accounts[2] = new accountObj('12345','3');
+    valid_accounts[3] = new accountObj('67890','1');
 
 
 /* INITIALISEN VAN APP */
