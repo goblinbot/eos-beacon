@@ -59,6 +59,9 @@ function broadCast(location) {
 
     var currentTimeString = getCurrentTime();
 
+    /* miniscuul optimization ding: FlashFunctie pakt de FlashBlocks functie en slaat deze op, zodat de broadCast functie deze niet 2x of 4x extern hoeft op te halen. */
+    var FlashFunctie = FlashBlocks;
+
     $.get('/broadcasts/'+location['file']+'.html')
       .done(function(){
 
@@ -149,9 +152,9 @@ function broadCast(location) {
                 clearBroadcast(location['duration']);
               }
 
-            FlashBlocks('.block');
+            FlashFunctie('.block');
             setTimeout(function(){
-              FlashBlocks('.block');
+              FlashFunctie('.block');
             },1200);
           }
         }
@@ -161,9 +164,9 @@ function broadCast(location) {
         $('link[rel=stylesheet][href~="/_includes/css/colors-'+activeColorScheme+'.css"]').remove();
       }
 
-      FlashBlocks('.block');
+      FlashFunctie('.block');
       setTimeout(function(){
-        FlashBlocks('.block');
+        FlashFunctie('.block');
       },1200);
 
       activeColorScheme   = '0';
@@ -178,9 +181,11 @@ function broadCast(location) {
 
 // VERSTUURD DE BROADCAST: kleine hack om vanaf de admin op knop een alert te kunnen posten.
 function sendBroadCast(location) {
-  FlashBlocks('.adm-tab');
+  var FlashFunctie = FlashBlocks;
+
+  FlashFunctie('.adm-tab');
   setTimeout(function(){
-    FlashBlocks('.adm-tab');
+    FlashFunctie('.adm-tab');
   },1200);
   socket.emit('broadcastSend',location);
 }

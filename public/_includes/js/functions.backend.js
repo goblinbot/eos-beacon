@@ -20,7 +20,7 @@ function setSoundSettings(option) {
   socket.emit('setSoundSetting', option);
 }
 
-function submitChat(){
+/*function submitChat(){
 
   var chatmessage = [ $('#chat-username').val() , $('#chat-message').val() ];
 
@@ -34,8 +34,7 @@ function submitChat(){
       $('#chat-button').show();
     },15000);
   }
-
-}
+}*/
 
 function cpanelStatus(message) {
   if(message != null && message != "") {
@@ -46,13 +45,14 @@ function cpanelStatus(message) {
 
 function updateSecurity(selector) {
   var newSecLevel = $('#'+selector).val();
+  var FlashFunctie = FlashBlocks;
 
   if(newSecLevel && newSecLevel != "") {
 
     socket.emit( 'updateSecurity', newSecLevel );
-    FlashBlocks('.adm-tab');
+    FlashFunctie('.adm-tab');
     setTimeout(function(){
-      FlashBlocks('.adm-tab');
+      FlashFunctie('.adm-tab');
     },1200);
 
   }
