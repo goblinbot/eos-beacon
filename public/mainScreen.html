@@ -112,7 +112,7 @@
 
   <div class="item hidden-xs col-sm-12 col-md-12 col-lg-5">
     <div class="block">
-
+      <p id="clientCode">&nbsp;</p>
     </div>
   </div>
 
@@ -192,6 +192,8 @@ $(document).ready(function(){
     $('#dynamicSoundSetting').html(dynamicData['soundsEnabled']);
     // meer toevoegen.
     // broadcast Last Active, als een soort resume ??
+
+    $('#clientCode').html(socket.id);
 
   });
 

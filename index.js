@@ -26,6 +26,10 @@ var dynamicData = {
   soundsEnabled : default_sound_setting
 }
 
+/* ACTIVE DEVICE VARS */
+var activeClients = [];
+var deviceLabelArray = ['00.','FA.','A2.','63.','D4.','19.','C5.','D3.','81.'];
+
 /* accounts */
 var valid_logincodes = ['00451','12345','67890','07311'];
 
@@ -38,7 +42,6 @@ var valid_accounts = [];
     valid_accounts[1] = (new accountObj('07311','4'));
     valid_accounts[2] = (new accountObj('12345','3'));
     valid_accounts[3] = (new accountObj('67890','1'));
-console.log(valid_accounts);
 
 /* INITIALISEN VAN APP */
 
@@ -72,14 +75,28 @@ app.get('/', function(req, res){
   res.sendFile('index.html', {"root": __dirname+'/public/'});
 });
 
-
 io.on('connection', function (socket) {
 
   dynamicData['countClients']++;
+
+
+  activeClients[socket.id] = [];
+  activeClients[socket.id]["id"] = socket.id;
+
+
+
+  activeClients[socket.id]["name"] = (deviceLabelArray[Math.floor(Math.random() * deviceLabelArray.length)]) + (Math.round(100+(Math.random() * (999-100))));
+
+  console.log(activeClients);
+
+
+
   console.log('Device connected. '+dynamicData['countClients']+' active clients.');
 
   // stuurt IP naar de index pagina zodat deze bovenin kan worden laten zien.
   // socket.emit('showIP', 'IP: ' + localaddress);
+
+  // io.to(lastID).emit('F5');
 
   setTimeout(function(){
     socket.emit('startConfig', globalSettings);
@@ -131,6 +148,10 @@ io.on('connection', function (socket) {
   });
 
   socket.on('disconnect', function(){
+
+    delete activeClients[socket.id];
+    console.log(activeClients);
+
     dynamicData['countClients'] = (dynamicData['countClients']-1);
     console.log('DISCONNECT// .. ' +dynamicData['countClients']+' active clients.');
     io.emit('updateDynamicData', dynamicData );
