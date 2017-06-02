@@ -28,7 +28,7 @@ var dynamicData = {
 
 /* ACTIVE DEVICE VARS */
 var activeClients = [];
-var deviceLabelArray = ['00.','FA.','A2.','63.','D4.','19.','C5.','D3.','81.'];
+var deviceLabelArray = ['00.','FA.','A2.','63.','D4.','19.','C5.','D3.','81.','74.','5E.'];
 
 /* accounts */
 var valid_logincodes = ['00451','12345','67890','07311'];
