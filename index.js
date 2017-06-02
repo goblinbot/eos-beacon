@@ -17,13 +17,12 @@ var globalSettings = {
   localaddress  : ip.address() +':'+ port,
 }
 var default_security_level = "Code green - All clear";
-var default_sound_setting = 2;
+
 
 /* DYNAMIC DATA: data die bij setup worden gebruikt en constant kunnen worden aangepast. */
 var dynamicData = {
   countClients  : 0,
-  alertLevel    : default_security_level,
-  soundsEnabled : default_sound_setting
+  alertLevel    : default_security_level
 }
 
 /* ACTIVE DEVICE VARS */
@@ -79,17 +78,11 @@ io.on('connection', function (socket) {
 
   dynamicData['countClients']++;
 
-
   activeClients[socket.id] = [];
   activeClients[socket.id]["id"] = socket.id;
-
-
-
   activeClients[socket.id]["name"] = (deviceLabelArray[Math.floor(Math.random() * deviceLabelArray.length)]) + (Math.round(100+(Math.random() * (999-100))));
 
   console.log(activeClients);
-
-
 
   console.log('Device connected. '+dynamicData['countClients']+' active clients.');
 
@@ -100,7 +93,7 @@ io.on('connection', function (socket) {
 
   setTimeout(function(){
     socket.emit('startConfig', globalSettings);
-  },500);
+  },1000);
 
 
   // CLEARALL :: reset sec status.
@@ -115,27 +108,10 @@ io.on('connection', function (socket) {
     io.emit('updateDynamicData', dynamicData);
   });
 
-  socket.on('setSoundSetting', function(option){
-    var option = option.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
-    dynamicData['soundsEnabled'] = option;
-    io.emit('updateDynamicData', dynamicData);
-  });
-
   // FORCE RESET ::
   socket.on('forceReset', function() {
     io.emit('F5');
   });
-
-  // chat bericht
-    // socket.on('sendChatMessage', function(message) {
-    //
-    //   message[0] = message[0].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
-    //   message[1] = message[1].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
-    //
-    //   io.emit('globalChatMessage',message);
-    //
-    // });
-
 
   socket.on('requestDynamicData', function (){
     io.emit('updateDynamicData', dynamicData);
@@ -157,23 +133,6 @@ io.on('connection', function (socket) {
     io.emit('updateDynamicData', dynamicData );
   });
 
-
-  // socket.on('auth', function(keycode){
-  //   var checklogincode = 0;
-  //   console.log('authentication code received: '+keycode);
-  //
-  //   for (var i in valid_logincodes) {
-  //     if(valid_logincodes[i] == keycode) {
-  //       checklogincode = 1;
-  //     }
-  //   }
-  //
-  //   if(checklogincode == 1) {
-  //     socket.emit('authTrue', keycode);
-  //   } else {
-  //     socket.emit('authFalse');
-  //   }
-  // });
   socket.on('auth', function(keycode){
     var checklogincode = 0;
     var loginrank = 0;

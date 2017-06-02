@@ -146,6 +146,8 @@
 <script type="text/javascript" src="/_includes/js/functions.js"></script>
 <script>
 
+var clientdevice = "";
+
 $(document).ready(function(){
   /* update on load alle titels, descriptions en het IP adres rechtsboven.*/
   socket.on('startConfig', function(settings){

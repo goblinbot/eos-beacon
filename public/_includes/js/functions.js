@@ -110,19 +110,7 @@ function broadCast(location) {
               $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
 
               if(location['file'] !== 'standby') {
-                var soundSetting = $('#dynamicSoundSetting').html();
-                console.log('SOUND: '+soundSetting);
-                if(soundSetting && soundSetting > 0) {
-                  if ($('.extra-audio').html() == false || $('.extra-audio').html() == null) {
-                    $('#default-audio').trigger('play');
-                  }/* else {
-                    $('.extra-audio').trigger('play');
-                  }
-                } else if (soundSetting && soundSetting == 1) {
-                */
-                }
-
-
+                $('#default-audio').trigger('play');
               }
 
 

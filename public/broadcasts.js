@@ -23,6 +23,7 @@ function broadcastObj(title, file, priority, duration, colorscheme) {
 // de broadcasts !
 var defaultBroadcast = new broadcastObj("Broadcast Initialise","standby",1,"0","0");
 var resetBroadcast = new broadcastObj("Clear","standby",99,"0","0");
+var sysDiagnostics = new broadcastObj("System Diagnostics","systemscan",88,"60000","0"); 
 
 var broadCastLunch = new broadcastObj("Lunch announcement","lunch",2,"0","0");
 var broadCastDinner = new broadcastObj("Dinner announcement","dinner",2,"0","0");
@@ -36,5 +37,7 @@ var hazardBroadcast = new broadcastObj("Envirnomental Hazard detected","biohazar
 var psyWarningBroadcast = new broadcastObj("Psy-hazard detected","psyhazard",8,"0","psyhazard");
 var broadCastEnemyContact = new broadcastObj("Enemy Contact","enemycontact",8,"0","attack");
 var lowpowerBroadcast = new broadcastObj("POWER SUPPLY WARNING","emergencypower",8,"0","gray");
+
+
 
 var broadcasteaster = new broadcastObj("HELLoYES","StopMaati",8,"0","gray");

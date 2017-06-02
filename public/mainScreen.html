@@ -110,15 +110,19 @@
     </div>
   </div>
 
-  <div class="item hidden-xs col-sm-12 col-md-12 col-lg-5">
+  <div class="item col-xs-12 col-sm-12 col-md-12 col-lg-5">
     <div class="block">
-      <p id="clientCode">&nbsp;</p>
+      <div class="content">
+        <h2 id="clientName">
+          <span class="glitch" data-text="SCREEN ID: AE.891">SCREEN ID: --.---</span>
+        </h2>
+        <p id="socket-id"><span class="glitch" data-text="connecting ..">connecting ..</span></p>
+      </div>
     </div>
   </div>
 
 </div>
 
-<div id="dynamicSoundSetting" class="hidden"></div>
 <script>
 
 
@@ -158,42 +162,17 @@ $(document).ready(function(){
     +'</audio>');
   }
 
-
-
-
-
-  /*
-  socket.on('globalChatMessage', function(message) {
-    activeMessages = (activeMessages+1);
-
-    var currentTimeString = getCurrentTime();
-    var printresult = '<li class="feed-item" data-listnumber="'+activeMessages+'">';
-    printresult = (printresult + '<p class="feed-top"><span class="feed-timestamp"><i class="glyphicon glyphicon-time"></i>&nbsp;'+currentTimeString+'</span>&nbsp;<span class="feed-user"><i class="glyphicon glyphicon-user"></i>&nbsp;'+message[0]+'</span></p>');
-    printresult = (printresult + '<p class="feed-message">'+message[1]+'</p>');
-    printresult = (printresult + '</li>');
-
-    $('#colony-feed').prepend(printresult);
-
-    if(activeMessages > 7) {
-      var removeThis = (activeMessages-7);
-      $("li[data-listnumber='" + removeThis +"']").remove();
-    }
-
-  });
-  */
-
-
   // vraagt dynamische data op, zoals security level en actieve gebruikers.
 
   // en update hem hier.
   socket.on('updateDynamicData', function(dynamicData){
     $('#securityAlertLevel').html(dynamicData['alertLevel']);
     $('#countClientsCounter').html(dynamicData['countClients']);
-    $('#dynamicSoundSetting').html(dynamicData['soundsEnabled']);
     // meer toevoegen.
     // broadcast Last Active, als een soort resume ??
-
-    $('#clientCode').html(socket.id);
+    // client device name!
+    $('#clientName').html('SCREEN ID:&nbsp;'+clientdevice);
+    $('#socket-id').html('&nbsp;Active i.morph->&nbsp;[<span class="holoContrast">&nbsp;'+socket.id+'</span>&nbsp;]');
 
   });
 
