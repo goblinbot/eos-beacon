@@ -74,6 +74,19 @@ app.get('/', function(req, res){
   res.sendFile('index.html', {"root": __dirname+'/public/'});
 });
 
+/* test voor later */
+app.get('/advanced', function(req, res){
+  res.sendFile('index.html', {"root": __dirname+'/public/'});
+});
+
+app.get('/adm', function(req, res){
+  res.sendFile('/adm/index.html', {"root": __dirname+'/public/'});
+});
+
+app.get('*', function(req, res){
+  res.sendFile('404.html', {"root": __dirname+'/public/'});
+})
+
 io.on('connection', function (socket) {
 
   dynamicData['countClients']++;

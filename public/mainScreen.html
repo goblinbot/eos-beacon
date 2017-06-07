@@ -112,11 +112,22 @@
 
   <div class="item col-xs-12 col-sm-12 col-md-12 col-lg-5">
     <div class="block">
+      <div class="headerblock margin-zero">
+        <h2 class="regularfont">Device &amp; Connection info</h2>
+      </div>
       <div class="content">
-        <h2 id="clientName">
-          <span class="glitch" data-text="SCREEN ID: AE.891">SCREEN ID: --.---</span>
-        </h2>
-        <p id="socket-id"><span class="glitch" data-text="connecting ..">connecting ..</span></p>
+
+        <div class="col-xs-12 col-sm-12 col-md-8">
+          <h2>DEVICE:</h2>
+          <p>&nbsp;NAME->&nbsp;<span id="clientName">--.---</span></p>
+          <p id="socket-id"><span class="glitch" data-text="connecting ..">connecting ..</span></p>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-4">
+          <h2>STATUS:</h2>
+          <p id="connStatus" style="cursor: default;" class="btn btn-lg btn-outline-success"><i class="glyphicon glyphicon-link"></i>&nbsp;CONNECTED</p>
+        </div>
+
       </div>
     </div>
   </div>
@@ -128,6 +139,7 @@
 
 $(document).ready(function(){
   var activeMessages = 0;
+  var clientdevice = "";
   var printresult;
 
   // functie: maak blokken footer even groot.
@@ -171,9 +183,29 @@ $(document).ready(function(){
     // meer toevoegen.
     // broadcast Last Active, als een soort resume ??
     // client device name!
-    $('#clientName').html('SCREEN ID:&nbsp;'+clientdevice);
-    $('#socket-id').html('&nbsp;Active i.morph->&nbsp;[<span class="holoContrast">&nbsp;'+socket.id+'</span>&nbsp;]');
+    $('#socket-id').html('&nbsp;CONN->&nbsp;<span class="holoContrast">'+socket.id+'</span>');
 
+  });
+
+  socket.on('connect', function(){
+    $('#connStatus').addClass('btn-outline-success').removeClass('btn-outline-danger blinkContent').html('<i class="glyphicon glyphicon-link"></i>&nbsp;CONNECTED');
+
+    $('#socket-id').html('&nbsp;CONN->&nbsp;<span class="holoContrast">'+socket.id+'</span>');
+    $('#countClientsCounter').show();
+    $('#notificationTitleSmall h2').html('Waiting for broadcasts ...');
+
+    $('#localIP').removeClass('text-muted blinkContent');
+    $('.portalstatus').removeClass('blinkContent');
+  });
+  socket.on('disconnect', function(){
+    $('#connStatus').addClass('btn-outline-danger blinkContent').removeClass('btn-outline-success').html('<i class="glyphicon glyphicon-alert"></i>&nbsp;OFFLINE');
+
+    $('#socket-id').html('&nbsp;<span class="holoContrast">No active infomorph.</span>');
+    $('#countClientsCounter').hide();
+    $('#notificationTitleSmall h2').html('Attempting to reconnect...');
+
+    $('#localIP').addClass('text-muted blinkContent');
+    $('.portalstatus').addClass('blinkContent');
   });
 
 });

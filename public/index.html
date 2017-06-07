@@ -12,7 +12,6 @@
 ==== =================================================================
 -->
 
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -20,9 +19,6 @@
   <title>BEACON - BROADCASTING &amp; INFORMATION SYSTEMS</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- <link rel="stylesheet" type="text/css" href="/_includes/bs3-css/bootstrap.min.css" /> -->
-  <!-- <link rel="stylesheet" type="text/css" href="/_includes/css/hex.css" /> -->
-  <!-- <link rel="stylesheet" type="text/css" href="/_includes/css/keyframes.css" /> -->
   <link rel="stylesheet" type="text/css" href="/_includes/css/style.css" />
   <link rel="stylesheet" type="text/css" href="/_includes/css/alert-default.css" />
 
@@ -30,7 +26,6 @@
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
 
 </head>
-
 <body>
 
 <div class="audiocontrol"></div>
@@ -145,9 +140,6 @@
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="/_includes/js/functions.js"></script>
 <script>
-
-var clientdevice = "";
-
 $(document).ready(function(){
   /* update on load alle titels, descriptions en het IP adres rechtsboven.*/
   socket.on('startConfig', function(settings){
