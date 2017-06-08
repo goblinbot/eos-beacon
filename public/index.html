@@ -62,10 +62,13 @@
         <!-- hier definen we de loadingscreen eerst, gezien we deze toch al hebben geopend.
         We overschrijven deze later door #main te emptyen en een nieuwe erover heen te laden. -->
         <div id="loadingScreen">
+
+          <!-- whitespace -->
           <div class="hidden-xs hidden-sm hidden-md col-lg-3">
             &nbsp;
           </div>
 
+          <!-- center! -->
           <div class=" hidden-xs col-sm-8 col-md-8 col-lg-6">
             <div class="whitespace col-sm-12 hidden-xs">&nbsp;</div>
 
@@ -79,6 +82,7 @@
             </div>
           </div>
 
+          <!-- rechterbar -->
           <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 block text-white">
             <div class="headerblock">
               <h2><span class="glyphicon glyphicon-console"></span><span class="bold">&nbsp;J204530</span></h2>
@@ -126,6 +130,24 @@
               <div class="col-xs-3 holoContrast">... <span class="glyphicon glyphicon-hourglass"></span></div>
             </div>
           </div>
+
+          <!-- bodembalk links -->
+          <div class="col-xs-12 col-md-9 text-white text-lg">
+            <div class="bottomflavor load2">//System Request Handshake Recycle</div>
+            <div class="bottomflavor load2">::System:Timecheck:1200.02384:ReComp:28802.1382::</div>
+            <div class="bottomflavor load3">::System:ReComp:Correct:Correct::</div>
+            <div class="bottomflavor load4">::Synch:Synch:Synch:Link::</div>
+            <div class="bottomflavor load6">//Handshake Complete</div>
+          </div>
+
+          <!-- bodembalk rechts -->
+          <div class="col-xs-12 col-md-3">
+            <div class="bottomflavor load4"><p>::System:System:Load:5216784234:8:<br/>::System:Handshake:####-####-####-####:</p></div>
+            <div class="bottomflavor load5 glitch" data-text="//Omitting">//Omitting</div>
+          </div>
+
+
+
         </div>
 
       </div>
@@ -151,8 +173,8 @@ $(document).ready(function(){
     location.reload();
   });
 
+  /* Eerste keer? Laadt dan mainscreen in na 2500ms..*/
   setTimeout(function(){
-    /* Eerste keer? Laadt dan mainscreen gelijk.*/
     navigate('mainScreen');
   },2500);
 });

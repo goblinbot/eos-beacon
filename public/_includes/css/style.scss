@@ -8,12 +8,12 @@ $titlefontsize : 3.6rem;
 $minhoogte     : 68vh;
 
 // haalt alle fonts die we includen op.
-@import 'fonts';
+@import 'fonts.scss';
 $fontStack      : 'Titillium-Regular', Helvetica, sans-serif;
 $altFontStack   : 'ProFontWindows','Titillium-Bold', Helvetica, sans-serif;
 $boldFontStack  : 'Titillium-Bold', Helvetica, sans-serif;
 
-@import 'keyframes';
+@import 'keyframes.scss';
 
 
 // OP TE ROEPEN MET :
@@ -44,6 +44,10 @@ body {
   // margin : $defaultpadding;
   transition  : 1.3s;
   height      : 100%;
+}
+
+.text-bold {
+  font-weight: bold;
 }
 
 p.text-lg, .text-lg {
@@ -181,7 +185,7 @@ p.text-lg, .text-lg {
     }
   }
 
-  .rightflavor {
+  .rightflavor, .bottomflavor {
 
     visibility: hidden;
     @include animation(showHidden 0.3s linear);
