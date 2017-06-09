@@ -11,10 +11,6 @@ body {
   border-left : 16px solid $orbitNormal;
 }
 
-.topHeader {
-  // background : $topbar;
-}
-
 hr {
   background-color: $titleColor;
   border-color    : $titleColor;
@@ -129,6 +125,17 @@ p {
     }
   }
 
+}
+
+#notificationContainer {
+  .disconnectedPopup {
+    background: $defaultdonker;
+    border: 3px solid $orbitRed;
+    color: $textColor;
+    h2 {
+      color: $textColor;
+    }
+  }
 }
 
 // #colony-feed {

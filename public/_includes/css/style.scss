@@ -415,6 +415,22 @@ p.text-lg, .text-lg {
 
 #notificationContainer {
   min-height: $minhoogte;
+  width: 100%;
+
+  .disconnectedPopup {
+    position: absolute;
+    z-index: 99;
+    min-height: 4rem;
+    font-size: 150%;
+    left: 25%;
+    top: 25%;
+    padding: 2.4rem 1.2rem;
+    opacity: 0.9;
+    border-radius: 1px;
+    @media(max-width:991px) {
+      left: 0;
+    }
+  }
 
   .broadcast {
 

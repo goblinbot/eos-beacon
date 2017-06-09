@@ -111,6 +111,16 @@ p {
   border-color: transparent #222222 #222222 transparent;
 }
 
+#notificationContainer .disconnectedPopup {
+  background: #222222;
+  border: 3px solid #ed3737;
+  color: #FFFFFF;
+}
+
+#notificationContainer .disconnectedPopup h2 {
+  color: #FFFFFF;
+}
+
 .btn-ui.btn-ui-holo {
   color: #39DBCC;
   border-color: #39DBCC;

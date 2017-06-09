@@ -194,6 +194,9 @@ $(document).ready(function(){
     $('#countClientsCounter').show();
     $('#notificationTitleSmall h2').html('Waiting for broadcasts ...');
 
+    $('.disconnectedPopup').empty();
+    $('.disconnectedPopup').remove();
+
     $('#localIP').removeClass('text-muted blinkContent');
     $('.portalstatus').removeClass('blinkContent');
 
@@ -201,12 +204,22 @@ $(document).ready(function(){
       socket.emit('requestDynamicData');
     },800);
   });
+
   socket.on('disconnect', function(){
     $('#connStatus').addClass('btn-outline-danger blinkContent').removeClass('btn-outline-success').html('<i class="glyphicon glyphicon-alert"></i>&nbsp;OFFLINE');
 
     $('#socket-id').html('&nbsp;<span class="holoContrast">No active infomorph.</span>');
     $('#countClientsCounter').hide();
     $('#notificationTitleSmall h2').html('Attempting to reconnect...');
+
+    $('#notificationContainer').append(
+      '<div class="col-xs-12 col-sm-8 col-md-6 text-center disconnectedPopup">'
+      + '<h2 class="text-bold">'
+      +   '<i class="glyphicon glyphicon-alert holoContrast" style="font-size:24px;"></i> '
+      +     'COMMUNICATIONS <span class="holoContrast">OFFLINE</span>'
+      +   ' <i class="glyphicon glyphicon-alert holoContrast" style="font-size:24px;"></i>'
+      + '</h2>'
+      +'</div>');
 
     $('#localIP').addClass('text-muted blinkContent');
     $('.portalstatus').addClass('blinkContent');
