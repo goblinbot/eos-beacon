@@ -57,9 +57,10 @@
     <div class="block no-bg">
       <div id="notificationContainer">
         <!-- placehold spincircle: loading 800ms lang ivm jquery. -->
-        <div class="portalCircleContainer" style="margin-top:25%;">
+        <div class="portalCircleContainer" style="padding-top:10rem;">
           <div class="portalCircle">&nbsp;</div>
         </div>
+
       </div>
     </div>
   </div>
@@ -138,30 +139,23 @@
 
 
 $(document).ready(function(){
-  var activeMessages = 0;
+  var bcinit = 0;
   var clientdevice = "";
   var printresult;
 
   // functie: maak blokken footer even groot.
   updateFooter();
 
-  // na een halve seconde, stuur de default broadcast naar =alleen= deze client.
-  // de defaultBroadcast staat hier dubbel gedefineerd :: ik ben er nog niet achter waarom deze niet word geërf uit functions.js .
-  var defaultBroadcast  = new broadcastObj("Beacon Initialised","standby","1","0","0");
-
+  /* na een halve seconde, stuur de default broadcast naar =alleen= deze client. */
   setTimeout(function(){
-
-    broadCast(defaultBroadcast);
     socket.emit('requestDynamicData');
-
   },800);
 
-  // hier defineren we de realtime update: als de =socket= een broadcast ontvangt, dan voert de client deze uit.
+  /* hier defineren we de realtime update: als de =socket= een broadcast ontvangt, dan voert de client deze uit.*/
   socket.on('broadcastReceive', function(location){
-    // console.log(activeBroadcast);
     console.log('# BROADCAST RECEIVED !');
     console.log('# ...');
-    // uitvoeren op client.
+    /* uitvoeren op client. */
     broadCast(location);
     console.log('# ... OK');
   });
@@ -180,13 +174,19 @@ $(document).ready(function(){
   socket.on('updateDynamicData', function(dynamicData){
     $('#securityAlertLevel').html(dynamicData['alertLevel']);
     $('#countClientsCounter').html(dynamicData['countClients']);
-    // meer toevoegen.
-    // broadcast Last Active, als een soort resume ??
-    // client device name!
+
+    /*resume! client only.*/
+    if(bcinit == 0) {
+      broadCast(window[dynamicData['lastBC']]);
+      console.log(dynamicData['lastBC']);
+    }
+
+    /* client device name! */
     $('#socket-id').html('&nbsp;CONN->&nbsp;<span class="holoContrast">'+socket.id+'</span>');
 
   });
 
+  /* reconnect/disconnect */
   socket.on('connect', function(){
     $('#connStatus').addClass('btn-outline-success').removeClass('btn-outline-danger blinkContent').html('<i class="glyphicon glyphicon-link"></i>&nbsp;CONNECTED');
 
@@ -196,6 +196,10 @@ $(document).ready(function(){
 
     $('#localIP').removeClass('text-muted blinkContent');
     $('.portalstatus').removeClass('blinkContent');
+
+    setTimeout(function(){
+      socket.emit('requestDynamicData');
+    },800);
   });
   socket.on('disconnect', function(){
     $('#connStatus').addClass('btn-outline-danger blinkContent').removeClass('btn-outline-success').html('<i class="glyphicon glyphicon-alert"></i>&nbsp;OFFLINE');

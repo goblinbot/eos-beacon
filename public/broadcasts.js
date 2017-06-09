@@ -21,24 +21,24 @@ function broadcastObj(title, file, priority, duration, colorscheme) {
 }
 
 // de broadcasts !
-var defaultBroadcast = new broadcastObj("Broadcast Initialise","standby",1,"0","0");
-var resetBroadcast = new broadcastObj("Clear","standby",99,"0","0");
-var sysDiagnostics = new broadcastObj("System Diagnostics","systemscan",88,"60000","0");
+var bcdefault = new broadcastObj("Broadcast Initialise","bcdefault",1,"0","0");
+var bcreset = new broadcastObj("Clear","bcdefault",99,"0","0");
+var bcsystemscan = new broadcastObj("System Diagnostics","bcsystemscan",88,"60000","0");
 
-var broadCastLunch = new broadcastObj("Lunch announcement","lunch",2,"0","0");
-var broadCastDinner = new broadcastObj("Dinner announcement","dinner",2,"0","0");
-var broadCastHydrate = new broadcastObj("Hydration Reminder","hydratePSA",2,"0","0");
-var broadCastMeeting = new broadcastObj("Meeting in Main","centralmeeting",4,"0","0");
+var bclunch = new broadcastObj("Lunch announcement","bclunch",2,"0","0");
+var bcdinner = new broadcastObj("Dinner announcement","bcdinner",2,"0","0");
+var bchydrate = new broadcastObj("Hydration Reminder","bchydrate",2,"0","0");
+var bcmeeting = new broadcastObj("Meeting in Main","bcmeeting",4,"0","0");
 
-var broadCastPortalIncoming = new broadcastObj("Portal Incoming","portalincoming",3,"30000","0");
-var broadCastPortalOutgoing = new broadcastObj("Portal Outgoing","portaloutgoing",3,"17500","0");
-var broadCastBlood = new broadcastObj("Medical Request","bloodrequest",4,"0","0");
+var bcportalinc = new broadcastObj("Portal Incoming","bcportalinc",3,"30000","0");
+var bcportalout = new broadcastObj("Portal Outgoing","bcportalout",3,"17500","0");
+var bcmedical = new broadcastObj("Medical Request","bcmedical",4,"0","0");
 
-var hazardBroadcast = new broadcastObj("Envirnomental Hazard detected","biohazard",8,"0","hazard");
-var psyWarningBroadcast = new broadcastObj("Psy-hazard detected","psyhazard",8,"0","psyhazard");
-var broadCastEnemyContact = new broadcastObj("Enemy Contact","enemycontact",8,"0","attack");
-var lowpowerBroadcast = new broadcastObj("POWER SUPPLY WARNING","emergencypower",8,"0","gray");
+var bcbiohazard = new broadcastObj("Envirnomental Hazard detected","bcbiohazard",8,"0","hazard");
+var bcpsyhazard = new broadcastObj("Psy-hazard detected","bcpsyhazard",8,"0","psyhazard");
+var bchostile = new broadcastObj("Enemy Contact","bchostile",8,"0","attack");
+var bclowpower = new broadcastObj("POWER SUPPLY WARNING","bclowpower",8,"0","gray");
 
 
 
-var broadcasteaster = new broadcastObj("HELLoYES","StopMaati",8,"0","gray");
+var bceaster = new broadcastObj("HELLoYES","bceaster",8,"0","gray");

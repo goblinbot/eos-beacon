@@ -7,6 +7,7 @@ var $       = require('jquery');
 var ip      = require('ip');
 var bodyParser = require('body-parser');
 var session = require('client-sessions');
+var fs = require('fs');
 
 
 /* CONFIGURATIE: vaste gegevens bij start up. */
@@ -22,7 +23,8 @@ var default_security_level = "Code green - All clear";
 /* DYNAMIC DATA: data die bij setup worden gebruikt en constant kunnen worden aangepast. */
 var dynamicData = {
   countClients  : 0,
-  alertLevel    : default_security_level
+  alertLevel    : default_security_level,
+  lastBC : "bcdefault"
 }
 
 /* ACTIVE DEVICE VARS */
@@ -121,6 +123,7 @@ io.on('connection', function (socket) {
 
   // FORCE RESET ::
   socket.on('forceReset', function() {
+    dynamicData['lastBC'] = "bcdefault";
     io.emit('F5');
   });
 
@@ -131,6 +134,21 @@ io.on('connection', function (socket) {
 
   socket.on('broadcastSend', function(value){
     console.log(value);
+
+    // var filepath = '/broadcasts/'+value.file+'.html';
+
+    dynamicData['lastBC'] = value.file;
+
+    // if(fs.exists(filepath)){
+    //   dynamicData['lastBC'] = value.file;
+    // } else {
+
+    // try {
+    //   fs.accessSync(filepath);
+    // } catch (e) {
+    //   value.file = "404";
+    // }
+
     io.emit('broadcastReceive', value);
   });
 

@@ -18,7 +18,7 @@
   <hr/>
 
   <div class="col-xs-12">
-    <div class="btn btn-outline-success btn-lg btn-block" onclick="sendBroadCast(resetBroadcast); cpanelStatus('Broadcasts CLEARED');">
+    <div class="btn btn-outline-success btn-lg btn-block" onclick="sendBroadCast(bcreset); cpanelStatus('Broadcasts CLEARED');">
       <i class="glyphicon glyphicon-check"></i>&nbsp;CLEAR BROADCASTS
     </div>
     <br/><br/>
@@ -27,10 +27,10 @@
   <div class="col-xs-12">
     <p>Priority: low</p>
 
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(broadCastPortalIncoming); cpanelStatus('Broadcast: portal incoming');">
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcportalinc); cpanelStatus('Broadcast: portal incoming');">
       <i class="glyphicon glyphicon-warning"></i>&nbsp;PORTAL INCOMING
     </div>
-    <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(broadCastPortalOutgoing); cpanelStatus('Broadcast: portal outgoing');">
+    <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcportalout); cpanelStatus('Broadcast: portal outgoing');">
       <i class="glyphicon glyphicon-warning"></i>&nbsp;PORTAL OUTGOING
     </div>
   </div>
@@ -39,7 +39,7 @@
   <div class="col-xs-12">
     <p>Priority: Medium.</p>
 
-    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(broadCastBlood); cpanelStatus('Broadcast: Requesting blood donations');">
+    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcmedical); cpanelStatus('Broadcast: Requesting blood donations');">
       <i class="glyphicon glyphicon-check"></i>&nbsp;REQUEST BLOOD DONATIONS
     </div>
 
@@ -49,16 +49,16 @@
   <div class="col-xs-12">
     <p>Priority: High</p>
 
-    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(broadCastEnemyContact); cpanelStatus('Broadcast sent.');">
+    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bchostile); cpanelStatus('Broadcast sent.');">
       <i class="glyphicon glyphicon-alert"></i>&nbsp;ENEMY CONTACT
     </div>
-    <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(hazardBroadcast); cpanelStatus('Broadcast sent.');">
+    <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcbiohazard); cpanelStatus('Broadcast sent.');">
       <i class="glyphicon glyphicon-alert"></i>&nbsp;BIOHAZARD
     </div>
-    <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(psyWarningBroadcast); cpanelStatus('Broadcast sent.');">
+    <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcpsyhazard); cpanelStatus('Broadcast sent.');">
       <i class="glyphicon glyphicon-alert"></i>&nbsp;PSYHAZARD
     </div>
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(lowpowerBroadcast); cpanelStatus('Broadcast sent.');">
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bclowpower); cpanelStatus('Broadcast sent.');">
       <i class="glyphicon glyphicon-alert"></i>&nbsp;LOW POWER WARNING
     </div>
   </div>
@@ -67,19 +67,19 @@
   <div class="col-xs-12">
     <p>Priority: Other.</p>
 
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(broadCastHydrate); cpanelStatus('PSA sent');">
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bchydrate); cpanelStatus('PSA sent');">
       <i class="glyphicon glyphicon-info-sign"></i>&nbsp;HYDRATION PSA
     </div>
 
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(broadCastLunch); cpanelStatus('PSA sent.');">
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bclunch); cpanelStatus('PSA sent.');">
       <i class="glyphicon glyphicon-info-sign"></i>&nbsp;LUNCH TIME
     </div>
 
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(broadCastDinner); cpanelStatus('PSA sent.');">
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcdinner); cpanelStatus('PSA sent.');">
       <i class="glyphicon glyphicon-info-sign"></i>&nbsp;DINNER TIME
     </div>
 
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(broadCastMeeting); cpanelStatus('MEETING CALLED');">
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcmeeting); cpanelStatus('MEETING CALLED');">
       <i class="glyphicon glyphicon-info-sign"></i>&nbsp;GATHER ALL COLONISTS
     </div>
 

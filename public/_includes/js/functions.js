@@ -129,9 +129,6 @@ function broadCast(location) {
               }
 
               if(location['duration'] && location['duration'] == 0) {
-                /*if(clearIsActive != undefined) {
-                  clearTimeout('clearIsActive');
-                }*/
                 clearBroadcast(0);
               }
 
