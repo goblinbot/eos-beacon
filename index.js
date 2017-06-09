@@ -91,7 +91,7 @@ app.get('*', function(req, res){
 
 io.on('connection', function (socket) {
 
-  dynamicData['countClients']++;
+  dynamicData['countClients'] = io.engine.clientsCount;
 
   activeClients[socket.id] = [];
   activeClients[socket.id]["id"] = socket.id;
@@ -135,19 +135,7 @@ io.on('connection', function (socket) {
   socket.on('broadcastSend', function(value){
     console.log(value);
 
-    // var filepath = '/broadcasts/'+value.file+'.html';
-
     dynamicData['lastBC'] = value.file;
-
-    // if(fs.exists(filepath)){
-    //   dynamicData['lastBC'] = value.file;
-    // } else {
-
-    // try {
-    //   fs.accessSync(filepath);
-    // } catch (e) {
-    //   value.file = "404";
-    // }
 
     io.emit('broadcastReceive', value);
   });
@@ -157,7 +145,7 @@ io.on('connection', function (socket) {
     delete activeClients[socket.id];
     console.log(activeClients);
 
-    dynamicData['countClients'] = (dynamicData['countClients']-1);
+    dynamicData['countClients'] = dynamicData['countClients'] = io.engine.clientsCount;
     console.log('DISCONNECT// .. ' +dynamicData['countClients']+' active clients.');
     io.emit('updateDynamicData', dynamicData );
   });
