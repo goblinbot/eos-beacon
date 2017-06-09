@@ -178,7 +178,7 @@ $(document).ready(function(){
     /*resume! client only.*/
     if(bcinit == 0) {
       broadCast(window[dynamicData['lastBC']]);
-      console.log(dynamicData['lastBC']);
+      bcinit = 1;
     }
 
     /* client device name! */
