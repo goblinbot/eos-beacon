@@ -23,11 +23,12 @@ function broadcastObj(title, file, priority, duration, colorscheme) {
 // de broadcasts !
 var defaultBroadcast = new broadcastObj("Broadcast Initialise","standby",1,"0","0");
 var resetBroadcast = new broadcastObj("Clear","standby",99,"0","0");
-var sysDiagnostics = new broadcastObj("System Diagnostics","systemscan",88,"60000","0"); 
+var sysDiagnostics = new broadcastObj("System Diagnostics","systemscan",88,"60000","0");
 
 var broadCastLunch = new broadcastObj("Lunch announcement","lunch",2,"0","0");
 var broadCastDinner = new broadcastObj("Dinner announcement","dinner",2,"0","0");
 var broadCastHydrate = new broadcastObj("Hydration Reminder","hydratePSA",2,"0","0");
+var broadCastMeeting = new broadcastObj("Meeting in Main","centralmeeting",4,"0","0");
 
 var broadCastPortalIncoming = new broadcastObj("Portal Incoming","portalincoming",3,"30000","0");
 var broadCastPortalOutgoing = new broadcastObj("Portal Outgoing","portaloutgoing",3,"17500","0");

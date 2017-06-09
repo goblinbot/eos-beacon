@@ -95,8 +95,6 @@ io.on('connection', function (socket) {
   activeClients[socket.id]["id"] = socket.id;
   activeClients[socket.id]["name"] = (deviceLabelArray[Math.floor(Math.random() * deviceLabelArray.length)]) + (Math.round(100+(Math.random() * (999-100))));
 
-  console.log(activeClients);
-
   console.log('Device connected. '+dynamicData['countClients']+' active clients.');
 
   // stuurt IP naar de index pagina zodat deze bovenin kan worden laten zien.
