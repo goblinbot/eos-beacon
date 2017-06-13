@@ -128,6 +128,7 @@ io.on('connection', function (socket) {
   });
 
   socket.on('requestDynamicData', function (){
+    dynamicData['countClients'] = io.engine.clientsCount;
     io.emit('updateDynamicData', dynamicData);
   });
 
@@ -145,7 +146,7 @@ io.on('connection', function (socket) {
     delete activeClients[socket.id];
     console.log(activeClients);
 
-    dynamicData['countClients'] = dynamicData['countClients'] = io.engine.clientsCount;
+    dynamicData['countClients'] = io.engine.clientsCount;
     console.log('DISCONNECT// .. ' +dynamicData['countClients']+' active clients.');
     io.emit('updateDynamicData', dynamicData );
   });
