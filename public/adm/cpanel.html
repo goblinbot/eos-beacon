@@ -11,22 +11,18 @@
 
 <div class="admMENU">
   <div id="btn-admBROADCAST" class="btn active adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admBROADCAST');"><i style="font-size:133%" class="glyphicon glyphicon-bullhorn"></i><br/>BROADCAST</div>
-  <!-- <div id="btn-admCHAT" class="btn adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admCHAT');"><i style="font-size:133%" class="glyphicon glyphicon-send"></i><br/>POST MESSAGE</div> -->
   <div id="btn-admSECURITY" class="btn adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admSECURITY');"><i style="font-size:133%" class="glyphicon glyphicon-exclamation-sign"></i><br/>SECURITY LVL</div>
   <div id="btn-admCMD" class="btn adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admCMD');"><i style="font-size:133%" class="glyphicon glyphicon-console"></i><br/>OTHER</div>
+
+  <span class="overlord">
+    <div id="btn-SLPORTAL" class="btn adm-nav btn-outline-success" onclick="navigateADM('admPORTAL');"><i style="font-size:133%" class="glyphicon glyphicon-transfer"></i><br/>PORTAL</div>
+    <div id="btn-SLOVERLORD" class="btn adm-nav btn-ui btn-ui-holo-alt" onclick="navigateADM('admOVERLORD');"><i style="font-size:133%" class="glyphicon glyphicon-globe"></i><br/>OVERLORD</div>
+  </span>
 
   <span class="officer">
     <div id="btn-admMISSION" class="btn adm-nav btn-ui btn-ui-holo-alt" onclick="navigateADM('admMISSION');"><i style="font-size:133%" class="glyphicon glyphicon-tower"></i><br/>MISSION CONTROL</div>
   </span>
-
-  <span class="overlord">
-    <div id="btn-SLOVERLORD" class="btn adm-nav btn-ui btn-ui-holo-alt" onclick="navigate('404');"><i style="font-size:133%" class="glyphicon glyphicon-globe"></i><br/>OVERLORD</div>
-    <div id="btn-SLPORTAL" class="btn adm-nav btn-ui btn-ui-holo-alt" onclick="navigate('404');"><i style="font-size:133%" class="glyphicon glyphicon-transfer"></i><br/>PORTAL</div>
-  </span>
 </div>
-
-<br/>
-<p>///: kleine context hierboven met de extra knoppen: knoppen worden zometeen op inlog rank zichtbaar/ontzichtbaar. Dag~</p>
 
 <script>
 $(document).ready(function(){

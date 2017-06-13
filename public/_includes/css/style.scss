@@ -502,11 +502,11 @@ p.text-lg, .text-lg {
   .btn-outline-warning {   color: #F0AD4E;     border-color: #F0AD4E;    background-image: none;   background-color: transparent; }
   .btn-outline-danger  {   color: #D9534F;     border-color: #D9534F;    background-image: none;   background-color: transparent; }
 // HOVER _BS4 BETA OUTLINE BUTTONS
-  .btn-outline-primary:hover  {  color: #FFF;     border-color: #0275D8;    background-color: #0275D8; }
-  .btn-outline-secondary:hover { color: #FFF;     border-color: #CCCCCC;    background-color: #CCCCCC; }
-  .btn-outline-success:hover  {  color: #FFF;     border-color: #5CB85C;    background-color: #5CB85C; }
-  .btn-outline-warning:hover {   color: #FFF;     border-color: #F0AD4E;    background-color: #F0AD4E; }
-  .btn-outline-danger:hover  {   color: #FFF;     border-color: #D9534F;    background-color: #D9534F; }
+  .btn-outline-primary:hover  {  color: #000;     border-color: #0275D8;    background-color: #0275D8; }
+  .btn-outline-secondary:hover { color: #000;     border-color: #CCCCCC;    background-color: #CCCCCC; }
+  .btn-outline-success:hover  {  color: #000;     border-color: #5CB85C;    background-color: #5CB85C; }
+  .btn-outline-warning:hover {   color: #000;     border-color: #F0AD4E;    background-color: #F0AD4E; }
+  .btn-outline-danger:hover  {   color: #000;     border-color: #D9534F;    background-color: #D9534F; }
 
 .loadCircle {
   border : 0;
