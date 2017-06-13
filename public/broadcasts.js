@@ -41,4 +41,4 @@ var bclowpower = new broadcastObj("POWER SUPPLY WARNING","bclowpower",8,"0","gra
 
 
 
-var bceaster = new broadcastObj("HELLoYES","bceaster",8,"0","gray");
+var bcmaati = new broadcastObj("KOEN GLAASJE WATER","bcmaati",9,"0","0");
