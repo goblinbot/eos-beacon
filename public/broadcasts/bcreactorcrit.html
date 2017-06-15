@@ -70,7 +70,7 @@
           <p>A critical reactor is a class 6 hazard, thus obstructing engineering could lead to loss of lives and structural integrity.</p>
 
           <hr/>
-          <p>Warning active on this machine since:</p>
+          <p>Duration counter (on this machine)</p>
           <div id="oldclock" class="holoContrast">00:00:00:00</div>
 
 
@@ -114,14 +114,14 @@ $(document).ready(function(){
 
 
   function getTime(){
-      var elapsed = new Date() - startDate;
+      var ol_elapsed = new Date() - startDate;
 
-      var mili      = Math.floor((elapsed / 10) % 100);
-      var seconds   = Math.floor((elapsed / 1000) % 60);
-      var minutes   = Math.floor((elapsed / 60000) % 60); /*origineel: 60000) %100 */
-      var hours     = Math.floor((elapsed / 3600000) % 100);
+      var ol_mili      = Math.floor((ol_elapsed / 10) % 100);
+      var ol_seconds   = Math.floor((ol_elapsed / 1000) % 60);
+      var ol_minutes   = Math.floor((ol_elapsed / 60000) % 60); /*origineel: 60000) %100 */
+      var ol_hours     = Math.floor((ol_elapsed / 3600000) % 100);
 
-      return (hours < 10 ? "0":"") + hours + ":" + (minutes < 10 ? "0":"") + minutes + ":" + (seconds< 10? "0": "") + seconds + ":" + (mili < 10? "0" : "") + mili;
+      return (ol_hours < 10 ? "0":"") + ol_hours + ":" + (ol_minutes < 10 ? "0":"") + ol_minutes + ":" + (ol_seconds< 10? "0": "") + ol_seconds + ":" + (ol_mili < 10? "0" : "") + ol_mili;
   }
 
   setInterval(function(){
