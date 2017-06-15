@@ -24,16 +24,12 @@
     <br/><br/>
   </div>
 
-  <!-- <div class="col-xs-12">
+  <div class="col-xs-12">
     <p>Priority: low</p>
-
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcportalinc); cpanelStatus('Broadcast: portal incoming');">
-      <i class="glyphicon glyphicon-warning"></i>&nbsp;PORTAL INCOMING
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bchydrate); cpanelStatus('PSA sent');">
+      <i class="glyphicon glyphicon-info-sign"></i>&nbsp;HYDRATION REMINDER
     </div>
-    <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcportalout); cpanelStatus('Broadcast: portal outgoing');">
-      <i class="glyphicon glyphicon-warning"></i>&nbsp;PORTAL OUTGOING
-    </div>
-  </div> -->
+  </div>
 
   <div class="whitespace">&nbsp;</div>
   <div class="col-xs-12">
@@ -41,6 +37,10 @@
 
     <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcmedical); cpanelStatus('Broadcast: Requesting blood donations');">
       <i class="glyphicon glyphicon-check"></i>&nbsp;REQUEST BLOOD DONATIONS
+    </div>
+
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcmeeting); cpanelStatus('Meeting called');">
+      <i class="glyphicon glyphicon-info-sign"></i>&nbsp;GATHER ALL COLONISTS
     </div>
 
   </div>
@@ -58,29 +58,22 @@
     <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcpsyhazard); cpanelStatus('Broadcast sent.');">
       <i class="glyphicon glyphicon-alert"></i>&nbsp;PSYHAZARD
     </div>
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bclowpower); cpanelStatus('Broadcast sent.');">
-      <i class="glyphicon glyphicon-alert"></i>&nbsp;LOW POWER WARNING
-    </div>
   </div>
 
   <div class="whitespace">&nbsp;</div>
   <div class="col-xs-12">
     <p>Priority: Other.</p>
 
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bchydrate); cpanelStatus('PSA sent');">
-      <i class="glyphicon glyphicon-info-sign"></i>&nbsp;HYDRATION PSA
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bclunch); cpanelStatus('Lunch sent.');">
+      <i class="glyphicon glyphicon-cutlery"></i>&nbsp;KITCHEN: LUNCH
     </div>
 
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bclunch); cpanelStatus('PSA sent.');">
-      <i class="glyphicon glyphicon-info-sign"></i>&nbsp;LUNCH TIME
+    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcdinner); cpanelStatus('Dinner sent.');">
+      <i class="glyphicon glyphicon-cutlery"></i>&nbsp;KITCHEN: DINNER
     </div>
 
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcdinner); cpanelStatus('PSA sent.');">
-      <i class="glyphicon glyphicon-info-sign"></i>&nbsp;DINNER TIME
-    </div>
-
-    <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcmeeting); cpanelStatus('MEETING CALLED');">
-      <i class="glyphicon glyphicon-info-sign"></i>&nbsp;GATHER ALL COLONISTS
+    <div class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcdishes); cpanelStatus('Request sent.');">
+      <i class="glyphicon glyphicon-cutlery"></i>&nbsp;KITCHEN: DISHES
     </div>
 
   </div>
@@ -180,6 +173,41 @@
 
 <div id="admOVERLORD" class="adm-tab default-border hidden col-xs-12">
   <h2><i class="glyphicon glyphicon-console"></i>&nbsp;Welcome, Overlord.</h2>
+
+  <hr/>
+
+  <div class="col-xs-12">
+    <div class="btn btn-outline-success btn-lg btn-block" onclick="sendBroadCast(bcreset); cpanelStatus('Broadcasts CLEARED');">
+      <i class="glyphicon glyphicon-check"></i>&nbsp;CLEAR BROADCASTS
+    </div>
+    <br/><br/>
+  </div>
+
+  <div style="margin: 8px;"
+    class="col-xs-12 col-md-5 btn btn-lg btn-ui btn-ui-holo"
+    onclick="sendBroadCast(bclowpower); cpanelStatus('Broadcast: lowerpower sent.');">
+    <i class="glyphicon glyphicon-alert"></i>&nbsp;COLONY: LOW POWER WARNING
+  </div>
+
+  <div style="margin: 8px;"
+    class="col-xs-12 col-md-5 btn btn-lg btn-ui btn-ui-holo-red"
+    onclick="sendBroadCast(bcviral); cpanelStatus('Broadcast: virus sent.');">
+    <i class="glyphicon glyphicon-alert"></i>&nbsp;BIOLOGICAL VIRUS (UNKNOWN PATHOGEN)
+  </div>
+
+  <div style="margin: 8px;"
+    class="col-xs-12 col-md-5 btn btn-lg btn-ui btn-ui-holo-red"
+    onclick="sendBroadCast(bcreactorcrit); cpanelStatus('Broadcast: reactor meltdown.');">
+    <i class="glyphicon glyphicon-alert"></i>&nbsp;REACTOR CONDITION: CRITICAL
+  </div>
+
+  <div style="margin: 8px;"
+    class="col-xs-12 col-md-5 btn btn-lg btn-ui btn-ui-holo-alt"
+    onclick="sendBroadCast(bchackattack); cpanelStatus('Broadcast: hackers attacking.');">
+    <i class="glyphicon glyphicon-alert"></i>&nbsp;SECURITY BREACH: HACKER ATTACK
+  </div>
+
+
 </div>
 
 <div id="admPORTAL" class="adm-tab default-border hidden col-xs-12">
