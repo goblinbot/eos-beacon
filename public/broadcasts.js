@@ -28,6 +28,7 @@ var bcsystemscan = new broadcastObj("System Diagnostics","bcsystemscan",88,"6000
 var bclunch = new broadcastObj("Lunch announcement","bclunch",2,"0","0");
 var bcdinner = new broadcastObj("Dinner announcement","bcdinner",2,"0","0");
 var bchydrate = new broadcastObj("Hydration Reminder","bchydrate",2,"0","0");
+var bcdishes = new broadcastObj("Dishes reminder","bcdishes",2,"0","120000");
 var bcmeeting = new broadcastObj("Meeting in Main","bcmeeting",4,"0","0");
 
 var bcmedical = new broadcastObj("Medical Request","bcmedical",4,"0","0");
