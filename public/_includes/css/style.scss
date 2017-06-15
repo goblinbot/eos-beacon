@@ -70,6 +70,9 @@ p.text-lg, .text-lg {
 .regularfont {
   font-family: $fontStack;
 }
+.altfont {
+  font-family : $altFontStack;
+}
 
 .whitespace {
   min-height: ($whitespace);
