@@ -34,11 +34,13 @@ var bcportalinc = new broadcastObj("Portal Incoming","bcportalinc",3,"30000","0"
 var bcportalout = new broadcastObj("Portal Outgoing","bcportalout",3,"17500","0");
 var bcmedical = new broadcastObj("Medical Request","bcmedical",4,"0","0");
 
+var bcviral = new broadcastObj("Unknown Viral Pathogens detected","bcviral",8,"0","hazard");
 var bcbiohazard = new broadcastObj("Envirnomental Hazard detected","bcbiohazard",8,"0","hazard");
 var bcpsyhazard = new broadcastObj("Psy-hazard detected","bcpsyhazard",8,"0","psyhazard");
 var bchostile = new broadcastObj("Enemy Contact","bchostile",8,"0","attack");
 var bclowpower = new broadcastObj("POWER SUPPLY WARNING","bclowpower",8,"0","gray");
 
-
+var bcreactorcrit = new broadcastObj("Reactor Critical","bcreactorcrit",9,"0","attack");
+var bchackattack = new broadcastObj("Security Breach","bchackattack",9,"0","0");
 
 var bcmaati = new broadcastObj("KOEN GLAASJE WATER","bcmaati",9,"0","0");

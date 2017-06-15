@@ -1,0 +1,131 @@
+<style>
+.col-md-2 {
+  overflow: hidden;
+  max-height: 60vh;
+}
+.col-md-2 .lines {
+  overflow: hidden;
+  position: relative;
+  top: -100px;
+  max-height: 100%;
+}
+.lines .danger-line {
+  margin: 2.4rem 0;
+  width: 200%;
+  transform:rotate(40deg);
+  position: relative;
+  left: -50%;
+  height: 2.4rem;
+}
+.alt .lines .danger-line {
+  transform:rotate(-40deg);
+}
+
+#oldclock {
+  font-size: 2.8rem;
+  position: relative;
+  bottom: 0;
+}
+</style>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 blinkContent text-center">
+
+      <div class="hidden-xs hidden-sm col-md-2">
+        <div class="lines">
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+        </div>
+      </div>
+
+
+      <div class="col-xs-12 col-sm-12 col-md-8">
+
+        <div class="col-xs-12">
+          <p>&nbsp;</p>
+
+          <div class="danger-line hidden-md hidden-lg"></div>
+          <h1 class="text-white text-bold" style="font-size: 54px; padding-bottom:0.8rem;">
+            REACTOR IN CRITICAL CONDITION
+          </h1>
+          <div class="danger-line hidden-md hidden-lg"></div>
+
+          <h2 class="text-red text-bold">MULTIPLE MALFUNCTIONS IMMINENT</h2>
+          <h2 class="text-white text-bold">DO NOT ATTEMPT MANUAL RESTART</h2>
+        </div>
+        <div class="col-xs-12 col-md-6 text-left">
+          <p>&nbsp;</p>
+          <p class="holoContrast text-lg text-bold">SUPPORT YOUR ENGINEERS.</p>
+          <p>A critical reactor is a class 6 hazard, thus obstructing engineering could lead to loss of lives and structural integrity.</p>
+
+          <hr/>
+          <p>Warning active on this machine since:</p>
+          <div id="oldclock" class="holoContrast">00:00:00:00</div>
+
+
+        </div>
+
+        <div class="col-xs-12 col-md-6 text-right">
+          <p>&nbsp;</p>
+          <h3>RUNNING TEMP:&nbsp;<span class="glitch" data-text="275.8">ERR.R</span></h3>
+          <h3 class="text-white">OPTIMAL TEMP:&nbsp;<span class="glitch" data-text="000.0">253.3</span></h3>
+        </div>
+
+      </div>
+
+
+      <div class="hidden-xs hidden-sm col-md-2 alt">
+        <div class="lines">
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+          <div class="danger-line"></div><div class="danger-line"></div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<script>
+var startDate = new Date();
+
+$(document).ready(function(){
+
+
+  function getTime(){
+      var elapsed = new Date() - startDate;
+
+      var mili      = Math.floor((elapsed / 10) % 100);
+      var seconds   = Math.floor((elapsed / 1000) % 60);
+      var minutes   = Math.floor((elapsed / 60000) % 60); /*origineel: 60000) %100 */
+      var hours     = Math.floor((elapsed / 3600000) % 100);
+
+      return (hours < 10 ? "0":"") + hours + ":" + (minutes < 10 ? "0":"") + minutes + ":" + (seconds< 10? "0": "") + seconds + ":" + (mili < 10? "0" : "") + mili;
+  }
+
+  setInterval(function(){
+    $("#oldclock").text(getTime());
+  }, 10);
+});
+</script>
