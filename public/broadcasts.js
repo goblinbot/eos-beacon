@@ -39,6 +39,7 @@ var bcviral = new broadcastObj("Unknown Viral Pathogens detected","bcviral",8,"0
 var bcbiohazard = new broadcastObj("Envirnomental Hazard detected","bcbiohazard",8,"0","hazard");
 var bcpsyhazard = new broadcastObj("Psy-hazard detected","bcpsyhazard",8,"0","psyhazard");
 var bchostile = new broadcastObj("Enemy Contact","bchostile",8,"0","attack");
+var bcbomb = new broadcastObj("Bomb Alert","bcbomb",8,"0","hazard");
 
 /* portal */
 var bcportalinc = new broadcastObj("Portal Incoming","bcportalinc",3,"30000","0");
