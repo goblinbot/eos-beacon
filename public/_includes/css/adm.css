@@ -21,8 +21,10 @@
 }
 
 #cPanel-status {
-  margin-top: 1rem;
+  margin-top: 1.28rem;
   margin-bottom: 1rem;
+  border-radius: 4px;
+  padding: 0.8rem;
 }
 
 .adm-container .block .headerblock {
@@ -32,6 +34,7 @@
 
 .adm-container #cPanel {
   min-height: 2rem;
+  margin-top: 1.7rem;
 }
 
 .adm-container .adm-tab {

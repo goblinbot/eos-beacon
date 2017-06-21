@@ -39,7 +39,7 @@ function setSoundSettings(option) {
 function cpanelStatus(message) {
   if(message != null && message != "") {
     $('#cPanel-status').empty();
-    $('#cPanel-status').html(message);
+    $('#cPanel-status').html('<span class=\"text-bold\">current broadcast:&nbsp;</span>' + message);
   }
 }
 

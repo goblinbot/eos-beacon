@@ -154,7 +154,6 @@ $(document).ready(function(){
   /* hier defineren we de realtime update: als de =socket= een broadcast ontvangt, dan voert de client deze uit.*/
   socket.on('broadcastReceive', function(location){
     console.log('# BROADCAST RECEIVED !');
-    console.log('# ...');
     /* uitvoeren op client. */
     broadCast(location);
     console.log('# ... OK');

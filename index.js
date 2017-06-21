@@ -139,6 +139,13 @@ io.on('connection', function (socket) {
     dynamicData['lastBC'] = value.file;
 
     io.emit('broadcastReceive', value);
+
+    if (value.duration > 1) {
+      setTimeout(function(){
+        dynamicData['lastBC'] = 'bcdefault';
+        console.log('=> last-bc timer cleared.');
+      },value.duration);
+    }
   });
 
   socket.on('disconnect', function(){
