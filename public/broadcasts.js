@@ -31,8 +31,9 @@ var bcdishes = new broadcastObj("Dishes reminder","bcdishes",2,"0","0");
 
 /* andere PSA's */
 var bchydrate = new broadcastObj("Hydration Reminder","bchydrate",2,"0","0");
+var bcmedical = new broadcastObj("Blood Donation Request","bcmedical",2,"0","0");
 var bcmeeting = new broadcastObj("Meeting in Main","bcmeeting",4,"0","0");
-var bcmedical = new broadcastObj("Medical Request","bcmedical",4,"0","0");
+var bcmedical = new broadcastObj("Blood Donation Demand","bcblood",4,"0","0");
 
 /* hazards */
 var bcviral = new broadcastObj("Unknown Viral Pathogens detected","bcviral",8,"0","hazard");
