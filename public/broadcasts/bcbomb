@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 blinkContent text-center">
+
+      <p>&nbsp;</p>
+      <h1 class="holoContrast" style="font-size: 66px;"><i class="glyphicon glyphicon-alert"></i></h1>
+      <h2 class="holoContrast text-bold" >BOMB THREAT</h2>
+      <p class="text-lg">A <span class="holoContrast">bomb threat</span> is in effect inside Bastion EOS.</p>
+      
+      <p class="text-lg">Please report any unknown devices, sources and other suspicious objects to colony security.</p>
+      <p class="text-lg">Do not interact with such devices without expert support.</p>
+
+      <p class="text-lg">Follow any advice given by your local Demolition Expert.</p>
+      <p class="text-lg">If you see the Demolition Expert running, <span class="holoContrast">RUN</span>.</p>
+      
+    </div>
+  </div>
+</div>
+
+<audio controls="controls" autoplay="autoplay" class="hidden extra-audio">
+  <source src="/sounds/defcon.wav" type="audio/mpeg">
+</audio>
