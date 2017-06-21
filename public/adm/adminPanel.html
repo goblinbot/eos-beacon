@@ -29,16 +29,18 @@
     <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bchydrate); cpanelStatus('PSA sent');">
       <i class="glyphicon glyphicon-info-sign"></i>&nbsp;HYDRATION REMINDER
     </div>
+    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcmedical); cpanelStatus('Broadcast: Requesting blood donations');">
+      <i class="glyphicon glyphicon-check"></i>&nbsp;REQUEST BLOOD DONATIONS
+    </div>
   </div>
 
   <div class="whitespace">&nbsp;</div>
   <div class="col-xs-12">
     <p>Priority: Medium.</p>
 
-    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcmedical); cpanelStatus('Broadcast: Requesting blood donations');">
-      <i class="glyphicon glyphicon-check"></i>&nbsp;REQUEST BLOOD DONATIONS
+    <div class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcblood); cpanelStatus('Broadcast: Demanding blood donations');">
+      <i class="glyphicon glyphicon-check"></i>&nbsp;EMERGENCY BLOOD DONATIONS
     </div>
-
     <div class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcmeeting); cpanelStatus('Meeting called');">
       <i class="glyphicon glyphicon-info-sign"></i>&nbsp;GATHER ALL COLONISTS
     </div>
