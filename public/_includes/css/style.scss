@@ -64,6 +64,10 @@ p.text-lg, .text-lg {
   @include animation(blinkText 1.5s linear infinite);
 }
 
+#connStatus {
+  transition: 0.4s;
+}
+
 .round {
   border-radius: 50%;
 }

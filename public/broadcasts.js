@@ -21,8 +21,8 @@ function broadcastObj(title, file, priority, duration, colorscheme) {
 }
 
 /* Systeem */
-var bcdefault = new broadcastObj("Broadcast Initialise","bcdefault",1,"0","0");
-var bcreset = new broadcastObj("Clear","bcdefault",99,"0","0");
+var bcdefault = new broadcastObj("Standby","bcdefault",1,"0","0");
+var bcreset = new broadcastObj("Standby","bcdefault",99,"0","0");
 
 /* keuken crew */
 var bclunch = new broadcastObj("Lunch announcement","bclunch",2,"0","0");

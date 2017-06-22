@@ -28,12 +28,12 @@ $defaultpadding: 0.8rem;
 
 #cPanel-status {
   margin : {
-    top: ($defaultpadding * 1.25);
+    top: ($defaultpadding * 1.6);
     bottom: ($defaultpadding * 1.25);
   }
+  border-radius: 4px;
+  padding: $defaultpadding;
 }
-
-
 
 
 .adm-container {
@@ -49,6 +49,7 @@ $defaultpadding: 0.8rem;
 
   #cPanel {
     min-height: 2rem;
+    margin-top: 1.7rem;
 
     .admMENU {
       .btn, .adm-nav {
