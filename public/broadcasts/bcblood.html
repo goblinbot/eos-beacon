@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 blinkContent text-center">
+
+      <p>&nbsp;</p>
+
+      <div class="block col-xs-12 col-md-8 col-md-push-2 col-md-pull-2" style="border-top: 1px solid #4fe38b; border-bottom: 1px solid #4fe38b; padding-bottom:0.8rem;">
+        <div class="content">
+          <div class="col-xs-1 col-md-3 text-right blinkContent">
+            <p>&nbsp;</p>
+            <h1><i class="glyphicon glyphicon-plus" style="color:#4fe38b;"></i></h1>
+          </div>
+          <div class="col-xs-10 col-md-6">
+            <p>&nbsp;</p>
+            <h1 class="text-white text-bold">EMERGENCY REQUEST FROM:<span style="color:#4fe38b;"> MEDICAL</span></h1>
+          </div>
+          <div class="col-xs-1 col-md-3 text-left blinkContent">
+            <p>&nbsp;</p>
+            <h1><i class="glyphicon glyphicon-plus" style="color:#4fe38b;"></i></h1>
+          </div>  
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-8  col-md-push-2 col-md-pull-2">
+        <div class="content">
+          <p>&nbsp;</p>
+          <p class="text-lg text-bold">INJURED COLONISTS REQUIRE <span class="holoContrast">BLOOD</span> AND RESERVES ARE LOW.</p>
+          <p class="text-lg text-bold">UNINJURED PERSONNEL - PLEASE <span class="holoContrast">DONATE BLOOD</span> AT EARLIEST POSIBILITY.</p>
+          <p>&nbsp;</p>
+          <p class="text-lg">Without your donation, your fellow colonists will <span class="holoContrast">not survive</span>.</p>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<audio id="loop-limited" controls="controls" class="hidden extra-audio">
+  <source src="/sounds/bloodRequest.wav" type="audio/mpeg">
+</audio>
+
+<script>
+  // Audio Loop Limit
+  var loopLimit = 5;
+  var loopCounter = 0;
+  document.getElementById('loop-limited').addEventListener('ended', function(){
+      if (loopCounter < loopLimit){
+          this.currentTime = 0;
+          this.play();
+          loopCounter++;
+      }
+  }, false);   
+</script>
