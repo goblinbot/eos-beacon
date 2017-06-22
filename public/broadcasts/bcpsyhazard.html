@@ -3,17 +3,50 @@
     <div class="col-xs-12 blinkContent text-center">
 
       <p>&nbsp;</p>
-      <h1 class="holoContrast" style="font-size: 66px;"><i class="glyphicon glyphicon-eye-open"></i></h1>
-      <h2 class="holoContrast text-bold">WARNING: PSY-HAZARD DETECTED</h2>
-      <p class="text-lg">Please <span class="holoContrast">remain calm</span> and clear-headed.</p>
-      <p class="text-lg">Make sure every colonist is accounted for. <span class="holoContrast"><strong>DO NOT</strong></span> leave colonists alone, or out sight.</p>
 
-      <h4>Please consult a priest AND/OR Psy-experts for further instructions. </h4>
+      <div class="block col-xs-12 col-md-10 col-md-push-1 col-md-pull-1" style="border-top: 1px solid #FFCC00; border-bottom: 1px solid #FFCC00; padding-bottom:0.8rem;">
+        <div class="content">
+          <h2 class="holoContrast text-bold" ><i class="glyphicon glyphicon-eye-open"></i> WARNING: PSY-HAZARD DETECTED <i class="glyphicon glyphicon-eye-open"></i></h2>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-10 col-md-push-1 col-md-pull-1">
+        <div class="content">
+          <p>&nbsp;</p>
+          <h2 class="text-white text-bold">Please <span class="holoContrast">remain calm</span> and clear-headed.</h2>
+          <p>&nbsp;</p>
+          <h1 class="blinkContent" style="font-size: 80px;"><i class="glyphicon glyphicon-eye-open"></i></h1>
+		  <p>&nbsp;</p>
+        </div>
+      </div>
+
+      <div class="block col-xs-12 col-md-10 col-md-push-1 col-md-pull-1">
+        <div class="content">
+          <p>&nbsp;</p>
+          <p class="text-lg">Make sure every colonist is accounted for. <span class="holoContrast"><strong>DO NOT</strong></span> leave colonists alone, or out sight.</p>
+          <h4>Please consult a priest AND/OR Psy-experts for further instructions. </h4>
+	      <p>&nbsp;</p>
+        </div>
+      </div>
+
 
     </div>
   </div>
 </div>
 
-<audio controls="controls" autoplay="autoplay" class="hidden extra-audio">
-  <source src="/sounds/area51_alert.wav" type="audio/mpeg">
+<audio id="loop-limited" autoplay="autoplay" controls="controls" class="hidden extra-audio">
+  <source src="/sounds/low_alarm_03.mp3" type="audio/mpeg">
 </audio>
+
+<script>
+  // Audio Loop Limit
+  var loopLimit = 1;
+  var loopCounter = 0;
+  document.getElementById('loop-limited').addEventListener('ended', function(){
+      if (loopCounter < loopLimit){
+          this.currentTime = 0;
+          this.play();
+          loopCounter++;
+      }
+  }, false);
+</script>
