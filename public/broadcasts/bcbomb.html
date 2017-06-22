@@ -52,6 +52,19 @@
   </div>
 </div>
 
-<audio controls="controls" autoplay="autoplay" class="hidden extra-audio">
+<audio id="loop-limited" controls="controls" class="hidden extra-audio">
   <source src="/sounds/defcon.wav" type="audio/mpeg">
 </audio>
+
+<script>
+  // Audio Loop Limit
+  var loopLimit = 5;
+  var loopCounter = 0;
+  document.getElementById('loop-limited').addEventListener('ended', function(){
+      if (loopCounter < loopLimit){
+          this.currentTime = 0;
+          this.play();
+          loopCounter++;
+      }
+  }, false);   
+</script>
