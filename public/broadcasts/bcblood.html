@@ -1,22 +1,19 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 blinkContent text-center">
+    <div class="col-xs-12 text-center">
 
       <p>&nbsp;</p>
 
-      <div class="block col-xs-12 col-md-8 col-md-push-2 col-md-pull-2" style="border-top: 1px solid #4fe38b; border-bottom: 1px solid #4fe38b; padding-bottom:0.8rem;">
+      <div class="block col-xs-12 col-md-8 col-md-push-2 col-md-pull-2 blinkContent" style="border-top: 1px solid #4fe38b; border-bottom: 1px solid #4fe38b; padding-bottom:0.8rem;">
         <div class="content">
-          <div class="col-xs-1 col-md-3 text-right blinkContent">
-            <p>&nbsp;</p>
-            <h1><i class="glyphicon glyphicon-plus" style="color:#4fe38b;"></i></h1>
+          <div class="col-xs-1 col-md-3 text-right">
+            <h1 style="font-size: 48px;"><i class="glyphicon glyphicon-plus" style="color:#4fe38b;"></i></h1>
           </div>
           <div class="col-xs-10 col-md-6">
-            <p>&nbsp;</p>
-            <h1 class="text-white text-bold">EMERGENCY REQUEST FROM:<span style="color:#4fe38b;"> MEDICAL</span></h1>
+            <h1 class="text-white text-bold"><span style="color:#4fe38b;">MEDICAL EMERGENCY</span></h1>
           </div>
-          <div class="col-xs-1 col-md-3 text-left blinkContent">
-            <p>&nbsp;</p>
-            <h1><i class="glyphicon glyphicon-plus" style="color:#4fe38b;"></i></h1>
+          <div class="col-xs-1 col-md-3 text-left">
+            <h1 style="font-size: 48px;"><i class="glyphicon glyphicon-plus" style="color:#4fe38b;"></i></h1>
           </div>  
         </div>
       </div>
@@ -25,9 +22,13 @@
         <div class="content">
           <p>&nbsp;</p>
           <p class="text-lg text-bold">INJURED COLONISTS REQUIRE <span class="holoContrast">BLOOD</span> AND RESERVES ARE LOW.</p>
-          <p class="text-lg text-bold">UNINJURED PERSONNEL - PLEASE <span class="holoContrast">DONATE BLOOD</span> AT EARLIEST POSIBILITY.</p>
+          <p class="text-lg text-bold">UNINJURED PERSONNEL MUST <span class="holoContrast">DONATE BLOOD</span> AT EARLIEST POSIBILITY.</p>
           <p>&nbsp;</p>
-          <p class="text-lg">Without your donation, your fellow colonists will <span class="holoContrast">not survive</span>.</p>
+		  <h1 class="text-white blinkContent" style="font-size: 64px; color:#bc0000;"><i class="glyphicon glyphicon-tint"></i><i class="glyphicon glyphicon-tint"></i><i class="glyphicon glyphicon-tint"></i></h1>
+          <p class="text-lg">Without your donation, your fellow colonists will <span class="holoContrast">expire</span>.</p>
+		  <p>&nbsp;</p>
+		  <p class="text-lg">Form an <span class="holoContrast">orderly queue</span> outside medbay when preparing to donate blood.
+		  <p class="text-lg">Know your <span class="holoContrast">BLOOD TYPE</span>. There might be priority.</p>
           <p>&nbsp;</p>
         </div>
       </div>
@@ -36,13 +37,13 @@
   </div>
 </div>
 
-<audio id="loop-limited" controls="controls" class="hidden extra-audio">
+<audio id="loop-limited" autoplay="autoplay" controls="controls" class="hidden extra-audio">
   <source src="/sounds/bloodRequest.wav" type="audio/mpeg">
 </audio>
 
 <script>
   // Audio Loop Limit
-  var loopLimit = 5;
+  var loopLimit = 4;
   var loopCounter = 0;
   document.getElementById('loop-limited').addEventListener('ended', function(){
       if (loopCounter < loopLimit){
