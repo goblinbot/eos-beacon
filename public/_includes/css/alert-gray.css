@@ -99,7 +99,7 @@ p {
   color: #DDDDDD;
 }
 
-#main .middle .left-bar .portalstatus .portalstatus-icon .glyphicon {
+#main .middle .left-bar .portalstatus .portalstatus-icon .glyphicon, #main .middle .left-bar .portalstatus .portalstatus-icon .fa {
   color: #DDDDDD;
 }
 
@@ -128,7 +128,7 @@ p {
   background-color: transparent;
 }
 
-.btn-ui.btn-ui-holo .glyphicon {
+.btn-ui.btn-ui-holo .glyphicon, .btn-ui.btn-ui-holo .fa {
   color: #39DBCC;
   border-color: #39DBCC;
   background-image: none;
@@ -141,7 +141,7 @@ p {
   background-color: #39DBCC;
 }
 
-.btn-ui.btn-ui-holo:hover .glyphicon, .btn-ui.btn-ui-holo.active .glyphicon {
+.btn-ui.btn-ui-holo:hover .glyphicon, .btn-ui.btn-ui-holo:hover .fa, .btn-ui.btn-ui-holo.active .glyphicon, .btn-ui.btn-ui-holo.active .fa {
   color: #222222;
   border-color: #39DBCC;
   background-color: #39DBCC;
@@ -154,7 +154,7 @@ p {
   background-color: transparent;
 }
 
-.btn-ui.btn-ui-holo-alt .glyphicon {
+.btn-ui.btn-ui-holo-alt .glyphicon, .btn-ui.btn-ui-holo-alt .fa {
   color: #DDDDDD;
   border-color: #DDDDDD;
   background-image: none;
@@ -167,7 +167,7 @@ p {
   background-color: #DDDDDD;
 }
 
-.btn-ui.btn-ui-holo-alt:hover .glyphicon, .btn-ui.btn-ui-holo-alt.active .glyphicon {
+.btn-ui.btn-ui-holo-alt:hover .glyphicon .fa, .btn-ui.btn-ui-holo-alt.active .glyphicon .fa {
   color: #222222;
   border-color: #DDDDDD;
   background-color: #DDDDDD;
@@ -180,7 +180,7 @@ p {
   background-color: transparent;
 }
 
-.btn-ui.btn-ui-holo-red .glyphicon {
+.btn-ui.btn-ui-holo-red .glyphicon, .btn-ui.btn-ui-holo-red .fa {
   color: #ed3737;
   border-color: #ed3737;
   background-image: none;
@@ -193,7 +193,7 @@ p {
   background-color: #ed3737;
 }
 
-.btn-ui.btn-ui-holo-red:hover .glyphicon, .btn-ui.btn-ui-holo-red.active .glyphicon {
+.btn-ui.btn-ui-holo-red:hover .glyphicon, .btn-ui.btn-ui-holo-red:hover .fa, .btn-ui.btn-ui-holo-red.active .glyphicon, .btn-ui.btn-ui-holo-red.active .fa {
   color: #222222;
   border-color: #ed3737;
   background-color: #ed3737;

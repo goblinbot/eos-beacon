@@ -99,7 +99,7 @@ p {
   color: #f2A83B;
 }
 
-#main .middle .left-bar .portalstatus .portalstatus-icon .glyphicon {
+#main .middle .left-bar .portalstatus .portalstatus-icon .glyphicon, #main .middle .left-bar .portalstatus .portalstatus-icon .fa {
   color: #f2A83B;
 }
 
@@ -113,7 +113,11 @@ p {
 
 #notificationContainer .disconnectedPopup {
   background: #222222;
-  border: 2px solid #FF9933;
+  border: 3px solid #bc0000;
+  color: #FFFFFF;
+}
+
+#notificationContainer .disconnectedPopup h2 {
   color: #FFFFFF;
 }
 
@@ -124,7 +128,7 @@ p {
   background-color: transparent;
 }
 
-.btn-ui.btn-ui-holo .glyphicon {
+.btn-ui.btn-ui-holo .glyphicon, .btn-ui.btn-ui-holo .fa {
   color: #FFCC00;
   border-color: #FFCC00;
   background-image: none;
@@ -137,7 +141,7 @@ p {
   background-color: #FFCC00;
 }
 
-.btn-ui.btn-ui-holo:hover .glyphicon, .btn-ui.btn-ui-holo.active .glyphicon {
+.btn-ui.btn-ui-holo:hover .glyphicon, .btn-ui.btn-ui-holo:hover .fa, .btn-ui.btn-ui-holo.active .glyphicon, .btn-ui.btn-ui-holo.active .fa {
   color: #222222;
   border-color: #FFCC00;
   background-color: #FFCC00;
@@ -150,7 +154,7 @@ p {
   background-color: transparent;
 }
 
-.btn-ui.btn-ui-holo-alt .glyphicon {
+.btn-ui.btn-ui-holo-alt .glyphicon, .btn-ui.btn-ui-holo-alt .fa {
   color: #FF9933;
   border-color: #FF9933;
   background-image: none;
@@ -163,7 +167,7 @@ p {
   background-color: #FF9933;
 }
 
-.btn-ui.btn-ui-holo-alt:hover .glyphicon, .btn-ui.btn-ui-holo-alt.active .glyphicon {
+.btn-ui.btn-ui-holo-alt:hover .glyphicon, .btn-ui.btn-ui-holo-alt:hover .fa, .btn-ui.btn-ui-holo-alt.active .glyphicon, .btn-ui.btn-ui-holo-alt.active .fa {
   color: #222222;
   border-color: #FF9933;
   background-color: #FF9933;
@@ -176,7 +180,7 @@ p {
   background-color: transparent;
 }
 
-.btn-ui.btn-ui-holo-red .glyphicon {
+.btn-ui.btn-ui-holo-red .glyphicon, .btn-ui.btn-ui-holo-red .fa {
   color: #bc0000;
   border-color: #bc0000;
   background-image: none;
@@ -189,7 +193,7 @@ p {
   background-color: #bc0000;
 }
 
-.btn-ui.btn-ui-holo-red:hover .glyphicon, .btn-ui.btn-ui-holo-red.active .glyphicon {
+.btn-ui.btn-ui-holo-red:hover .glyphicon, .btn-ui.btn-ui-holo-red:hover .fa, .btn-ui.btn-ui-holo-red.active .glyphicon, .btn-ui.btn-ui-holo-red.active .fa {
   color: #222222;
   border-color: #bc0000;
   background-color: #bc0000;

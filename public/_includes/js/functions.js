@@ -124,7 +124,7 @@ function broadCast(location) {
                 var outString = location['title'].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
                 location['title'] = outString;
 
-                $("#lastBroadcastTitle").html("<i class='glyphicon glyphicon-bell'></i>&nbsp;" + location['title']);
+                $("#lastBroadcastTitle").html("<i class='fa fa-bell'></i>&nbsp;" + location['title']);
                 $("#lastBroadcastTime").html(currentTimeString);
               }
 

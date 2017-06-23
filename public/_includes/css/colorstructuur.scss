@@ -91,7 +91,7 @@ p {
         h4 {
           color: $altTitleColor;
         }
-        .portalstatus-icon .glyphicon {
+        .portalstatus-icon .glyphicon, .portalstatus-icon .fa {
           color: $altTitleColor;
         }
       }
@@ -166,7 +166,7 @@ p {
     border-color    : $holoBlauw;
     background-image: none;
     background-color: transparent;
-    .glyphicon {
+    .glyphicon, .fa {
       color           : $holoBlauw;
       border-color    : $holoBlauw;
       background-image: none;
@@ -177,7 +177,7 @@ p {
       color: $defaultdonker;
       border-color    : $holoBlauw;
       background-color: $holoBlauw;
-      .glyphicon {
+      .glyphicon, .fa {
         color: $defaultdonker;
         border-color    : $holoBlauw;
         background-color: $holoBlauw;
@@ -189,7 +189,7 @@ p {
     border-color    : $holoContrast;
     background-image: none;
     background-color: transparent;
-    .glyphicon {
+    .glyphicon, .fa {
       color           : $holoContrast;
       border-color    : $holoContrast;
       background-image: none;
@@ -200,7 +200,7 @@ p {
       color: $defaultdonker;
       border-color    : $holoContrast;
       background-color: $holoContrast;
-      .glyphicon {
+      .glyphicon, .fa {
         color: $defaultdonker;
         border-color    : $holoContrast;
         background-color: $holoContrast;
@@ -213,7 +213,7 @@ p {
     border-color    : $orbitRed;
     background-image: none;
     background-color: transparent;
-    .glyphicon {
+    .glyphicon, .fa {
       color           : $orbitRed;
       border-color    : $orbitRed;
       background-image: none;
@@ -224,7 +224,7 @@ p {
       color: $defaultdonker;
       border-color    : $orbitRed;
       background-color: $orbitRed;
-      .glyphicon {
+      .glyphicon, .fa {
         color: $defaultdonker;
         border-color    : $orbitRed;
         background-color: $orbitRed;

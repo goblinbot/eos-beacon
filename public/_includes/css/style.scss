@@ -262,11 +262,10 @@ p.text-lg, .text-lg {
       .portalstatus {
         padding: $defaultpadding;
         position: relative;
-        .portalstatus-icon .glyphicon {
+        .portalstatus-icon .fa {
           font-size: 48px;
           margin : {
-            top: 5px;
-            left: -15px;
+            top: 1rem;
           }
         }
       }

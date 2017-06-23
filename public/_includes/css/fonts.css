@@ -1,2 +1,40 @@
-@font-face{font-family:'Titillium-Regular';src:url(/_includes/fonts/Titillium-Regular.otf)}@font-face{font-family:'Titillium-Bold';src:url(/_includes/fonts/Titillium-Bold.otf)}@font-face{font-family:'Titillium-Light';src:url(/_includes/fonts/Titillium-Light.otf)}@font-face{font-family:'Titillium-Thin';src:url(/_includes/fonts/Titillium-Thin.otf)}@font-face{font-family:'ProFontWindows';src:url(/_includes/fonts/ProFontWindows.ttf)}@font-face{font-family:'orbitron-medium';src:url(/_includes/fonts/orbitron-medium.otf)}@font-face{font-family:'orbitron-bold';src:url(/_includes/fonts/orbitron-bold.otf)}@font-face{font-family:'orbitron-light';src:url(/_includes/fonts/orbitron-light.otf)}
-/*# sourceMappingURL=fonts.css.map */
+@import url(/_includes/bs3-css/font-awesome.min.css);
+@font-face {
+  font-family: 'Titillium-Regular';
+  src: url(/_includes/fonts/Titillium-Regular.otf);
+}
+
+@font-face {
+  font-family: 'Titillium-Bold';
+  src: url(/_includes/fonts/Titillium-Bold.otf);
+}
+
+@font-face {
+  font-family: 'Titillium-Light';
+  src: url(/_includes/fonts/Titillium-Light.otf);
+}
+
+@font-face {
+  font-family: 'Titillium-Thin';
+  src: url(/_includes/fonts/Titillium-Thin.otf);
+}
+
+@font-face {
+  font-family: 'ProFontWindows';
+  src: url(/_includes/fonts/ProFontWindows.ttf);
+}
+
+@font-face {
+  font-family: 'orbitron-medium';
+  src: url(/_includes/fonts/orbitron-medium.otf);
+}
+
+@font-face {
+  font-family: 'orbitron-bold';
+  src: url(/_includes/fonts/orbitron-bold.otf);
+}
+
+@font-face {
+  font-family: 'orbitron-light';
+  src: url(/_includes/fonts/orbitron-light.otf);
+}
