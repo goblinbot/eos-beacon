@@ -3,15 +3,48 @@
     <div class="col-xs-12 blinkContent text-center">
 
       <p>&nbsp;</p>
-      <h1 class="holoContrast" style="font-size: 66px;"><i class="glyphicon glyphicon-alert"></i></h1>
-      <h2 class="holoContrast text-bold" >WARNING: CLASS 5 BIOHAZARD EVENT</h2>
-      <p class="text-lg">Use of protective gear is <span class="holoContrast">strongly</span> recommended.</p>
-      <p class="text-lg">Please report any unknown devices, sources and other suspicious objects to colony security.</p>
+
+      <div class="block col-xs-12 col-md-10 col-md-push-1 col-md-pull-1" style="border-top: 1px solid #FFCC00; border-bottom: 1px solid #FFCC00; padding-bottom:0.8rem;">
+        <div class="content">
+          <h2 class="holoContrast text-bold" ><i class="glyphicon glyphicon-alert"></i> WARNING: CLASS 5 BIOHAZARD EVENT <i class="glyphicon glyphicon-alert"></i></h2>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-10 col-md-push-1 col-md-pull-1">
+        <div class="content">
+          <p>&nbsp;</p>
+          <h2 class="text-white text-bold">Use of protective gear is <span class="holoContrast">strongly</span> recommended.</h2>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+
+      <div class="block col-xs-12 col-md-10 col-md-push-1 col-md-pull-1">
+        <div class="content">
+          <p>&nbsp;</p>
+            <h2 class="holoContrast">REPORT ANY UNKNOWN DEVICES, SOURCES, AND OTHER SUSPICIOUS OBJECTS TO <span class="text-bold">COLONY SECURITY</span></h2>
+            <p class="text-lg">do <span class="holoContrast">not</span> interact with such devices, sources, or objects without <span class="holoContrast">expert</span> support.</p>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+
 
     </div>
   </div>
 </div>
 
-<audio controls="controls" autoplay="autoplay" class="hidden extra-audio">
-  <source src="/sounds/area51_alert.wav" type="audio/mpeg">
+<audio id="loop-limited" autoplay="autoplay" controls="controls" class="hidden extra-audio">
+  <source src="/sounds/defcon.wav" type="audio/mpeg">
 </audio>
+
+<script>
+  // Audio Loop Limit
+  var loopLimit = 4;
+  var loopCounter = 0;
+  document.getElementById('loop-limited').addEventListener('ended', function(){
+      if (loopCounter < loopLimit){
+          this.currentTime = 0;
+          this.play();
+          loopCounter++;
+      }
+  }, false);
+</script>
