@@ -130,7 +130,7 @@ function broadCast(location) {
                 /* laad ACTIVE uit, laad LOCATION in */
                 activeColorScheme = location['colorscheme'];
               }
-              
+
 
               if(location['duration'] && location['duration'] > 0 && !isNaN(location['duration'])) {
                 console.log(location['duration']);
@@ -177,7 +177,7 @@ function clearBroadcast(duration){
       console.log('clear == actief');
       clearTimeout(clearIsActive);
       clearIsActive = setTimeout(function(){
-        socket.emit('broadcastSend', resetBroadcast);
+        socket.emit('broadcastSend', bcreset);
         clearIsActive = undefined;
       },duration);
 
@@ -188,14 +188,14 @@ function clearBroadcast(duration){
 
     } else {
       clearIsActive = setTimeout(function(){
-        socket.emit('broadcastSend', resetBroadcast);
+        socket.emit('broadcastSend', bcreset);
         clearIsActive = undefined;
       },duration);
     }
 
   } else {
     // geen timer? Gewoon resetten.
-    socket.emit('broadcastSend', resetBroadcast);
+    socket.emit('broadcastSend', bcreset);
   }
 
 }

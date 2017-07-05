@@ -196,7 +196,7 @@ function clearBroadcast(duration){
       console.log('clear == actief');
       clearTimeout(clearIsActive);
       clearIsActive = setTimeout(function(){
-        socket.emit('broadcastSend', resetBroadcast);
+        socket.emit('broadcastSend', bcreset);
         clearIsActive = undefined;
       },duration);
 
@@ -210,7 +210,7 @@ function clearBroadcast(duration){
 
     } else {
       clearIsActive = setTimeout(function(){
-        socket.emit('broadcastSend', resetBroadcast);
+        socket.emit('broadcastSend', bcreset);
         clearIsActive = undefined;
       },duration);
     }
@@ -223,7 +223,7 @@ function clearBroadcast(duration){
       clearIsActive = undefined;
     } else {
       // geen timer? Gewoon resetten.
-      socket.emit('broadcastSend', resetBroadcast);
+      socket.emit('broadcastSend', bcreset);
       clearTimeout(clearIsActive);
       clearIsActive = undefined;
     }
