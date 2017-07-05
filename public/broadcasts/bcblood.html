@@ -36,11 +36,9 @@
   </div>
 </div>
 
-<audio id="loop-limited" controls="controls" class="hidden extra-audio">
-  <source src="/sounds/bloodRequest.wav" type="audio/mpeg">
-</audio>
+<script>generateAudioPlayer('bloodRequest.wav','5');</script>
 
-<script>
+<!-- <script>
   // Audio Loop Limit
   var loopLimit = 5;
   var loopCounter = 0;
@@ -51,4 +49,4 @@
           loopCounter++;
       }
   }, false);
-</script>
+</script> -->

@@ -30,6 +30,7 @@ function FlashBlocks(div) {
   } else {
     $(div).addClass('flash');
   }
+
 }
 
 function getCurrentTime() {
@@ -109,9 +110,9 @@ function broadCast(location) {
             $("#notificationContainer").empty();
               $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
 
-              if(location['file'] !== 'standby') {
+              /*if(location['file'] !== 'standby') {
                 $('#default-audio').trigger('play');
-              }
+              }*/
 
 
               //* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
@@ -227,11 +228,59 @@ function clearBroadcast(duration){
       clearIsActive = undefined;
     }
 
-
-
   }
 
 }
+
+function generateAudioPlayer(audiofile, repeatcount) {
+
+  /* nog checken: staat client op MUTE? */
+
+  if(audiofile) {
+
+    if(repeatcount == null || repeatcount == undefined) {
+      repeatcount = 1;
+    }
+
+    if(document.getElementById("custom-audio") !== null) {
+
+      console.log('CUSTOM-audio -> play: ' + audiofile + ' * ' + repeatcount + ' time(s). ');
+
+      if ($(window).width() > 960) {
+        $('#custom-audio').empty();
+        $('#custom-audio').html('<audio id="generatedaudioplayer" controls="controls" class="hidden">'
+        + '<source src="/sounds/'+ audiofile +'" type="audio/mpeg">'
+        +'</audio>');
+
+        $('#generatedaudioplayer').trigger('play');
+
+        /* repeat? */
+
+      }
+
+    } else {
+
+      if(document.getElementById("default-audio") !== null) {
+        console.log('default-audio -> play');
+
+        $('#custom-audio').empty();
+        $('#default-audio').trigger('play');
+
+      }
+
+    }
+
+  } else {
+
+    $('#custom-audio').empty();
+    $('#default-audio').trigger('play');
+  }
+
+
+
+}
+
+
 
 // CLOCK //////////////////////////////////////////////////////
 function updateClock() {

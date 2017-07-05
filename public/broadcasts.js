@@ -57,4 +57,4 @@ var bcfreezeall = new broadcastObj("ADMIN.OVERRIDE","bcfreezeall",100,"0","0");
 
 /* Testomgeving */
 var bcmaati = new broadcastObj("test","bcmaati",9,"0","0");
-var bcrobot = new broadcastObj("test","bcrobot",3,"0","0");
+/*var bcrobot = new broadcastObj("test","bcrobot",3,"0","0");*/
