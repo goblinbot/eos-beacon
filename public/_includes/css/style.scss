@@ -93,6 +93,9 @@ p.text-lg, .text-lg {
   @include animation(circleSpin 1.4s linear infinite);
 }
 
+.img-center {
+  margin: 0 auto;
+}
 
 
 .topHeader {
