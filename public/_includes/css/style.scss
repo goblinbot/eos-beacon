@@ -426,6 +426,10 @@ p.text-lg, .text-lg {
   min-height: $minhoogte;
   width: 100%;
 
+  img {
+    max-height: 30vh;
+  }
+
   .disconnectedPopup {
     position: absolute;
     z-index: 99;
