@@ -19,9 +19,9 @@
     <div id="btn-admOVERLORD" class="btn adm-nav btn-ui btn-ui-holo-alt" onclick="navigateADM('admOVERLORD');"><i style="font-size:133%" class="fa fa-microchip"></i><br/>OVERLORD</div>
   </span>
 
-  <span class="officer">
-    <div id="btn-admMISSION" class="btn adm-nav btn-ui btn-ui-holo-alt" onclick="navigateADM('admMISSION');"><i style="font-size:133%" class="fa fa-globe"></i><br/>MISSION CONTROL</div>
-  </span>
+  <!-- <span class="officer"> -->
+    <!-- <div id="btn-admMISSION" class="btn adm-nav btn-ui btn-ui-holo-alt" onclick="navigateADM('admMISSION');"><i style="font-size:133%" class="fa fa-globe"></i><br/>MISSION CONTROL</div> -->
+  <!-- </span> -->
 </div>
 
 <script>
@@ -37,7 +37,7 @@ $(document).ready(function(){
       switch(admRANK) {
         case '1': case '2': default:
           $('.overlord').empty();
-          $('.officer').empty();
+          /*$('.officer').empty();*/
           break;
         case '3':
           $('.overlord').empty();
