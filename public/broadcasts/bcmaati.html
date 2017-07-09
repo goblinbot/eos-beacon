@@ -1,18 +1,9 @@
 <div class="container-fluid">
-  <div class="row broadcast">
-    <br/>
-    <div class="col-xs-12 text-center">
-
-      <br/><br/>
-
-      <h1 class="text-center blinkContent"><i class="fa fa-warning holoContrast" style="font-size: 68px;"></i></h1>
-
-      <br/><br/>
-
-      <h1 class="glitch" data-text="HELLO YES">HELLO YES</h1>
-
-    </div>
-  </div>
+  <div id="doom"></div>
 </div>
 
-<script>generateAudioPlayer();</script>
+<script>
+$(document).ready(function(){
+  $('#doom').load('https://js-dos.com/games/doom.exe.html');
+});
+</script>
