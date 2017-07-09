@@ -1,20 +1,56 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 text-center">
+    <div class="col-xs-12">
+
+      <p>&nbsp;</p>
+
+      <div class="hexagon blinkContent" style="margin-left:auto;margin-right:auto;">
+        <h3 class="text-center" style="font-size: 72px; margin-top:16px;">
+          <i class="holoContrast fa fa-coffee"></i>
+        </h3>
+      </div>
+
+      <p>&nbsp;</p>
+
+      <h2 class="text-white  text-center"><strong>PSA:</strong> REMEMBER TO <span style="color:#39DBCC;">HYDRATE</span> ON A REGULAR BASIS.</h2>
 
       <p>&nbsp;</p>
       <p>&nbsp;</p>
-      <h1 style="font-size: 64px;"><i class="blinkContent text-white fa fa-coffee"></i></h1>
-      <h2 class="text-white"><strong>PSA:</strong> REMEMBER TO <span style="color:#39DBCC;">HYDRATE</span> ON A REGULAR BASIS.</h2>
+      <p class="text-lg  text-center">Have a productive day.</p>
 
     </div>
-  </div>
 
-  <div class="col-xs-12 text-center fixed-bottom">
-    <br/>
-    <p>&nbsp;</p>
-    <p class="text-lg">Have a productive day.</p>
   </div>
 </div>
 
-<script>generateAudioPlayer();</script>
+<script>generateAudioPlayer('announce.ogg','1');</script>
+
+<style>
+.hexagon {
+  position: relative;
+  width: 200px;
+  height: 115.47px;
+  background-color: #053A47;
+  margin: 57.74px 0;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 57.74px solid #053A47;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 57.74px solid #053A47;
+}
+</style>
