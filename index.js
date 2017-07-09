@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var session = require('client-sessions');
 var fs = require('fs');
 
+var configtest = require('./config.js');
 
 /* CONFIGURATIE: vaste gegevens bij start up. */
 var port          = process.env.PORT || 5001;
@@ -58,6 +59,7 @@ http.listen(port, function(){
   console.log('. ');
   console.log('. ');
   console.log('.. ');
+  console.log(configtest.value);
   console.log('// '+globalSettings['appnaam1']+' ////////////');
   console.log('# Initialising ..' );
   console.log('# Loading dependancies ..');
