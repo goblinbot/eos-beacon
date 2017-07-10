@@ -47,8 +47,6 @@ var valid_accounts = [];
 
 /* INITIALISEN VAN APP */
 
-// connection.connect();
-
 app.use(express.static('public'));
 app.use(express.static('_includes'));
 app.use('_includes', express.static('public'));
@@ -59,7 +57,7 @@ http.listen(port, function(){
   console.log('. ');
   console.log('. ');
   console.log('.. ');
-  console.log(configtest.value);
+  /*console.log(configtest.value);*/
   console.log('// '+globalSettings['appnaam1']+' ////////////');
   console.log('# Initialising ..' );
   console.log('# Loading dependancies ..');
@@ -101,10 +99,10 @@ io.on('connection', function (socket) {
 
   console.log('Device connected. '+dynamicData['countClients']+' active clients.');
 
-  // stuurt IP naar de index pagina zodat deze bovenin kan worden laten zien.
-  // socket.emit('showIP', 'IP: ' + localaddress);
+  /* stuurt IP naar de index pagina zodat deze bovenin kan worden laten zien. */
+  /* socket.emit('showIP', 'IP: ' + localaddress); */
 
-  // io.to(lastID).emit('F5');
+  /* io.to(lastID).emit('F5'); */
 
   setTimeout(function(){
     socket.emit('startConfig', globalSettings);
@@ -136,7 +134,7 @@ io.on('connection', function (socket) {
 
 
   socket.on('broadcastSend', function(value){
-    console.log(value);
+    /*console.log(value);*/
 
     dynamicData['lastBC'] = value.file;
 
@@ -156,7 +154,7 @@ io.on('connection', function (socket) {
     console.log(activeClients);
 
     dynamicData['countClients'] = io.engine.clientsCount;
-    console.log('DISCONNECT// .. ' +dynamicData['countClients']+' active clients.');
+    console.log('- Disconnected : ' +dynamicData['countClients']+' active clients.');
     io.emit('updateDynamicData', dynamicData );
   });
 
@@ -169,7 +167,7 @@ io.on('connection', function (socket) {
 
       if(valid_accounts[i].logincode == keycode) {
         checklogincode = 1;
-        console.log(valid_accounts[i]);
+        /*console.log(valid_accounts[i]);*/
         loginrank = valid_accounts[i].loginrank;
       }
     }
