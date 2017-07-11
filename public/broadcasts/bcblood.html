@@ -1,52 +1,50 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 blinkContent text-center">
+    <div class="text-right hidden-xs hidden-sm col-md-2" style="min-height:68vh;position:absolute;overflow:hidden;">
+      <i class="fa fa-tint drip" style="right:30px;"></i>
+    </div>
+    <div class="col-xs-12 text-center content">
 
-      <p>&nbsp;</p>
+      <div class="whitespace"></div>
 
-      <div class="block col-xs-12 col-md-8 col-md-push-2 col-md-pull-2" style="border-top: 1px solid #ed3737; border-bottom: 1px solid #ed3737; padding-bottom:0.8rem;">
-        <div class="content">
-          <div class="hidden-xs col-sm-1 col-md-3 text-right blinkContent">
-            <p>&nbsp;</p>
-            <h1><i class="fa fa-tint" style="color:#ed3737;"></i></h1>
-          </div>
-          <div class="col-xs-12 col-sm-10 col-md-6">
-            <p>&nbsp;</p>
-            <h1 class="text-white text-bold">EMERGENCY REQUEST FROM:<span style="color:#ed3737;"> MEDICAL</span></h1>
-          </div>
-          <div class="hidden-xs col-sm-1 col-md-3 text-left blinkContent">
-            <p>&nbsp;</p>
-            <h1><i class="fa fa-tint" style="color:#ed3737;"></i></h1>
-          </div>
-        </div>
+      <div class="col-xs-12 blinkContent">
+        <h2 class="text-bold" style="color:#ed3737;"><i class="fa fa-plus-square hidden-xs"></i> MEDICAL EMERGENCY <i class="fa fa-plus-square hidden-xs"></i></h2>
       </div>
 
-      <div class="col-xs-12 col-md-8  col-md-push-2 col-md-pull-2">
-        <div class="content">
-          <p>&nbsp;</p>
-          <p class="text-lg text-bold">INJURED COLONISTS REQUIRE <span class="holoContrast">BLOOD</span> AND RESERVES ARE LOW.</p>
-          <p class="text-lg text-bold">UNINJURED PERSONNEL - PLEASE <span class="holoContrast">DONATE BLOOD</span> AT EARLIEST POSIBILITY.</p>
-          <p>&nbsp;</p>
-          <p class="text-lg">Without your donation, your fellow colonists will <span class="holoContrast">not survive</span>.</p>
-          <p>&nbsp;</p>
-        </div>
+      <div class="whitespace blinkContent col-xs-12 col-md-8 col-md-push-2 col-md-pull-2" style="min-height:6rem; border-top: 3px double #ed3737;"></div>
+      <div class="block flash col-xs-12 col-md-8 col-md-push-2 col-md-pull-2">
+        <div class="whitespace col-xs-12"></div>
+        <p class="text-lg text-bold">INJURED COLONISTS REQUIRE <span style="color:#ed3737;">BLOOD</span> AND RESERVES ARE LOW.</p>
+        <p class="text-lg text-bold">UNINJURED PERSONNEL - PLEASE <span style="color:#ed3737;">DONATE BLOOD</span> AT EARLIEST POSIBILITY.</p>
+        <div class="whitespace col-xs-12"></div>
+        <p class="text-lg">If you can donate, enter the queue outside medbay.<br/>Medical personel will come to you.</p>
+        <p class="text-lg">Without your donation, your fellow colonists will <span style="color:#ed3737;">not survive</span>.</p>
+        <div class="whitespace col-xs-12"></div>
       </div>
 
+      <div class="whitespace blinkContent col-xs-12 col-md-8 col-md-push-2 col-md-pull-2" style="min-height:6rem; border-bottom: 3px double #ed3737;"></div>
+
+    </div>
+    <div class="hidden-xs hidden-sm col-md-2 col-md-push-10" style="min-height:68vh;position:absolute;overflow:hidden;">
+      <i class="fa fa-tint drip"></i>
     </div>
   </div>
 </div>
 
-<script>generateAudioPlayer('bloodRequest.ogg','5');</script>
+<script>generateAudioPlayer('bloodRequest.ogg','3');</script>
 
-<!-- <script>
-  // Audio Loop Limit
-  var loopLimit = 5;
-  var loopCounter = 0;
-  document.getElementById('loop-limited').addEventListener('ended', function(){
-      if (loopCounter < loopLimit){
-          this.currentTime = 0;
-          this.play();
-          loopCounter++;
-      }
-  }, false);
-</script> -->
+<style>
+.drip {
+  font-size:96px;
+  color:#ed3737;
+  position:absolute;
+  bottom:50%;
+  animation: dripping 1s cubic-bezier(0,.42,1,.58) infinite;
+}
+@keyframes dripping {
+  0% {bottom:75%;opacity:0;}
+  20% {opacity:1;}
+  80% {opacity:1;}
+  100% {bottom:15%;opacity:0;}
+}
+</style>
