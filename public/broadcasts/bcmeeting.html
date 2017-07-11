@@ -76,18 +76,55 @@
   left:5vh;
 }
 .topleft {
-  transform: rotate(180deg);
+  animation: pointingTL 1.5s linear infinite;
 }
 .topright {
-  transform: rotate(270deg);
+  animation: pointingTR 1.5s linear infinite;
   right:0%;
 }
 .bottomleft {
-  transform: rotate(90deg);
+  animation: pointingBL 1.5s linear infinite;
   bottom:0%;
 }
 .bottomright {
+  animation: pointingBR 1.5s linear infinite;
   bottom:0%;
   right:0%;
+}
+@keyframes pointingTL {
+  0% {transform:rotate(180deg);opacity:.3;}
+  10% {opacity:.3;}
+  20% {opacity:.7;}
+  60% {opacity:1;}
+  80% {opacity:.7;}
+  90% {opacity:.3;}
+  100% {transform:rotate(180deg) translate(-2.5vh,-2.5vh) scale(.667,.667);opacity:.3;}
+}
+@keyframes pointingTR {
+  0% {transform:rotate(270deg);opacity:0;}
+  10% {opacity:.3;}
+  20% {opacity:.7;}
+  60% {opacity:1;}
+  80% {opacity:.7;}
+  90% {opacity:.3;}
+  100% {transform:rotate(270deg) translate(-2.5vh,-2.5vh) scale(.667,.667);opacity:0;}
+}
+@keyframes pointingBL {
+  0% {transform:rotate(90deg);opacity:0;}
+  10% {opacity:.3;}
+  20% {opacity:.7;}
+  60% {opacity:1;}
+  80% {opacity:.7;}
+  90% {opacity:.3;}
+  100% {transform:rotate(90deg) translate(-2.5vh,-2.5vh) scale(.667,.667);opacity:0;}
+}
+@keyframes pointingBR {
+  0% {opacity:0;}
+  10% {opacity:.3;}
+  20% {opacity:.7;}
+  60% {opacity:1;}
+  80% {opacity:.7;}
+  90% {opacity:.3;}
+  100% {transform: translate(-2.5vh,-2.5vh) scale(.667,.667);opacity:.3;}
 }
 </style>
