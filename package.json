@@ -1,7 +1,10 @@
 {
   "name": "eos-beacon",
-  "version": "1.1.4",
-  "description": "Eos broadcasting System",
+  "version": "2.0.1",
+  "description": "Beacon broadcasting Application",
+  "engines": {
+    "node": "6.11.1"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -21,9 +24,6 @@
     "sci-fi",
     "fantasy"
   ],
-  "engines": {
-    "node": "4.5.0"
-  },
   "author": "Thijs Boerma",
   "license": "ISC",
   "dependencies": {
