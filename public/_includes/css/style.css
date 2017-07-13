@@ -239,7 +239,7 @@ p.text-lg, .text-lg {
 }
 
 .danger-line {
-  height: 1.6rem;
+  min-height: 1.6rem;
   width: 100%;
   margin-top: 3px;
   margin-bottom: 3px;

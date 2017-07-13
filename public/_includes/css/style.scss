@@ -55,7 +55,7 @@ p.text-lg, .text-lg {
 }
 
 .danger-line {
-  height  : ($defaultpadding * 2);
+  min-height  : ($defaultpadding * 2);
   width   : 100%;
   margin  : { top: 3px; bottom: 3px; }
 }
