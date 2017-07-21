@@ -9,15 +9,17 @@ var bodyParser = require('body-parser');
 var session = require('client-sessions');
 var fs = require('fs');
 
-var configtest = require('./config.js');
+
+
+
+var globalSettings = require('./config.js');
 
 /* CONFIGURATIE: vaste gegevens bij start up. */
-var port          = process.env.PORT || 5001;
-var globalSettings = {
-  appnaam1      : 'BEACON',
-  appdescription: '/ EOS BASTION INFORMATION SERVICE',
-  localaddress  : ip.address() +':'+ port,
-}
+var port          = process.env.PORT || globalSettings.sys.port;
+
+globalSettings.sys.localaddress = ip.address() +':'+ port;
+globalSettings.data.localaddress = globalSettings.sys.localaddress;
+
 var default_security_level = "Code green - All clear";
 
 
@@ -32,19 +34,6 @@ var dynamicData = {
 var activeClients = [];
 var deviceLabelArray = ['00.','FA.','A2.','63.','D4.','19.','C5.','D3.','81.','74.','5E.'];
 
-/* accounts */
-var valid_logincodes = ['00451','12345','67890','07311'];
-
-function accountObj(logincode,loginrank) {
-  this.logincode = logincode;
-  this.loginrank = loginrank;
-}
-var valid_accounts = [];
-    valid_accounts[0] = (new accountObj('00451','4'));
-    valid_accounts[1] = (new accountObj('07311','4'));
-    valid_accounts[2] = (new accountObj('12345','3'));
-    valid_accounts[3] = (new accountObj('67890','1'));
-
 /* INITIALISEN VAN APP */
 
 app.use(express.static('public'));
@@ -58,26 +47,21 @@ http.listen(port, function(){
   console.log('. ');
   console.log('.. ');
   /*console.log(configtest.value);*/
-  console.log('// '+globalSettings['appnaam1']+' ////////////');
+  console.log('// '+globalSettings['appname']+' ////////////');
   console.log('# Initialising ..' );
   console.log('# Loading dependancies ..');
   console.log('-------------------------');
   console.log('# CONNECT DEVICES//USERS TO :');
-  console.log(' ? External IP : ' + globalSettings['localaddress'] );
+  console.log(' ? External IP : ' + globalSettings.sys['localaddress'] );
   console.log(' ? Internal IP : localhost:'+ port  + ' | ' + '127.0.0.1:'+ port );
   console.log('-------------------------');
-  console.log('THANK YOU FOR USING '+globalSettings['appnaam1']+' INFORMATION & BROADCASTING SERVICES');
+  console.log('THANK YOU FOR USING '+globalSettings['appname']+' INFORMATION & BROADCASTING SERVICES');
 });
 
 
 
 /* pathing / routing */
 app.get('/', function(req, res){
-  res.sendFile('index.html', {"root": __dirname+'/public/'});
-});
-
-/* test voor later */
-app.get('/advanced', function(req, res){
   res.sendFile('index.html', {"root": __dirname+'/public/'});
 });
 
@@ -99,13 +83,9 @@ io.on('connection', function (socket) {
 
   console.log('Device connected. '+dynamicData['countClients']+' active clients.');
 
-  /* stuurt IP naar de index pagina zodat deze bovenin kan worden laten zien. */
-  /* socket.emit('showIP', 'IP: ' + localaddress); */
-
-  /* io.to(lastID).emit('F5'); */
-
   setTimeout(function(){
-    socket.emit('startConfig', globalSettings);
+    /* send FRONTEND data to FRONT */
+    socket.emit('startConfig', globalSettings.data);
   },1000);
 
 
@@ -163,12 +143,11 @@ io.on('connection', function (socket) {
     var loginrank = 0;
     console.log('authentication code received: '+keycode);
 
-    for (var i in valid_accounts) {
+    for (var i in globalSettings.accounts) {
 
-      if(valid_accounts[i].logincode == keycode) {
+      if(globalSettings.accounts[i].logincode == keycode) {
         checklogincode = 1;
-        /*console.log(valid_accounts[i]);*/
-        loginrank = valid_accounts[i].loginrank;
+        loginrank = globalSettings.accounts[i].loginrank;
       }
     }
 
