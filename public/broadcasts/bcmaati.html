@@ -1,9 +1,17 @@
-<div class="container-fluid">
-  <h1>:]</h1>
-  <div id="doom" class="hidden">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/YGWEnaZamBo?autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>
-  </div>
+<div class="video-container">
+  <div class="overlay-static"><h2>LIVE FEED -- VIDEO TEST -- PLEASE STAND BY</h2></div>
+  <video autoplay loop muted src="/miscmedia/splash.webm" type="video/webm"></video>
 </div>
 
+<script type="text/javascript">
 
-<script>generateAudioPlayer('announce.ogg','1');</script>
+  var tempWidth;
+
+  tempWidth = ($('.video-container').width() - 20);
+  $('.overlay-static').width(tempWidth);
+  $('.overlay-static').css('background','rgba(4, 42, 52, 0.33)');
+
+</script>
+
+
+<!-- <script>generateAudioPlayer('announce.ogg','1');</script> -->

@@ -426,6 +426,45 @@ p.text-lg, .text-lg {
   min-height: $minhoogte;
   width: 100%;
 
+  @media(min-width:769px){
+    max-height: $minhoogte;
+    overflow: hidden;
+  }
+  .video-container {
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    // position: relative;
+
+    video {
+      width: 100%;
+      // position: relative;
+      z-index: 1;
+
+      @media(min-width:769px){
+        min-height: $minhoogte;
+        overflow: hidden;
+      }
+      @media(min-width:1550px){
+        top: -10vh;
+      }
+    }
+
+    .overlay-static {
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      padding: 1.8rem 1rem;
+    }
+    .overlay-static h2 {
+      margin: 6px;
+      z-index: 3;
+    }
+
+  }
+
+
+
   img {
     max-height: 30vh;
   }
