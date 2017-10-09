@@ -312,14 +312,9 @@ function updateClock() {
   	var currentSeconds = currentTime.getSeconds ( );
 
   	/* Pad the minutes and seconds with leading zeros, if required */
+    currentHours = ( currentHours < 10 ? "0" : "" ) + currentHours;
   	currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
   	currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
-
-  	/* Convert an hours component of "0" to "12" */
-  	/*currentHours = ( currentHours == 0 ) ? 12 : currentHours;*/
-    if(currentHours == 0) {
-      currentHours == '00';
-    }
 
   	/* Compose the string for display */
   	var currentTimeString ="[&nbsp;" + currentHours + ":" + currentMinutes + ":" + currentSeconds + "&nbsp;ECT&nbsp;]";
