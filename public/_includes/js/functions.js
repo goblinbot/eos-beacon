@@ -316,7 +316,10 @@ function updateClock() {
   	currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
 
   	/* Convert an hours component of "0" to "12" */
-  	currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+  	/*currentHours = ( currentHours == 0 ) ? 12 : currentHours;*/
+    if(currentHours == 0) {
+      currentHours == '00';
+    }
 
   	/* Compose the string for display */
   	var currentTimeString ="[&nbsp;" + currentHours + ":" + currentMinutes + ":" + currentSeconds + "&nbsp;ECT&nbsp;]";
