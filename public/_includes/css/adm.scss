@@ -82,14 +82,6 @@ $defaultpadding: 0.8rem;
       .btn {
         margin-top: ($defaultpadding);
         margin-bottom: ($defaultpadding);
-        // &:hover{
-        //   background: #FFF;
-        //   color     : #222;
-        //   .glyphicon {
-        //     background: #FFF;
-        //     color     : #222;
-        //   }
-        // }
       }
     }
     &#admCHAT {
@@ -104,6 +96,14 @@ $defaultpadding: 0.8rem;
         margin : ($defaultpadding / 2);
       }
 
+    }
+
+    // mobile fix
+    @media(max-width: 990px) {
+      .btn {
+        width: 100%;
+        margin: ($defaultpadding * 1.5) 0;
+      }
     }
 
   }

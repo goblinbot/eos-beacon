@@ -183,6 +183,8 @@ $(document).ready(function(){
 
   /* ForceReset. F5'd de pagina.*/
   socket.on('F5', function(){
+
+    socket.disconnect();
     location.reload();
   });
 

@@ -20,21 +20,6 @@ function setSoundSettings(option) {
   socket.emit('setSoundSetting', option);
 }
 
-/*function submitChat(){
-
-  var chatmessage = [ $('#chat-username').val() , $('#chat-message').val() ];
-
-  if(chatmessage[0] != "" && chatmessage[0] != undefined && chatmessage[1] != "" && chatmessage[1] != undefined ) {
-    $('#chat-button').hide();
-    $('#chat-message').val('15 Second cooldown on sending messages. Please stand by.');
-    socket.emit('sendChatMessage', chatmessage );
-
-    setTimeout(function(){
-      $('#chat-message').val('');
-      $('#chat-button').show();
-    },15000);
-  }
-}*/
 
 function cpanelStatus(message) {
   if(message != null && message != "") {
@@ -59,7 +44,21 @@ function updateSecurity(selector) {
 
 }
 
+$(document).ready(function(){
 
+  $('.btn').on('click', function(e){
+
+    $('.btn').addClass('disabled');
+    $('.btn').prop("disabled", true);
+
+    setTimeout(function(){
+      $('.btn').removeClass('disabled');
+      $('.btn').prop("disabled", false);
+    },808);
+
+  });
+
+});
 
 
 // ..
