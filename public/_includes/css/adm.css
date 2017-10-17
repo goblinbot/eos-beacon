@@ -72,12 +72,15 @@
   margin: 0.4rem;
 }
 
+.adm-container .adm-tab#admCMD {
+  padding: 1.6rem 3.2rem;
+}
+
 .adm-container .adm-tab#admOVERLORD {
-  padding: 1.6rem;
+  padding: 1.6rem 3.2rem;
 }
 
 .adm-container .adm-tab#admOVERLORD .btn {
-  width: 100%;
   margin: 1.2rem 0;
 }
 

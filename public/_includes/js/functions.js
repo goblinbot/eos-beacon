@@ -325,17 +325,7 @@ function updateClock() {
 
     // $("#dow").html(dow);
  }
+
  $(document).ready(function() {
-
-   window.onbeforeunload = function(e) {
-     try {
-       socket.disconnect();
-       console.log('goodbye!');
-     } catch(e) {
-       console.log('Connection already closed. Thank you for using Beacon.');
-     }
-
-  };
-
     setInterval('updateClock()', 1000);
  });

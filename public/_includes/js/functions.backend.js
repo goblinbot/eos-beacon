@@ -48,15 +48,25 @@ $(document).ready(function(){
 
   $('.btn').on('click', function(e){
 
+    if($(this).hasClass('disabled')){
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      console.log('too fast!');
+      return false;
+    }
+
     $('.btn').addClass('disabled');
-    $('.btn').prop("disabled", true);
+    $('.btn').attr("disabled", true);
 
     setTimeout(function(){
       $('.btn').removeClass('disabled');
-      $('.btn').prop("disabled", false);
-    },808);
+      $('.btn').attr("disabled", false);
+
+      $('.adm-tab').removeClass('flash');
+    },2000);
 
   });
+
 
 });
 
