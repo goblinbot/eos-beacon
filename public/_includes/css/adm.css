@@ -72,6 +72,20 @@
   margin: 0.4rem;
 }
 
+.adm-container .adm-tab#admOVERLORD {
+  padding: 1.6rem;
+}
+
+.adm-container .adm-tab#admOVERLORD .btn {
+  width: 100%;
+  margin: 1.2rem 0;
+}
+
+.adm-container .adm-tab#admPORTAL .btn {
+  width: 100%;
+  margin: 1.2rem;
+}
+
 @media (max-width: 990px) {
   .adm-container .adm-tab .btn {
     width: 100%;
