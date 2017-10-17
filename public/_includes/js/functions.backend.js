@@ -44,33 +44,6 @@ function updateSecurity(selector) {
 
 }
 
-$(document).ready(function(){
-
-  $('.btn').on('click', function(e){
-
-    if($(this).hasClass('disabled')){
-      e.stopImmediatePropagation();
-      e.preventDefault();
-      console.log('too fast!');
-      return false;
-    }
-
-    $('.btn').addClass('disabled');
-    $('.btn').attr("disabled", true);
-
-    setTimeout(function(){
-      $('.btn').removeClass('disabled');
-      $('.btn').attr("disabled", false);
-
-      $('.adm-tab').removeClass('flash');
-    },2000);
-
-  });
-
-
-});
-
-
 // ..
 // Internet's meest generieke, gecopypaste en gestolen functie allertijden :
 function setCookie(cname, cvalue, exdays) {

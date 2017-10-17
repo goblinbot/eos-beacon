@@ -141,7 +141,7 @@ function broadCast(location) {
             FlashFunctie('.block');
             setTimeout(function(){
               FlashFunctie('.block');
-            },1200);
+            },1500);
           }
         }
       })
@@ -153,7 +153,7 @@ function broadCast(location) {
       FlashFunctie('.block');
       setTimeout(function(){
         FlashFunctie('.block');
-      },1200);
+      },1500);
 
       activeColorScheme   = '0';
       activeBroadcast     = 1;
@@ -172,7 +172,9 @@ function sendBroadCast(location) {
   FlashFunctie('.adm-tab');
   setTimeout(function(){
     FlashFunctie('.adm-tab');
-  },1200);
+  },1500);
+
+
   socket.emit('broadcastSend',location);
 }
 
