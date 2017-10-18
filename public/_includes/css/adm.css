@@ -1,3 +1,7 @@
+#main {
+  min-height: 0;
+}
+
 #admkeypad .error {
   margin-bottom: 3.2rem;
 }

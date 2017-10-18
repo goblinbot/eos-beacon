@@ -1,6 +1,11 @@
 // ADMIN SPECIFIEKE STYLE SHEET. PUUR OM RUIMTE TE BESPAREN. ///////////////////
 $defaultpadding: 0.8rem;
 
+
+#main {
+  min-height: 0;
+}
+
 #admkeypad {
   .error {
     margin-bottom: (0.8rem * 4);
@@ -100,7 +105,7 @@ $defaultpadding: 0.8rem;
 
     &#admCMD {
 
-      padding: ($defaultpadding * 2) ($defaultpadding * 4); 
+      padding: ($defaultpadding * 2) ($defaultpadding * 4);
 
     }
 

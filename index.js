@@ -47,7 +47,7 @@ http.listen(port, function(){
   console.log('. ');
   console.log('.. ');
   /*console.log(configtest.value);*/
-  console.log('// '+globalSettings['appname']+' ////////////');
+  console.log('// '+globalSettings['cfg']['appname']+' ////////////');
   console.log('# Initialising ..' );
   console.log('# Loading dependancies ..');
   console.log('-------------------------');
@@ -55,7 +55,7 @@ http.listen(port, function(){
   console.log(' ? External IP : ' + globalSettings.sys['localaddress'] );
   console.log(' ? Internal IP : localhost:'+ port  + ' | ' + '127.0.0.1:'+ port );
   console.log('-------------------------');
-  console.log('THANK YOU FOR USING '+globalSettings['appname']+' INFORMATION & BROADCASTING SERVICES');
+  console.log('THANK YOU FOR USING '+globalSettings['cfg']['appname']+' INFORMATION & BROADCASTING SERVICES');
 });
 
 

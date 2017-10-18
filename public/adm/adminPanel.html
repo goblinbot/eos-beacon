@@ -151,14 +151,6 @@
       <i class="fa fa-remove"></i>&nbsp;LOG OUT
     </button>
 
-    &nbsp;
-
-    <button class="btn btn-danger btn-lg" onclick="FlashBlocks('.adm-tab'); forceReset();">
-      <i class="fa fa-refresh"></i>&nbsp;forceReset.sh
-    </button>
-
-    <br/><br/>
-
   </div>
 
 </div>
@@ -171,8 +163,6 @@
 <div id="admOVERLORD" class="adm-tab default-border hidden col-xs-12">
   <h2><i class="fa fa-terminal"></i>&nbsp;Welcome, Overlord.</h2>
 
-  <hr/>
-  <h4 class="holoContrast"><i class="fa fa-calendar"></i>&nbsp;Set current date</h4>
   <br/>
 
   <button class="btn btn-outline-success btn-lg btn-block" onclick="sendBroadCast(bcreset);">
@@ -213,28 +203,43 @@
   </div>
 
   <br/><br/>
-  <div class="col-xs-12"><hr/></div>
-  <h4 class="holoContrast"><i class="fa fa-calendar"></i>&nbsp;Set current date</h4>
-  <br/>
 
 
-    <label for="dateDay" style="padding:4px;" class="col-sm-3 text-white text-bold">Day</label>
-    <div class="col-sm-9" style="padding:4px;">
-      <input id="dateDay" type="text" class="form-control" placeholder="14">
-    </div>
+  <h4 class="holoContrast"><i class="fa fa-warning"></i>&nbsp;Reset all</h4>
 
-    <label for="dateMonth" style="padding:4px;" class="col-sm-3 text-white text-bold">Month</label>
-    <div class="col-sm-9" style="padding:4px;">
-      <input id="dateMonth" type="text" class="form-control" placeholder="MARCH">
-    </div>
+  <div class="col-xs-12">
+    <button class="btn btn-danger btn-lg" onclick="FlashBlocks('.adm-tab'); forceReset();">
+      <i class="fa fa-refresh"></i>&nbsp;force reset
+    </button>
+  </div>
 
-    <label for="dateYear" style="padding:4px;" class="col-sm-3 text-white text-bold">Year</label>
-    <div class="col-sm-9" style="padding:4px;">
-      <input id="dateYear" type="text" class="form-control" placeholder="240NT">
-    </div>
+  <p>&nbsp;</p>
+  <p>(Manually setting the date has temporarily been disabled due to unresolved issues.)</p>
 
-  <br/><br/>
-  <a class="btn btn-lg btn-primary"><i class="fa fa-calendar-check-o"></i>&nbsp;Change Date</a>
+  <span class="hidden">
+    <div class="col-xs-12"><hr/></div>
+    <h4 class="holoContrast"><i class="fa fa-calendar"></i>&nbsp;Set current date</h4>
+    <br/>
+
+
+      <label for="dateDay" style="padding:4px;" class="col-sm-3 text-white text-bold">Day</label>
+      <div class="col-sm-9" style="padding:4px;">
+        <input id="dateDay" type="text" class="form-control" placeholder="14">
+      </div>
+
+      <label for="dateMonth" style="padding:4px;" class="col-sm-3 text-white text-bold">Month</label>
+      <div class="col-sm-9" style="padding:4px;">
+        <input id="dateMonth" type="text" class="form-control" placeholder="MARCH">
+      </div>
+
+      <label for="dateYear" style="padding:4px;" class="col-sm-3 text-white text-bold">Year</label>
+      <div class="col-sm-9" style="padding:4px;">
+        <input id="dateYear" type="text" class="form-control" placeholder="240NT">
+      </div>
+
+    <br/><br/>
+    <a class="btn btn-lg btn-primary"><i class="fa fa-calendar-check-o"></i>&nbsp;Change Date</a>
+  </span>
 
 
 </div>

@@ -226,6 +226,8 @@ p.text-lg, .text-lg {
 
 #main {
 
+  min-height: calc(100vh - 85px);
+
   .middle {
 
     .left-bar {
@@ -305,6 +307,12 @@ p.text-lg, .text-lg {
   .footer {
     margin-top: $whitespace;
     font-family: $altFontStack;
+    display: flex;
+    flex-direction: row;
+
+    @media(max-width: 990px) {
+      flex-direction: column;
+    }
 
     .item {
       @media(max-width:998px) {
@@ -313,11 +321,6 @@ p.text-lg, .text-lg {
       &:first-child {
         @media(min-width:998px) {
           padding-left : 0;
-        }
-      }
-      &:last-child{
-        @media(min-width:998px) and (max-width:1200px) {
-          margin: 15px -15px 0 -8px;
         }
       }
 
@@ -329,8 +332,6 @@ p.text-lg, .text-lg {
         &:before, &::before {
           content:'';
           position:absolute;
-          // top:0;
-          // left:0;
           bottom:0;
           right:0;
           border-width: 0 0 30px 30px;

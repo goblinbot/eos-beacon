@@ -2,7 +2,6 @@
 
 // SPINNER : TIK-TIK-TIKTIKTIK ///////////////////////////////
 
-
 @keyframes loadSpinner {
   0%,100% {-webkit-transform: rotate(0);  transform: rotate(0); -moz-transform: rotate(0)}
   50%{-webkit-transform: rotate(360deg);  transform: rotate(360deg); -moz-transform: rotate(360deg) }
@@ -26,7 +25,7 @@
   100%  {transform: rotate(360deg);}
 }
 
-
+// .
 
 // POP OPEN EFFECT ///////////////////////////////////////////
 @-webkit-keyframes expandBlock  {
@@ -84,4 +83,15 @@
 @keyframes showHidden {
   0%      { visibility: hidden; }
   100%    { visibility: visible; }
+}
+
+// .
+
+// standby dots.
+@keyframes pulseDots {
+    0%      { transform: scale(0); opacity: 0;}
+    0%      { transform: scale(0); opacity: 0;}
+    50%     { transform: scale(0.5); opacity: 0.1;}
+    0%      { transform: scale(0); opacity: 0;}
+    100%    { transform: scale(1); opacity: 1;}
 }

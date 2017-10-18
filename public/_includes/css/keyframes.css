@@ -1,2 +1,202 @@
-@keyframes loadSpinner{0%,100%{-webkit-transform:rotate(0);transform:rotate(0);-moz-transform:rotate(0)}50%{-webkit-transform:rotate(360deg);transform:rotate(360deg);-moz-transform:rotate(360deg)}75%{-webkit-transform:rotate(180deg);transform:rotate(180deg);-moz-transform:rotate(180deg)}}@keyframes circleSpin{0%{transform:rotate(0deg)}50%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}@-moz-keyframes circleSpin{0%{transform:rotate(0deg)}50%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}@-webkit-keyframes circleSpin{0%{transform:rotate(0deg)}50%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}@-webkit-keyframes expandBlock{0%{-webkit-transform:scale(0);opacity:0}50%{-webkit-transform:scale(0.5);opacity:0.1}100%{-webkit-transform:scale(1);opacity:1}}@-moz-keyframes expandBlock{0%{-moz-transform:scale(0);opacity:0}50%{-moz-transform:scale(0.5);opacity:0.1}100%{-moz-transform:scale(1);opacity:1}}@keyframes expandBlock{0%{transform:scale(0);opacity:0}50%{transform:scale(0.5);opacity:0.1}100%{transform:scale(1);opacity:1}}@-webkit-keyframes blinkText{0%{opacity:1.0}50%{opacity:0.7}60%{opacity:0.3}70%{opacity:0.7}100%{opacity:1.0}}@-moz-keyframes blinkText{0%{opacity:1.0}50%{opacity:0.7}60%{opacity:0.3}70%{opacity:0.7}100%{opacity:1.0}}@keyframes blinkText{0%{opacity:1.0}50%{opacity:0.7}60%{opacity:0.3}70%{opacity:0.7}100%{opacity:1.0}}@-webkit-keyframes showHidden{0%{visibility:hidden}100%{visibility:visible}}@-moz-keyframes showHidden{0%{visibility:hidden}100%{visibility:visible}}@keyframes showHidden{0%{visibility:hidden}100%{visibility:visible}}
-/*# sourceMappingURL=keyframes.css.map */
+@keyframes loadSpinner {
+  0%, 100% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    -moz-transform: rotate(0);
+  }
+  50% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+  }
+  75% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+  }
+}
+
+@keyframes circleSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes circleSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes circleSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes expandBlock {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(0.5);
+    opacity: 0.1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes expandBlock {
+  0% {
+    -moz-transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    -moz-transform: scale(0.5);
+    opacity: 0.1;
+  }
+  100% {
+    -moz-transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes expandBlock {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.5);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes blinkText {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@-moz-keyframes blinkText {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@keyframes blinkText {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@-webkit-keyframes showHidden {
+  0% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+@-moz-keyframes showHidden {
+  0% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+@keyframes showHidden {
+  0% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+@keyframes pulseDots {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.5);
+    opacity: 0.1;
+  }
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

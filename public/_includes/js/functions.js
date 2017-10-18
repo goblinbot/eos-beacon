@@ -180,12 +180,12 @@ function sendBroadCast(location) {
 
 
 // maakt de footer blokken equally groot aan de eerste.
-function updateFooter() {
-  if($(window).width() < 769) {
-    return false;
-  }
-  $(".item").height($('#firstFooterBlock').height());
-}
+// function updateFooter() {
+//   if($(window).width() < 769) {
+//     return false;
+//   }
+//   $(".item").height($('#firstFooterBlock').height());
+// }
 
 // functie om de duration toch wel werkend te krijgen - oftewel een broadcast CLEAREN na ingestelde tijd.
 function clearBroadcast(duration){
