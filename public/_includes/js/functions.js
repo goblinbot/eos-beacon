@@ -295,17 +295,17 @@ function updateClock() {
       dd='0'+dd;
     }
 
-    if (dd == 24) {
-      dd    = '01';
+    if (dd == 10) {
+      dd    = '13';
       dow   = 'FRIDAY';
-    } else if (dd == 25) {
-      dd    = '02';
+    } else if (dd == 11) {
+      dd    = '14';
       dow   = 'SATURDAY';
-    } else if (dd == 26) {
-      dd    = '03';
+    } else if (dd == 12) {
+      dd    = '15';
       dow   = 'SUNDAY';
     } else {
-      dd    = '01';
+      dd    = '13';
       dow   = 'FRIDAY';
     }
 
