@@ -52,12 +52,13 @@ var bcportalinc = new broadcastObj("Portal Incoming","bcportalinc",3,"30000","0"
 var bcportalout = new broadcastObj("Portal Outgoing","bcportalout",3,"17500","0");
 
 /* Overlord-only */
+var bctransmission = new broadcastObj("Standby","bctransmission",5,"0","0");
 var bclowpower = new broadcastObj("POWER SUPPLY WARNING","bclowpower",8,"0","gray");
 var bcreactorcrit = new broadcastObj("Reactor Critical","bcreactorcrit",9,"0","attack");
 var bchackattack = new broadcastObj("Security Breach","bchackattack",9,"0","0");
 
 /* Maati's Eos IT toolbox */
-var bcsystemscan = new broadcastObj("System Diagnostics","bcsystemscan",88,"60000","0");
+var bcsystemscan = new broadcastObj("System Diagnostics","bcsystemscan",88,"30000","0");
 var bcfreezeall = new broadcastObj("ADMIN.OVERRIDE","bcfreezeall",100,"0","0");
 
 /* Testomgeving */
