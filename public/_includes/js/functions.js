@@ -167,6 +167,11 @@ function broadCast(location) {
 
 // VERSTUURD DE BROADCAST: kleine hack om vanaf de admin op knop een alert te kunnen posten.
 function sendBroadCast(location) {
+
+  if(!location || location === undefined || ) {
+    console.log('stop!');
+  }
+
   var FlashFunctie = FlashBlocks;
 
   FlashFunctie('.adm-tab');
@@ -174,6 +179,7 @@ function sendBroadCast(location) {
     FlashFunctie('.adm-tab');
   },1500);
 
+  console.log(location);
 
   socket.emit('broadcastSend',location);
 }
