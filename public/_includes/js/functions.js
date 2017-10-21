@@ -168,7 +168,7 @@ function broadCast(location) {
 // VERSTUURD DE BROADCAST: kleine hack om vanaf de admin op knop een alert te kunnen posten.
 function sendBroadCast(location) {
 
-  if(!location || location === undefined || ) {
+  if(!location || location === undefined) {
     console.log('stop!');
   }
 
