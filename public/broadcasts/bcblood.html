@@ -25,7 +25,7 @@
           <p class="text-lg text-bold">INJURED COLONISTS REQUIRE <span class="holoContrast">BLOOD</span> AND RESERVES ARE LOW.</p>
           <p class="text-lg text-bold">UNINJURED PERSONNEL - PLEASE <span class="holoContrast">DONATE BLOOD</span> AT EARLIEST POSIBILITY.</p>
           <p>&nbsp;</p>
-          <p class="text-lg">Without your donation, your fellow colonists will <span class="holoContrast">not survive</span>.</p>
+          <p class="text-lg">Without your donation, your fellow colonists will <span class="holoContrast">expire</span>.</p>
           <p>&nbsp;</p>
         </div>
 
@@ -40,15 +40,15 @@
 
 <script>generateAudioPlayer('bloodRequest.ogg','5');</script>
 
-<!-- <script>
+<script>
   // Audio Loop Limit
   var loopLimit = 5;
   var loopCounter = 0;
-  document.getElementById('loop-limited').addEventListener('ended', function(){
+  document.getElementById('custom-audio').addEventListener('ended', function(){
       if (loopCounter < loopLimit){
           this.currentTime = 0;
           this.play();
           loopCounter++;
       }
   }, false);
-</script> -->
+</script>
