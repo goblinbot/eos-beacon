@@ -32,6 +32,11 @@ $boldFontStack  : 'Titillium-Bold', Helvetica, sans-serif;
   -webkit-animation-delay : $delaytimer;
 }
 
+@media(min-width: 998px) {
+  html {
+    overflow: hidden;
+  }
+}
 
 
 body {
