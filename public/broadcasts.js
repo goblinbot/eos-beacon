@@ -36,13 +36,11 @@ var bcmeeting = new broadcastObj("Meeting in Main","bcmeeting",4,"0","0");
 var bcblood   = new broadcastObj("Blood Donation Demand","bcblood",4,"0","0");
 
 /* Temple */
-var bctemplemass = new broadcastObj("Maïr Temple Mass","bctemplemass",3,"0","0");
-var bctempleservice = new broadcastObj("Maïr Temple Service","bctempleservice",3,"0","0");
-var bctempleparty = new broadcastObj("Maïr Temple Celebration","bctempleparty",3,"0","0");
+var bcidiotservice = new broadcastObj("Maïr Temple Service","bctempleservice",3,"0","0");
 
 /* hazards */
 var bcviral = new broadcastObj("Unknown Viral Pathogens detected","bcviral",8,"0","hazard");
-var bcbiohazard = new broadcastObj("Envirnomental Hazard detected","bcbiohazard",8,"0","hazard");
+var bcbiohazard = new broadcastObj("Environmental Hazard detected","bcbiohazard",8,"0","hazard");
 var bcpsyhazard = new broadcastObj("Psy-hazard detected","bcpsyhazard",8,"0","psyhazard");
 var bchostile = new broadcastObj("Enemy Contact","bchostile",8,"0","attack");
 var bcbomb = new broadcastObj("Bomb Alert","bcbomb",8,"0","hazard");
