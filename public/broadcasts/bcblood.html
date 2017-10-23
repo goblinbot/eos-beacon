@@ -42,13 +42,20 @@
 
 <script>
   // Audio Loop Limit
-  var loopLimit = 5;
-  var loopCounter = 0;
-  document.getElementById('custom-audio').addEventListener('ended', function(){
-      if (loopCounter < loopLimit){
-          this.currentTime = 0;
-          this.play();
-          loopCounter++;
-      }
-  }, false);
+
+  setTimeout(function(){
+
+    var loopLimit = 5;
+    var loopCounter = 0;
+    document.getElementById('custom-audio').addEventListener('ended', function(){
+        if (loopCounter < loopLimit){
+            this.currentTime = 0;
+            this.play();
+            loopCounter++;
+        }
+    }, false);
+
+  },1500);
+
+
 </script>
