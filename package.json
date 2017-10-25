@@ -1,6 +1,6 @@
 {
   "name": "eos-beacon",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "Beacon broadcasting Application",
   "engines": {
     "node": "6.11.1"

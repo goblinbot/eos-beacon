@@ -27,7 +27,8 @@ var default_security_level = "Code green - All clear";
 var dynamicData = {
   countClients  : 0,
   alertLevel    : default_security_level,
-  lastBC : "bcdefault"
+  lastBC : "bcdefault",
+  portalStatus : "ok"
 }
 
 /* ACTIVE DEVICE VARS */
@@ -95,10 +96,16 @@ io.on('connection', function (socket) {
     io.emit('updateDynamicData', dynamicData);
   });
 
-  socket.on('updateSecurity', function(secLevel){
-    var outString = secLevel.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+  socket.on('updateSecurity', function(input){
+    var outString = input.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
     dynamicData['alertLevel'] = outString;
     io.emit('updateDynamicData', dynamicData);
+  });
+  socket.on('updatePortalStatus', function(input){
+    var outString = input.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+    dynamicData['portalStatus'] = input;
+    io.emit('updateDynamicData', dynamicData);
+    io.emit('portalfrontend');
   });
 
   // FORCE RESET ::
@@ -118,6 +125,8 @@ io.on('connection', function (socket) {
 
     dynamicData['lastBC'] = value.file;
 
+
+    io.emit('updateDynamicData', dynamicData);
     io.emit('broadcastReceive', value);
 
     if (value.duration > 1) {

@@ -7,8 +7,8 @@ var activeColorScheme = '0';
 var activeBroadcast   = 1;
 
 
-// navigeerd - een functie geerft uit www.gubat.nl, word eigenlijk maar eenmaal
-// gebruikt om MAINSCREEN.HTML in te laden maar kan gebruikt worden.
+/* navigeerd - een functie geerft uit www.gubat.nl, word eigenlijk maar eenmaal*/
+/* gebruikt om MAINSCREEN.HTML in te laden maar kan gebruikt worden.*/
 function navigate(target) {
   if(target != "") {
     $('#main').load(target+'.html');
@@ -43,7 +43,7 @@ function getCurrentTime() {
   return currentTimeString;
 }
 
-// function: broadcast . CLIENT SIDE.
+/* function: broadcast . CLIENT SIDE.*/
 function broadCast(location) {
 
   if(location['title'] == null)         {   location['title'] = "Untitled Broadcast" }
@@ -52,7 +52,7 @@ function broadCast(location) {
   if(location['duration'] == null)      {   location['duration'] = "0"    }
   if(location['colorscheme'] == null)   {   location['colorscheme'] = "0" }
 
-  // console.log('active: '+ activeBroadcast['title']);
+  /*/ console.log('active: '+ activeBroadcast['title']);*/
 
   if(location) {
 
@@ -115,7 +115,7 @@ function broadCast(location) {
               }*/
 
 
-              //* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
+              /* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
               if(location['priority'] == 99) { location['priority'] = 1; }
               /* update 'Last broadcast' */
               activeBroadcast = location['priority'];
@@ -165,7 +165,7 @@ function broadCast(location) {
 
 }
 
-// VERSTUURD DE BROADCAST: kleine hack om vanaf de admin op knop een alert te kunnen posten.
+/* VERSTUURD DE BROADCAST: kleine hack om vanaf de admin op knop een alert te kunnen posten.*/
 function sendBroadCast(location) {
 
   if(!location || location === undefined) {
@@ -185,21 +185,21 @@ function sendBroadCast(location) {
 }
 
 
-// maakt de footer blokken equally groot aan de eerste.
-// function updateFooter() {
-//   if($(window).width() < 769) {
-//     return false;
-//   }
-//   $(".item").height($('#firstFooterBlock').height());
-// }
+/* maakt de footer blokken equally groot aan de eerste.
+ function updateFooter() {
+   if($(window).width() < 769) {
+     return false;
+   }
+   $(".item").height($('#firstFooterBlock').height());
+ }*/
 
-// functie om de duration toch wel werkend te krijgen - oftewel een broadcast CLEAREN na ingestelde tijd.
+/* functie om de duration toch wel werkend te krijgen - oftewel een broadcast CLEAREN na ingestelde tijd.*/
 function clearBroadcast(duration){
   console.log('clear in :' + duration);
 
   if(duration != "" && duration != null) {
 
-    // timer? Gebruik die mooie timer en DAN resetten we de broadcast.
+    /* timer? Gebruik die mooie timer en DAN resetten we de broadcast.*/
     if(clearIsActive != undefined && duration > 0) {
       console.log('clear == actief');
       clearTimeout(clearIsActive);
@@ -214,7 +214,7 @@ function clearBroadcast(duration){
       clearIsActive = undefined;
     } else if (undefined && duration == 0) {
 
-      // niks !
+      /* niks ! */
 
     } else {
       clearIsActive = setTimeout(function(){
@@ -230,7 +230,7 @@ function clearBroadcast(duration){
       clearTimeout(clearIsActive);
       clearIsActive = undefined;
     } else {
-      // geen timer? Gewoon resetten.
+      /* geen timer? Gewoon resetten. */
       socket.emit('broadcastSend', bcreset);
       clearTimeout(clearIsActive);
       clearIsActive = undefined;
@@ -288,15 +288,72 @@ function generateAudioPlayer(audiofile, repeatcount) {
 
 }
 
+/* portal status. */
+function updatePortalStatus(portalstatus) {
+
+  $('.portalstatus').removeClass('blinkContent');
+
+  if($('.portalstatus').html() != "" && portalstatus != "" && portalstatus != null) {
+
+    if(portalstatus == "unstable") {
+
+      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-angle-double-down"></i></span>');
+      $('.portalstatus .right h4').html('Connectivity issues');
+      $('.portalstatus .right p').html('Portal network unstable. Package loss may occur.');
+
+    } else if(portalstatus == "multirequest") {
+
+      $('.portalstatus').addClass('blinkContent');
+      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
+      $('.portalstatus .right h4').html('Multiple requests');
+      $('.portalstatus .right p').html('Multiple external requests detected.<br/>Please stand by.');
+
+    } else if (portalstatus == "shutdown") {
+
+      $('.portalstatus').addClass('blinkContent');
+      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
+      $('.portalstatus .right h4').html('!! OFFLINE !!');
+      $('.portalstatus .right p').html('Portal services currently unavailable.');
+
+    } else if (portalstatus == "active") {
+
+      $('.portalstatus').addClass('blinkContent');
+      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-cog fa-spin"></i></span>');
+      $('.portalstatus .right h4').html('Active');
+      $('.portalstatus .right p').html('Portal activity detected ...');
+
+    } else if (portalstatus == "maintenance") {
+
+      $('.portalstatus').addClass('blinkContent');
+      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-info-circle"></i></span>');
+      $('.portalstatus .right h4').html('Maintenance Required');
+      $('.portalstatus .right p').html('Safety first.');
+
+    } else {
+
+      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-check-circle-o"></i></span>');
+      $('.portalstatus .right h4').html('Operational');
+      $('.portalstatus .right p').html('Nothing to report.');
+
+    }
+  }
+}
+
+/* speel audio wanneer portalstatus changed, of niet. */
+function playPortalAudio() {
+  if($(window).width() > 769) {
+    $('#portalaudio').trigger('play');
+  }
+}
 
 
-// CLOCK //////////////////////////////////////////////////////
+/* CLOCK */
 function updateClock() {
   var dow;
 	var currentTime = new Date();
     var dd = currentTime.getDate();
-    var mm = currentTime.getMonth()+1; //January is 0!
-    // var dow = currenTime.prototype.getDay();
+    var mm = currentTime.getMonth()+1; /*January is 0!*/
+    /* var dow = currenTime.prototype.getDay();*/
     if(dd < 10){
       dd='0'+dd;
     }
@@ -331,7 +388,7 @@ function updateClock() {
     $("#dd").html(dd);
     $("#dow").html(dow);
 
-    // $("#dow").html(dow);
+    /* $("#dow").html(dow);*/
  }
 
  $(document).ready(function() {

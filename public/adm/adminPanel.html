@@ -155,10 +155,6 @@
 
 </div>
 
-<!-- <div id="admMISSION" class="adm-tab default-border hidden col-xs-12">
-  <h2><i class="fa fa-terminal"></i>&nbsp;Mission Control</h2>
-  <p>// DISABLED: MOVED TO SEPERATE APPLICATION</p>
-</div> -->
 
 <div id="admOVERLORD" class="adm-tab default-border hidden col-xs-12">
   <h2><i class="fa fa-terminal"></i>&nbsp;Welcome, Overlord.</h2>
@@ -273,7 +269,26 @@
 
   </div>
   <div class="col-xs-12 col-md-6">
-    <p>Portal Settings:</p>
+    <p>Portal Status:</p>
+    <p>(note: portal inc/outgoing temporarily sets the status to ACTIVE.)</p>
+
+    <div class="col-xs-12" style="margin-left: 11px;">
+      <select id="portalStatusForm" class="form-control" name="portalStatusForm">
+        <option value="ok">Normal / Standard / Ok</option>
+        <option value="active">Active/Inc/Out</option>
+        <option value="shutdown">Portal offline</option>
+        <option value="unstable">Unstable connection</option>
+        <option value="multirequest">Multiple external requests</option>
+        <option value="maintenance">Maintenance Required</option>
+      </select>
+    </div>
+
+    <div class="col-xs-12">
+      <button class="btn btn-lg btn-ui btn-primary" onclick="updatePortalStatus('portalStatusForm');">
+        <i class="fa fa-cog"></i>&nbsp;SET PORTAL STATUS
+      </button>
+    </div>
+
 
   </div>
 

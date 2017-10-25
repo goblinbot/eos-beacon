@@ -37,13 +37,15 @@
       </div>
 
       <div class="portalstatus">
-        <div class="col-xs-6 col-sm-5 col-md-3">
+
+        <div class="left">
           <span class="portalstatus-icon"><i class="fa fa-check-circle-o"></i></span>
         </div>
-        <div class="col-xs-6 col-sm-7 col-md-9">
-          <h4 class="portalstatus-title">Operational.</h4>
-          <p class="portalstatus-text">Nothing to report.</p>
+        <div class="right">
+          <h4>Operational.</h4>
+          <p>Nothing to report.</p>
         </div>
+
       </div>
 
     </div>
@@ -51,11 +53,10 @@
   </div>
 
   <!-- centraal blok -->
-  <!-- <div class="middle-bar col-xs-12 col-sm-10 col-md-8 col-lg-9"> -->
   <div class="middle-bar col-xs-12 col-sm-12 col-md-8 col-lg-9">
     <div class="block no-bg">
       <div id="notificationContainer">
-        <!-- placehold spincircle: loading 800ms lang ivm jquery. -->
+
         <div class="portalCircleContainer" style="padding-top:10rem;">
           <div class="portalCircle">&nbsp;</div>
         </div>
@@ -146,6 +147,8 @@ $(document).ready(function(){
   var clientdevice = "";
   var printresult;
 
+  var currentPortalStatus = "";
+
   // functie: maak blokken footer even groot.
   /*updateFooter();*/
 
@@ -170,12 +173,16 @@ $(document).ready(function(){
     +'</audio>');
   }
 
-  // vraagt dynamische data op, zoals security level en actieve gebruikers.
+  /* vraagt dynamische data op, zoals security level en actieve gebruikers.*/
 
-  // en update hem hier.
+  /* en update hem hier.*/
   socket.on('updateDynamicData', function(dynamicData){
     $('#securityAlertLevel').html(dynamicData['alertLevel']);
     $('#countClientsCounter').html(dynamicData['countClients']);
+
+    /* roept functie aan om de portal status aan te passen. */
+    updatePortalStatus(dynamicData['portalStatus']);
+
 
     /*resume! client only.*/
     if(bcinit == 0) {
@@ -188,11 +195,20 @@ $(document).ready(function(){
 
   });
 
+  /* portal */
+  socket.on('portalfrontend', function(){
+    $('.portalstatus').addClass('flash');
+    playPortalAudio();
+    setTimeout(function(){
+      $('.portalstatus').removeClass('flash');
+    },2500);
+  });
+
   /* reconnect/disconnect */
   socket.on('connect', function(){
     $('#connStatus').addClass('btn-outline-success').removeClass('btn-outline-danger blinkContent').html('<i class="fa fa-link"></i>&nbsp;CONNECTED');
 
-    $('#socket-id').html('&nbsp;CONN->&nbsp;<span class="holoContrast">'+socket.id+'</span>');
+    $('#socket-id').html('&nbsp;CONN->&nbsp;<span class="holoContrast">' + socket.id + '</span>');
     $('#countClientsCounter').show();
     $('#notificationTitleSmall h2').html('Waiting for broadcasts ...');
 
@@ -200,7 +216,6 @@ $(document).ready(function(){
     $('.disconnectedPopup').remove();
 
     $('#localIP').removeClass('text-muted blinkContent');
-    $('.portalstatus').removeClass('blinkContent');
 
     setTimeout(function(){
       socket.emit('requestDynamicData');
@@ -224,7 +239,8 @@ $(document).ready(function(){
       +'</div>');
 
     $('#localIP').addClass('text-muted blinkContent');
-    $('.portalstatus').addClass('blinkContent');
+
+    updatePortalStatus("shutdown");
   });
 
 });

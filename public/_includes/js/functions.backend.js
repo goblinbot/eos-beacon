@@ -44,6 +44,23 @@ function updateSecurity(selector) {
 
 }
 
+function updatePortalStatus(selector) {
+  var newStatus = $('#'+selector).val();
+  var FlashFunctie = FlashBlocks;
+
+  if(newStatus && newStatus != "") {
+
+    socket.emit( 'updatePortalStatus', newStatus );
+    FlashFunctie('.adm-tab');
+    setTimeout(function(){
+      FlashFunctie('.adm-tab');
+    },1200);
+
+  }
+
+}
+
+
 // ..
 // Internet's meest generieke, gecopypaste en gestolen functie allertijden :
 function setCookie(cname, cvalue, exdays) {

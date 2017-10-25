@@ -167,6 +167,10 @@
   </div>
 </div>
 
+<audio id="portalaudio" controls="controls" class="hidden">
+  <source src="/sounds/loghide.ogg" type="audio/mpeg">
+</audio>
+
 <script type="text/javascript" src="/_includes/js/jquery.min.js"></script>
 <script type="text/javascript" src="/broadcasts.js"></script>
 <script type="text/javascript" src="/_includes/bs3-js/bootstrap.min.js"></script>
@@ -180,6 +184,7 @@ $(document).ready(function(){
   socket.on('startConfig', function(settings){
     $('#localIP').html(settings['localaddress']);
   });
+
 
   /* ForceReset. F5'd de pagina.*/
   socket.on('F5', function(){
