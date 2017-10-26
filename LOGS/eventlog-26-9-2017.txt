@@ -1,1 +1,1 @@
-[ INIT ]	26-9, 15:39	:: Beacon succesfully started.
+[ INIT ]	26-9, 15:43	:: Beacon succesfully started.

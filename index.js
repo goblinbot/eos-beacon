@@ -187,10 +187,11 @@ function eventLogger(type, message) {
 
   var datum = new Date(), y = datum.getFullYear(), m = datum.getMonth();
 
-  var logfile = 'LOGS/eventlog-'+ datum.getDate() + '-' + datum.getMonth()+ '-'+ datum.getFullYear() +'.txt';
+  // var logfile = 'LOGS/eventlog-'+ datum.getDate() + '-' + datum.getMonth()+ '-'+ datum.getFullYear() +'.txt';
+  var logfile = 'LOGS/eventlog.txt';
   var printresult = "";
 
-  var fd = fs.openSync(logfile, 'w');
+  // var fd = fs.openSync(logfile, 'w');
 
   if(!message || !type) {
     return false;
@@ -213,5 +214,5 @@ function eventLogger(type, message) {
         });
   }
 
-  fs.closeSync(fs.openSync(logfile, 'w'));
+  // fs.closeSync(fs.openSync(logfile, 'w'));
 }
