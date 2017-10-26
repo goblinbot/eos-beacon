@@ -57,6 +57,8 @@ http.listen(port, function(){
   console.log(' ? Internal IP : localhost:'+ port  + ' | ' + '127.0.0.1:'+ port );
   console.log('-------------------------');
   console.log('THANK YOU FOR USING '+globalSettings['cfg']['appname']+' INFORMATION & BROADCASTING SERVICES');
+
+  eventLogger('INIT','Beacon succesfully started.');
 });
 
 
@@ -94,24 +96,32 @@ io.on('connection', function (socket) {
   socket.on('ClearAll', function() {
     dynamicData['alertLevel'] = default_security_level;
     io.emit('updateDynamicData', dynamicData);
+
+    eventLogger('SEC','Security level reset');
   });
 
   socket.on('updateSecurity', function(input){
     var outString = input.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
     dynamicData['alertLevel'] = outString;
     io.emit('updateDynamicData', dynamicData);
+
+    eventLogger('SEC','Security level change => '+ input +'.');
   });
   socket.on('updatePortalStatus', function(input){
     var outString = input.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
     dynamicData['portalStatus'] = input;
     io.emit('updateDynamicData', dynamicData);
     io.emit('portalfrontend');
+
+    eventLogger('portal','Portal status change => '+ input +'.');
   });
 
   // FORCE RESET ::
   socket.on('forceReset', function() {
     dynamicData['lastBC'] = "bcdefault";
     io.emit('F5');
+
+    eventLogger('admin','Force reset activated.',1);
   });
 
   socket.on('requestDynamicData', function (){
@@ -135,6 +145,8 @@ io.on('connection', function (socket) {
         console.log('=> last-bc timer cleared.');
       },value.duration);
     }
+
+    eventLogger('broadcast','sent: '+ value['title'] +'.');
   });
 
   socket.on('disconnect', function(){
@@ -152,6 +164,8 @@ io.on('connection', function (socket) {
     var loginrank = 0;
     console.log('authentication code received: '+keycode);
 
+    eventLogger('AUTH','auth-code received: '+ keycode +'.');
+
     for (var i in globalSettings.accounts) {
 
       if(globalSettings.accounts[i].logincode == keycode) {
@@ -168,3 +182,36 @@ io.on('connection', function (socket) {
   });
 
 });
+
+function eventLogger(type, message) {
+
+  var datum = new Date(), y = datum.getFullYear(), m = datum.getMonth();
+
+  var logfile = 'LOGS/eventlog-'+ datum.getDate() + '-' + datum.getMonth()+ '-'+ datum.getFullYear() +'.txt';
+  var printresult = "";
+
+  var fd = fs.openSync(logfile, 'w');
+
+  if(!message || !type) {
+    return false;
+  } else {
+
+    var currentTime = new Date();
+    var currentHours   = currentTime.getHours ( );
+    var currentMinutes = currentTime.getMinutes ( );
+      currentHours = ( currentHours < 10 ? "0" : "" ) + currentHours;
+      currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+        currentTime = currentHours + ":" + currentMinutes;
+
+        printresult += '[ ' + type + ' ]\t';
+        printresult += datum.getDate() + '-' + datum.getMonth() + ', '+ currentTime;
+        printresult += '\t:: ';
+        printresult += message + '\n';
+
+        fs.appendFile(logfile, printresult, function(err) {
+          if(err) throw err;
+        });
+  }
+
+  fs.closeSync(fs.openSync(logfile, 'w'));
+}
