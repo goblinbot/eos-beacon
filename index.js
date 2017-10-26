@@ -72,7 +72,7 @@ app.get('/adm', function(req, res){
 
 app.get('*', function(req, res){
   res.sendFile('404.html', {"root": __dirname+'/public/'});
-})
+});
 
 io.on('connection', function (socket) {
 
