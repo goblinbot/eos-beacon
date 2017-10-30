@@ -54,12 +54,6 @@ function broadCast(location) {
 
   console.log('active: '+ activeBroadcastPriority);
 
-  /* ALS VIDEO SPELER BESTAAT; MAAK LEEG */
-  if($('#broadcastVideo').length > 0 ) {
-    var oldPlayer = document.getElementById('broadcastVideo');
-    videojs(oldPlayer).dispose();
-  }
-
   if(location) {
 
     navLimit = (navLimit+1);
@@ -79,6 +73,13 @@ function broadCast(location) {
             return false;
 
           } else {
+
+            /* ALS VIDEO SPELER BESTAAT; MAAK LEEG */
+            if($('#broadcastVideo').length > 0 ) {
+              var oldPlayer = document.getElementById('broadcastVideo');
+              videojs(oldPlayer).dispose();
+            }
+
 
             /* foolproof controle: als DEFAULT word opgegeven telt hij ook als '0' */
             if(location['colorscheme']  == 'default') { location['colorscheme'] = '0'; }
