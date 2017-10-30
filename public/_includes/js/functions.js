@@ -353,11 +353,17 @@ function playPortalAudio() {
 
 function generateVideo(name, type) {
 
-  $('#video-container').html('<video id="broadcastVideo" class="video-js" controls preload="auto"><source src="/video/'+name+'" type="video/'+type+'"></source></video>');
+  if($(window).width > 1024) {
 
-  videojs("broadcastVideo", {}, function(){
-    $(this).trigger("play");
-  });
+    $('#video-container').html('<video id="broadcastVideo" class="video-js" controls preload="auto"><source src="/video/'+name+'" type="video/'+type+'"></source></video>');
+
+    videojs("broadcastVideo", {}, function(){
+      $(this).trigger("play");
+    });
+
+  } else {
+
+  }
 
 }
 

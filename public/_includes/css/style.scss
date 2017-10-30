@@ -47,6 +47,7 @@ body {
 video, .video-js {
   width: 100% !important;
   min-height: 60vh!important;
+  max-height: ($minhoogte - 1vh);
 }
 
 .block {

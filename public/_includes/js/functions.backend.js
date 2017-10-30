@@ -13,14 +13,6 @@ function forceReset() {
   socket.emit('forceReset');
 }
 
-function setSoundSettings(option) {
-  if(!option || option > 2 || option < 0 || option == "") {
-    option = '2';
-  }
-  socket.emit('setSoundSetting', option);
-}
-
-
 function cpanelStatus(message) {
   if(message != null && message != "") {
     $('#cPanel-status').empty();
@@ -61,7 +53,6 @@ function updatePortalStatus(selector) {
 }
 
 
-// ..
 // Internet's meest generieke, gecopypaste en gestolen functie allertijden :
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();

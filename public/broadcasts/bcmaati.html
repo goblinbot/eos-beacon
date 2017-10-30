@@ -1,17 +1,14 @@
-<div class="video-container">
-  <div class="overlay-static"><h2>LIVE FEED -- VIDEO TEST -- PLEASE STAND BY</h2></div>
-  <video autoplay loop muted src="/miscmedia/splash.webm" type="video/webm"></video>
+<div class="container-fluid">
+
+  <div id="video-container">
+    <i class="fa fa-hourglass"></i>
+  </div>
+
 </div>
 
-<script type="text/javascript">
 
-  var tempWidth;
-
-  tempWidth = ($('.video-container').width() - 20);
-  $('.overlay-static').width(tempWidth);
-  $('.overlay-static').css('background','rgba(4, 42, 52, 0.33)');
-
+<script>
+  $(document).ready(function(){
+    generateVideo('citadel.mp4','mp4');
+  });
 </script>
-
-
-<!-- <script>generateAudioPlayer('announce.ogg','1');</script> -->
