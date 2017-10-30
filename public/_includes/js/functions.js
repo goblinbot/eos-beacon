@@ -353,7 +353,7 @@ function playPortalAudio() {
 
 function generateVideo(name, type) {
 
-  if($(window).width > 1024) {
+  if($(window).width() > 1024) {
 
     $('#video-container').html('<video id="broadcastVideo" class="video-js" controls preload="auto"><source src="/video/'+name+'" type="video/'+type+'"></source></video>');
 
