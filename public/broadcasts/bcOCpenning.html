@@ -1,33 +1,14 @@
 <div class="container-fluid">
 
-  <video
-      id="broadcastVideo"
-      class="video-js"
-      controls
-      preload="auto"
-    >
-    <!-- <source src="/video/OC-penningmeester.mp4" type="video/mp4"></source> -->
-    <source src="/video/Super_table_smash_bros.webm" type="video/webm"></source>
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a
-      web browser that supports HTML5 video
-    </p>
-  </video>
-
+  <div id="video-container">
+    <i class="fa fa-hourglass"></i>
+  </div>
 
 </div>
 
 <script>generateAudioPlayer('notice2.ogg','1');</script>
 <script>
   $(document).ready(function(){
-    // videojs("broadcastVideo", {}, function(){
-    //
-    //   // Player (this) is initialized and ready.
-    //   $(this).trigger("play");
-    // 
-    // });
-
-    generateVideo('Super_table_smash_bros.webm','webm');
-
+    generateVideo('silvester.mp4','mp4');
   });
 </script>
