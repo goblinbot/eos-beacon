@@ -23,9 +23,7 @@
     videojs("broadcastVideo", {}, function(){
 
       // Player (this) is initialized and ready.
-      setTimeout(function(){
-        $('#broadcastVideo').trigger("play");
-      },3333);
+      $(this).trigger("play");
 
     });
   });

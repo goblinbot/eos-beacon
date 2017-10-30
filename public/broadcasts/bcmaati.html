@@ -1,17 +1,29 @@
-<div class="video-container">
-  <div class="overlay-static"><h2>LIVE FEED -- VIDEO TEST -- PLEASE STAND BY</h2></div>
-  <video autoplay loop muted src="/miscmedia/splash.webm" type="video/webm"></video>
+<div class="container-fluid">
+
+  <video
+      id="broadcastVideo"
+      class="video-js"
+      controls
+      preload="auto"
+    >
+    <source src="/video/silvester.mp4.mp4" type="video/mp4"></source>
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that supports HTML5 video
+    </p>
+  </video>
+
+
 </div>
 
-<script type="text/javascript">
+<script>generateAudioPlayer('notice2.ogg','1');</script>
+<script>
+  $(document).ready(function(){
+    videojs("broadcastVideo", {}, function(){
 
-  var tempWidth;
+      // Player (this) is initialized and ready.
+      $(this).trigger("play");
 
-  tempWidth = ($('.video-container').width() - 20);
-  $('.overlay-static').width(tempWidth);
-  $('.overlay-static').css('background','rgba(4, 42, 52, 0.33)');
-
+    });
+  });
 </script>
-
-
-<!-- <script>generateAudioPlayer('announce.ogg','1');</script> -->
