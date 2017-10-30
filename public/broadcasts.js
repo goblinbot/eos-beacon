@@ -64,4 +64,4 @@ var bcmaati = new broadcastObj("test","bcmaati",9,"0","0");
 
 
 /* VIDEOS */
-var bcOCpenning = new broadcastObj("VIDEOTRANSMISSION","bcOCpenning",6,"0","gray");
+var bcOCpenning = new broadcastObj("VIDEOTRANSMISSION","bcOCpenning",9,"0","0");
