@@ -54,6 +54,12 @@ function broadCast(location) {
 
   console.log('active: '+ activeBroadcastPriority);
 
+  /* ALS VIDEO SPELER BESTAAT; MAAK LEEG */
+  if($('#broadcastVideo').length > 0 ) {
+    var oldPlayer = document.getElementById('broadcastVideo');
+    videojs(oldPlayer).dispose();
+  }
+
   if(location) {
 
     navLimit = (navLimit+1);
@@ -347,12 +353,6 @@ function playPortalAudio() {
 
 function generateVideo(name, type) {
 
-  if($('#broadcastVideo').length > 0 ) {
-    $('#broadcastVideo').removeAttr('src');
-    // $('#broadcastVideo').load();
-  }
-
-  $('#video-container').html("x");
   $('#video-container').html('<video id="broadcastVideo" class="video-js" controls preload="auto"><source src="/video/'+name+'" type="video/'+type+'"></source></video>');
 
   videojs("broadcastVideo", {}, function(){
