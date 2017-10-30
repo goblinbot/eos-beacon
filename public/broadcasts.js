@@ -36,7 +36,7 @@ var bcmeeting = new broadcastObj("Meeting in Main","bcmeeting",4,"0","0");
 var bcblood   = new broadcastObj("Blood Donation Demand","bcblood",4,"0","0");
 
 /* Temple */
-var bcidiotservice = new broadcastObj("Maïr Temple Service","bctempleservice",3,"0","0");
+/*var bcidiotservice = new broadcastObj("Maïr Temple Service","bctempleservice",3,"0","0");*/
 
 /* hazards */
 var bcviral = new broadcastObj("Unknown Viral Pathogens detected","bcviral",8,"0","hazard");
@@ -61,4 +61,7 @@ var bcfreezeall = new broadcastObj("ADMIN.OVERRIDE","bcfreezeall",100,"0","0");
 
 /* Testomgeving */
 var bcmaati = new broadcastObj("test","bcmaati",9,"0","0");
-/*var bcrobot = new broadcastObj("test","bcrobot",3,"0","0");*/
+
+
+/* VIDEOS */
+var bcOCpenning = new broadcastObj("VIDEOTRANSMISSION","bcOCpenning",6,"0","gray");
