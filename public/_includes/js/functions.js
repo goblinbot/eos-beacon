@@ -4,7 +4,7 @@ var target      = "";
 var navLimit    = 0;
 var clearIsActive = undefined;
 var activeColorScheme = '0';
-var activeBroadcast   = 1;
+var activeBroadcastPriority   = 1;
 
 
 /* navigeerd - een functie geerft uit www.gubat.nl, word eigenlijk maar eenmaal*/
@@ -52,7 +52,7 @@ function broadCast(location) {
   if(location['duration'] == null)      {   location['duration'] = "0"    }
   if(location['colorscheme'] == null)   {   location['colorscheme'] = "0" }
 
-  /*/ console.log('active: '+ activeBroadcast['title']);*/
+  console.log('active: '+ activeBroadcastPriority);
 
   if(location) {
 
@@ -68,7 +68,7 @@ function broadCast(location) {
 
         if(location['priority'] > 0 && !isNaN(location['duration'])) {
 
-          if(location['priority'] < activeBroadcast) {
+          if(location['priority'] < activeBroadcastPriority) {
 
             return false;
 
@@ -118,7 +118,7 @@ function broadCast(location) {
               /* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
               if(location['priority'] == 99) { location['priority'] = 1; }
               /* update 'Last broadcast' */
-              activeBroadcast = location['priority'];
+              activeBroadcastPriority = location['priority'];
 
               if(location['title'] != "" /*&& location['title'] != "Clear"*/) {
 
@@ -134,7 +134,6 @@ function broadCast(location) {
               }
 
               if(location['duration'] && location['duration'] > 0 && !isNaN(location['duration'])) {
-                console.log(location['duration']);
                 clearBroadcast(location['duration']);
               }
 
@@ -156,7 +155,7 @@ function broadCast(location) {
       },1500);
 
       activeColorScheme   = '0';
-      activeBroadcast     = 1;
+      activeBroadcastPriority     = 1;
 
       $("#notificationContainer").empty();
         $("#notificationContainer").load('/broadcasts/404.html');
@@ -226,7 +225,6 @@ function clearBroadcast(duration){
   } else {
 
     if(duration === 0) {
-      console.log('raakvlak 3 ' + duration);
       clearTimeout(clearIsActive);
       clearIsActive = undefined;
     } else {
@@ -344,6 +342,23 @@ function playPortalAudio() {
   if($(window).width() > 769) {
     $('#portalaudio').trigger('play');
   }
+}
+
+
+function generateVideo(name, type) {
+
+  if($('#broadcastVideo').length > 0 ) {
+    $('#broadcastVideo').removeAttr('src');
+    // $('#broadcastVideo').load();
+  }
+
+  $('#video-container').html("x");
+  $('#video-container').html('<video id="broadcastVideo" class="video-js" controls preload="auto"><source src="/video/'+name+'" type="video/'+type+'"></source></video>');
+
+  videojs("broadcastVideo", {}, function(){
+    $(this).trigger("play");
+  });
+
 }
 
 
