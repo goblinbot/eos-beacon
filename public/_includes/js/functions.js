@@ -107,9 +107,10 @@ function broadCast(location) {
 
 
             /* ALS VIDEO SPELER BESTAAT; MAAK LEEG */
-            if($('#broadcastVideo').length > 0 ) {
+            if($('#broadcastVideo').length() > 0 ) {
               var oldPlayer = document.getElementById('broadcastVideo');
               videojs(oldPlayer).dispose();
+              $('#broadcastVideo').destroy();
             }
 
             $("#notificationContainer").empty();
