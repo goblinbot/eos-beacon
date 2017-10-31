@@ -13,29 +13,6 @@ function forceReset() {
   socket.emit('forceReset');
 }
 
-function setSoundSettings(option) {
-  if(!option || option > 2 || option < 0 || option == "") {
-    option = '2';
-  }
-  socket.emit('setSoundSetting', option);
-}
-
-/*function submitChat(){
-
-  var chatmessage = [ $('#chat-username').val() , $('#chat-message').val() ];
-
-  if(chatmessage[0] != "" && chatmessage[0] != undefined && chatmessage[1] != "" && chatmessage[1] != undefined ) {
-    $('#chat-button').hide();
-    $('#chat-message').val('15 Second cooldown on sending messages. Please stand by.');
-    socket.emit('sendChatMessage', chatmessage );
-
-    setTimeout(function(){
-      $('#chat-message').val('');
-      $('#chat-button').show();
-    },15000);
-  }
-}*/
-
 function cpanelStatus(message) {
   if(message != null && message != "") {
     $('#cPanel-status').empty();
@@ -59,10 +36,23 @@ function updateSecurity(selector) {
 
 }
 
+function updatePortalStatus(selector) {
+  var newStatus = $('#'+selector).val();
+  var FlashFunctie = FlashBlocks;
+
+  if(newStatus && newStatus != "") {
+
+    socket.emit( 'updatePortalStatus', newStatus );
+    FlashFunctie('.adm-tab');
+    setTimeout(function(){
+      FlashFunctie('.adm-tab');
+    },1200);
+
+  }
+
+}
 
 
-
-// ..
 // Internet's meest generieke, gecopypaste en gestolen functie allertijden :
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();

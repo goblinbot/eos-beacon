@@ -5,7 +5,7 @@ $whitespace    : 3rem;
 $fontsize      : 1.4rem;
 $titlefontsize : 3.6rem;
 
-$minhoogte     : 68vh;
+$minhoogte     : 66.5vh;
 
 // haalt alle fonts die we includen op.
 @import 'fonts.scss';
@@ -32,11 +32,22 @@ $boldFontStack  : 'Titillium-Bold', Helvetica, sans-serif;
   -webkit-animation-delay : $delaytimer;
 }
 
+@media(min-width: 998px) {
+  html {
+    overflow: hidden;
+  }
+}
 
 
 body {
   font-size: $fontsize;
   font-family: $fontStack;
+}
+
+video, .video-js {
+  width: 100% !important;
+  min-height: 60vh!important;
+  max-height: ($minhoogte - 1vh);
 }
 
 .block {
@@ -55,7 +66,7 @@ p.text-lg, .text-lg {
 }
 
 .danger-line {
-  height  : ($defaultpadding * 2);
+  min-height  : ($defaultpadding * 2);
   width   : 100%;
   margin  : { top: 3px; bottom: 3px; }
 }
@@ -194,37 +205,38 @@ p.text-lg, .text-lg {
       }
     }
   }
+}
 
-  .rightflavor, .bottomflavor {
+.rightflavor, .bottomflavor {
 
-    visibility: hidden;
-    @include animation(showHidden 0.3s linear);
-    animation-fill-mode: forwards;
+  visibility: hidden;
+  @include animation(showHidden 0.3s linear);
+  animation-fill-mode: forwards;
 
-    &.load1 {
+  &.load1 {
 
-    }
-    &.load2 {
-      @include animationdelay(0.3s);
-    }
-    &.load3 {
-      @include animationdelay(0.6s);
-    }
-    &.load4 {
-      @include animationdelay(1.0s);
-    }
-    &.load5 {
-      @include animationdelay(1.3s);
-    }
-    &.load6 {
-      @include animationdelay(1.5s);
-    }
-
+  }
+  &.load2 {
+    @include animationdelay(0.3s);
+  }
+  &.load3 {
+    @include animationdelay(0.6s);
+  }
+  &.load4 {
+    @include animationdelay(1.0s);
+  }
+  &.load5 {
+    @include animationdelay(1.3s);
+  }
+  &.load6 {
+    @include animationdelay(1.5s);
   }
 
 }
 
 #main {
+
+  min-height: calc(100vh - 85px);
 
   .middle {
 
@@ -265,11 +277,36 @@ p.text-lg, .text-lg {
       .portalstatus {
         padding: $defaultpadding;
         position: relative;
+        display: flex;
+        margin-top: $defaultpadding;
+        border-radius: 5px;
+        transition: 0.4s;
+
         .portalstatus-icon .fa {
           font-size: 48px;
           margin : {
-            top: 1rem;
+            top: 1.2rem;
           }
+        }
+
+        .left {
+          padding-left: $defaultpadding;
+          padding-right: $defaultpadding;
+          flex: 1;
+        }
+        .right {
+          flex: 5;
+          padding-left: $defaultpadding;
+          padding-right: $defaultpadding;
+
+          h4 {
+            font-weight: bold;
+          }
+
+          p {
+            font-weight: bold;
+          }
+
         }
       }
     }
@@ -305,6 +342,12 @@ p.text-lg, .text-lg {
   .footer {
     margin-top: $whitespace;
     font-family: $altFontStack;
+    display: flex;
+    flex-direction: row;
+
+    @media(max-width: 990px) {
+      flex-direction: column;
+    }
 
     .item {
       @media(max-width:998px) {
@@ -313,11 +356,6 @@ p.text-lg, .text-lg {
       &:first-child {
         @media(min-width:998px) {
           padding-left : 0;
-        }
-      }
-      &:last-child{
-        @media(min-width:998px) and (max-width:1200px) {
-          margin: 15px -15px 0 -8px;
         }
       }
 
@@ -329,8 +367,6 @@ p.text-lg, .text-lg {
         &:before, &::before {
           content:'';
           position:absolute;
-          // top:0;
-          // left:0;
           bottom:0;
           right:0;
           border-width: 0 0 30px 30px;
@@ -368,38 +404,6 @@ p.text-lg, .text-lg {
   }//einde footer
 }
 
-// chatbox
-  // #colony-feed {
-  //   margin-top      : $defaultpadding;
-  //   margin-left     : 0;
-  //   padding         : 0;
-  //   list-style-type : none;
-  //   max-height      : 40vh;
-  //   overflow        : hidden;
-  //
-  //   li {
-  //     border-radius : 5px;
-  //     margin-bottom : $defaultpadding;
-  //     padding       : ($defaultpadding / 2);
-  //     .feed-top {
-  //
-  //       margin: 1px 0 1px 4px;
-  //
-  //       .feed-timestamp {
-  //         float: left;
-  //       }
-  //       .feed-user {
-  //         float: right;
-  //       }
-  //     }
-  //
-  //     .feed-message {
-  //
-  //     }
-  //   }
-  //
-  // }
-
 #securityAlertLevel {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -425,6 +429,45 @@ p.text-lg, .text-lg {
 #notificationContainer {
   min-height: $minhoogte;
   width: 100%;
+
+  @media(min-width:769px){
+    max-height: $minhoogte;
+    overflow: hidden;
+  }
+  .video-container {
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    // position: relative;
+
+    video {
+      width: 100%;
+      // position: relative;
+      z-index: 1;
+
+      @media(min-width:769px){
+        min-height: $minhoogte;
+        overflow: hidden;
+      }
+      @media(min-width:1550px){
+        top: -10vh;
+      }
+    }
+
+    .overlay-static {
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      padding: 1.8rem 1rem;
+    }
+    .overlay-static h2 {
+      margin: 6px;
+      z-index: 3;
+    }
+
+  }
+
+
 
   img {
     max-height: 30vh;
@@ -534,3 +577,48 @@ p.text-lg, .text-lg {
     right: 0;
   }
 }
+
+////////////////////////////////////////////////////////////
+// GRID EXPERIMENT /////
+//////////////////////
+//
+
+
+///////////////////////////////////////////////////////////////////////////
+// OUDE CSS COMPATIBLE MAKEN
+///////////////////////////////
+  .titleblock {
+    display   : inline;
+    position  : relative;
+    top       : 15px;
+    font-family : $altFontStack;
+    h1 {
+      font-weight: strong;
+      font-size: ($titlefontsize * 1.33);
+      @media(max-width:900px) {
+        font-size: ($fontsize * 3);
+      }
+    }
+    h2 {
+      font-size: ($titlefontsize * 0.75);
+    }
+    h3 {
+      font-size: ($titlefontsize * 0.50);
+    }
+    h1, h2, h3, h4, h5, h6, p {
+      display: inline;
+      margin-top: $defaultpadding;
+      margin-right: $defaultpadding;
+    }
+
+  }
+  .ipblock {
+    font-family : $altFontStack;
+    h1 {
+      font-weight: strong;
+      font-size: ($titlefontsize * 1.33);
+      @media(max-width:900px) {
+        font-size: ($fontsize * 1.25);
+      }
+    }
+  }

@@ -1,5 +1,6 @@
 body {
   background : $background;
+  color: $textColor;
 }
 
 .danger-line {
@@ -35,6 +36,11 @@ p {
 }
 .text-red {
   color : $orbitRed;
+}
+
+.video-js {
+  background-color: $blocksmedium;
+  border: 1px solid $blockslight;
 }
 
 .holoContrast {

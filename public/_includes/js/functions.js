@@ -4,11 +4,11 @@ var target      = "";
 var navLimit    = 0;
 var clearIsActive = undefined;
 var activeColorScheme = '0';
-var activeBroadcast   = 1;
+var activeBroadcastPriority   = 1;
 
 
-// navigeerd - een functie geerft uit www.gubat.nl, word eigenlijk maar eenmaal
-// gebruikt om MAINSCREEN.HTML in te laden maar kan gebruikt worden.
+/* navigeerd - een functie geerft uit www.gubat.nl, word eigenlijk maar eenmaal*/
+/* gebruikt om MAINSCREEN.HTML in te laden maar kan gebruikt worden.*/
 function navigate(target) {
   if(target != "") {
     $('#main').load(target+'.html');
@@ -43,7 +43,7 @@ function getCurrentTime() {
   return currentTimeString;
 }
 
-// function: broadcast . CLIENT SIDE.
+/* function: broadcast . CLIENT SIDE.*/
 function broadCast(location) {
 
   if(location['title'] == null)         {   location['title'] = "Untitled Broadcast" }
@@ -52,7 +52,7 @@ function broadCast(location) {
   if(location['duration'] == null)      {   location['duration'] = "0"    }
   if(location['colorscheme'] == null)   {   location['colorscheme'] = "0" }
 
-  // console.log('active: '+ activeBroadcast['title']);
+  console.log('active: '+ activeBroadcastPriority);
 
   if(location) {
 
@@ -68,11 +68,20 @@ function broadCast(location) {
 
         if(location['priority'] > 0 && !isNaN(location['duration'])) {
 
-          if(location['priority'] < activeBroadcast) {
+          if(location['priority'] < activeBroadcastPriority) {
 
             return false;
 
           } else {
+
+            /* ALS VIDEO SPELER BESTAAT; MAAK LEEG */
+            if($('#broadcastVideo').length > 0 ) {
+              console.log('== empty video >>');
+              var oldPlayer = document.getElementById('broadcastVideo');
+              videojs(oldPlayer).dispose();
+            } else {
+              console.log('== no transmissions to clear.');
+            }
 
             /* foolproof controle: als DEFAULT word opgegeven telt hij ook als '0' */
             if(location['colorscheme']  == 'default') { location['colorscheme'] = '0'; }
@@ -106,19 +115,14 @@ function broadCast(location) {
             }
 
 
-
             $("#notificationContainer").empty();
               $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
 
-              /*if(location['file'] !== 'standby') {
-                $('#default-audio').trigger('play');
-              }*/
 
-
-              //* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
+              /* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
               if(location['priority'] == 99) { location['priority'] = 1; }
               /* update 'Last broadcast' */
-              activeBroadcast = location['priority'];
+              activeBroadcastPriority = location['priority'];
 
               if(location['title'] != "" /*&& location['title'] != "Clear"*/) {
 
@@ -134,14 +138,13 @@ function broadCast(location) {
               }
 
               if(location['duration'] && location['duration'] > 0 && !isNaN(location['duration'])) {
-                console.log(location['duration']);
                 clearBroadcast(location['duration']);
               }
 
             FlashFunctie('.block');
             setTimeout(function(){
               FlashFunctie('.block');
-            },1200);
+            },1500);
           }
         }
       })
@@ -153,10 +156,10 @@ function broadCast(location) {
       FlashFunctie('.block');
       setTimeout(function(){
         FlashFunctie('.block');
-      },1200);
+      },1500);
 
       activeColorScheme   = '0';
-      activeBroadcast     = 1;
+      activeBroadcastPriority     = 1;
 
       $("#notificationContainer").empty();
         $("#notificationContainer").load('/broadcasts/404.html');
@@ -165,33 +168,41 @@ function broadCast(location) {
 
 }
 
-// VERSTUURD DE BROADCAST: kleine hack om vanaf de admin op knop een alert te kunnen posten.
+/* VERSTUURD DE BROADCAST: kleine hack om vanaf de admin op knop een alert te kunnen posten.*/
 function sendBroadCast(location) {
+
+  if(!location || location === undefined) {
+    console.log('stop!');
+  }
+
   var FlashFunctie = FlashBlocks;
 
   FlashFunctie('.adm-tab');
   setTimeout(function(){
     FlashFunctie('.adm-tab');
-  },1200);
+  },1500);
+
+  console.log(location);
+
   socket.emit('broadcastSend',location);
 }
 
 
-// maakt de footer blokken equally groot aan de eerste.
-function updateFooter() {
-  if($(window).width() < 769) {
-    return false;
-  }
-  $(".item").height($('#firstFooterBlock').height());
-}
+/* maakt de footer blokken equally groot aan de eerste.
+ function updateFooter() {
+   if($(window).width() < 769) {
+     return false;
+   }
+   $(".item").height($('#firstFooterBlock').height());
+ }*/
 
-// functie om de duration toch wel werkend te krijgen - oftewel een broadcast CLEAREN na ingestelde tijd.
+/* functie om de duration toch wel werkend te krijgen - oftewel een broadcast CLEAREN na ingestelde tijd.*/
 function clearBroadcast(duration){
   console.log('clear in :' + duration);
 
   if(duration != "" && duration != null) {
 
-    // timer? Gebruik die mooie timer en DAN resetten we de broadcast.
+    /* timer? Gebruik die mooie timer en DAN resetten we de broadcast.*/
     if(clearIsActive != undefined && duration > 0) {
       console.log('clear == actief');
       clearTimeout(clearIsActive);
@@ -206,7 +217,7 @@ function clearBroadcast(duration){
       clearIsActive = undefined;
     } else if (undefined && duration == 0) {
 
-      // niks !
+      /* niks ! */
 
     } else {
       clearIsActive = setTimeout(function(){
@@ -218,11 +229,10 @@ function clearBroadcast(duration){
   } else {
 
     if(duration === 0) {
-      console.log('raakvlak 3 ' + duration);
       clearTimeout(clearIsActive);
       clearIsActive = undefined;
     } else {
-      // geen timer? Gewoon resetten.
+      /* geen timer? Gewoon resetten. */
       socket.emit('broadcastSend', bcreset);
       clearTimeout(clearIsActive);
       clearIsActive = undefined;
@@ -280,30 +290,104 @@ function generateAudioPlayer(audiofile, repeatcount) {
 
 }
 
+/* portal status. */
+function updatePortalStatus(portalstatus) {
+
+  $('.portalstatus').removeClass('blinkContent');
+
+  if($('.portalstatus').html() != "" && portalstatus != "" && portalstatus != null) {
+
+    if(portalstatus == "unstable") {
+
+      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-angle-double-down"></i></span>');
+      $('.portalstatus .right h4').html('Connectivity issues');
+      $('.portalstatus .right p').html('Portal network unstable. Package loss may occur.');
+
+    } else if(portalstatus == "multirequest") {
+
+      $('.portalstatus').addClass('blinkContent');
+      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
+      $('.portalstatus .right h4').html('Multiple requests');
+      $('.portalstatus .right p').html('Multiple external requests detected.<br/>Please stand by.');
+
+    } else if (portalstatus == "shutdown") {
+
+      $('.portalstatus').addClass('blinkContent');
+      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
+      $('.portalstatus .right h4').html('!! OFFLINE !!');
+      $('.portalstatus .right p').html('Portal services currently unavailable.');
+
+    } else if (portalstatus == "active") {
+
+      $('.portalstatus').addClass('blinkContent');
+      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-cog fa-spin"></i></span>');
+      $('.portalstatus .right h4').html('Active');
+      $('.portalstatus .right p').html('Portal activity detected ...');
+
+    } else if (portalstatus == "maintenance") {
+
+      $('.portalstatus').addClass('blinkContent');
+      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-info-circle"></i></span>');
+      $('.portalstatus .right h4').html('Maintenance Required');
+      $('.portalstatus .right p').html('Safety first.');
+
+    } else {
+
+      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-check-circle-o"></i></span>');
+      $('.portalstatus .right h4').html('Operational');
+      $('.portalstatus .right p').html('Nothing to report.');
+
+    }
+  }
+}
+
+/* speel audio wanneer portalstatus changed, of niet. */
+function playPortalAudio() {
+  if($(window).width() > 769) {
+    $('#portalaudio').trigger('play');
+  }
+}
 
 
-// CLOCK //////////////////////////////////////////////////////
+function generateVideo(name, type) {
+
+  if($(window).width() > 1024) {
+
+    $('#video-container').html('<video id="broadcastVideo" class="video-js" controls preload="auto"><source src="/video/'+name+'" type="video/'+type+'"></source></video>');
+
+    videojs("broadcastVideo", {}, function(){
+      $(this).trigger("play");
+    });
+
+  } else {
+
+  }
+
+}
+
+
+/* CLOCK */
 function updateClock() {
   var dow;
 	var currentTime = new Date();
     var dd = currentTime.getDate();
-    var mm = currentTime.getMonth()+1; //January is 0!
-    // var dow = currenTime.prototype.getDay();
+    var mm = currentTime.getMonth()+1; /*January is 0!*/
+    /* var dow = currenTime.prototype.getDay();*/
     if(dd < 10){
       dd='0'+dd;
     }
 
-    if (dd == 24) {
-      dd    = '01';
+    if (dd == 10) {
+      dd    = '13';
       dow   = 'FRIDAY';
-    } else if (dd == 25) {
-      dd    = '02';
+    } else if (dd == 11) {
+      dd    = '14';
       dow   = 'SATURDAY';
-    } else if (dd == 26) {
-      dd    = '03';
+    } else if (dd == 12) {
+      dd    = '15';
       dow   = 'SUNDAY';
     } else {
-      dd    = '01';
+      dd    = '13';
       dow   = 'FRIDAY';
     }
 
@@ -312,11 +396,9 @@ function updateClock() {
   	var currentSeconds = currentTime.getSeconds ( );
 
   	/* Pad the minutes and seconds with leading zeros, if required */
+    currentHours = ( currentHours < 10 ? "0" : "" ) + currentHours;
   	currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
   	currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
-
-  	/* Convert an hours component of "0" to "12" */
-  	currentHours = ( currentHours == 0 ) ? 12 : currentHours;
 
   	/* Compose the string for display */
   	var currentTimeString ="[&nbsp;" + currentHours + ":" + currentMinutes + ":" + currentSeconds + "&nbsp;ECT&nbsp;]";
@@ -325,8 +407,9 @@ function updateClock() {
     $("#dd").html(dd);
     $("#dow").html(dow);
 
-    // $("#dow").html(dow);
+    /* $("#dow").html(dow);*/
  }
+
  $(document).ready(function() {
     setInterval('updateClock()', 1000);
  });

@@ -1,6 +1,11 @@
 // ADMIN SPECIFIEKE STYLE SHEET. PUUR OM RUIMTE TE BESPAREN. ///////////////////
 $defaultpadding: 0.8rem;
 
+
+#main {
+  min-height: 0;
+}
+
 #admkeypad {
   .error {
     margin-bottom: (0.8rem * 4);
@@ -82,14 +87,6 @@ $defaultpadding: 0.8rem;
       .btn {
         margin-top: ($defaultpadding);
         margin-bottom: ($defaultpadding);
-        // &:hover{
-        //   background: #FFF;
-        //   color     : #222;
-        //   .glyphicon {
-        //     background: #FFF;
-        //     color     : #222;
-        //   }
-        // }
       }
     }
     &#admCHAT {
@@ -104,6 +101,36 @@ $defaultpadding: 0.8rem;
         margin : ($defaultpadding / 2);
       }
 
+    }
+
+    &#admCMD {
+
+      padding: ($defaultpadding * 2) ($defaultpadding * 4);
+
+    }
+
+    &#admOVERLORD {
+
+      padding: ($defaultpadding * 2) ($defaultpadding * 4);
+
+      .btn {
+        margin: ($defaultpadding * 1.5) 0;
+      }
+    }
+
+    &#admPORTAL {
+      .btn {
+        width: 100%;
+        margin: ($defaultpadding * 1.5);
+      }
+    }
+
+    // mobile fix
+    @media(max-width: 990px) {
+      .btn {
+        width: 100%;
+        margin: ($defaultpadding * 1.5) 0;
+      }
     }
 
   }
