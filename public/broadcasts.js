@@ -34,6 +34,7 @@ var bchydrate = new broadcastObj("Hydration Reminder","bchydrate",2,"0","0");
 var bcmedical = new broadcastObj("Blood Donation Request","bcmedical",2,"0","0");
 var bcmeeting = new broadcastObj("Meeting in Main","bcmeeting",4,"0","0");
 var bcblood   = new broadcastObj("Blood Donation Demand","bcblood",4,"0","0");
+var bcMissionOut   = new broadcastObj("STRATI.OS.PUSH","bcMissionOut",5,"0","0");
 
 /* Temple */
 /*var bcidiotservice = new broadcastObj("Maïr Temple Service","bctempleservice",3,"0","0");*/
