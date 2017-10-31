@@ -188,14 +188,6 @@ function sendBroadCast(location) {
 }
 
 
-/* maakt de footer blokken equally groot aan de eerste.
- function updateFooter() {
-   if($(window).width() < 769) {
-     return false;
-   }
-   $(".item").height($('#firstFooterBlock').height());
- }*/
-
 /* functie om de duration toch wel werkend te krijgen - oftewel een broadcast CLEAREN na ingestelde tijd.*/
 function clearBroadcast(duration){
   console.log('clear in :' + duration);
@@ -217,7 +209,7 @@ function clearBroadcast(duration){
       clearIsActive = undefined;
     } else if (undefined && duration == 0) {
 
-      /* niks ! */
+      /* niks doen. */
 
     } else {
       clearIsActive = setTimeout(function(){
@@ -243,8 +235,6 @@ function clearBroadcast(duration){
 }
 
 function generateAudioPlayer(audiofile, repeatcount) {
-
-  /* nog checken: staat client op MUTE? */
 
   if(audiofile) {
 
@@ -351,15 +341,27 @@ function playPortalAudio() {
 
 function generateVideo(name, type) {
 
-  if($(window).width() > 1024) {
+  if($(window).width() > 1023) {
 
     $('#video-container').html('<video id="broadcastVideo" class="video-js" controls preload="auto"><source src="/video/'+name+'" type="video/'+type+'"></source></video>');
 
-    videojs("broadcastVideo", {}, function(){
-      $(this).trigger("play");
+    videojs("broadcastVideo", {"controls": true, "autoplay": true, "preload": "auto"}, function(){
+      /*$(this).trigger("play");*/
     });
 
   } else {
+
+    /* client scherm te klein, fallback word zichtbaar. */
+    $('#video-container').html(
+      '<div class=\"container-fluid\">'
+      + '<h2>Broadcast:Transmission</h2>'
+      + '<p>Video tranmission is currently playing on compatible/certified devices.</p>'
+      + '<br/>'
+      + '<div class=\"animloadbar\">'
+      +   '<span class=\"animloadbar-bar\"></span>'
+      + '</div>'
+      +'</div>'
+    );
 
   }
 
