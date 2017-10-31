@@ -74,14 +74,6 @@ function broadCast(location) {
 
           } else {
 
-            /* ALS VIDEO SPELER BESTAAT; MAAK LEEG */
-            if ($('#broadcastVideo').length > 0 ) {
-              var oldPlayer = document.getElementById('broadcastVideo');
-              videojs(oldPlayer).dispose();
-            }
-
-
-
             /* foolproof controle: als DEFAULT word opgegeven telt hij ook als '0' */
             if(location['colorscheme']  == 'default') { location['colorscheme'] = '0'; }
             if(activeColorScheme        == 'default') { activeColorScheme       = '0'; }
@@ -114,10 +106,16 @@ function broadCast(location) {
             }
 
 
+
             $("#notificationContainer").empty();
               $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
 
-
+              /* ALS VIDEO SPELER BESTAAT; MAAK LEEG */
+              if($('#broadcastVideo').length > 0 ) {
+                console.log('empty video');
+                var oldPlayer = document.getElementById('broadcastVideo');
+                videojs(oldPlayer).dispose();
+              }
 
 
               /* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
@@ -351,14 +349,6 @@ function playPortalAudio() {
 
 
 function generateVideo(name, type) {
-
-  if ($('#broadcastVideo').length > 0 ) {
-    var oldPlayer = document.getElementById('broadcastVideo');
-    videojs(oldPlayer).dispose();
-  }
-  if($('#video-container').length > 0) {
-    $('#video-container').empty();
-  }
 
   if($(window).width() > 1024) {
 
