@@ -106,15 +106,16 @@ function broadCast(location) {
             }
 
 
+            /* ALS VIDEO SPELER BESTAAT; MAAK LEEG */
+            if($('#broadcastVideo').length > 0 ) {
+              var oldPlayer = document.getElementById('broadcastVideo');
+              videojs(oldPlayer).dispose();
+            }
 
             $("#notificationContainer").empty();
               $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
 
-              /* ALS VIDEO SPELER BESTAAT; MAAK LEEG */
-              if($('#broadcastVideo').length > 0 ) {
-                var oldPlayer = document.getElementById('broadcastVideo');
-                videojs(oldPlayer).dispose();
-              }
+
 
 
               /* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
