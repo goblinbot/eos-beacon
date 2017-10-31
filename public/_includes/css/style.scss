@@ -427,10 +427,11 @@ p.text-lg, .text-lg {
 }
 
 #notificationContainer {
-  min-height: $minhoogte;
+
   width: 100%;
 
   @media(min-width:769px){
+    min-height: $minhoogte;
     max-height: $minhoogte;
     overflow: hidden;
   }
@@ -621,4 +622,27 @@ p.text-lg, .text-lg {
         font-size: ($fontsize * 1.25);
       }
     }
+  }
+
+  .animloadbar {
+    height : 20px;
+    position : relative;
+    border-radius : 25px;
+    padding	: 10px;
+    transition : 1s;
+    overflow : hidden;
+
+    span.animloadbar-bar {
+       display	: block;
+       height : 100%;
+       min-height: 4rem;
+       margin-top: -1rem;
+       border-radius : 0;
+       position : relative;
+       overflow : hidden;
+       transition : 1s;
+       width : 15%;
+       min-width : 35px;
+       animation : animloadbar  3.4s linear infinite;
+     }
   }

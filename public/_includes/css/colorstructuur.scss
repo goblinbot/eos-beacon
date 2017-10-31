@@ -144,27 +144,6 @@ p {
   }
 }
 
-// #colony-feed {
-//   border-bottom   : 4px solid $blocksmedium;
-//
-//   li {
-//     border: 1px solid $blockslight;
-//     .feed-top {
-//
-//       .feed-timestamp {
-//         color: $altTitleColor;
-//       }
-//       .feed-user {
-//         color : $textmuted;
-//       }
-//     }
-//     .feed-message {
-//       color : $textmuted;
-//     }
-//   }
-//
-// }
-
 // custom buttons :: zijn TOEVOEGINGEN bovenop de outline buttons.
 .btn-ui {
   &.btn-ui-holo {
@@ -256,6 +235,20 @@ p {
   100% {
     border-bottom: 16px solid $holoBlauw;
   }
+}
+
+@keyframes animloadbar {
+    0%      { left: -15%;  }
+    40%     { background-color: $holoBlauw }
+    50%     { background-color: lighten($holoBlauw,15%) }
+    60%     { background-color: $holoBlauw }
+    100%    { left: 105%; background-color: darken($holoBlauw,15%) }
+}
+.animloadbar {
+  background : #555;
+}
+.animloadbar > span.animloadbar-bar {
+  background-color : $holoBlauw;
 }
 
 .glitch {

@@ -131,7 +131,6 @@ io.on('connection', function (socket) {
 
 
   socket.on('broadcastSend', function(value){
-    /*console.log(value);*/
 
     dynamicData['lastBC'] = value.file;
 
@@ -152,7 +151,7 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function(){
 
     delete activeClients[socket.id];
-    console.log(activeClients);
+    /*console.log(activeClients);*/
 
     dynamicData['countClients'] = io.engine.clientsCount;
     console.log('- Disconnected : ' +dynamicData['countClients']+' active clients.');
@@ -187,11 +186,8 @@ function eventLogger(type, message) {
 
   var datum = new Date(), y = datum.getFullYear(), m = datum.getMonth();
 
-  // var logfile = 'LOGS/eventlog-'+ datum.getDate() + '-' + datum.getMonth()+ '-'+ datum.getFullYear() +'.txt';
   var logfile = 'LOGS/eventlog.txt';
   var printresult = "";
-
-  // var fd = fs.openSync(logfile, 'w');
 
   if(!message || !type) {
     return false;
@@ -214,5 +210,4 @@ function eventLogger(type, message) {
         });
   }
 
-  // fs.closeSync(fs.openSync(logfile, 'w'));
 }
