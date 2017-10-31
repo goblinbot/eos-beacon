@@ -76,9 +76,11 @@ function broadCast(location) {
 
             /* ALS VIDEO SPELER BESTAAT; MAAK LEEG */
             if($('#broadcastVideo').length > 0 ) {
-              console.log('empty video');
+              console.log('== empty video >>');
               var oldPlayer = document.getElementById('broadcastVideo');
               videojs(oldPlayer).dispose();
+            } else {
+              console.log('== no transmissions to clear.');
             }
 
             /* foolproof controle: als DEFAULT word opgegeven telt hij ook als '0' */
