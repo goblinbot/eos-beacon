@@ -352,6 +352,14 @@ function playPortalAudio() {
 
 function generateVideo(name, type) {
 
+  if ($('#broadcastVideo').length > 0 ) {
+    var oldPlayer = document.getElementById('broadcastVideo');
+    videojs(oldPlayer).dispose();
+  }
+  if($('#video-container').length > 0) {
+    $('#video-container').empty();
+  }
+
   if($(window).width() > 1024) {
 
     $('#video-container').html('<video id="broadcastVideo" class="video-js" controls preload="auto"><source src="/video/'+name+'" type="video/'+type+'"></source></video>');
