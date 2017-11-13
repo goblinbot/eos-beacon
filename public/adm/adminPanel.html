@@ -216,7 +216,7 @@
   </div>
 
   <p>&nbsp;</p>
-  <p>(Manually setting the date has temporarily been disabled due to unresolved issues.)</p>
+  <!-- <p>(Manually setting the date has temporarily been disabled due to unresolved issues.)</p> -->
 
   <span class="hidden">
     <div class="col-xs-12"><hr/></div>
@@ -243,6 +243,59 @@
     <a class="btn btn-lg btn-primary"><i class="fa fa-calendar-check-o"></i>&nbsp;Change Date</a>
   </span>
 
+
+  <div class="col-xs-12">
+    <h2>!!VIDEO &amp; AUDIO!!</h2>
+    <div class="btn btn-primary" onclick="$('.hidden-block').hide();$('#OC-VID').fadeIn();">VIDEOS</div>
+    <div class="btn btn-primary" onclick="$('.hidden-block').hide();$('#OC-ALICE').fadeIn();">AUDIO ALICE</div>
+    <div class="btn btn-primary" onclick="$('.hidden-block').hide();$('#OC-DAVE').fadeIn();">AUDIO DAVE</div>
+    <div class="btn btn-primary" onclick="$('.hidden-block').hide();$('#OC-MISC').fadeIn();">AUDIO ANDERS</div>
+  </div>
+
+  <div id="OC-VID" class="hidden-block col-xs-12" style="display:none;">
+    <h4>Video's</h4>
+
+    <div class="items">
+      <p>send this before turning on the video to get player's attention.</p>
+      <button class="btn btn-primary btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bctransmission);">
+        <i class="fa fa-file-video-o"></i>&nbsp;INCOMING TRANSMISSION
+      </button>
+      <button class="btn btn-outline-success" onclick="sendBroadCast(bcreset);">
+        <i class="fa fa-check"></i>&nbsp;CLEAR SCREEN
+      </button>
+    </div>
+
+    <div class="items">
+      <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcOCannounce);">
+        <i class="fa fa-film"></i>&nbsp;OC: ANNOUNCE PENNINGMEESTER VIDEO
+      </button>
+    </div>
+
+    <div class="items">
+      <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcICstartvideo);">
+        <i class="fa fa-film"></i>&nbsp;IC: START EVENT VIDEO
+      </button>
+    </div>
+
+    <div class="items">
+      <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcICaquilaGeneralvideo);">
+        <i class="fa fa-film"></i>&nbsp;IC: AQUILA GENERAAL SPREEKT TOE VIDEO
+      </button>
+    </div>
+
+  </div>
+
+  <div id="OC-DAVE" class="hidden-block col-xs-12" style="display:none;">
+    <h4 class="items">Audio:dave</h4>
+  </div>
+
+  <div id="OC-ALICE" class="hidden-block col-xs-12" style="display:none;">
+    <h4 class="items">Audio:alice</h4>
+  </div>
+
+  <div id="OC-MISC" class="hidden-block col-xs-12" style="display:none;">
+    <h4 class="items">Audio:misc</h4>
+  </div>
 
 </div>
 
@@ -317,5 +370,34 @@ $(document).ready(function() {
       $('.adm-tab').removeClass('flash');
     },5000);
   });
+
+
+  socket.on('sendMediaMisc', function(resultArray){
+    $(resultArray).each(function(key, value){
+
+      var clickThis = " onclick=\"broadcastAudio(&apos;/audio-misc/" + value + "&apos;);\"";
+
+      $('#OC-MISC').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + value +'</div>');
+    });
+  });
+
+  socket.on('sendMediaDave', function(arrayDave){
+    $(arrayDave).each(function(key, value){
+
+      var clickThis = " onclick=\"broadcastAudio(&apos;/audio-dave/" + value + "&apos;);\"";
+
+      $('#OC-DAVE').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + value +'</div>');
+    });
+  });
+
+  socket.on('sendMediaAlice', function(arrayAlice){
+    $(arrayAlice).each(function(key, value){
+
+      var clickThis = " onclick=\"broadcastAudio(&apos;/audio-alice/" + value + "&apos;);\"";
+
+      $('#OC-ALICE').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + value +'</div>');
+    });
+  });
+
 });
 </script>

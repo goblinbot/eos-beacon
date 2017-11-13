@@ -32,10 +32,9 @@ the second digit, which is '1' in our example, determines the user 'rank'. The h
 a full admin/gamemaster would be:
   valid_accounts[0] = (new accountObj('00451','4'));
 */
-valid_accounts[0] = (new accountObj('61021','4'));
-valid_accounts[2] = (new accountObj('45100','3'));
-valid_accounts[3] = (new accountObj('67790','1'));
-valid_accounts[4] = (new accountObj('34471','2'));
+valid_accounts[0] = (new accountObj('61021','2'));
+valid_accounts[1] = (new accountObj('45100','3'));
+valid_accounts[2] = (new accountObj('34471','4'));
 
 /* Send config/settings to main server */
 exports.cfg    = system_details;

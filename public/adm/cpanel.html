@@ -37,12 +37,12 @@ $(document).ready(function(){
       switch(admRANK) {
         case '1': case '2': default:
           $('.overlord').empty();
-          /*$('.officer').empty();*/
           break;
         case '3':
           $('.overlord').empty();
           break;
         case '4':
+          socket.emit('getMedia');
           break;
       }
     }

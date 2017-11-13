@@ -238,6 +238,8 @@ function generateAudioPlayer(audiofile, repeatcount) {
 
   if(audiofile) {
 
+    console.log(audiofile);
+
     if(repeatcount == null || repeatcount == undefined) {
       repeatcount = 1;
     }
@@ -276,9 +278,25 @@ function generateAudioPlayer(audiofile, repeatcount) {
     $('#default-audio').trigger('play');
   }
 
-
-
 }
+
+/* audio file functie apart */
+function generateBCaudio(audiofile) {
+
+  console.log(audiofile);
+
+  if ($(window).width() > 960) {
+    $('#BCAUDIO').empty();
+    $('#BCAUDIO').html('<audio id="generatedBCAUDIO" controls="controls" class="hidden">'
+    + '<source src="/sounds'+ audiofile +'">'
+    +'</audio>');
+
+    $('#generatedBCAUDIO').trigger('play');
+
+  }
+}
+
+
 
 /* portal status. */
 function updatePortalStatus(portalstatus) {

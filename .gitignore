@@ -1,3 +1,6 @@
 node_modules/
 BACKUP/
-LOGS/
+public/video/
+public/sounds/audio-alice
+public/sounds/audio-dave
+public/sounds/audio-misc

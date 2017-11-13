@@ -97,7 +97,7 @@ io.on('connection', function (socket) {
     dynamicData['alertLevel'] = default_security_level;
     io.emit('updateDynamicData', dynamicData);
 
-    eventLogger('SEC','Security level reset');
+    eventLogger('SEC','Security level reset \n');
   });
 
   socket.on('updateSecurity', function(input){
@@ -105,7 +105,7 @@ io.on('connection', function (socket) {
     dynamicData['alertLevel'] = outString;
     io.emit('updateDynamicData', dynamicData);
 
-    eventLogger('SEC','Security level change => '+ input +'.');
+    eventLogger('SEC','Security level change => '+ input +'. \n');
   });
   socket.on('updatePortalStatus', function(input){
     var outString = input.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
@@ -113,7 +113,7 @@ io.on('connection', function (socket) {
     io.emit('updateDynamicData', dynamicData);
     io.emit('portalfrontend');
 
-    eventLogger('portal','Portal status change => '+ input +'.');
+    eventLogger('portal','Portal status change => '+ input +'. \n');
   });
 
   // FORCE RESET ::
@@ -121,7 +121,7 @@ io.on('connection', function (socket) {
     dynamicData['lastBC'] = "bcdefault";
     io.emit('F5');
 
-    eventLogger('admin','Force reset activated.',1);
+    eventLogger('admin','Force reset activated. \n',1);
   });
 
   socket.on('requestDynamicData', function (){
@@ -145,7 +145,7 @@ io.on('connection', function (socket) {
       },value.duration);
     }
 
-    eventLogger('broadcast','sent: '+ value['title'] +'.');
+    eventLogger('broadcast','sent: '+ value['title'] +'. \n');
   });
 
   socket.on('disconnect', function(){
@@ -163,7 +163,7 @@ io.on('connection', function (socket) {
     var loginrank = 0;
     console.log('authentication code received: '+keycode);
 
-    eventLogger('AUTH','auth-code received: '+ keycode +'.');
+    eventLogger('AUTH','auth-code received: '+ keycode +'. \n');
 
     for (var i in globalSettings.accounts) {
 
@@ -178,6 +178,46 @@ io.on('connection', function (socket) {
     } else {
       socket.emit('authFalse');
     }
+  });
+
+  socket.on('broadcastAudio', function(audiofile){
+
+    console.log(audiofile);
+
+    io.emit('playAudioFile', audiofile);
+    eventLogger('AUDIO','audio file sent: '+ audiofile +'. \n');
+  });
+
+
+  /* PAK ALLE AUDIO EN PUSH DEZE NAAR DE OVERLORD */
+  socket.on('getMedia', function(){
+
+    var miscAudio = [];
+    fs.readdir('./public/sounds/audio-misc', (err, files) => {
+      files.forEach(file => {
+        miscAudio.push(file);
+      });
+
+      socket.emit('sendMediaMisc', miscAudio);
+    });
+
+    var aliceAudio = [];
+    fs.readdir('./public/sounds/audio-alice', (err, files) => {
+      files.forEach(file => {
+        aliceAudio.push(file);
+      });
+      socket.emit('sendMediaAlice', aliceAudio);
+    });
+
+
+    var daveAudio = [];
+    fs.readdir('./public/sounds/audio-dave', (err, files) => {
+      files.forEach(file => {
+        daveAudio.push(file);
+      });
+      socket.emit('sendMediaDave', daveAudio);
+    });
+
   });
 
 });

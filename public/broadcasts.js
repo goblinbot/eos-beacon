@@ -67,3 +67,4 @@ var bcmaati = new broadcastObj("test","bcmaati",9,"0","0");
 /* VIDEOS */
 var bcOCannounce = new broadcastObj("VID.TRANSMISSION","bcOCannounce",9,"0","0");
 var bcICstartvideo = new broadcastObj("VID.TRANSMISSION","bcICstartvideo",9,"0","0");
+var bcICaquilaGeneralvideo = new broadcastObj("VID.TRANSMISSION","bcICaquilaGeneralvideo",9,"0","0");

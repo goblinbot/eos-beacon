@@ -53,6 +53,12 @@ function updatePortalStatus(selector) {
 }
 
 
+function broadcastAudio(data) {
+  socket.emit('broadcastAudio', data);
+  console.log(data);
+}
+
+
 // Internet's meest generieke, gecopypaste en gestolen functie allertijden :
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();

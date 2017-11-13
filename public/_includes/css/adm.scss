@@ -1,6 +1,9 @@
 // ADMIN SPECIFIEKE STYLE SHEET. PUUR OM RUIMTE TE BESPAREN. ///////////////////
 $defaultpadding: 0.8rem;
 
+html {
+  overflow: auto;
+}
 
 #main {
   min-height: 0;
@@ -9,6 +12,19 @@ $defaultpadding: 0.8rem;
 #admkeypad {
   .error {
     margin-bottom: (0.8rem * 4);
+  }
+}
+
+.hidden-block {
+  border: 1px solid #3399CC;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  .items {
+    flex: 1;
+    width: 100%;
+    padding: 15px;
+    border-bottom: 2px solid rgba(#3399CC, 0.2);
   }
 }
 

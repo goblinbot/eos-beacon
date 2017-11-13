@@ -204,6 +204,11 @@ $(document).ready(function(){
     },2500);
   });
 
+  socket.on('playAudioFile', function(audiofile){
+    console.log('playaudiofile:: ' + audiofile);
+    generateBCaudio(audiofile);
+  });
+
   /* reconnect/disconnect */
   socket.on('connect', function(){
     $('#connStatus').addClass('btn-outline-success').removeClass('btn-outline-danger blinkContent').html('<i class="fa fa-link"></i>&nbsp;CONNECTED');
