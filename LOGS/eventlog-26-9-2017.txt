@@ -1,1 +1,0 @@
-[ INIT ]	26-9, 15:43	:: Beacon succesfully started.

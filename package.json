@@ -1,9 +1,9 @@
 {
   "name": "eos-beacon",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Beacon broadcasting Application",
   "engines": {
-    "node": "6.11.1"
+    "node": "8.9.1"
   },
   "main": "index.js",
   "scripts": {
@@ -31,11 +31,10 @@
   "author": "Thijs Boerma",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.16.0",
     "client-sessions": "^0.8.0",
-    "express": "^4.14.1",
-    "fs": "0.0.1-security",
-    "ip": "^1.1.4",
-    "socket.io": "^1.7.2"
+    "device": "^0.3.8",
+    "express": "^4.16.2",
+    "ip": "^1.1.5",
+    "socket.io": "^1.7.4"
   }
 }

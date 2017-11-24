@@ -3,13 +3,13 @@ var express = require('express');
 var app     = express();
 var http    = require('http').Server(app);
 var io      = require('socket.io')(http);
-var $       = require('jquery');
 var ip      = require('ip');
-var bodyParser = require('body-parser');
+/*var bodyParser = require('body-parser');*/
 var session = require('client-sessions');
 var fs = require('fs');
 
-
+/* experiment */
+/*var device = require('device');*/
 
 
 var globalSettings = require('./config.js');
@@ -39,22 +39,31 @@ var deviceLabelArray = ['00.','FA.','A2.','63.','D4.','19.','C5.','D3.','81.','7
 
 app.use(express.static('public'));
 app.use(express.static('_includes'));
-app.use('_includes', express.static('public'));
+/*app.use('_includes', express.static('public'));*/
 
-app.use(bodyParser.urlencoded({ extended: true }));
+/*app.use(bodyParser.urlencoded({ extended: true }));*/
+
+/*
+  NOTE TO SELF: SUB-APP: we kunnen blijkbaar meerdere domeinen/apps bouwen in dezelfde index.js ...
+  bijvoorbeeld:
+    var admapp = express();
+    admapp.use(express.static('public'));
+    admapp.use(express.static('_includes maar dan anders'));
+  het potentieel hiervan moet ik nog vinden, maar _oei_
+*/
+
+
 
 http.listen(port, function(){
-  console.log('. ');
-  console.log('. ');
-  console.log('.. ');
-  /*console.log(configtest.value);*/
+
+  console.log('\n..\n..');
   console.log('// '+globalSettings['cfg']['appname']+' ////////////');
   console.log('# Initialising ..' );
   console.log('# Loading dependancies ..');
   console.log('-------------------------');
   console.log('# CONNECT DEVICES//USERS TO :');
-  console.log(' ? External IP : ' + globalSettings.sys['localaddress'] );
-  console.log(' ? Internal IP : localhost:'+ port  + ' | ' + '127.0.0.1:'+ port );
+  console.log(' ? External IP :\n\t- ' + globalSettings.sys['localaddress'] );
+  console.log(' ? Internal IP :\n\t- localhost:'+ port  + '\n\t- ' + '127.0.0.1:'+ port );
   console.log('-------------------------');
   console.log('THANK YOU FOR USING '+globalSettings['cfg']['appname']+' INFORMATION & BROADCASTING SERVICES');
 
@@ -72,6 +81,7 @@ app.get('/adm', function(req, res){
   res.sendFile('/adm/index.html', {"root": __dirname+'/public/'});
 });
 
+
 app.get('*', function(req, res){
   res.sendFile('404.html', {"root": __dirname+'/public/'});
 });
@@ -84,27 +94,52 @@ io.on('connection', function (socket) {
   activeClients[socket.id]["id"] = socket.id;
   activeClients[socket.id]["name"] = (deviceLabelArray[Math.floor(Math.random() * deviceLabelArray.length)]) + (Math.round(100+(Math.random() * (999-100))));
 
-  console.log('Device connected. '+dynamicData['countClients']+' active clients.');
+  console.log('\t[CONN] '+dynamicData['countClients']+' active client(s).');
 
   setTimeout(function(){
     /* send FRONTEND data to FRONT */
     socket.emit('startConfig', globalSettings.data);
   },1000);
 
+  /* experiment: Get the Device info & IP for logging. */
+  /*socket.on('clientDevice', function(clientdata){
 
-  // CLEARALL :: reset sec status.
-  socket.on('ClearAll', function() {
+    var clientBrowser = "";
+    if((clientdata.ua).indexOf("Chrome") > -1) {
+        clientBrowser = "Google Chrome";
+    } else if ((clientdata.ua).indexOf("Safari") > -1) {
+        clientBrowser = "Apple Safari";
+    } else if ((clientdata.ua).indexOf("Opera") > -1) {
+        clientBrowser = "Opera";
+    } else if ((clientdata.ua).indexOf("Firefox") > -1) {
+        clientBrowser = "Mozilla Firefox";
+    } else if ((clientdata.ua).indexOf("MSIE") > -1) {
+        clientBrowser = "MS Internet Explorer";
+    }
+
+    console.log('\nI spy with my little eye:');
+
+    console.log('- '+clientdata.ua);
+    console.log('- '+device(clientdata.ua).type + ' // ' + clientdata.pf);
+    console.log('- '+clientBrowser);
+  });*/
+
+
+  // CLEARALL :: reset sec status. COMMENTED: APPARANTLY UNUSED CODE.
+  /*socket.on('ClearAll', function() {
     dynamicData['alertLevel'] = default_security_level;
     io.emit('updateDynamicData', dynamicData);
 
+    console.log('[secLVL] level => reset');
     eventLogger('SEC','Security level reset \n');
-  });
+  });*/
 
   socket.on('updateSecurity', function(input){
     var outString = input.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
     dynamicData['alertLevel'] = outString;
     io.emit('updateDynamicData', dynamicData);
 
+    console.log('[secLVL] level => '+ input);
     eventLogger('SEC','Security level change => '+ input +'. \n');
   });
   socket.on('updatePortalStatus', function(input){
@@ -113,6 +148,7 @@ io.on('connection', function (socket) {
     io.emit('updateDynamicData', dynamicData);
     io.emit('portalfrontend');
 
+    console.log('[portal] status => '+ input);
     eventLogger('portal','Portal status change => '+ input +'. \n');
   });
 
@@ -121,6 +157,7 @@ io.on('connection', function (socket) {
     dynamicData['lastBC'] = "bcdefault";
     io.emit('F5');
 
+    console.log('[admin] command => FORCE_RESET');
     eventLogger('admin','Force reset activated. \n',1);
   });
 
@@ -145,23 +182,24 @@ io.on('connection', function (socket) {
       },value.duration);
     }
 
+    console.log('[broadcast] sent => '+ value['title']);
     eventLogger('broadcast','sent: '+ value['title'] +'. \n');
   });
 
   socket.on('disconnect', function(){
 
     delete activeClients[socket.id];
-    /*console.log(activeClients);*/
 
     dynamicData['countClients'] = io.engine.clientsCount;
-    console.log('- Disconnected : ' +dynamicData['countClients']+' active clients.');
+    console.log('\t[D.C.]' +dynamicData['countClients']+' active client(s).');
     io.emit('updateDynamicData', dynamicData );
   });
 
   socket.on('auth', function(keycode){
     var checklogincode = 0;
     var loginrank = 0;
-    console.log('authentication code received: '+keycode);
+
+    console.log('[AUTH] code received: '+keycode);
 
     eventLogger('AUTH','auth-code received: '+ keycode +'. \n');
 
@@ -182,7 +220,7 @@ io.on('connection', function (socket) {
 
   socket.on('broadcastAudio', function(audiofile){
 
-    console.log(audiofile);
+    console.log('[audio] => file: '+ audiofile);
 
     io.emit('playAudioFile', audiofile);
     eventLogger('AUDIO','audio file sent: '+ audiofile +'. \n');
@@ -193,30 +231,36 @@ io.on('connection', function (socket) {
   socket.on('getMedia', function(){
 
     var miscAudio = [];
-    fs.readdir('./public/sounds/audio-misc', (err, files) => {
-      files.forEach(file => {
-        miscAudio.push(file);
-      });
+    if(fs.existsSync('./public/sounds/audio-misc')) {
+      fs.readdir('./public/sounds/audio-misc', (err, files) => {
+        files.forEach(file => {
+          miscAudio.push(file);
+        });
 
-      socket.emit('sendMediaMisc', miscAudio);
-    });
+        socket.emit('sendMediaMisc', miscAudio);
+      });
+    }
+
 
     var aliceAudio = [];
-    fs.readdir('./public/sounds/audio-alice', (err, files) => {
-      files.forEach(file => {
-        aliceAudio.push(file);
+    if(fs.existsSync('./public/sounds/audio-alice')) {
+      fs.readdir('./public/sounds/audio-alice', (err, files) => {
+        files.forEach(file => {
+          aliceAudio.push(file);
+        });
+        socket.emit('sendMediaAlice', aliceAudio);
       });
-      socket.emit('sendMediaAlice', aliceAudio);
-    });
-
+    }
 
     var daveAudio = [];
-    fs.readdir('./public/sounds/audio-dave', (err, files) => {
-      files.forEach(file => {
-        daveAudio.push(file);
+    if(fs.existsSync('./public/sounds/audio-dave')) {
+      fs.readdir('./public/sounds/audio-dave', (err, files) => {
+        files.forEach(file => {
+          daveAudio.push(file);
+        });
+        socket.emit('sendMediaDave', daveAudio);
       });
-      socket.emit('sendMediaDave', daveAudio);
-    });
+    }
 
   });
 

@@ -185,11 +185,18 @@
 
 <script>
 $(document).ready(function(){
+
   /* update on load alle titels, descriptions en het IP adres rechtsboven.*/
   socket.on('startConfig', function(settings){
     $('#localIP').html(settings['localaddress']);
   });
 
+  /* experiment: Get the Device info & IP for logging. */
+  /*var clientArr = {
+    'ua' : window.navigator.userAgent
+    ,'pf': window.navigator.platform
+  };
+  socket.emit('clientDevice', clientArr );*/
 
   /* ForceReset. F5'd de pagina.*/
   socket.on('F5', function(){
