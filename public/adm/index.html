@@ -21,8 +21,22 @@
 
   <link rel="stylesheet" type="text/css" href="/_includes/css/alert-default.css" />
 
-  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+  <link rel="icon" href="/icons/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="manifest" href="/icons/manifest.json">
 
 </head>
 <body>
@@ -100,16 +114,18 @@
 <script type="text/javascript" src="/_includes/js/functions.js"></script>
 <script type="text/javascript" src="/_includes/js/functions.backend.js"></script>
 <script>
-  /*KEYPAD*/
+  /* settings for the keypad: This is code from the very first UI I made, so is notably different. For now it rests in this index.html file instead of a proper .js */
   var KeysPressed = 0;
   var attempts    = 0;
 
+  /* when a button is pressed, if the button is.. */
   $('#admkeypad .btn-keypad').click(function(){
 
     var $write = $('#writekeys');
 
     var $this = $(this), character = $this.text();
 
+    /* .. the delete button, clear everything and reset to defaults. */
     if($this.hasClass('delete')) {
         var html = $write.html();
 
@@ -117,8 +133,9 @@
         $('#cPanel-status').html("Clear.");
         KeysPressed = 0;
         return false;
-    }
-    if($this.hasClass('submit')) {
+
+    /* .. the submit button, validate the amount of characters entered into the login form  */
+    } else if($this.hasClass('submit')) {
         if (KeysPressed < 5) {
            $('#cPanel-status').html("Insufficient amount of characters.");
         } else if (KeysPressed == 5) {
@@ -127,6 +144,7 @@
             $('#cPanel-status').html("Something went horribly wrong.");
         }
 
+    /* .. a character button, add the number to our write box */
     } else {
       if (KeysPressed < 5) {
           /* voeg tekens toe aan blok */
@@ -140,6 +158,7 @@
     }
   });
 
+  /* submit the form -> send the keypad data to the server (index.js) */
   $("#keypad_login").submit(function(e) {
       e.preventDefault();
       var keycode = $('#writekeys').html();
@@ -148,6 +167,7 @@
       socket.emit('auth', keycode);
   });
 
+  /* possible answer from the server: authfalse means invalid login. */
   socket.on('authFalse', function(){
     attempts++;
     $('#cPanel-status').html("Incorrect pin entered. Strike "+attempts+".");
@@ -157,6 +177,7 @@
     }
   });
 
+  /* positive answer from server: set a login cookie and load the main adminpanel files. */
   socket.on('authTrue', function(keycode,loginrank){
     attempts = 0;
     setCookie('auth','TRUE','1');
@@ -167,18 +188,21 @@
   });
 
   $(document).ready(function() {
-    var admAUTH = getCookie('auth');
-    var admUSER = getCookie('usercode');
+    const admAUTH = getCookie('auth');
+    const admUSER = getCookie('usercode');
 
     setTimeout(function(){
-
+      /* after half a second, request the global dynamicdata. This adds too little and will potentially be removed to save bandwidth.*/
       socket.emit('requestDynamicData');
 
     },500);
 
+    /* sets 'Current broadcast' to the global dynamicdata. This adds too little and will potentially be removed to save bandwidth. */
     socket.on('updateDynamicData', function(dynamicData){
       cpanelStatus(window[dynamicData['lastBC']]['title']);
     });
+
+    /* sets the title when a broadcast is sent by the server */
     socket.on('broadcastReceive', function(location){
       cpanelStatus(location['title']);
 
@@ -190,10 +214,12 @@
 
     });
 
+    /* on pageload: if the user is already logged in, load the adminpanel. */
     if(admAUTH == 'TRUE') {
       $('#cPanel').load('/adm/cpanel.html');
       navigate('/adm/adminPanel');
     }
+    
   });
 
 

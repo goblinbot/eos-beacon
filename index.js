@@ -1,18 +1,14 @@
 /* dependancies verklaren en ophalen */
-var express = require('express');
-var app     = express();
-var http    = require('http').Server(app);
-var io      = require('socket.io')(http);
-var ip      = require('ip');
+const express = require('express');
+const app     = express();
+const http    = require('http').Server(app);
+const io      = require('socket.io')(http);
+const ip      = require('ip');
+const session = require('client-sessions');
+const fs      = require('fs');
+const globalSettings = require('./config.js');
 /*var bodyParser = require('body-parser');*/
-var session = require('client-sessions');
-var fs = require('fs');
 
-/* experiment */
-/*var device = require('device');*/
-
-
-var globalSettings = require('./config.js');
 
 /* CONFIGURATIE: vaste gegevens bij start up. */
 var port          = process.env.PORT || globalSettings.sys.port;
@@ -23,7 +19,7 @@ globalSettings.data.localaddress = globalSettings.sys.localaddress;
 var default_security_level = "Code green - All clear";
 
 
-/* DYNAMIC DATA: data die bij setup worden gebruikt en constant kunnen worden aangepast. */
+/* DYNAMIC DATA: data set to defaults on boot, that can be manipulated by users. */
 var dynamicData = {
   countClients  : 0,
   alertLevel    : default_security_level,
@@ -31,31 +27,21 @@ var dynamicData = {
   portalStatus : "ok"
 }
 
-/* ACTIVE DEVICE VARS */
-var activeClients = [];
-var deviceLabelArray = ['00.','FA.','A2.','63.','D4.','19.','C5.','D3.','81.','74.','5E.'];
+/* ACTIVE DEVICE VARS: disabled due to having no current use. */
+/*var activeClients = [];
+var deviceLabelArray = ['00.','FA.','A2.','63.','D4.','19.','C5.','D3.','81.','74.','5E.'];*/
 
-/* INITIALISEN VAN APP */
+
+
+/* INITIALISING THE APP */
 
 app.use(express.static('public'));
 app.use(express.static('_includes'));
-/*app.use('_includes', express.static('public'));*/
-
-/*app.use(bodyParser.urlencoded({ extended: true }));*/
-
-/*
-  NOTE TO SELF: SUB-APP: we kunnen blijkbaar meerdere domeinen/apps bouwen in dezelfde index.js ...
-  bijvoorbeeld:
-    var admapp = express();
-    admapp.use(express.static('public'));
-    admapp.use(express.static('_includes maar dan anders'));
-  het potentieel hiervan moet ik nog vinden, maar _oei_
-*/
-
 
 
 http.listen(port, function(){
 
+  /* flavor text */
   console.log('\n..\n..');
   console.log('// '+globalSettings['cfg']['appname']+' ////////////');
   console.log('# Initialising ..' );
@@ -67,6 +53,7 @@ http.listen(port, function(){
   console.log('-------------------------');
   console.log('THANK YOU FOR USING '+globalSettings['cfg']['appname']+' INFORMATION & BROADCASTING SERVICES');
 
+  /* writing to eventlog.txt */
   eventLogger('INIT','Beacon succesfully started.');
 });
 
@@ -77,11 +64,17 @@ app.get('/', function(req, res){
   res.sendFile('index.html', {"root": __dirname+'/public/'});
 });
 
-app.get('/adm', function(req, res){
-  res.sendFile('/adm/index.html', {"root": __dirname+'/public/'});
+/* accessing the eventlog without making the LOGS folder public. */
+app.get('/analysisMode', function(req, res){
+  res.sendFile('index.html', {"root": __dirname+'/LOGS/'});
 });
 
+/* Path for the system to request eventlog.txt specificly, without making the LOGS folder public. */
+app.get('/systemRequestLogText', function(req, res){
+  res.sendFile('eventlog.txt', {"root": __dirname+'/LOGS/'});
+});
 
+/* fallback: 404 when non-valid location is requested. */
 app.get('*', function(req, res){
   res.sendFile('404.html', {"root": __dirname+'/public/'});
 });
@@ -90,49 +83,18 @@ io.on('connection', function (socket) {
 
   dynamicData['countClients'] = io.engine.clientsCount;
 
-  activeClients[socket.id] = [];
+  /* active clients: disabled due to having no current use. */
+  /*activeClients[socket.id] = [];
   activeClients[socket.id]["id"] = socket.id;
-  activeClients[socket.id]["name"] = (deviceLabelArray[Math.floor(Math.random() * deviceLabelArray.length)]) + (Math.round(100+(Math.random() * (999-100))));
+  activeClients[socket.id]["name"] = (deviceLabelArray[Math.floor(Math.random() * deviceLabelArray.length)]) + (Math.round(100+(Math.random() * (999-100))));*/
 
-  console.log('\t[CONN] '+dynamicData['countClients']+' active client(s).');
+  console.log('\t[CON+] '+dynamicData['countClients']+' active client(s).');
 
   setTimeout(function(){
     /* send FRONTEND data to FRONT */
     socket.emit('startConfig', globalSettings.data);
   },1000);
 
-  /* experiment: Get the Device info & IP for logging. */
-  /*socket.on('clientDevice', function(clientdata){
-
-    var clientBrowser = "";
-    if((clientdata.ua).indexOf("Chrome") > -1) {
-        clientBrowser = "Google Chrome";
-    } else if ((clientdata.ua).indexOf("Safari") > -1) {
-        clientBrowser = "Apple Safari";
-    } else if ((clientdata.ua).indexOf("Opera") > -1) {
-        clientBrowser = "Opera";
-    } else if ((clientdata.ua).indexOf("Firefox") > -1) {
-        clientBrowser = "Mozilla Firefox";
-    } else if ((clientdata.ua).indexOf("MSIE") > -1) {
-        clientBrowser = "MS Internet Explorer";
-    }
-
-    console.log('\nI spy with my little eye:');
-
-    console.log('- '+clientdata.ua);
-    console.log('- '+device(clientdata.ua).type + ' // ' + clientdata.pf);
-    console.log('- '+clientBrowser);
-  });*/
-
-
-  // CLEARALL :: reset sec status. COMMENTED: APPARANTLY UNUSED CODE.
-  /*socket.on('ClearAll', function() {
-    dynamicData['alertLevel'] = default_security_level;
-    io.emit('updateDynamicData', dynamicData);
-
-    console.log('[secLVL] level => reset');
-    eventLogger('SEC','Security level reset \n');
-  });*/
 
   socket.on('updateSecurity', function(input){
     var outString = input.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
@@ -188,10 +150,10 @@ io.on('connection', function (socket) {
 
   socket.on('disconnect', function(){
 
-    delete activeClients[socket.id];
+    /*delete activeClients[socket.id];*/
 
     dynamicData['countClients'] = io.engine.clientsCount;
-    console.log('\t[D.C.]' +dynamicData['countClients']+' active client(s).');
+    console.log('\t[.DC-]' +dynamicData['countClients']+' active client(s).');
     io.emit('updateDynamicData', dynamicData );
   });
 
@@ -218,6 +180,7 @@ io.on('connection', function (socket) {
     }
   });
 
+  /* broadcast from adminpanel to index.js. Sends a "play this file!" request to every connected client. */
   socket.on('broadcastAudio', function(audiofile){
 
     console.log('[audio] => file: '+ audiofile);
@@ -227,21 +190,25 @@ io.on('connection', function (socket) {
   });
 
 
-  /* PAK ALLE AUDIO EN PUSH DEZE NAAR DE OVERLORD */
+  /* getMedia: function to automatically read audio files into pushable buttons, caused by the adminpanel when logging in with sufficient rights. */
   socket.on('getMedia', function(){
 
+    /*
+      getMedia has three seperate folders by default: miscAudio, aliceAudio and daveAudio.
+      First, beacon will check if the subfolders actually exist, then read every file and push them into an array.
+      Secondly, we push this array to the admin screen to generate the "play audio" buttons
+    */
     var miscAudio = [];
     if(fs.existsSync('./public/sounds/audio-misc')) {
       fs.readdir('./public/sounds/audio-misc', (err, files) => {
         files.forEach(file => {
           miscAudio.push(file);
         });
-
         socket.emit('sendMediaMisc', miscAudio);
       });
     }
 
-
+    /* copy of misc audio */
     var aliceAudio = [];
     if(fs.existsSync('./public/sounds/audio-alice')) {
       fs.readdir('./public/sounds/audio-alice', (err, files) => {
@@ -252,6 +219,7 @@ io.on('connection', function (socket) {
       });
     }
 
+    /* copy of misc audio */
     var daveAudio = [];
     if(fs.existsSync('./public/sounds/audio-dave')) {
       fs.readdir('./public/sounds/audio-dave', (err, files) => {
@@ -266,32 +234,39 @@ io.on('connection', function (socket) {
 
 });
 
+/* eventLogger writes system logs to /LOGS/eventlog.txt. */
 function eventLogger(type, message) {
 
+  /* grab the current date. */
   var datum = new Date(), y = datum.getFullYear(), m = datum.getMonth();
 
+  /* declare log file location, and the result to add to said file. */
   var logfile = 'LOGS/eventlog.txt';
   var printresult = "";
 
+  /* missing values? Don't do anything.*/
   if(!message || !type) {
     return false;
   } else {
 
+    /* grab the current time and format it to our european standards */
     var currentTime = new Date();
     var currentHours   = currentTime.getHours ( );
     var currentMinutes = currentTime.getMinutes ( );
       currentHours = ( currentHours < 10 ? "0" : "" ) + currentHours;
       currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
-        currentTime = currentHours + ":" + currentMinutes;
+      currentTime = currentHours + ":" + currentMinutes;
 
-        printresult += '[ ' + type + ' ]\t';
-        printresult += datum.getDate() + '-' + datum.getMonth() + ', '+ currentTime;
-        printresult += '\t:: ';
-        printresult += message + '\n';
+      /* add to log: [TYPE] [DATE/TIME] :: [MESSAGE] */
+      printresult += '[ ' + type + ' ]\t';
+      printresult += datum.getDate() + '-' + datum.getMonth() + ', '+ currentTime;
+      printresult += '\t:: ';
+      printresult += message + '\n';
 
-        fs.appendFile(logfile, printresult, function(err) {
-          if(err) throw err;
-        });
+      /* ADD log to txt file by appending. */
+      fs.appendFile(logfile, printresult, function(err) {
+        if(err) throw err;
+      });
   }
 
 }

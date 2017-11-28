@@ -32,7 +32,6 @@
   "license": "ISC",
   "dependencies": {
     "client-sessions": "^0.8.0",
-    "device": "^0.3.8",
     "express": "^4.16.2",
     "ip": "^1.1.5",
     "socket.io": "^1.7.4"

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>BEACON - BROADCASTING &amp; INFORMATION SYSTEMS</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/_includes/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/_includes/css/alert-default.css" />
+
+  <link rel="icon" href="/icons/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="manifest" href="/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <style>
+    .entry {
+      margin: 15px;
+      width: auto;
+    }
+
+    .captcha {
+      margin: 15px;
+      border: 1px solid #39DBCC;
+      padding: 15px;
+      width: auto;
+      position: relative;
+      background: #053A47;
+      border-radius: 3px;
+    }
+
+    pre.eventlog {
+      margin: 15px;
+      background: none;
+      color: #FFCC00;
+      border-color: #FFCC00;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="entry">
+    <h1>BEACON: SYSTEM LOGS</h1>
+
+    <p>To request access, please check the correct box to let us know you're qualified.</p>
+
+    <br/>
+
+    <div class="captcha">
+
+      <a class="btn btn-ui btn-ui-holo hidden" onclick="$('.captcha').hide();$('.eventlog').fadeIn(); return false;">&nbsp;&nbsp;</a>
+      &nbsp;
+      <a class="btn btn-ui btn-ui-holo-alt" onclick="$('.entry').empty(); $('.entry').html('<h1>Human input detected.</h1><p>Access denied.</p>'); return false;">&nbsp;&nbsp;</a>
+      &nbsp;
+      <label>I am not fully human.</label>
+
+    </div>
+
+
+    <br/>
+  </div>
+
+  <pre class="eventlog" style="display:none;"></pre>
+
+</body>
+
+<script type="text/javascript" src="/_includes/js/jquery.min.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="/_includes/js/functions.js"></script>
+<script>
+
+  /* Request the eventlog.txt, and then print the contents into the eventlog container. */
+  const URL_TO_STATIC_TXT = '/systemRequestLogText';
+
+  $.ajax({ url: URL_TO_STATIC_TXT })
+  .done(data => {
+    $('.eventlog').text(data);
+  });
+</script>
+</html>

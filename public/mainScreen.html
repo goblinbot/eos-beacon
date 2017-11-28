@@ -149,53 +149,49 @@ $(document).ready(function(){
 
   var currentPortalStatus = "";
 
-  // functie: maak blokken footer even groot.
-  /*updateFooter();*/
-
-  /* na een halve seconde, stuur de default broadcast naar =alleen= deze client. */
+  /* after about half a second, request the dynamicdata HERE. (client->server) */
   setTimeout(function(){
     socket.emit('requestDynamicData');
   },800);
 
-  /* hier defineren we de realtime update: als de =socket= een broadcast ontvangt, dan voert de client deze uit.*/
+  /* This is where our client receives the broadcast from the server side .*/
   socket.on('broadcastReceive', function(location){
-    console.log('# BROADCAST RECEIVED !');
-    /* uitvoeren op client. */
+
+    /* perform the broadcast, client side. */
     broadCast(location);
-    console.log('# ... OK');
   });
 
+  /* default sound file */
   var defaultSoundFile = "/sounds/Menu_Select_00.wav";
 
+  /* add soundplayer if screen is wide enough, to prevent mobile phones from constantly beeping. */
   if ($(window).width() > 960) {
     $('.audiocontrol').html('<audio id="default-audio" controls="controls" class="hidden">'
     + '<source src="'+ defaultSoundFile +'" type="audio/mpeg">'
     +'</audio>');
   }
 
-  /* vraagt dynamische data op, zoals security level en actieve gebruikers.*/
-
-  /* en update hem hier.*/
+  /* (server->client) updates our HTML web page to contain the global dynamicdata, instead of default OR outdated content.*/
   socket.on('updateDynamicData', function(dynamicData){
     $('#securityAlertLevel').html(dynamicData['alertLevel']);
     $('#countClientsCounter').html(dynamicData['countClients']);
 
-    /* roept functie aan om de portal status aan te passen. */
+    /* updates the portal status to match with the global dynamicdata. */
     updatePortalStatus(dynamicData['portalStatus']);
 
 
-    /*resume! client only.*/
+    /*resume the last broadcast! client only.*/
     if(bcinit == 0) {
       broadCast(window[dynamicData['lastBC']]);
       bcinit = 1;
     }
 
-    /* client device name! */
+    /* client device name! Will potentially be removed, due to having no current use. */
     $('#socket-id').html('&nbsp;CONN->&nbsp;<span class="holoContrast">'+socket.id+'</span>');
 
   });
 
-  /* portal */
+  /* receive portal status updates here (server->client)*/
   socket.on('portalfrontend', function(){
     $('.portalstatus').addClass('flash');
     playPortalAudio();
@@ -204,12 +200,15 @@ $(document).ready(function(){
     },2500);
   });
 
+  /* receive the request to play audio here: (server->client)
+    generateBCaudio will determine what happens next. (play or not to play, etc) */
   socket.on('playAudioFile', function(audiofile){
     console.log('playaudiofile:: ' + audiofile);
     generateBCaudio(audiofile);
   });
 
-  /* reconnect/disconnect */
+
+  /* reconnect/disconnect events: what to do when losing/gaining connection. */
   socket.on('connect', function(){
     $('#connStatus').addClass('btn-outline-success').removeClass('btn-outline-danger blinkContent').html('<i class="fa fa-link"></i>&nbsp;CONNECTED');
 
@@ -222,11 +221,14 @@ $(document).ready(function(){
 
     $('#localIP').removeClass('text-muted blinkContent');
 
+
+    /* ask the server for the current dynamicdata, causing the content to potentially catch up with the rest of the clients */
     setTimeout(function(){
       socket.emit('requestDynamicData');
     },800);
   });
 
+  /* on disconnect: mostly flavor text and effects to make it clear that Beacon has no current active connection. */
   socket.on('disconnect', function(){
     $('#connStatus').addClass('btn-outline-danger blinkContent').removeClass('btn-outline-success').html('<i class="fa fa-unlink"></i>&nbsp;OFFLINE');
 

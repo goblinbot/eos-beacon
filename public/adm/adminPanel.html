@@ -100,6 +100,10 @@
   <div class="col-xs-12 col-md-6">
     <p>Select a pre-defined security levels.</p>
 
+    <!--
+      default security levels.
+      Add, edit or remove these to your own preferences. You can set the DEFAULT security level in config.js on the server side.
+    -->
     <div class="col-xs-12">
       <select id="secLevelPrefab" class="form-control" name="predefinedSecurityLevel">
         <option value="Code Green - All clear">Code Green - All clear</option>
@@ -113,6 +117,7 @@
     </div>
 
     <div class="col-xs-12">
+      <!-- submits the security level -->
       <button class="btn btn-lg btn-ui btn-ui-holo-alt" onclick="updateSecurity('secLevelPrefab');">
         <i class="fa fa-warning"></i>&nbsp;SET SECURITY LEVEL
       </button>
@@ -121,11 +126,14 @@
   </div>
 
   <div class="col-xs-12 col-md-6">
+    <!-- Or, write your own security status on the spot. -->
     <p>...Or, set a custom security level.</p>
     <div class="col-xs-12">
-      <input id="secLevelCustom" type="text" class="form-control" placeholder="Custom Alert" maxlength="140"></input>
+      <input id="secLevelCustom" type="text" class="form-control" placeholder="Custom Alert" maxlength="160"></input>
     </div>
     <div class="col-xs-12">
+
+      <!-- submit the custom status -->
       <button class="btn btn-lg btn-ui btn-ui-holo-alt" onclick="updateSecurity('secLevelCustom');">
         <i class="fa fa-warning"></i>&nbsp;SET CUSTOM LEVEL
       </button>
@@ -144,6 +152,7 @@
 
 </div>
 
+<!-- TAB: OTHER. AVAILABLE TO EVERYONE. -->
 <div id="admCMD" class="adm-tab default-border hidden col-xs-12">
 
   <h2><i class="fa fa-terminal"></i>&nbsp;Other commands</h2>
@@ -159,20 +168,22 @@
 
 </div>
 
-
+<!-- TAB: OVERLORD. ADMINS ONLY. -->
 <div id="admOVERLORD" class="adm-tab default-border hidden col-xs-12">
   <h2><i class="fa fa-terminal"></i>&nbsp;Welcome, Overlord.</h2>
 
   <br/>
 
+  <!-- reset the alerts/broadcasts. Placed here for extra laziness. -->
   <button class="btn btn-outline-success btn-lg btn-block" onclick="sendBroadCast(bcreset);">
     <i class="fa fa-check"></i>&nbsp;CLEAR BROADCASTS
   </button>
 
   <hr/>
+
+  <!-- A few extra alerts, that you don't want non-admins to push through. -->
   <h4 class="holoContrast"><i class="fa fa-warning"></i>&nbsp;Non-public alerts</h4>
 
-  <!-- <div class="col-xs-12"> -->
     <button
       class="btn btn-block btn-ui btn-ui-holo"
       onclick="sendBroadCast(bclowpower);">
@@ -202,11 +213,10 @@
       onclick="sendBroadCast(bchackattack);">
       <i class="fa fa-user-secret"></i>&nbsp;SEC: HACKER ATTACK
     </button>
-  <!-- </div> -->
 
   <br/><br/>
 
-
+  <!-- Force reset button: resets all dynamicdata to default, and refreshes all connected non-admin clients. -->
   <h4 class="holoContrast"><i class="fa fa-warning"></i>&nbsp;Reset all</h4>
 
   <div class="col-xs-12">
@@ -216,7 +226,8 @@
   </div>
 
   <p>&nbsp;</p>
-  <!-- <p>(Manually setting the date has temporarily been disabled due to unresolved issues.)</p> -->
+
+  <!-- Manually setting the date has temporarily been disabled due to unresolved issues. -->
 
   <span class="hidden">
     <div class="col-xs-12"><hr/></div>
@@ -243,9 +254,9 @@
     <a class="btn btn-lg btn-primary"><i class="fa fa-calendar-check-o"></i>&nbsp;Change Date</a>
   </span>
 
-
+  <!-- Video broadcasts and custom audio file controls. The audio files will be sent from the server (index.js) based on what files are currently in the proper folders. -->
   <div class="col-xs-12">
-    <h2>!!VIDEO &amp; AUDIO!!</h2>
+    <h2>MEDIA[ VIDEO &amp; AUDIO ]</h2>
     <div class="btn btn-primary" onclick="$('.hidden-block').hide();$('#OC-VID').fadeIn();">VIDEOS</div>
     <div class="btn btn-primary" onclick="$('.hidden-block').hide();$('#OC-ALICE').fadeIn();">AUDIO ALICE</div>
     <div class="btn btn-primary" onclick="$('.hidden-block').hide();$('#OC-DAVE').fadeIn();">AUDIO DAVE</div>
@@ -253,7 +264,7 @@
   </div>
 
   <div id="OC-VID" class="hidden-block col-xs-12" style="display:none;">
-    <h4>Video's</h4>
+    <h4>Videos</h4>
 
     <div class="items">
       <p>send this before turning on the video to get player's attention.</p>
@@ -285,6 +296,8 @@
 
   </div>
 
+  <!-- 3 tabs: audio. These will contain the audio files sent by the server. -->
+
   <div id="OC-DAVE" class="hidden-block col-xs-12" style="display:none;">
     <h4 class="items">Audio:dave</h4>
   </div>
@@ -299,6 +312,8 @@
 
 </div>
 
+
+<!-- TAB: PORTAL CONTROL, CURRENTLY FOR ADMINS ONLY BUT RANK [3] WILL REGAIN ACCESS SOON(TM). -->
 <div id="admPORTAL" class="adm-tab default-border hidden col-xs-12">
 
   <h2><i class="fa fa-terminal"></i>&nbsp;Portal Terminal</h2>
@@ -353,46 +368,56 @@
 
 
 <script>
+
 $(document).ready(function() {
   $('button').on('click', function(e){
 
+    /* extra scripts: add a modifier to prevent disabled buttons from being used regardless. */
     if($(this).attr('disabled')){
       e.stopImmediatePropagation();
       e.preventDefault();
     }
 
+    /* disable buttons temporarily to prevent spamming */
     $('button').addClass('disabled');
     $('button').attr("disabled", true);
 
+    /* remove the disabled modifier after an XXXX amount of miliseconds. */
     setTimeout(function(){
       $('button').removeClass('disabled');
       $('button').attr("disabled", false);
       $('.adm-tab').removeClass('flash');
-    },5000);
+    },3500);
   });
 
 
+  /* receive media files from the server (audio-misc) and convert the received data into buttons. */
   socket.on('sendMediaMisc', function(resultArray){
     $(resultArray).each(function(key, value){
 
+      /* &apos; is turned into single quotes around the file path by the browser, without, the buttons simply do not work. */
       var clickThis = " onclick=\"broadcastAudio(&apos;/audio-misc/" + value + "&apos;);\"";
 
       $('#OC-MISC').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + value +'</div>');
     });
   });
 
+  /* first copy of audio-misc for the AI voices. */
   socket.on('sendMediaDave', function(arrayDave){
     $(arrayDave).each(function(key, value){
 
+      /* &apos; is turned into single quotes around the file path by the browser, without, the buttons simply do not work. */
       var clickThis = " onclick=\"broadcastAudio(&apos;/audio-dave/" + value + "&apos;);\"";
 
       $('#OC-DAVE').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + value +'</div>');
     });
   });
 
+  /* second copy of audio-misc for the AI voices. */
   socket.on('sendMediaAlice', function(arrayAlice){
     $(arrayAlice).each(function(key, value){
 
+      /* &apos; is turned into single quotes around the file path by the browser, without, the buttons simply do not work. */
       var clickThis = " onclick=\"broadcastAudio(&apos;/audio-alice/" + value + "&apos;);\"";
 
       $('#OC-ALICE').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + value +'</div>');

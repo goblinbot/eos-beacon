@@ -27,22 +27,24 @@
 <script>
 $(document).ready(function(){
 
-    var admRANK = getCookie('rank');
+    const admRANK = getCookie('rank');
 
+    /* if a person is under or above the accepted values, destroy their login. */
     if((admRANK < 1) || (admRANK > 4)) {
 
       logout();
 
     } else {
+      /* decide what the user gets to see */
       switch(admRANK) {
         case '1': case '2': default:
-          $('.overlord').empty();
+          $('.overlord').empty();  /* hide the overlord screen and empty all content, just incase. */
           break;
-        case '3':
-          $('.overlord').empty();
+        case '3':                 /* TO ADD: portal tab: YES */
+          $('.overlord').empty(); /* hide the overlord screen and empty all content, just incase. */
           break;
         case '4':
-          socket.emit('getMedia');
+          socket.emit('getMedia'); /* sends a request to the server to obtain the subfolder audio files for later. */
           break;
       }
     }
