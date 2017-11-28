@@ -1,41 +1,52 @@
 # [BEACON] - Eos Broadcasting Service
 
-**DE** interfactionele service voor het displayen & updaten van informatie voor de hele kolonie.
+**THE** interfactional service for displaying & propagating information to the entire base, colony or ship.
 
-*Dit is een kleine JS applicatie bedoelt voor sci-fi larp Eos.
-Door: Thijs Boerma (IC: Maati Infor Danam)*
-
+*Eos-Beacon is a Node JS application used in the sci-fi larp, Eos Frontier, located in the Netherlands.
+Realised by: Thijs Boerma, and tweaked with help from several players and gamemasters. Special shout outs to Arius, Mai, Rabochiy and SLmar.*
 
 # online mirror
 https://eos-beacon.herokuapp.com/
 
 
-# Onderdelen
-[BEACON] is afhankelijk van verschillende externe plugins/frameworks/luiheden, die hieronder staan gelijst.
+
+# Requirements
+[BEACON] Runs on **node.JS** and uses a few frameworks/plugins, listed below.
 
 **NODE.JS**
-PLUGINS ( Installeren via NPM ):
-  - Socket.io
+PLUGINS - located in node_modules, but if missing, these can be installed through NPM :
+  - socket.io
   - express
-  - border-parser
   - ip
+  - client-sessions
 
 **JAVASCRIPT**
-  - jQuery
+  - The Beacon HTML pages heavily rely on Javascript, and most of it is written in jQuery.
 
-**OPMAAK (CSS/SCSS)**
-  - Bootstrap 3.3+
-  - Een SCSS compiler (bij schrijven/bijwerken)
-
-
-# Lokaal runnen
-Om BEACON lokaal te runnen, zul je **nodeJS** moeten downloaden en runnen. Dan vervolgens via het command prompt van de OS zelf navigeren (in windows: CMD) naar de map waar BEACON is gedownload (bijvoorbeeld: cd C:/nodeapps/eos-beacon/) en vervolgens het programma runnen met het commando **node index**.
+**LAYOUT/STYLING (CSS/SCSS)**
+  - All of the styling in Beacon has been turned into SCSS, to make your own changes, you will need a SCSS compiler to convert the SCSS files to readable CSS.
 
 
+# Compatibility
+Beacon is written to be responsive, and currently functioning in almost all browsers.
 
-# Alert/Broadcast/Notificaties uitleg:
+As of November 2017, changes will be added unsupported by older browsers like IE11, Safari and some versions of Edge; I recommend using Chrome or Firefox to view Beacon.
 
-**HET MAKEN VAN EEN CUSTOM BROADCAST**
+
+# Running Beacon
+To run Beacon, first make sure that Node JS is turned on. Procceed to open the command prompt (in windows: CMD ) and navigate to the folder containing Beacon (for example: use the command cd C:/download/eos-beacon). To run the program, use the command **node index**.
+
+Beacon can then be accessed in the browser using the IP addressed listed in your command prompt, though 9 out of 10 times http://127.0.0.1:5001 will work.
+
+
+# NOTE:
+This read me and the application itself are currently being revised, and all Dutch comments/texts are being translated. I have temporarily commented the "How to:" instructions which were slightly outdated at this point regardless.
+
+Thank you for your interest in Beacon!
+
+*eos-beacon was originaly written as a brainfart written by a bored webdesigner, and thus contains many amateur mistakes. Feel very free to leave comments or ideas! Writing Beacon has been one of the best learning experiences I could have wished for.*
+
+<!-- **HET MAKEN VAN EEN CUSTOM BROADCAST**
 De broadcasts (ALERTS) bestaan uit drie onderdelen:
 
 - De HTML pagina => In de /public/broadcasts/ folder.
@@ -93,4 +104,4 @@ Deze roepen we dus aan met:
 Deze functie kunnen we binden aan HTML knoppen/links _( onclick="sendBroadCast(broadCastEnemyContact);" )_ of we typen dit direct in **console** van je browser. Deze is in de meeste browsers te bereiken door op de pagina te rechtklikken (element inspecteren) of F12.
 
 De meeste broadcasts staan in /public/adm/adminPanel.html (de achter inlog verstopte backend) in de vorm van buttons, met daarop onclick de functies.
-voorbeeld: *onclick="sendBroadCast(resetBroadcast); cpanelStatus('Broadcasts CLEARED');"*
+voorbeeld: *onclick="sendBroadCast(resetBroadcast); cpanelStatus('Broadcasts CLEARED');"* -->
