@@ -1,17 +1,19 @@
-# [BEACON] - Eos Broadcasting Service
+# [BEACON] - Eos Broadcasting Service #
+
+![Orbit logo](https://github.com/goblinbot/eos-beacon/blob/master/public/images/orbit.png?raw=true)
 
 **THE** interfactional service for displaying & propagating information to the entire base, colony or ship.
 
 *Eos-Beacon is a Node JS application used in the sci-fi larp, Eos Frontier, located in the Netherlands.
 Realised by: Thijs Boerma, and tweaked with help from several players and gamemasters. Special shout outs to Arius, Mai, Rabochiy and SLmar.*
 
-# online mirror
+## online mirror ##
 https://eos-beacon.herokuapp.com/
 
 
 
-# Requirements
-[BEACON] Runs on **node.JS** and uses a few frameworks/plugins, listed below.
+## Requirements ##
+[BEACON] Runs on [node.JS](https://nodejs.org/en/), and uses a few frameworks/plugins, listed below.
 
 **NODE.JS**
 PLUGINS - located in node_modules, but if missing, these can be installed through NPM :
@@ -21,25 +23,25 @@ PLUGINS - located in node_modules, but if missing, these can be installed throug
   - client-sessions
 
 **JAVASCRIPT**
-  - The Beacon HTML pages heavily rely on Javascript, and most of it is written in jQuery.
+  - The Beacon webpages heavily rely on Javascript, and most of it is written in jQuery.
 
 **LAYOUT/STYLING (CSS/SCSS)**
   - All of the styling in Beacon has been turned into SCSS, to make your own changes, you will need a SCSS compiler to convert the SCSS files to readable CSS.
 
 
-# Compatibility
+### Compatibility ###
 Beacon is written to be responsive, and currently functioning in almost all browsers.
 
 As of November 2017, changes will be added unsupported by older browsers like IE11, Safari and some versions of Edge; I recommend using Chrome or Firefox to view Beacon.
 
 
-# Running Beacon
+### Running Beacon ###
 To run Beacon, first make sure that Node JS is turned on. Procceed to open the command prompt (in windows: CMD ) and navigate to the folder containing Beacon (for example: use the command cd C:/download/eos-beacon). To run the program, use the command **node index**.
 
 Beacon can then be accessed in the browser using the IP addressed listed in your command prompt, though 9 out of 10 times http://127.0.0.1:5001 will work.
 
 
-# NOTE:
+#### NOTE: ####
 This read me and the application itself are currently being revised, and all Dutch comments/texts are being translated. I have temporarily commented the "How to:" instructions which were slightly outdated at this point regardless.
 
 Thank you for your interest in Beacon!
