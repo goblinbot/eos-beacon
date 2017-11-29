@@ -49,8 +49,11 @@ Thank you for your interest in Beacon!
 *eos-beacon was originaly written as a brainfart written by a bored webdesigner, and thus contains many amateur mistakes. Feel very free to leave comments or ideas! Writing Beacon has been one of the best learning experiences I could have wished for.*
 
 
+
+
+
 #### Optional fun stuff ####
-Beacon's server side code is simplified enough to easily be integrated as a Discord bot, by using the [discord.io](https://github.com/izy521/discord.io) package. I sadly do not however, currently have a production worthy example.
+Beacon's server side code is simplified enough to easily be integrated into/as a Discord bot, by using the [discord.io](https://github.com/izy521/discord.io) package. I sadly do not however, currently have a production worthy example.
 
 #### current roadmap: ####
 - CSS Grid based layout
