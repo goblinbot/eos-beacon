@@ -1,12 +1,10 @@
 /*
-==== =================================================================
-
-==    BROADCASTS.JS    ==
-==    Hier bouwen we onze technische calls op voor broadcasts.
-
-==== =================================================================
-==    Door Thijs Boerma, th.boerma@gmail.com | 2017                 ==
-==== =================================================================
+==== ================================================================= ====
+ ==    BROADCASTS.JS                                                    ==
+ ==    In this file, we declare the broadcasts by using 'broadcastObj' as our template.
+==== ================================================================= ====
+ ==    By Thijs Boerma, th.boerma@gmail.com | 2017                      ==
+==== ================================================================= ====
 */
 
 
@@ -20,7 +18,7 @@ function broadcastObj(title, file, priority, duration, colorscheme) {
   this.colorscheme = colorscheme;
 }
 
-/* Systeem */
+/* System broadcasts */
 var bcdefault = new broadcastObj("Standby","bcdefault",1,"0","0");
 var bcreset = new broadcastObj("Standby","bcdefault",99,"0","0");
 
@@ -34,10 +32,7 @@ var bchydrate = new broadcastObj("Hydration Reminder","bchydrate",2,"0","0");
 var bcmedical = new broadcastObj("Blood Donation Request","bcmedical",2,"0","0");
 var bcmeeting = new broadcastObj("Meeting in Main","bcmeeting",4,"0","0");
 var bcblood   = new broadcastObj("Blood Donation Demand","bcblood",4,"0","0");
-var bcMissionOut   = new broadcastObj("STRATI.OS.PUSH","bcMissionOut",5,"0","0");
-
-/* Temple */
-/*var bcidiotservice = new broadcastObj("Maïr Temple Service","bctempleservice",3,"0","0");*/
+/*var bcMissionOut   = new broadcastObj("STRATI.OS.PUSH","bcMissionOut",5,"0","0");*/
 
 /* hazards */
 var bcviral = new broadcastObj("Unknown Viral Pathogens detected","bcviral",8,"0","hazard");
