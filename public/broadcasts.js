@@ -8,8 +8,8 @@
 */
 
 
-// BROADCAST OBJECTEN
-// constructor:
+/* BROADCAST OBJECTEN */
+/* constructor: */
 function broadcastObj(title, file, priority, duration, colorscheme) {
   this.title = title;
   this.file = file;
@@ -55,12 +55,7 @@ var bchackattack = new broadcastObj("Security Breach","bchackattack",9,"0","0");
 var bcsystemscan = new broadcastObj("System Diagnostics","bcsystemscan",88,"30000","0");
 var bcfreezeall = new broadcastObj("ADMIN.OVERRIDE","bcfreezeall",100,"0","0");
 
-/* Testomgeving */
-var bcmaati = new broadcastObj("test","bcmaati",9,"0","0");
-
-
 /* VIDEOS */
 var bcOCannounce = new broadcastObj("VID.TRANSMISSION","bcOCannounce",9,"0","0");
-var bcOCelmar = new broadcastObj("VID.SLMAR","bcOCelmar",9,"0","0");
 var bcICstartvideo = new broadcastObj("VID.TRANSMISSION","bcICstartvideo",9,"0","0");
 var bcICaquilaGeneralvideo = new broadcastObj("VID.TRANSMISSION","bcICaquilaGeneralvideo",9,"0","0");

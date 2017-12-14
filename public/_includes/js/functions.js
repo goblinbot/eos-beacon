@@ -1,26 +1,27 @@
-var socket      = io();
+const socket      = io();
 var selector    = "";
 var target      = "";
-var navLimit    = 0;
 var clearIsActive = undefined;
 var activeColorScheme = '0';
 var activeBroadcastPriority   = 1;
 
 
-/* navigeerd - een functie geerft uit www.gubat.nl, word eigenlijk maar eenmaal*/
-/* gebruikt om MAINSCREEN.HTML in te laden maar kan gebruikt worden.*/
+/* navigate loads (TARGET).HTML into the MAIN SCREEN div. pretending to go to another page but instead putting it into our existing box.*/
 function navigate(target) {
   if(target != "") {
     $('#main').load(target+'.html');
   }
 }
 
+/* flashblocks causes a "flash" effect inside the boxes spread over beacon, when for example, a broadcast is received.
+this flash should only lasts for a few seconds, by calling the FlashBlocks function again with a small timeout. */
 function FlashBlocks(div) {
 
   if(div == "" || div == undefined) {
     div = '.block';
   }
 
+  /* don't flash mobile devices. */
   if($(window).width() < 769) {
     return false;
   }
@@ -43,26 +44,28 @@ function getCurrentTime() {
   return currentTimeString;
 }
 
-/* function: broadcast . CLIENT SIDE.*/
+/* function: broadcast . CLIENT SIDE. This is triggered upon RECEIVING a broadcast from the server (index.js) */
 function broadCast(location) {
 
+  /* fills in the blanks. */
   if(location['title'] == null)         {   location['title'] = "Untitled Broadcast" }
   if(location['file'] == null)          {   location['file'] = "404"      }
   if(location['priority'] == null)      {   location['priority'] = "1"    }
   if(location['duration'] == null)      {   location['duration'] = "0"    }
   if(location['colorscheme'] == null)   {   location['colorscheme'] = "0" }
 
-  console.log('active: '+ activeBroadcastPriority);
+  /*console.log('active: '+ activeBroadcastPriority);*/
 
+  /* checks if anything is set in the broadcast call. */
   if(location) {
-
-    navLimit = (navLimit+1);
 
     var currentTimeString = getCurrentTime();
 
-    /* miniscuul optimization ding: FlashFunctie pakt de FlashBlocks functie en slaat deze op, zodat de broadCast functie deze niet 2x of 4x extern hoeft op te halen. */
+    /* weird little optimazation: let the flash function inside our house,
+      so we don't end up calling it inside two to four times and then pushing them outside again */
     var FlashFunctie = FlashBlocks;
 
+    /* Hey, I just noticed you loaded a broadcast.HTML file there, let me just.. */
     $.get('/broadcasts/'+location['file']+'.html')
       .done(function(){
 
@@ -149,6 +152,9 @@ function broadCast(location) {
         }
       })
     .fail(function(){
+
+      /* INCASE the broadcast IS NOT loaded (for example, an error or a file truly doesnt exist), CLEAR the changes and load 404. */
+
       if(activeColorScheme != '0' && activeColorScheme != 'default') {
         $('link[rel=stylesheet][href~="/_includes/css/colors-'+activeColorScheme+'.css"]').remove();
       }
@@ -168,9 +174,10 @@ function broadCast(location) {
 
 }
 
-/* VERSTUURD DE BROADCAST: kleine hack om vanaf de admin op knop een alert te kunnen posten.*/
+/* SEND THE BROADCAST. This is usually put on buttons, but you can use it from the console when you want to. Or anywhere else, really. */
 function sendBroadCast(location) {
 
+  /* check for broadcast location */
   if(!location || location === undefined) {
     console.log('stop!');
   }
@@ -349,27 +356,28 @@ function updatePortalStatus(portalstatus) {
   }
 }
 
-/* speel audio wanneer portalstatus changed, of niet. */
+/* When changing the portal status, play a tune. Or don't. */
 function playPortalAudio() {
   if($(window).width() > 769) {
     $('#portalaudio').trigger('play');
   }
 }
 
-
+/* function to create a video player on devices with enough screen width. */
 function generateVideo(name, type) {
 
   if($(window).width() > 1023) {
 
     $('#video-container').html('<video id="broadcastVideo" class="video-js" controls preload="auto"><source src="/video/'+name+'" type="video/'+type+'"></source></video>');
 
-    videojs("broadcastVideo", {"controls": true, "autoplay": true, "preload": "auto"}, function(){
-      /*$(this).trigger("play");*/
+      /* ask videojs to turn our video element into a tuned up video element. */
+      videojs("broadcastVideo", {"controls": true, "autoplay": true, "preload": "auto"}, function(){
+
     });
 
   } else {
 
-    /* client scherm te klein, fallback word zichtbaar. */
+    /* client's screen is too small, put on a fallback instead. */
     $('#video-container').html(
       '<div class=\"container-fluid\">'
       + '<h2>Broadcast:Transmission</h2>'

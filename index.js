@@ -27,11 +27,6 @@ var dynamicData = {
   portalStatus : "ok"
 }
 
-/* ACTIVE DEVICE VARS: disabled due to having no current use. */
-/*var activeClients = [];
-var deviceLabelArray = ['00.','FA.','A2.','63.','D4.','19.','C5.','D3.','81.','74.','5E.'];*/
-
-
 
 /* INITIALISING THE APP */
 
@@ -83,12 +78,7 @@ io.on('connection', function (socket) {
 
   dynamicData['countClients'] = io.engine.clientsCount;
 
-  /* active clients: disabled due to having no current use. */
-  /*activeClients[socket.id] = [];
-  activeClients[socket.id]["id"] = socket.id;
-  activeClients[socket.id]["name"] = (deviceLabelArray[Math.floor(Math.random() * deviceLabelArray.length)]) + (Math.round(100+(Math.random() * (999-100))));*/
-
-  console.log('\t[CON+] '+dynamicData['countClients']+' active client(s).');
+  console.log('\t[ + ] '+dynamicData['countClients']+' active client(s).');
 
   setTimeout(function(){
     /* send FRONTEND data to FRONT */
@@ -133,7 +123,6 @@ io.on('connection', function (socket) {
 
     dynamicData['lastBC'] = value.file;
 
-
     io.emit('updateDynamicData', dynamicData);
     io.emit('broadcastReceive', value);
 
@@ -149,11 +138,8 @@ io.on('connection', function (socket) {
   });
 
   socket.on('disconnect', function(){
-
-    /*delete activeClients[socket.id];*/
-
     dynamicData['countClients'] = io.engine.clientsCount;
-    console.log('\t[.DC-]' +dynamicData['countClients']+' active client(s).');
+    console.log('\t[ - ]' +dynamicData['countClients']+' active client(s).');
     io.emit('updateDynamicData', dynamicData );
   });
 
