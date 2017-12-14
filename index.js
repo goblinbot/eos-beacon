@@ -223,36 +223,43 @@ io.on('connection', function (socket) {
 /* eventLogger writes system logs to /LOGS/eventlog.txt. */
 function eventLogger(type, message) {
 
-  // /* grab the current date. */
-  // var datum = new Date(), y = datum.getFullYear(), m = datum.getMonth();
-  //
-  // /* declare log file location, and the result to add to said file. */
-  // var logfile = 'LOGS/eventlog.txt';
-  // var printresult = "";
-  //
-  // /* missing values? Don't do anything.*/
-  // if(!message || !type) {
-  //   return false;
-  // } else {
-  //
-  //   /* grab the current time and format it to our european standards */
-  //   var currentTime = new Date();
-  //   var currentHours   = currentTime.getHours ( );
-  //   var currentMinutes = currentTime.getMinutes ( );
-  //     currentHours = ( currentHours < 10 ? "0" : "" ) + currentHours;
-  //     currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
-  //     currentTime = currentHours + ":" + currentMinutes;
-  //
-  //     /* add to log: [TYPE] [DATE/TIME] :: [MESSAGE] */
-  //     printresult += '[ ' + type + ' ]\t';
-  //     printresult += datum.getDate() + '-' + datum.getMonth() + ', '+ currentTime;
-  //     printresult += '\t:: ';
-  //     printresult += message + '\n';
-  //
-  //     /* ADD log to txt file by appending. */
-  //     fs.appendFile(logfile, printresult, function(err) {
-  //       if(err) throw err;
-  //     });
-  // }
+  /* grab the current date. */
+  /*
+  var datum = new Date(), y = datum.getFullYear(), m = datum.getMonth();
+
+  /* declare log file location, and the result to add to said file. */
+  /*
+  var logfile = 'LOGS/eventlog.txt';
+  var printresult = "";
+
+  /* missing values? Don't do anything.*/
+  /*
+  if(!message || !type) {
+    return false;
+  } else {
+
+    /* grab the current time and format it to our european standards */
+    /*
+    var currentTime = new Date();
+    var currentHours   = currentTime.getHours ( );
+    var currentMinutes = currentTime.getMinutes ( );
+      currentHours = ( currentHours < 10 ? "0" : "" ) + currentHours;
+      currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+      currentTime = currentHours + ":" + currentMinutes;
+
+      /* add to log: [TYPE] [DATE/TIME] :: [MESSAGE] */
+      /*
+      printresult += '[ ' + type + ' ]\t';
+      printresult += datum.getDate() + '-' + datum.getMonth() + ', '+ currentTime;
+      printresult += '\t:: ';
+      printresult += message + '\n';
+
+      /* ADD log to txt file by appending. */
+      /*
+      fs.appendFile(logfile, printresult, function(err) {
+        if(err) throw err;
+      });
+      */
+  }
 
 }
