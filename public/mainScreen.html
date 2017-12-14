@@ -203,7 +203,6 @@ $(document).ready(function(){
   /* receive the request to play audio here: (server->client)
     generateBCaudio will determine what happens next. (play or not to play, etc) */
   socket.on('playAudioFile', function(audiofile){
-    console.log('playaudiofile:: ' + audiofile);
     generateBCaudio(audiofile);
   });
 
@@ -214,7 +213,7 @@ $(document).ready(function(){
 
     $('#socket-id').html('&nbsp;CONN->&nbsp;<span class="holoContrast">' + socket.id + '</span>');
     $('#countClientsCounter').show();
-    $('#notificationTitleSmall h2').html('Waiting for broadcasts ...');
+    $('#notificationTitleSmall').find('h2').html('Waiting for broadcasts ...');
 
     $('.disconnectedPopup').empty();
     $('.disconnectedPopup').remove();
@@ -234,7 +233,7 @@ $(document).ready(function(){
 
     $('#socket-id').html('&nbsp;<span class="holoContrast">No active infomorph.</span>');
     $('#countClientsCounter').hide();
-    $('#notificationTitleSmall h2').html('Attempting to reconnect...');
+    $('#notificationTitleSmall').find('h2').html('Attempting to reconnect...');
 
     $('#notificationContainer').append(
       '<div class="col-xs-12 col-sm-8 col-md-6 text-center disconnectedPopup">'
