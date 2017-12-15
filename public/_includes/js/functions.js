@@ -5,10 +5,18 @@ var clearIsActive = undefined;
 var activeColorScheme = '0';
 var activeBroadcastPriority   = 1;
 
+/* VARS FOR CACHING: We fill these variables with $(html) selectors to save memory in the long run. */
+var clockCache = "";
+var ddCache = "";
+var dowCache = "";
+var BCaudioCache = "";
+var customAudioCache = "";
+var notifiContCache = "";
 
 /* navigate loads (TARGET).HTML into the MAIN SCREEN div. pretending to go to another page but instead putting it into our existing box.*/
 function navigate(target) {
   if(target != "") {
+    $('#main').empty();
     $('#main').load(target+'.html');
   }
 }
@@ -54,10 +62,11 @@ function broadCast(location) {
   if(location['duration'] == null)      {   location['duration'] = "0"    }
   if(location['colorscheme'] == null)   {   location['colorscheme'] = "0" }
 
-  /*console.log('active: '+ activeBroadcastPriority);*/
-
   /* checks if anything is set in the broadcast call. */
   if(location) {
+
+    /* Cache the notification container div: This will save us a LOT of requests in the long run. */
+    if(notifiContCache == "") { notifiContCache = $("#notificationContainer");}
 
     var currentTimeString = getCurrentTime();
 
@@ -118,8 +127,8 @@ function broadCast(location) {
             }
 
 
-            $("#notificationContainer").empty();
-              $('#notificationContainer').load('/broadcasts/'+location['file']+'.html');
+            notifiContCache.empty();
+              notifiContCache.load('/broadcasts/'+location['file']+'.html');
 
 
               /* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
@@ -167,8 +176,8 @@ function broadCast(location) {
       activeColorScheme   = '0';
       activeBroadcastPriority     = 1;
 
-      $("#notificationContainer").empty();
-        $("#notificationContainer").load('/broadcasts/404.html');
+      notifiContCache.empty();
+        notifiContCache.load('/broadcasts/404.html');
     });
   }
 
@@ -243,6 +252,8 @@ function clearBroadcast(duration){
 
 function generateAudioPlayer(audiofile, repeatcount) {
 
+  if(customAudioCache == "") { customAudioCache = $('#custom-audio'); }
+
   if(audiofile) {
 
     console.log(audiofile);
@@ -256,8 +267,8 @@ function generateAudioPlayer(audiofile, repeatcount) {
       console.log('CUSTOM-audio -> play: ' + audiofile + ' * ' + repeatcount + ' time(s). ');
 
       if ($(window).width() > 960) {
-        $('#custom-audio').empty();
-        $('#custom-audio').html('<audio id="generatedaudioplayer" controls="controls" class="hidden">'
+        customAudioCache.empty();
+        customAudioCache.html('<audio id="generatedaudioplayer" controls="controls" class="hidden">'
         + '<source src="/sounds/'+ audiofile +'" type="audio/mpeg">'
         +'</audio>');
 
@@ -272,7 +283,7 @@ function generateAudioPlayer(audiofile, repeatcount) {
       if(document.getElementById("default-audio") !== null) {
         console.log('default-audio -> play');
 
-        $('#custom-audio').empty();
+        customAudioCache.empty();
         $('#default-audio').trigger('play');
 
       }
@@ -281,7 +292,7 @@ function generateAudioPlayer(audiofile, repeatcount) {
 
   } else {
 
-    $('#custom-audio').empty();
+    customAudioCache.empty();
     $('#default-audio').trigger('play');
   }
 
@@ -293,11 +304,17 @@ function generateBCaudio(audiofile) {
   console.log(audiofile);
 
   if ($(window).width() > 960) {
-    $('#BCAUDIO').empty();
-    $('#BCAUDIO').html('<audio id="generatedBCAUDIO" controls="controls" class="hidden">'
+
+    /* cache the audio element if we haven't already. */
+    if(BCaudioCache == "") { BCaudioCache = $('#BCAUDIO'); }
+
+    /* empty element, and refill it with the new audio. */
+    BCaudioCache.empty();
+    BCaudioCache.html('<audio id="generatedBCAUDIO" controls="controls" class="hidden">'
     + '<source src="/sounds'+ audiofile +'">'
     +'</audio>');
 
+    /* don't cache this selector, as it keeps being reborn. */
     $('#generatedBCAUDIO').trigger('play');
 
   }
@@ -308,49 +325,52 @@ function generateBCaudio(audiofile) {
 /* portal status. */
 function updatePortalStatus(portalstatus) {
 
-  $('.portalstatus').removeClass('blinkContent');
+  /* cache the portal status selector here, so that we only have to find it once before running the rest. */
+  var portalStatusSelector = $('#portalstatus');
 
-  if($('.portalstatus').html() != "" && portalstatus != "" && portalstatus != null) {
+  portalStatusSelector.removeClass('blinkContent');
+
+  if(portalStatusSelector.html() != "" && portalstatus != "" && portalstatus != null) {
 
     if(portalstatus == "unstable") {
 
-      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-angle-double-down"></i></span>');
-      $('.portalstatus .right h4').html('Connectivity issues');
-      $('.portalstatus .right p').html('Portal network unstable. Package loss may occur.');
+      portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-angle-double-down"></i></span>');
+      portalStatusSelector.find('.right h4').html('Connectivity issues');
+      portalStatusSelector.find('.right p').html('Portal network unstable. Package loss may occur.');
 
     } else if(portalstatus == "multirequest") {
 
-      $('.portalstatus').addClass('blinkContent');
-      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
-      $('.portalstatus .right h4').html('Multiple requests');
-      $('.portalstatus .right p').html('Multiple external requests detected.<br/>Please stand by.');
+      portalStatusSelector.addClass('blinkContent');
+      portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
+      portalStatusSelector.find('.right h4').html('Multiple requests');
+      portalStatusSelector.find('.right p').html('Multiple external requests detected.<br/>Please stand by.');
 
     } else if (portalstatus == "shutdown") {
 
-      $('.portalstatus').addClass('blinkContent');
-      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
-      $('.portalstatus .right h4').html('!! OFFLINE !!');
-      $('.portalstatus .right p').html('Portal services currently unavailable.');
+      portalStatusSelector.addClass('blinkContent');
+      portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
+      portalStatusSelector.find('.right h4').html('!! OFFLINE !!');
+      portalStatusSelector.find('.right p').html('Portal services currently unavailable.');
 
     } else if (portalstatus == "active") {
 
-      $('.portalstatus').addClass('blinkContent');
-      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-cog fa-spin"></i></span>');
-      $('.portalstatus .right h4').html('Active');
-      $('.portalstatus .right p').html('Portal activity detected ...');
+      portalStatusSelector.addClass('blinkContent');
+      portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-cog fa-spin"></i></span>');
+      portalStatusSelector.find('.right h4').html('Active');
+      portalStatusSelector.find('.right p').html('Portal activity detected ...');
 
     } else if (portalstatus == "maintenance") {
 
-      $('.portalstatus').addClass('blinkContent');
-      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-info-circle"></i></span>');
-      $('.portalstatus .right h4').html('Maintenance Required');
-      $('.portalstatus .right p').html('Safety first.');
+      portalStatusSelector.addClass('blinkContent');
+      portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-info-circle"></i></span>');
+      portalStatusSelector.find('.right h4').html('Maintenance Required');
+      portalStatusSelector.find('.right p').html('Safety first.');
 
     } else {
 
-      $('.portalstatus .left').html('<span class="portalstatus-icon"><i class="fa fa-check-circle-o"></i></span>');
-      $('.portalstatus .right h4').html('Operational');
-      $('.portalstatus .right p').html('Nothing to report.');
+      portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-check-circle-o"></i></span>');
+      portalStatusSelector.find('.right h4').html('Operational');
+      portalStatusSelector.find('.right p').html('Nothing to report.');
 
     }
   }
@@ -431,13 +451,14 @@ function updateClock() {
   	/* Compose the string for display */
   	var currentTimeString ="[&nbsp;" + currentHours + ":" + currentMinutes + ":" + currentSeconds + "&nbsp;ECT&nbsp;]";
 
-   	$("#clock").html(currentTimeString);
-    $("#dd").html(dd);
-    $("#dow").html(dow);
+    /* put the target HTML elements into a var we can keep reusing; that way the function will only need to look up each element ONCE. */
+    if(clockCache == ""){ clockCache = $("#clock"); }
+    if(ddCache == ""){ ddCache = $("#dd"); }
+    if(dowCache == ""){ dowCache = $("#dow"); }
 
-    /* $("#dow").html(dow);*/
+    /* apply clock to cached element. */
+    clockCache.html(currentTimeString);
+    ddCache.html(dd);
+    dowCache.html(dow);
+
  }
-
- $(document).ready(function() {
-    setInterval('updateClock()', 1000);
- });

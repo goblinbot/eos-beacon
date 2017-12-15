@@ -93,7 +93,7 @@ p {
   color: #DDDDDD;
 }
 
-#main .middle .left-bar #clockh1 {
+#main .middle .left-bar #clock h1 {
   color: #DDDDDD;
 }
 
@@ -124,6 +124,10 @@ p {
 }
 
 #notificationContainer .disconnectedPopup h2 {
+  color: #FFFFFF;
+}
+
+.btn:focus {
   color: #FFFFFF;
 }
 

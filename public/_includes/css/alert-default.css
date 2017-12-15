@@ -127,6 +127,10 @@ p {
   color: #FFFFFF;
 }
 
+.btn:focus {
+  color: #FFFFFF;
+}
+
 .btn-ui.btn-ui-holo {
   color: #39DBCC;
   border-color: #39DBCC;

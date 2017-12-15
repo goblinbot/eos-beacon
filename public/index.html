@@ -45,7 +45,7 @@
 </head>
 <body>
 
-<div class="audiocontrol"></div>
+<div id="audiocontrol"></div>
 
 <!-- TWEE keer container fluid? Ja: we willen lui de buitenste witruimte creeëren op deze manier. -->
 <div class="container-fluid">
@@ -190,13 +190,6 @@ $(document).ready(function(){
   socket.on('startConfig', function(settings){
     $('#localIP').html(settings['localaddress']);
   });
-
-  /* experiment: Get the Device info & IP for logging. */
-  /*var clientArr = {
-    'ua' : window.navigator.userAgent
-    ,'pf': window.navigator.platform
-  };
-  socket.emit('clientDevice', clientArr );*/
 
   /* ForceReset. F5'd de pagina.*/
   socket.on('F5', function(){

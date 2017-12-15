@@ -86,14 +86,14 @@ p {
 
       #clock {
         color: $altTitleColor;
-        &h1 {
+        h1 {
           color: $altTitleColor;
         }
       }
       &.no-bg {
         background: none;
       }
-      .portalstatus {
+      #portalstatus {
         h4 {
           color: $altTitleColor;
         }
@@ -142,6 +142,10 @@ p {
       color: $textColor;
     }
   }
+}
+
+.btn:focus {
+  color: #FFFFFF;
 }
 
 // custom buttons :: zijn TOEVOEGINGEN bovenop de outline buttons.

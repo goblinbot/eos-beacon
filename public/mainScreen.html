@@ -36,7 +36,7 @@
         <h2>Portal Status</h2>
       </div>
 
-      <div class="portalstatus">
+      <div id="portalstatus">
 
         <div class="left">
           <span class="portalstatus-icon"><i class="fa fa-check-circle-o"></i></span>
@@ -147,6 +147,11 @@ $(document).ready(function(){
   var clientdevice = "";
   var printresult;
 
+  /* these divs WILL constantly be updated, so let's cache the selector first. */
+  var countClientsSelector = $('#countClientsCounter');
+  var securityLevelSelector = $('#securityAlertLevel');
+
+
   var currentPortalStatus = "";
 
   /* after about half a second, request the dynamicdata HERE. (client->server) */
@@ -166,15 +171,15 @@ $(document).ready(function(){
 
   /* add soundplayer if screen is wide enough, to prevent mobile phones from constantly beeping. */
   if ($(window).width() > 960) {
-    $('.audiocontrol').html('<audio id="default-audio" controls="controls" class="hidden">'
+    $('#audiocontrol').html('<audio id="default-audio" controls="controls" class="hidden">'
     + '<source src="'+ defaultSoundFile +'" type="audio/mpeg">'
     +'</audio>');
   }
 
   /* (server->client) updates our HTML web page to contain the global dynamicdata, instead of default OR outdated content.*/
   socket.on('updateDynamicData', function(dynamicData){
-    $('#securityAlertLevel').html(dynamicData['alertLevel']);
-    $('#countClientsCounter').html(dynamicData['countClients']);
+    securityLevelSelector.html(dynamicData['alertLevel']);
+    countClientsSelector.html(dynamicData['countClients']);
 
     /* updates the portal status to match with the global dynamicdata. */
     updatePortalStatus(dynamicData['portalStatus']);
@@ -193,10 +198,10 @@ $(document).ready(function(){
 
   /* receive portal status updates here (server->client)*/
   socket.on('portalfrontend', function(){
-    $('.portalstatus').addClass('flash');
+    $('#portalstatus').addClass('flash');
     playPortalAudio();
     setTimeout(function(){
-      $('.portalstatus').removeClass('flash');
+      $('#portalstatus').removeClass('flash');
     },2500);
   });
 
@@ -212,7 +217,7 @@ $(document).ready(function(){
     $('#connStatus').addClass('btn-outline-success').removeClass('btn-outline-danger blinkContent').html('<i class="fa fa-link"></i>&nbsp;CONNECTED');
 
     $('#socket-id').html('&nbsp;CONN->&nbsp;<span class="holoContrast">' + socket.id + '</span>');
-    $('#countClientsCounter').show();
+    countClientsSelector.show();
     $('#notificationTitleSmall').find('h2').html('Waiting for broadcasts ...');
 
     $('.disconnectedPopup').empty();
@@ -232,7 +237,7 @@ $(document).ready(function(){
     $('#connStatus').addClass('btn-outline-danger blinkContent').removeClass('btn-outline-success').html('<i class="fa fa-unlink"></i>&nbsp;OFFLINE');
 
     $('#socket-id').html('&nbsp;<span class="holoContrast">No active infomorph.</span>');
-    $('#countClientsCounter').hide();
+    countClientsSelector.hide();
     $('#notificationTitleSmall').find('h2').html('Attempting to reconnect...');
 
     $('#notificationContainer').append(
@@ -247,6 +252,10 @@ $(document).ready(function(){
     $('#localIP').addClass('text-muted blinkContent');
 
     updatePortalStatus("shutdown");
+  });
+
+  $(document).ready(function() {
+     setInterval('updateClock()', 1000);
   });
 
 });

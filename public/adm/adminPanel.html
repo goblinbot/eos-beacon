@@ -379,49 +379,50 @@ $(document).ready(function() {
     }
 
     /* disable buttons temporarily to prevent spamming */
-    $('button').addClass('disabled');
-    $('button').attr("disabled", true);
+    $('button').addClass('disabled').attr("disabled", true);
 
     /* remove the disabled modifier after an XXXX amount of miliseconds. */
     setTimeout(function(){
-      $('button').removeClass('disabled');
-      $('button').attr("disabled", false);
-      $('.adm-tab').removeClass('flash');
+      $('button').removeClass('disabled').attr("disabled", false);
+      $('#main').find('.adm-tab').removeClass('flash');
     },3500);
   });
 
 
   /* receive media files from the server (audio-misc) and convert the received data into buttons. */
   socket.on('sendMediaMisc', function(resultArray){
-    $(resultArray).each(function(key, value){
+    /*$(resultArray).each(function(key, value){*/
 
       /* &apos; is turned into single quotes around the file path by the browser, without, the buttons simply do not work. */
-      var clickThis = " onclick=\"broadcastAudio(&apos;/audio-misc/" + value + "&apos;);\"";
+      /*var clickThis = " onclick=\"broadcastAudio(&apos;/audio-misc/" + value + "&apos;);\"";
 
-      $('#OC-MISC').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + value +'</div>');
-    });
+      $('#OC-MISC').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + value +'</div>');*/
+    /*});*/
+    var l = resultArray.length;
+    for(var i=0;i<l; i++) {
+      /* &apos; is turned into single quotes around the file path by the browser, without, the buttons simply do not work. */
+      var clickThis = " onclick=\"broadcastAudio(&apos;/audio-misc/" + resultArray[i] + "&apos;);\"";
+      $('#OC-MISC').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + resultArray[i] +'</div>');
+    }
   });
 
   /* first copy of audio-misc for the AI voices. */
   socket.on('sendMediaDave', function(arrayDave){
-    $(arrayDave).each(function(key, value){
+    var l = arrayDave.length;
+    for(var i=0;i<l; i++) {
+      var clickThis = " onclick=\"broadcastAudio(&apos;/audio-dave/" + arrayDave[i] + "&apos;);\"";
+      $('#OC-DAVE').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + arrayDave[i] +'</div>');
+    }
 
-      /* &apos; is turned into single quotes around the file path by the browser, without, the buttons simply do not work. */
-      var clickThis = " onclick=\"broadcastAudio(&apos;/audio-dave/" + value + "&apos;);\"";
-
-      $('#OC-DAVE').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + value +'</div>');
-    });
   });
 
   /* second copy of audio-misc for the AI voices. */
   socket.on('sendMediaAlice', function(arrayAlice){
-    $(arrayAlice).each(function(key, value){
-
-      /* &apos; is turned into single quotes around the file path by the browser, without, the buttons simply do not work. */
-      var clickThis = " onclick=\"broadcastAudio(&apos;/audio-alice/" + value + "&apos;);\"";
-
-      $('#OC-ALICE').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + value +'</div>');
-    });
+    var l = arrayAlice.length;
+    for(var i=0;i<l; i++) {
+      var clickThis = " onclick=\"broadcastAudio(&apos;/audio-alice/" + arrayAlice[i] + "&apos;);\"";
+      $('#OC-ALICE').append('<div class=\"btn btn-default\"' + clickThis +' ><i class=\"fa fa-file-audio-o\"></i>&nbsp;' + arrayAlice[i] +'</div>');
+    }
   });
 
 });

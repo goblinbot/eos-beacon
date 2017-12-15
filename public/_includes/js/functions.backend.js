@@ -7,8 +7,6 @@ function navigateADM(target) {
   $('#btn-'+target).addClass('active');
 }
 
-
-
 function forceReset() {
   socket.emit('forceReset');
 }
