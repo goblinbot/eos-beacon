@@ -13,8 +13,7 @@ function forceReset() {
 
 function cpanelStatus(message) {
   if(message != null && message != "") {
-    $('#cPanel-status').empty();
-    $('#cPanel-status').html('<span class=\"text-bold\">current broadcast:&nbsp;</span>' + message);
+    $('#cPanel-status').empty().html('<span class=\"text-bold\">current broadcast:&nbsp;</span>' + message);
   }
 }
 

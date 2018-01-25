@@ -130,8 +130,7 @@ function broadCast(location) {
             }
 
 
-            notifiContCache.empty();
-              notifiContCache.load('/broadcasts/'+location.file+'.html');
+            notifiContCache.empty().load('/broadcasts/'+location.file+'.html');
 
 
               /* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
@@ -330,10 +329,12 @@ function updatePortalStatus(portalstatus) {
   /* cache the portal status selector here, so that we only have to find it once before running the rest. */
   var portalStatusSelector = $('#portalstatus');
 
+  /* remove animation class, just in case. */
   portalStatusSelector.removeClass('blinkContent');
 
   if(portalStatusSelector.html() != "" && portalstatus != "" && portalstatus != null) {
 
+    /* switches the portal status between a few select options. Adds 'blinkContent' if the element needs to be animated. */
     if(portalstatus == "unstable") {
 
       portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-angle-double-down"></i></span>');
@@ -342,29 +343,25 @@ function updatePortalStatus(portalstatus) {
 
     } else if(portalstatus == "multirequest") {
 
-      portalStatusSelector.addClass('blinkContent');
-      portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
+      portalStatusSelector.addClass('blinkContent').find('.left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
       portalStatusSelector.find('.right').find('h4').html('Multiple requests');
       portalStatusSelector.find('.right').find('p').html('Multiple external requests detected.<br/>Please stand by.');
 
     } else if (portalstatus == "shutdown") {
 
-      portalStatusSelector.addClass('blinkContent');
-      portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
+      portalStatusSelector.addClass('blinkContent').find('.left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
       portalStatusSelector.find('.right').find('h4').html('!! OFFLINE !!');
       portalStatusSelector.find('.right').find('p').html('Portal services currently unavailable.');
 
     } else if (portalstatus == "active") {
 
-      portalStatusSelector.addClass('blinkContent');
-      portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-cog fa-spin"></i></span>');
+      portalStatusSelector.addClass('blinkContent').find('.left').html('<span class="portalstatus-icon"><i class="fa fa-cog fa-spin"></i></span>');
       portalStatusSelector.find('.right').find('h4').html('Active');
       portalStatusSelector.find('.right').find('p').html('Portal activity detected ...');
 
     } else if (portalstatus == "maintenance") {
 
-      portalStatusSelector.addClass('blinkContent');
-      portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-info-circle"></i></span>');
+      portalStatusSelector.addClass('blinkContent').find('.left').html('<span class="portalstatus-icon"><i class="fa fa-info-circle"></i></span>');
       portalStatusSelector.find('.right').find('h4').html('Maintenance Required');
       portalStatusSelector.find('.right').find('p').html('Safety first.');
 
@@ -378,7 +375,7 @@ function updatePortalStatus(portalstatus) {
   }
 }
 
-/* When changing the portal status, play a tune. Or don't. */
+/* When changing the portal status, play a tune. Or don't, in the case of most mobile devices. */
 function playPortalAudio() {
   if($(window).width() > 769) {
     $('#portalaudio').trigger('play');
@@ -388,7 +385,7 @@ function playPortalAudio() {
 /* function to create a video player on devices with enough screen width. */
 function generateVideo(name, type) {
 
-  if($(window).width() > 1023) {
+  if($(window).width() > 768) {
 
     $('#video-container').html('<video id="broadcastVideo" class="video-js" controls preload="auto"><source src="/video/'+name+'" type="video/'+type+'"></source></video>');
 
