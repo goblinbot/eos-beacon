@@ -1,9 +1,9 @@
-const socket      = io();
-var selector    = "";
-var target      = "";
+const socket = io();
+var selector = "";
+var target = "";
 var clearIsActive = undefined;
 var activeColorScheme = '0';
-var activeBroadcastPriority   = 1;
+var activeBroadcastPriority = 1;
 
 /* VARS FOR CACHING: We fill these variables with $(html) selectors to save memory in the long run. */
 var clockCache = "";
@@ -16,8 +16,7 @@ var notifiContCache = "";
 /* navigate loads (TARGET).HTML into the MAIN SCREEN div. pretending to go to another page but instead putting it into our existing box.*/
 function navigate(target) {
   if(target != "") {
-    $('#main').empty();
-    $('#main').load(target+'.html');
+    $('#main').empty().load(target+'.html');
   }
 }
 
@@ -96,61 +95,65 @@ function broadCast(location) {
             }
 
             /* foolproof controle: als DEFAULT word opgegeven telt hij ook als '0' */
-            if(location['colorscheme']  == 'default') { location['colorscheme'] = '0'; }
-            if(activeColorScheme        == 'default') { activeColorScheme       = '0'; }
+            if(location.colorscheme == 'default') {
+              location.colorscheme = '0';
+            }
+            if(activeColorScheme == 'default') {
+              activeColorScheme = '0';
+            }
 
-            var outString = location['colorscheme'].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
-            location['colorscheme'] = outString;
+            var outString = location.colorscheme.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+            location.colorscheme = outString;
 
             /* kleurenschema. */
             /* default probeerd default te worden, OF de colorschemes zijn gelijk? */
-            if((activeColorScheme == '0' && location['colorscheme'] == '0') || (activeColorScheme == location['colorscheme'])) {
+            if((activeColorScheme == '0' && location.colorscheme == '0') || (activeColorScheme == location.colorscheme)) {
               /* verander niks .*/
 
-            } else if (activeColorScheme != '0'  && location['colorscheme'] == '0') {
+            } else if (activeColorScheme != '0'  && location.colorscheme == '0') {
               /* UNLOAD DE VORIGE COLORSCHEME, VERVOLGENS: */
               $('link[rel=stylesheet][href~="/_includes/css/alert-'+activeColorScheme+'.css"]').remove();
               activeColorScheme = '0';
 
             /* actief = default > broadcast = niet-default: */
-            } else if (activeColorScheme == '0' && location['colorscheme'] != '0') {
+            } else if (activeColorScheme == '0' && location.colorscheme != '0') {
 
-              $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/alert-'+location['colorscheme']+'.css') );
-              activeColorScheme = location['colorscheme'];
+              $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/alert-'+location.colorscheme+'.css') );
+              activeColorScheme = location.colorscheme;
 
-            } else if (location['colorscheme'] != '0' && activeColorScheme != location['colorscheme']) {
+            } else if (location.colorscheme != '0' && activeColorScheme != location.colorscheme) {
 
               /* laad ACTIVE uit, laad LOCATION in */
               $('link[rel=stylesheet][href~="/_includes/css/alert-'+activeColorScheme+'.css"]').remove();
-              $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/alert-'+location['colorscheme']+'.css') );
-              activeColorScheme = location['colorscheme'];
+              $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/alert-'+location.colorscheme+'.css') );
+              activeColorScheme = location.colorscheme;
             }
 
 
             notifiContCache.empty();
-              notifiContCache.load('/broadcasts/'+location['file']+'.html');
+              notifiContCache.load('/broadcasts/'+location.file+'.html');
 
 
               /* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
-              if(location['priority'] == 99) { location['priority'] = 1; }
+              if(location.priority == 99) { location.priority = 1; }
               /* update 'Last broadcast' */
-              activeBroadcastPriority = location['priority'];
+              activeBroadcastPriority = location.priority;
 
-              if(location['title'] != "" /*&& location['title'] != "Clear"*/) {
+              if(location.title != "" /*&& location['title'] != "Clear"*/) {
 
-                var outString = location['title'].replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
-                location['title'] = outString;
+                var outString = location.title.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+                location.title = outString;
 
-                $("#lastBroadcastTitle").html("<i class='fa fa-bell'></i>&nbsp;" + location['title']);
+                $("#lastBroadcastTitle").html("<i class='fa fa-bell'></i>&nbsp;" + location.title);
                 $("#lastBroadcastTime").html(currentTimeString);
               }
 
-              if(location['duration'] && location['duration'] == 0) {
+              if(location.duration && location.duration == 0) {
                 clearBroadcast(0);
               }
 
-              if(location['duration'] && location['duration'] > 0 && !isNaN(location['duration'])) {
-                clearBroadcast(location['duration']);
+              if(location.duration && location.duration > 0 && !isNaN(location.duration)) {
+                clearBroadcast(location.duration);
               }
 
             FlashFunctie('.block');
@@ -173,11 +176,10 @@ function broadCast(location) {
         FlashFunctie('.block');
       },1500);
 
-      activeColorScheme   = '0';
-      activeBroadcastPriority     = 1;
+      activeColorScheme = '0';
+      activeBroadcastPriority = 1;
 
-      notifiContCache.empty();
-        notifiContCache.load('/broadcasts/404.html');
+      notifiContCache.empty().load('/broadcasts/404.html');
     });
   }
 
@@ -252,7 +254,9 @@ function clearBroadcast(duration){
 
 function generateAudioPlayer(audiofile, repeatcount) {
 
-  if(customAudioCache == "") { customAudioCache = $('#custom-audio'); }
+  if(customAudioCache == "") {
+    customAudioCache = $('#custom-audio');
+  }
 
   if(audiofile) {
 
@@ -267,8 +271,7 @@ function generateAudioPlayer(audiofile, repeatcount) {
       console.log('CUSTOM-audio -> play: ' + audiofile + ' * ' + repeatcount + ' time(s). ');
 
       if ($(window).width() > 960) {
-        customAudioCache.empty();
-        customAudioCache.html('<audio id="generatedaudioplayer" controls="controls" class="hidden">'
+        customAudioCache.empty().html('<audio id="generatedaudioplayer" controls="controls" class="hidden">'
         + '<source src="/sounds/'+ audiofile +'" type="audio/mpeg">'
         +'</audio>');
 
@@ -309,8 +312,7 @@ function generateBCaudio(audiofile) {
     if(BCaudioCache == "") { BCaudioCache = $('#BCAUDIO'); }
 
     /* empty element, and refill it with the new audio. */
-    BCaudioCache.empty();
-    BCaudioCache.html('<audio id="generatedBCAUDIO" controls="controls" class="hidden">'
+    BCaudioCache.empty().html('<audio id="generatedBCAUDIO" controls="controls" class="hidden">'
     + '<source src="/sounds'+ audiofile +'">'
     +'</audio>');
 
@@ -342,35 +344,35 @@ function updatePortalStatus(portalstatus) {
 
       portalStatusSelector.addClass('blinkContent');
       portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
-      portalStatusSelector.find('.right h4').html('Multiple requests');
-      portalStatusSelector.find('.right p').html('Multiple external requests detected.<br/>Please stand by.');
+      portalStatusSelector.find('.right').find('h4').html('Multiple requests');
+      portalStatusSelector.find('.right').find('p').html('Multiple external requests detected.<br/>Please stand by.');
 
     } else if (portalstatus == "shutdown") {
 
       portalStatusSelector.addClass('blinkContent');
       portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
-      portalStatusSelector.find('.right h4').html('!! OFFLINE !!');
-      portalStatusSelector.find('.right p').html('Portal services currently unavailable.');
+      portalStatusSelector.find('.right').find('h4').html('!! OFFLINE !!');
+      portalStatusSelector.find('.right').find('p').html('Portal services currently unavailable.');
 
     } else if (portalstatus == "active") {
 
       portalStatusSelector.addClass('blinkContent');
       portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-cog fa-spin"></i></span>');
-      portalStatusSelector.find('.right h4').html('Active');
-      portalStatusSelector.find('.right p').html('Portal activity detected ...');
+      portalStatusSelector.find('.right').find('h4').html('Active');
+      portalStatusSelector.find('.right').find('p').html('Portal activity detected ...');
 
     } else if (portalstatus == "maintenance") {
 
       portalStatusSelector.addClass('blinkContent');
       portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-info-circle"></i></span>');
-      portalStatusSelector.find('.right h4').html('Maintenance Required');
-      portalStatusSelector.find('.right p').html('Safety first.');
+      portalStatusSelector.find('.right').find('h4').html('Maintenance Required');
+      portalStatusSelector.find('.right').find('p').html('Safety first.');
 
     } else {
 
       portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-check-circle-o"></i></span>');
-      portalStatusSelector.find('.right h4').html('Operational');
-      portalStatusSelector.find('.right p').html('Nothing to report.');
+      portalStatusSelector.find('.right').find('h4').html('Operational');
+      portalStatusSelector.find('.right').find('p').html('Nothing to report.');
 
     }
   }
@@ -391,9 +393,7 @@ function generateVideo(name, type) {
     $('#video-container').html('<video id="broadcastVideo" class="video-js" controls preload="auto"><source src="/video/'+name+'" type="video/'+type+'"></source></video>');
 
       /* ask videojs to turn our video element into a tuned up video element. */
-      videojs("broadcastVideo", {"controls": true, "autoplay": true, "preload": "auto"}, function(){
-
-    });
+      videojs("broadcastVideo", {"controls": true, "autoplay": true, "preload": "auto"}, function(){});
 
   } else {
 

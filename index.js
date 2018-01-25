@@ -25,7 +25,7 @@ var dynamicData = {
   alertLevel    : default_security_level,
   lastBC : "bcdefault",
   portalStatus : "ok"
-}
+};
 
 
 /* INITIALISING THE APP */
@@ -43,10 +43,10 @@ http.listen(port, function(){
   console.log('# Loading dependancies ..');
   console.log('-------------------------');
   console.log('# CONNECT DEVICES//USERS TO :');
-  console.log(' ? External IP :\n\t- ' + globalSettings.sys['localaddress'] );
+  console.log(' ? External IP :\n\t- ' + globalSettings.sys.localaddress ); /*console.log(' ? External IP :\n\t- ' + globalSettings.sys['localaddress'] );*/
   console.log(' ? Internal IP :\n\t- localhost:'+ port  + '\n\t- ' + '127.0.0.1:'+ port );
   console.log('-------------------------');
-  console.log('THANK YOU FOR USING '+globalSettings['cfg']['appname']+' INFORMATION & BROADCASTING SERVICES');
+  console.log('THANK YOU FOR USING '+globalSettings.cfg.appname+' INFORMATION & BROADCASTING SERVICES'); /*console.log('THANK YOU FOR USING '+globalSettings['cfg']['appname']+' INFORMATION & BROADCASTING SERVICES');*/
 
   /* writing to eventlog.txt */
   eventLogger('INIT','Beacon succesfully started.');
@@ -95,7 +95,7 @@ io.on('connection', function (socket) {
     eventLogger('SEC','Security level change => '+ input +'. \n');
   });
   socket.on('updatePortalStatus', function(input){
-    var outString = input.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
+    var outString = input.replace(/[`~!@#$%\^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
     dynamicData['portalStatus'] = input;
     io.emit('updateDynamicData', dynamicData);
     io.emit('portalfrontend');
@@ -128,7 +128,7 @@ io.on('connection', function (socket) {
 
     if (value.duration > 1) {
       setTimeout(function(){
-        dynamicData['lastBC'] = 'bcdefault';
+        dynamicData.lastBC = 'bcdefault';
         console.log('=> last-bc timer cleared.');
       },value.duration);
     }
