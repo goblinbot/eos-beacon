@@ -55,14 +55,15 @@ function getCurrentTime() {
 function broadCast(location) {
 
   /* fills in the blanks. */
-  if(location['title'] == null)         {   location['title'] = "Untitled Broadcast" }
-  if(location['file'] == null)          {   location['file'] = "404"      }
-  if(location['priority'] == null)      {   location['priority'] = "1"    }
-  if(location['duration'] == null)      {   location['duration'] = "0"    }
-  if(location['colorscheme'] == null)   {   location['colorscheme'] = "0" }
+  if(location['title'] == null) location['title'] = "Untitled Broadcast";
+  if(location['file'] == null) location['file'] = "404";
+  if(location['priority'] == null) location['priority'] = "1";
+  if(location['duration'] == null) location['duration'] = "0";
+  if(location['colorscheme'] == null) location['colorscheme'] = "0";
+
 
   /* checks if anything is set in the broadcast call. */
-  if(location) {
+  /*if(location) {*/
 
     /* Cache the notification container div: This will save us a LOT of requests in the long run. */
     if(notifiContCache == "") { notifiContCache = $("#notificationContainer");}
@@ -85,37 +86,31 @@ function broadCast(location) {
 
           } else {
 
-            /* ALS VIDEO SPELER BESTAAT; MAAK LEEG */
+            /* if video player exists; kill it, dispose of the body. */
             if($('#broadcastVideo').length > 0 ) {
-              console.log('== empty video >>');
               var oldPlayer = document.getElementById('broadcastVideo');
               videojs(oldPlayer).dispose();
-            } else {
-              console.log('== no transmissions to clear.');
             }
 
-            /* foolproof controle: als DEFAULT word opgegeven telt hij ook als '0' */
-            if(location.colorscheme == 'default') {
-              location.colorscheme = '0';
-            }
-            if(activeColorScheme == 'default') {
-              activeColorScheme = '0';
-            }
+            /* foolproofing: if the color scheme is named DEFAULT instead of zero, make it zero regardless. */
+            if(location.colorscheme == 'default') location.colorscheme = '0';
+            if(activeColorScheme == 'default') activeColorScheme = '0';
 
+            /* while we're at it, let's check for scary symbols. Just incase. */
             var outString = location.colorscheme.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
             location.colorscheme = outString;
 
-            /* kleurenschema. */
-            /* default probeerd default te worden, OF de colorschemes zijn gelijk? */
+            /* colorscheme. */
+            /* is the colorscheme already active, OR is default trying to override default? */
             if((activeColorScheme == '0' && location.colorscheme == '0') || (activeColorScheme == location.colorscheme)) {
-              /* verander niks .*/
+              /* no change..*/
 
             } else if (activeColorScheme != '0'  && location.colorscheme == '0') {
-              /* UNLOAD DE VORIGE COLORSCHEME, VERVOLGENS: */
+              /* unload the previous colorscheme. Then, load.. */
               $('link[rel=stylesheet][href~="/_includes/css/alert-'+activeColorScheme+'.css"]').remove();
               activeColorScheme = '0';
 
-            /* actief = default > broadcast = niet-default: */
+            /* active = default > broadcast = not-default: */
             } else if (activeColorScheme == '0' && location.colorscheme != '0') {
 
               $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/alert-'+location.colorscheme+'.css') );
@@ -123,22 +118,23 @@ function broadCast(location) {
 
             } else if (location.colorscheme != '0' && activeColorScheme != location.colorscheme) {
 
-              /* laad ACTIVE uit, laad LOCATION in */
+              /* unload ACTIVE, load LOCATION */
               $('link[rel=stylesheet][href~="/_includes/css/alert-'+activeColorScheme+'.css"]').remove();
               $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '/_includes/css/alert-'+location.colorscheme+'.css') );
               activeColorScheme = location.colorscheme;
             }
 
-
+            /* empty the container, then, load the new broadcast. */
             notifiContCache.empty().load('/broadcasts/'+location.file+'.html');
 
 
-              /* reset de CLEAR naar 1 zodat hij overschrijfbaar is. */
-              if(location.priority == 99) { location.priority = 1; }
+              /* resets priority 99 to 1, so that it can later be overruled. Because 99 equals RESET. */
+              if(location.priority == 99) location.priority = 1;
+
               /* update 'Last broadcast' */
               activeBroadcastPriority = location.priority;
 
-              if(location.title != "" /*&& location['title'] != "Clear"*/) {
+              if(location.title != "") {
 
                 var outString = location.title.replace(/[`~!@#$%^&*()_|+=?;:'",<>\{\}\[\]\\\/]/gi, '');
                 location.title = outString;
@@ -147,10 +143,12 @@ function broadCast(location) {
                 $("#lastBroadcastTime").html(currentTimeString);
               }
 
+              /* set the clearBroadcast to ZERO. This prevents a PREVIOUS broadcast reset from triggering on your new broadcast. */
               if(location.duration && location.duration == 0) {
                 clearBroadcast(0);
               }
 
+              /* request a 'CLEAR IN XXXX MILISECONDS' */
               if(location.duration && location.duration > 0 && !isNaN(location.duration)) {
                 clearBroadcast(location.duration);
               }
@@ -180,17 +178,12 @@ function broadCast(location) {
 
       notifiContCache.empty().load('/broadcasts/404.html');
     });
-  }
+  /*}*/
 
 }
 
 /* SEND THE BROADCAST. This is usually put on buttons, but you can use it from the console when you want to. Or anywhere else, really. */
 function sendBroadCast(location) {
-
-  /* check for broadcast location */
-  if(!location || location === undefined) {
-    console.log('stop!');
-  }
 
   var FlashFunctie = FlashBlocks;
 
@@ -198,8 +191,6 @@ function sendBroadCast(location) {
   setTimeout(function(){
     FlashFunctie('.adm-tab');
   },1500);
-
-  console.log(location);
 
   socket.emit('broadcastSend',location);
 }
@@ -213,7 +204,7 @@ function clearBroadcast(duration){
 
     /* timer? Gebruik die mooie timer en DAN resetten we de broadcast.*/
     if(clearIsActive != undefined && duration > 0) {
-      console.log('clear == actief');
+      console.log('clear == active');
       clearTimeout(clearIsActive);
       clearIsActive = setTimeout(function(){
         socket.emit('broadcastSend', bcreset);
