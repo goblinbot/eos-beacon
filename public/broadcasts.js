@@ -38,8 +38,11 @@ var bcblood   = new broadcastObj("Blood Donation Demand","bcblood",4,"0","0");
 var bcviral = new broadcastObj("Unknown Viral Pathogens detected","bcviral",8,"0","hazard");
 var bcbiohazard = new broadcastObj("Environmental Hazard detected","bcbiohazard",8,"0","hazard");
 var bcpsyhazard = new broadcastObj("Psy-hazard detected","bcpsyhazard",8,"0","psyhazard");
-var bchostile = new broadcastObj("Enemy Contact","bchostile",8,"0","attack");
 var bcbomb = new broadcastObj("Bomb Alert","bcbomb",8,"0","hazard");
+
+/* confirm hostiles */
+var bchostileoutside = new broadcastObj("Enemy Contact","bchostileoutside",8,"0","attack");
+var bchostileinside = new broadcastObj("Enemy Contact","bchostileinside",8,"0","attack");
 
 /* portal */
 var bcportalinc = new broadcastObj("Portal Incoming","bcportalinc",3,"30000","0");

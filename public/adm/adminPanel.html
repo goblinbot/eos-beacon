@@ -24,19 +24,9 @@
     <br/><br/>
   </div>
 
-  <div class="col-xs-12">
-    <p>Priority: low</p>
-    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bchydrate);">
-      <i class="fa fa-coffee"></i>&nbsp;HYDRATION REMINDER
-    </button>
-    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcmedical);">
-      <i class="fa fa-medkit"></i>&nbsp;REQUEST BLOOD DONATIONS
-    </button>
-  </div>
-
   <div class="whitespace">&nbsp;</div>
   <div class="col-xs-12">
-    <p>Priority: Medium.</p>
+    <p>Class: Medium priority.</p>
 
     <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcblood);">
       <i class="fa fa-medkit"></i>&nbsp;DEMAND BLOOD DONATIONS
@@ -46,19 +36,12 @@
       <i class="fa fa-users"></i>&nbsp;GATHER ALL COLONISTS
     </button>
 
-    <!-- <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcMissionOut);">
-      <i class="fa fa-space-shuttle"></i>&nbsp;MISSION START
-    </button> -->
-
   </div>
 
   <div class="whitespace">&nbsp;</div>
   <div class="col-xs-12">
-    <p>Priority: High</p>
+    <p>Class: Direct threat</p>
 
-    <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bchostile); ">
-      <i class="fa fa-warning"></i>&nbsp;ENEMY CONTACT
-    </button>
     <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcbomb); ">
       <i class="fa fa-bomb"></i>&nbsp;BOMB THREAT
     </button>
@@ -68,11 +51,38 @@
     <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcpsyhazard); ">
       <i class="fa fa-warning"></i>&nbsp;PSYHAZARD
     </button>
+
   </div>
 
   <div class="whitespace">&nbsp;</div>
   <div class="col-xs-12">
-    <p>Priority: Other.</p>
+    <p>Class: Hostile Contact</p>
+
+    <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bchostileoutside); ">
+      <i class="fa fa-warning"></i>&nbsp;HOSTILES OUTSIDE
+    </button>
+    <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bchostileinside); ">
+      <i class="fa fa-warning"></i>&nbsp;HOSTILES INSIDE
+    </button>
+
+  </div>
+
+  <div class="whitespace">&nbsp;</div>
+  <div class="col-xs-12">
+    <p>Class: Announcements.</p>
+
+    <!-- <div class="col-xs-12">
+      <p>Class: Announcements</p> -->
+    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bchydrate);">
+      <i class="fa fa-coffee"></i>&nbsp;HYDRATION REMINDER
+    </button>
+
+    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcmedical);">
+      <i class="fa fa-medkit"></i>&nbsp;REQUEST BLOOD DONATIONS
+    </button>
+
+  </div>
+  <div class="col-xs-12">
 
     <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bclunch);">
       <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: LUNCH
@@ -87,7 +97,7 @@
     </button>
 
   </div>
-
+  <div class="whitespace">&nbsp;</div>
 
 </div>
 
