@@ -7,6 +7,10 @@ body {
   background : $orbitRed;
 }
 
+.bgdanger, .block.bgdanger {
+  background-color: $orbitRed;
+}
+
 .spinner {
   border      : 16px solid $orbitLight;
   border-left : 16px solid $orbitNormal;

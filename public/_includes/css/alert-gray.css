@@ -7,6 +7,10 @@ body {
   background: #ed3737;
 }
 
+.bgdanger, .block.bgdanger {
+  background-color: #ed3737;
+}
+
 .spinner {
   border: 16px solid #b3fffc;
   border-left: 16px solid #2bede6;
@@ -101,11 +105,11 @@ p {
   background: none;
 }
 
-#main .middle .left-bar .portalstatus h4 {
+#main .middle .left-bar #portalstatus h4 {
   color: #DDDDDD;
 }
 
-#main .middle .left-bar .portalstatus .portalstatus-icon .glyphicon, #main .middle .left-bar .portalstatus .portalstatus-icon .fa {
+#main .middle .left-bar #portalstatus .portalstatus-icon .glyphicon, #main .middle .left-bar #portalstatus .portalstatus-icon .fa {
   color: #DDDDDD;
 }
 

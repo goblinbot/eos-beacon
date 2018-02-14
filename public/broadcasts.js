@@ -41,7 +41,7 @@ var bcpsyhazard = new broadcastObj("Psy-hazard detected","bcpsyhazard",8,"0","ps
 var bcbomb = new broadcastObj("Bomb Alert","bcbomb",8,"0","hazard");
 
 /* confirm hostiles */
-var bchostileoutside = new broadcastObj("Enemy Contact","bchostileoutside",8,"0","attack");
+var bchostileoutside = new broadcastObj("Enemy Contact","bchostileoutside",8,"0","0");
 var bchostileinside = new broadcastObj("Enemy Contact","bchostileinside",8,"0","attack");
 
 /* portal */

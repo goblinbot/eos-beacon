@@ -7,6 +7,10 @@ body {
   background: #ed3737;
 }
 
+.bgdanger, .block.bgdanger {
+  background-color: #ed3737;
+}
+
 .spinner {
   border: 16px solid #FFCC00;
   border-left: 16px solid #FFCC00;
@@ -93,7 +97,7 @@ p {
   color: #FFCC00;
 }
 
-#main .middle .left-bar #clockh1 {
+#main .middle .left-bar #clock h1 {
   color: #FFCC00;
 }
 
@@ -101,11 +105,11 @@ p {
   background: none;
 }
 
-#main .middle .left-bar .portalstatus h4 {
+#main .middle .left-bar #portalstatus h4 {
   color: #FFCC00;
 }
 
-#main .middle .left-bar .portalstatus .portalstatus-icon .glyphicon, #main .middle .left-bar .portalstatus .portalstatus-icon .fa {
+#main .middle .left-bar #portalstatus .portalstatus-icon .glyphicon, #main .middle .left-bar #portalstatus .portalstatus-icon .fa {
   color: #FFCC00;
 }
 
@@ -124,6 +128,10 @@ p {
 }
 
 #notificationContainer .disconnectedPopup h2 {
+  color: #FFFFFF;
+}
+
+.btn:focus {
   color: #FFFFFF;
 }
 

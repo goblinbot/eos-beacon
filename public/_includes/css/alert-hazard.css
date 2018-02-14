@@ -7,6 +7,10 @@ body {
   background: #FFCC00;
 }
 
+.bgdanger, .block.bgdanger {
+  background-color: #FFCC00;
+}
+
 .spinner {
   border: 16px solid #b3fffc;
   border-left: 16px solid #2bede6;
