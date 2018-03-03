@@ -54,6 +54,7 @@ Thank you for your interest in Beacon!
 
 #### Optional fun stuff ####
 Beacon's server side code is simplified enough to easily be integrated into/as a Discord bot, by using the [discord.io](https://github.com/izy521/discord.io) package. I sadly do not however, currently have a production worthy example.
+UPDATE: Discord.io appears to be unsupported for now.
 
 #### current roadmap: ####
 - CSS Grid based layout
