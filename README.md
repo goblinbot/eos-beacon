@@ -5,7 +5,7 @@
 **THE** interfactional service for displaying & propagating information to the entire base, colony or ship.
 
 *Eos-Beacon is a Node JS application used in the Dutch sci-fi larp Eos Frontier.
-Realised by: Thijs Boerma, and tweaked with help from several players and gamemasters. Special shout outs to Arius, Mai, Rabochiy and SLmar.*
+Realised by: Thijs Boerma, and tweaked with help from several players and gamemasters. Special shout-outs to Arius, Mai, Rabochiy and SLmar.*
 
 ## online mirror ##
 https://eos-beacon.herokuapp.com/
