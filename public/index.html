@@ -49,18 +49,18 @@
 
 <div id="audiocontrol"></div>
 
-<!-- TWEE keer container fluid? Ja: we willen lui de buitenste witruimte creeëren op deze manier. -->
+<!-- Wait? You have coded the "container fluid" two times? Yes: we can lazily create the outer whitespace this way. -->
 <div class="container-fluid">
   <div class="container-fluid">
 
-    <!-- BOVENSTE BALK -->
+    <!-- UPPER BAR -->
     <div class="row topHeader">
       <div class="col-xs-12 col-sm-12 col-md-6 text-inline">
         <h1 id="appTitle">[BEACON]</h1>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-6 text-right">
 
-        <!-- hier komt het IP met PORT te staan. -->
+        <!-- Here will be the IP with PORT. -->
         <h1 id="localIP">
           <span class="glitch" data-text="MNET_CONNECT:5000">MNET_CONNECT:PORT</span>
         </h1>
@@ -68,12 +68,12 @@
       </div>
     </div>
 
-    <!-- MAIN :: hier gaan we onze algemene container inladen. -->
+    <!-- MAIN :: this will load the main container. -->
     <div class="row">
       <div id="main" class="col-xs-12">
 
-        <!-- hier definen we de loadingscreen eerst, gezien we deze toch al hebben geopend.
-        We overschrijven deze later door #main te emptyen en een nieuwe erover heen te laden. -->
+        <!-- Because we opened the loadingcreen already, we will define it here.
+        Later we will overwite the loadingscreen by emptying #main and loading a new one over it. -->
         <div id="loadingScreen">
 
           <!-- whitespace -->
@@ -95,7 +95,7 @@
             </div>
           </div>
 
-          <!-- rechterbar -->
+          <!-- right bar -->
           <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 block text-white">
             <div class="headerblock">
               <h2><span class="fa fa-terminal"></span><span class="bold">&nbsp;J204530</span></h2>
@@ -144,7 +144,7 @@
             </div>
           </div>
 
-          <!-- bodembalk links -->
+          <!-- bottom bar left -->
           <div class="col-xs-12 col-md-9 text-white text-lg">
             <div class="bottomflavor load2">//System Request Handshake Recycle</div>
             <div class="bottomflavor load2">::System:Timecheck:1200.02384:ReComp:28802.1382::</div>
@@ -153,7 +153,7 @@
             <div class="bottomflavor load6">//Handshake Complete</div>
           </div>
 
-          <!-- bodembalk rechts -->
+          <!-- bottom bar right -->
           <div class="col-xs-12 col-md-3">
             <div class="bottomflavor load4"><p>::System:System:Load:5216784234:8:<br/>::System:Handshake:####-####-####-####:</p></div>
             <div class="bottomflavor load5 glitch" data-text="//Omitting">//Omitting</div>
@@ -188,19 +188,19 @@
 <script>
 $(document).ready(function(){
 
-  /* update on load alle titels, descriptions en het IP adres rechtsboven.*/
+  /* update all titles, descriptions and the IP adress upper right on load.*/
   socket.on('startConfig', function(settings){
     $('#localIP').html(settings['localaddress']);
   });
 
-  /* ForceReset. F5'd de pagina.*/
+  /* ForceReset. F5'd the page.*/
   socket.on('F5', function(){
 
     socket.disconnect();
     location.reload();
   });
 
-  /* Eerste keer? Laadt dan mainscreen in na 2500ms..*/
+  /* First time? Load the mainscreen in after 2500ms..*/
   setTimeout(function(){
     navigate('mainScreen');
   },2500);
