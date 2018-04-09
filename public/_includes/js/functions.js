@@ -407,23 +407,23 @@ function updateClock() {
   var dow;
 	var currentTime = new Date();
     var dd = currentTime.getDate();
-    var mm = currentTime.getMonth()+1; /*January is 0!*/
+    /*var mm = currentTime.getMonth()+1;*/ /*January is 0!*/
     /* var dow = currenTime.prototype.getDay();*/
     if(dd < 10){
       dd='0'+dd;
     }
 
-    if (dd == 10) {
-      dd    = '13';
+    if (dd == 20) {
+      dd    = '20';
       dow   = 'FRIDAY';
-    } else if (dd == 11) {
-      dd    = '14';
+    } else if (dd == 21) {
+      dd    = '21';
       dow   = 'SATURDAY';
-    } else if (dd == 12) {
-      dd    = '15';
+    } else if (dd == 22) {
+      dd    = '22';
       dow   = 'SUNDAY';
     } else {
-      dd    = '13';
+      dd    = '20';
       dow   = 'FRIDAY';
     }
 
