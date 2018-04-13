@@ -1,8 +1,9 @@
 node_modules/
 BACKUP/
+LOGS/eventlog.txt
+LOGS/
 public/sounds/audio-alice
 public/sounds/audio-dave
 public/sounds/audio-misc
 package-lock.json
 package.json
-LOGS/
