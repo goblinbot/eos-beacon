@@ -36,7 +36,7 @@ As of November 2017, changes will be added unsupported by older browsers like IE
 
 
 ## Running Beacon ##
-To run Beacon, first make sure that Node JS is turned on. Procceed to open the command prompt (in windows: CMD ) and navigate to the folder containing Beacon (for example: use the command cd C:/download/eos-beacon). To run the program, use the command **node index**.
+To run Beacon, first make sure that Node JS is turned on. Procceed to open the command prompt (in windows: CMD ) and navigate to the folder containing Beacon (for example: use the command cd C:/download/eos-beacon). To run the program, use the command **node index.js**.
 
 Beacon can then be accessed in the browser using the IP addressed listed in your command prompt, though 9 out of 10 times http://127.0.0.1:5001 will work.
 
