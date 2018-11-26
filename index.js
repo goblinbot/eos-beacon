@@ -7,8 +7,6 @@ const ip      = require('ip');
 const session = require('client-sessions');
 const fs      = require('fs');
 const globalSettings = require('./config.js');
-/*var bodyParser = require('body-parser');*/
-
 
 /* CONFIGURATIE: vaste gegevens bij start up. */
 var port          = process.env.PORT || globalSettings.sys.port;
