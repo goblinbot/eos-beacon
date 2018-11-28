@@ -413,17 +413,17 @@ function updateClock() {
       dd='0'+dd;
     }
 
-    if (dd == 20) {
-      dd    = '20';
+    if (dd == 30) {
+      dd    = '27';
       dow   = 'FRIDAY';
-    } else if (dd == 21) {
-      dd    = '21';
+    } else if (dd == 01) {
+      dd    = '28';
       dow   = 'SATURDAY';
-    } else if (dd == 22) {
-      dd    = '22';
+    } else if (dd == 02) {
+      dd    = '29';
       dow   = 'SUNDAY';
     } else {
-      dd    = '20';
+      dd    = '27';
       dow   = 'FRIDAY';
     }
 
