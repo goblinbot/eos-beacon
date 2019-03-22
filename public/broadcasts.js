@@ -45,7 +45,8 @@ var bchostileoutside = new broadcastObj("Enemy Contact","bchostileoutside",8,"0"
 var bchostileinside = new broadcastObj("Enemy Contact","bchostileinside",8,"0","attack");
 
 /* portal */
-var bcportalinc = new broadcastObj("Portal Incoming","bcportalinc",3,"30000","0");
+var bcportalinc = new broadcastObj("Scheduled Incoming Portal Activation","bcportalinc",3,"30000","0");
+var bcportalincdanger = new broadcastObj("Unscheduled Incoming Portal Activation","bcportalincdanger",3,"30000","0");
 var bcportalout = new broadcastObj("Portal Outgoing","bcportalout",3,"17500","0");
 
 /* Overlord-only */
