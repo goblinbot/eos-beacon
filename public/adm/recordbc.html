@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>BEACON - BROADCASTING &amp; INFORMATION SYSTEMS</title>
+  </head>
+  <body>
+    <div>
+        <button id="start-broadcast">Record broadcast</button>
+        <button id="send-broadcast">Send broadcast</button>
+        <div id="messages"></div>
+    </div>
+  </body>
+  <script type="text/javascript" src="/_includes/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script>
+  const socket = io()
+  if (!navigator.mediaDevices) {
+    $('button').attr('disabled','true')
+    $('#messages').text("Audio recording disabled")
+  }
+  var mediaRecorder = null
+  var saveAudio = function(stream) {
+    mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/ogg'})
+    mediaRecorder.ondataavailable = function(e) {
+      if (e.data.size > 0) {
+        socket.emit('uploadPA', e.data)
+      }
+    }
+    mediaRecorder.onstop = function() {
+      console.log("Stopped broadcast")
+      $('#start-broadcast').attr('disabled',false)
+      if (stream.stop) { stream.stop() }
+      if (stream.getTracks) {
+        stream.getTracks().forEach(function(track) {
+          track.stop()
+        })
+      }
+      socket.emit('broadcastAudio', '/audio-pa/PA.ogg')
+    }
+    socket.emit('startPA')
+    mediaRecorder.start(1000)
+    console.log("Recording broadcast")
+  }
+  $('#start-broadcast').click(function() {
+    $(this).attr('disabled',true)
+    navigator.mediaDevices.getUserMedia({audio: true,video:false}).then(saveAudio).catch(function(err) { console.log("GUM error: ", err) })
+  })
+  $('#send-broadcast').click(function() {
+    console.log("Stopping broadcast")
+    mediaRecorder.stop()
+  })
+  </script>
+</html>

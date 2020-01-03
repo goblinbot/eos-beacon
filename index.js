@@ -215,6 +215,15 @@ io.on('connection', function (socket) {
 
   });
 
+  socket.on('startPA', function() {
+    // TODO: What if multiple people are uploading?  Some kind of locking?  Unique ID?
+    fs.truncate('./public/sounds/audio-pa/PA.ogg', function(err) { if (err) throw(err) })
+  });
+  socket.on('uploadPA', function(data) {
+    // TODO: Force maximum length to stop the server from overflowing
+    fs.appendFile('./public/sounds/audio-pa/PA.ogg', data, function(err) { if (err) throw(err) })
+  });
+
 });
 
 /* eventLogger writes system logs to /LOGS/eventlog.txt. */
