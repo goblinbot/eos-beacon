@@ -219,7 +219,7 @@ io.on('connection', function (socket) {
     
   socket.on('startPA', function() {
     fs.readdir(pa_folder, function(err, files) {
-      var cleantime = new Date().getTime() - 60
+      var cleantime = new Date((new Date().getTime()) - 60000)
       if (err) { console.log("PA cleanup readdir error: "+err) }
       files.forEach(function(file) {
         if (file) {
@@ -227,14 +227,14 @@ io.on('connection', function (socket) {
           fs.stat(path, function(err, stat) {
             if (err) { console.log("PA cleanup stat error: "+err) }
             if (stat.ctime < cleantime) {
-              console.log("[PA] unlinking", path)
+              console.log("[PA] unlinking", path, stat.ctime, cleantime)
               fs.unlink(path, function(err) { if(err) { console.log("PA cleanup unlink error: "+err) } })
             }
           })
         }
       })
     })
-    pa_name = 'PA-'+socket.id+'-'+(new Date().toISOString().substring(11,23).replace(/[:.]/g,'-'))
+    pa_name = 'PA-'+socket.id+'-'+(new Date().toISOString().substring(11,23).replace(/[:.]/g,''))
 
     fs.mkdir(pa_folder, {recursive: true}, function(err) {
       if (err) throw(err)
