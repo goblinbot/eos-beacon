@@ -261,10 +261,13 @@ $(document).ready(function(){
 
   const admRANK = getCookie('rank')
   if (admRANK >= 1 && navigator.mediaDevices) {
+    var paenabled = new broadcastObj("Tannoy", "paenabled", 20, "3000", "0")
+    var parecording = new broadcastObj("Tannoy", "parecording", 20, "0", "hazard")
     $('#pa-broadcast-btn').removeClass('hidden').click(function() {
       btn = $(this).find('i')
       if (btn.hasClass('fa-microphone-slash')) {
         navigator.mediaDevices.getUserMedia({audio: true,video:false}).then(function (stream) {
+          broadCast(paenabled)
           if (stream.stop) { stream.stop() }
           if (stream.getTracks) {
             stream.getTracks().forEach(function(track) {
@@ -276,13 +279,14 @@ $(document).ready(function(){
         }).catch(function(err) { console.log("Microphone error: ", err) })
         btn.removeClass('fa-microphone-slash').addClass('fa-microphone')
       } else {
-        if (mediaRecorder) {
-          mediaRecorder.stop()
-          mediaRecorder = null
-        }
         $(window).off('keydown', startRecording)
         $(window).off('keyup', stopRecording)
         btn.removeClass('fa-microphone').addClass('fa-microphone-slash')
+        if (mediaRecorder) {
+          mediaRecorder.stop()
+          mediaRecorder = null
+          clearBroadcast(100)
+        }
       }
     })
   }
@@ -310,6 +314,7 @@ $(document).ready(function(){
     if (event.keyCode == 32) {
       if (!mediaRecorder) {
         navigator.mediaDevices.getUserMedia({audio: true,video:false}).then(saveTannoy).catch(function(err) { console.log("Microphone error: ", err) })
+        broadCast(parecording)
       }
     }
     // console.log('keyDown')
@@ -320,6 +325,7 @@ $(document).ready(function(){
       if (mediaRecorder) {
         mediaRecorder.stop()
         mediaRecorder = null
+        clearBroadcast(100)
       }
     }
     // console.log('keyUp')
