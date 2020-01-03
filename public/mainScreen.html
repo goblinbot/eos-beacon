@@ -122,16 +122,17 @@
       </div>
       <div class="content">
 
-        <div class="col-xs-12 col-sm-12 col-md-6">
+        <div class="col-xs-12 col-sm-12 col-md-5">
           <h2>DEVICE:</h2>
           <p id="socket-id"><span class="glitch" data-text="connecting ..">connecting ..</span></p>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-6">
+        <div class="col-xs-12 col-sm-12 col-md-7">
           <h2>STATUS:</h2>
           <p>
             <span id="connStatus" style="cursor: default; pointer-events:none;" class="btn btn-lg btn-outline-success"><i class="fa fa-link"></i>&nbsp;CONNECTED</span>
             &nbsp;<a href="/adm/" class="btn btn-lg btn-ui btn-ui-holo"><i class="fa fa-cog"></i></a>
+            <span id="pa-broadcast-btn" class="btn btn-lg btn-ui btn-ui-holo hidden"><i class="fa fa-microphone-slash"></i></span>
           </p>
         </div>
 
@@ -258,5 +259,75 @@ $(document).ready(function(){
      setInterval('updateClock()', 1000);
   });
 
+  const admRANK = getCookie('rank')
+  if (admRANK >= 1 && navigator.mediaDevices) {
+    $('#pa-broadcast-btn').removeClass('hidden').click(function() {
+      btn = $(this).find('i')
+      if (btn.hasClass('fa-microphone-slash')) {
+        navigator.mediaDevices.getUserMedia({audio: true,video:false}).then(function (stream) {
+          if (stream.stop) { stream.stop() }
+          if (stream.getTracks) {
+            stream.getTracks().forEach(function(track) {
+              track.stop()
+            })
+          }
+          $(window).keydown(startRecording)
+          $(window).keyup(stopRecording)
+        }).catch(function(err) { console.log("Microphone error: ", err) })
+        btn.removeClass('fa-microphone-slash').addClass('fa-microphone')
+      } else {
+        if (mediaRecorder) {
+          mediaRecorder.stop()
+          mediaRecorder = null
+        }
+        $(window).off('keydown', startRecording)
+        $(window).off('keyup', stopRecording)
+        btn.removeClass('fa-microphone').addClass('fa-microphone-slash')
+      }
+    })
+  }
+  var mediaRecorder = null
+  function saveTannoy(stream) {
+    mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/ogg'})
+    mediaRecorder.ondataavailable = function(e) {
+      if (e.data.size > 0) {
+        socket.emit('uploadPA', e.data)
+      }
+    }
+    mediaRecorder.onstop = function() {
+      $('#start-broadcast').attr('disabled',false)
+      if (stream.stop) { stream.stop() }
+      if (stream.getTracks) {
+        stream.getTracks().forEach(function(track) { track.stop() })
+      }
+      socket.emit('broadcastPA')
+    }
+    socket.emit('startPA')
+    mediaRecorder.start(1000)
+  }
+  function startRecording(event) {
+    // console.log('keyDown',event.keyCode)
+    if (event.keyCode == 32) {
+      if (!mediaRecorder) {
+        navigator.mediaDevices.getUserMedia({audio: true,video:false}).then(saveTannoy).catch(function(err) { console.log("Microphone error: ", err) })
+      }
+    }
+    // console.log('keyDown')
+  }
+  function stopRecording(event) {
+    // console.log('keyUp',event.keyCode)
+    if (event.keyCode == 32) {
+      if (mediaRecorder) {
+        mediaRecorder.stop()
+        mediaRecorder = null
+      }
+    }
+    // console.log('keyUp')
+  }
+  function getCookie(cname) {
+      var ca = document.cookie.match(new RegExp('(?:^|;)\\s*'+cname.replace(/[-\/\\^$.*+?()|[\]{}]/g,'\\$&')+'=([^;]*)'))
+      if (ca) { return ca[1] }
+      return ""
+  }
 });
 </script>

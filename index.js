@@ -234,7 +234,7 @@ io.on('connection', function (socket) {
         }
       })
     })
-    pa_name = 'PA-'+socket.id+'-'+(new Date().getTime())
+    pa_name = 'PA-'+socket.id+'-'+(new Date().toISOString().substring(11,23).replace(/[:.]/g,'-'))
 
     fs.mkdir(pa_folder, {recursive: true}, function(err) {
       if (err) throw(err)
