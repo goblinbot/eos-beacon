@@ -35,7 +35,7 @@
           track.stop()
         })
       }
-      socket.emit('broadcastAudio', '/audio-pa/PA.ogg')
+      socket.emit('broadcastPA')
     }
     socket.emit('startPA')
     mediaRecorder.start(1000)

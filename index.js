@@ -72,7 +72,6 @@ app.get('*', function(req, res){
 });
 
 io.on('connection', function (socket) {
-
   dynamicData['countClients'] = io.engine.clientsCount;
 
   console.log('\t[ + ] '+dynamicData['countClients']+' active client(s).');
@@ -215,13 +214,41 @@ io.on('connection', function (socket) {
 
   });
 
+  var pa_name = null;
+  var pa_folder = './public/sounds/audio-pa/';
+    
   socket.on('startPA', function() {
-    // TODO: What if multiple people are uploading?  Some kind of locking?  Unique ID?
-    fs.truncate('./public/sounds/audio-pa/PA.ogg', function(err) { if (err) throw(err) })
+    fs.readdir(pa_folder, function(err, files) {
+      var cleantime = new Date().getTime() - 60
+      if (err) { console.log("PA cleanup readdir error: "+err) }
+      files.forEach(function(file) {
+        if (file) {
+          var path = pa_folder+file
+          fs.stat(path, function(err, stat) {
+            if (err) { console.log("PA cleanup stat error: "+err) }
+            if (stat.ctime < cleantime) {
+              console.log("[PA] unlinking", path)
+              fs.unlink(path, function(err) { if(err) { console.log("PA cleanup unlink error: "+err) } })
+            }
+          })
+        }
+      })
+    })
+    pa_name = 'PA-'+socket.id+'-'+(new Date().getTime())
+
+    fs.mkdir(pa_folder, {recursive: true}, function(err) {
+      if (err) throw(err)
+      fs.truncate(pa_folder+pa_name+'.ogg', function(err) { })
+    })
   });
   socket.on('uploadPA', function(data) {
     // TODO: Force maximum length to stop the server from overflowing
-    fs.appendFile('./public/sounds/audio-pa/PA.ogg', data, function(err) { if (err) throw(err) })
+    fs.appendFile(pa_folder+pa_name+'.ogg', data, function(err) { if (err) throw(err) })
+  });
+  socket.on('broadcastPA', function() {
+    console.log('[audio] => PA: '+ pa_name);
+    io.emit('playAudioFile', '/audio-pa/'+pa_name+'.ogg');
+    eventLogger('AUDIO','audio PA sent: '+ pa_name +'. \n');
   });
 
 });
