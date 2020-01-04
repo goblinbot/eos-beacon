@@ -27,6 +27,8 @@ var dynamicData = {
 
 /* INITIALISING THE APP */
 
+express.static.mime.define({'audio/webm;codec=opus': ['opus']})
+
 app.use(express.static('public'));
 app.use(express.static('_includes'));
 
@@ -238,16 +240,16 @@ io.on('connection', function (socket) {
 
     fs.mkdir(pa_folder, {recursive: true}, function(err) {
       if (err) throw(err)
-      fs.truncate(pa_folder+pa_name+'.ogg', function(err) { })
+      fs.truncate(pa_folder+pa_name+'.opus', function(err) { })
     })
   });
   socket.on('uploadPA', function(data) {
     // TODO: Force maximum length to stop the server from overflowing
-    fs.appendFile(pa_folder+pa_name+'.ogg', data, function(err) { if (err) throw(err) })
+    fs.appendFile(pa_folder+pa_name+'.opus', data, function(err) { if (err) throw(err) })
   });
   socket.on('broadcastPA', function() {
     console.log('[audio] => PA: '+ pa_name);
-    io.emit('playAudioFile', '/audio-pa/'+pa_name+'.ogg');
+    io.emit('playAudioFile', '/audio-pa/'+pa_name+'.opus');
     eventLogger('AUDIO','audio PA sent: '+ pa_name +'. \n');
   });
 

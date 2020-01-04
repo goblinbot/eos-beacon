@@ -293,7 +293,7 @@ $(document).ready(function(){
   var mediaRecorder = null
   var runningRecorder = false
   function saveTannoy(stream) {
-    mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/ogg'})
+    mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/webm;codec=opus'})
     mediaRecorder.ondataavailable = function(e) {
       if (e.data.size > 0) {
         socket.emit('uploadPA', e.data)
