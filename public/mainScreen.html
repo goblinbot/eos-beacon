@@ -276,7 +276,7 @@ $(document).ready(function(){
           }
           $(window).keydown(startRecording)
           $(window).keyup(stopRecording)
-        }).catch(function(err) { console.log("Microphone error: ", err) })
+        }).catch(function(err) { console.log("Microphone error: "+ err) })
         btn.removeClass('fa-microphone-slash').addClass('fa-microphone')
       } else {
         $(window).off('keydown', startRecording)
@@ -291,6 +291,7 @@ $(document).ready(function(){
     })
   }
   var mediaRecorder = null
+  var runningRecorder = false
   function saveTannoy(stream) {
     mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/ogg'})
     mediaRecorder.ondataavailable = function(e) {
@@ -312,7 +313,8 @@ $(document).ready(function(){
   function startRecording(event) {
     // console.log('keyDown',event.keyCode)
     if (event.keyCode == 32) {
-      if (!mediaRecorder) {
+      if (!runningRecorder) {
+        runningRecorder = true
         navigator.mediaDevices.getUserMedia({audio: true,video:false}).then(saveTannoy).catch(function(err) { console.log("Microphone error: ", err) })
         broadCast(parecording)
       }
@@ -325,6 +327,7 @@ $(document).ready(function(){
       if (mediaRecorder) {
         mediaRecorder.stop()
         mediaRecorder = null
+        runningRecorder = false
         clearBroadcast(100)
       }
     }
