@@ -236,33 +236,6 @@
 
   <p>&nbsp;</p>
 
-  <!-- Manually setting the date has temporarily been disabled due to unresolved issues. -->
-
-  <span class="hidden">
-    <div class="col-xs-12"><hr/></div>
-    <h4 class="holoContrast"><i class="fa fa-calendar"></i>&nbsp;Set current date</h4>
-    <br/>
-
-
-      <label for="dateDay" style="padding:4px;" class="col-sm-3 text-white text-bold">Day</label>
-      <div class="col-sm-9" style="padding:4px;">
-        <input id="dateDay" type="text" class="form-control" placeholder="14">
-      </div>
-
-      <label for="dateMonth" style="padding:4px;" class="col-sm-3 text-white text-bold">Month</label>
-      <div class="col-sm-9" style="padding:4px;">
-        <input id="dateMonth" type="text" class="form-control" placeholder="MARCH">
-      </div>
-
-      <label for="dateYear" style="padding:4px;" class="col-sm-3 text-white text-bold">Year</label>
-      <div class="col-sm-9" style="padding:4px;">
-        <input id="dateYear" type="text" class="form-control" placeholder="240NT">
-      </div>
-
-    <br/><br/>
-    <a class="btn btn-lg btn-primary"><i class="fa fa-calendar-check-o"></i>&nbsp;Change Date</a>
-  </span>
-
   <!-- Video broadcasts and custom audio file controls. The audio files will be sent from the server (index.js) based on what files are currently in the proper folders. -->
   <div class="col-xs-12">
     <h2>MEDIA[ VIDEO &amp; AUDIO ]</h2>
@@ -286,10 +259,12 @@
     </div>
 
     <div class="items">
-      <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcICjournaal10);">
-        <i class="fa fa-film"></i>&nbsp;IC: JOURNAAL F10
+      <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcspoilervideo);">
+        <i class="fa fa-film"></i>&nbsp;IC:&nbsp;SUNDAYBROADCAST
       </button>
     </div>
+
+
 
   </div>
 

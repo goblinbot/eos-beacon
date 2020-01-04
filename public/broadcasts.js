@@ -60,5 +60,4 @@ var bcsystemscan = new broadcastObj("System Diagnostics","bcsystemscan",88,"3000
 var bcfreezeall = new broadcastObj("ADMIN.OVERRIDE","bcfreezeall",100,"0","0");
 
 /* VIDEOS */
-var bcOCannounce = new broadcastObj("VID.TRANSMISSION","bcOCannounce",9,"0","0");
-var bcICjournaal10 = new broadcastObj("VID.TRANSMISSION","bcICjournaal10",9,"0","0");
+var bcspoilervideo = new broadcastObj("VID.TRANSMISSION","bcspoilervideo",9,"0","0");
