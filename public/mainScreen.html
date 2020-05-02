@@ -142,7 +142,13 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OpusMediaRecorder.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/encoderWorker.umd.js"></script>
 <script>
+const workerOptions = {
+  OggOpusEncoderWasmPath: 'https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OggOpusEncoder.wasm',
+  WebMOpusEncoderWasmPath: 'https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/WebMOpusEncoder.wasm'
+};
 $(document).ready(function(){
   var bcinit = 0;
   var clientdevice = "";
@@ -300,7 +306,7 @@ $(document).ready(function(){
   var mediaRecorder = null
   var runningRecorder = false
   function saveTannoy(stream) {
-    mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/webm;codec=opus'})
+    mediaRecorder = new OpusMediaRecorder(stream, {}, workerOptions)
     mediaRecorder.ondataavailable = function(e) {
       if (e.data.size > 0) {
         socket.emit('uploadPA', e.data)

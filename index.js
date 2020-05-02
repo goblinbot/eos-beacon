@@ -27,7 +27,7 @@ var dynamicData = {
 
 /* INITIALISING THE APP */
 
-express.static.mime.define({'audio/webm;codec=opus': ['opus']})
+express.static.mime.define({'audio/ogg;codec=opus': ['opus']})
 
 app.use(express.static('public'));
 app.use(express.static('_includes'));
