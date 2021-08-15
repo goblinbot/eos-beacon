@@ -1,4 +1,6 @@
 const socket = io();
+const eosTimeAPI = 'https://api.eosfrontier.space/watchtower/time'
+const arrayOfWeekdays = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
 var selector = "";
 var target = "";
 var clearIsActive = undefined;
@@ -6,9 +8,11 @@ var activeColorScheme = '0';
 var activeBroadcastPriority = 1;
 
 /* VARS FOR CACHING: We fill these variables with $(html) selectors to save memory in the long run. */
+var eosIcDateCache = [];
 var clockCache = "";
 var ddCache = "";
 var dowCache = "";
+var icdateCache = "";
 var BCaudioCache = "";
 var customAudioCache = "";
 var notifiContCache = "";
@@ -18,6 +22,8 @@ function navigate(target) {
   if(target != "") {
     $('#main').empty().load(target+'.html');
   }
+  /* At the loading of the MAIN SCREEN we get the perfect oppertunity to do an async time. We can't do this in the time function itself, as that keeps refreshing every 1s*/
+  getEosICTime()
 }
 
 /* flashblocks causes a "flash" effect inside the boxes spread over beacon, when for example, a broadcast is received.
@@ -404,28 +410,28 @@ function generateVideo(name, type) {
 
 /* CLOCK */
 function updateClock() {
-  var dow;
-	var currentTime = new Date();
-    var dd = currentTime.getDate();
+  var currentTime = new Date();
+  var dow = arrayOfWeekdays[ currentTime.getDay() ].toUpperCase() ;
+  var dd = eosIcDateCache.iDay
+  var icdate = eosIcDateCache.iMonthName.toUpperCase() + ' ' + eosIcDateCache.iYear + eosIcDateCache.iYearAfter
     /*var mm = currentTime.getMonth()+1;*/ /*January is 0!*/
-    /* var dow = currenTime.prototype.getDay();*/
-    if(dd < 10){
-      dd='0'+dd;
-    }
+    // if(dd < 10){
+    //   dd='0'+dd;
+    // }
 
-    if (dd == 29) {
-      dd    = '8';
-      dow   = 'FRIDAY';
-    } else if (dd == 30) {
-      dd    = '9';
-      dow   = 'SATURDAY';
-    } else if (dd == 01) {
-      dd    = '10';
-      dow   = 'SUNDAY';
-    } else {
-      dd    = '8';
-      dow   = 'FRIDAY';
-    }
+    // if (dd == 29) {
+    //   dd    = '8';
+    //   dow   = 'FRIDAY';
+    // } else if (dd == 30) {
+    //   dd    = '9';
+    //   dow   = 'SATURDAY';
+    // } else if (dd == 01) {
+    //   dd    = '10';
+    //   dow   = 'SUNDAY';
+    // } else {
+    //   dd    = '8';
+    //   dow   = 'FRIDAY';
+    // }
 
   	var currentHours   = currentTime.getHours ( );
   	var currentMinutes = currentTime.getMinutes ( );
@@ -443,10 +449,17 @@ function updateClock() {
     if(clockCache == ""){ clockCache = $("#clock"); }
     if(ddCache == ""){ ddCache = $("#dd"); }
     if(dowCache == ""){ dowCache = $("#dow"); }
+    if(icdateCache == ""){ icdateCache = $("#icdate"); }
 
     /* apply clock to cached element. */
     clockCache.html(currentTimeString);
     ddCache.html(dd);
     dowCache.html(dow);
+    icdateCache.html(icdate);
+}
 
- }
+async function getEosICTime() {
+  fetch(eosTimeAPI)
+  .then(response => response.json())
+    .then( data => { eosIcDateCache = data } );
+}
