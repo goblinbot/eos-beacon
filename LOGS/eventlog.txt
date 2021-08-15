@@ -32,3 +32,4 @@
 [ broadcast ]	12-11, 16:35	:: sent: Environmental Hazard detected. 
 
 [ INIT ]	14-11, 16:54	:: Beacon succesfully started.
+[ INIT ]	15-7, 20:46	:: Beacon succesfully started.

@@ -1,6 +1,5 @@
 const socket = io();
 const eosTimeAPI = 'https://api.eosfrontier.space/watchtower/time'
-const arrayOfWeekdays = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
 var selector = "";
 var target = "";
 var clearIsActive = undefined;
@@ -411,7 +410,7 @@ function generateVideo(name, type) {
 /* CLOCK */
 function updateClock() {
   var currentTime = new Date();
-  var dow = arrayOfWeekdays[ currentTime.getDay() ].toUpperCase() ;
+  var dow = eosIcDateCache.iDayName.toUpperCase() ;
   var dd = eosIcDateCache.iDay
   var icdate = eosIcDateCache.iMonthName.toUpperCase() + ' ' + eosIcDateCache.iYear + eosIcDateCache.iYearAfter
     /*var mm = currentTime.getMonth()+1;*/ /*January is 0!*/
