@@ -28,8 +28,8 @@ var bcdinner = new broadcastObj("Dinner announcement","bcdinner",2,"0","0");
 var bcdishes = new broadcastObj("Dishes reminder","bcdishes",2,"0","0");
 
 /* andere PSA's */
-var bchydrate = new broadcastObj( "Hydration Reminder", "bchydrate", 2, "0", "0" );
-var bcthankyou = new broadcastObj( "Hydration Reminder", "bcthankyou", 2, "0", "0" );
+var bchydrate = new broadcastObj( "Hydration Reminder", "bchydrate", 2, "600000", "0" );
+var bcthankyou = new broadcastObj( "Kindness Reminder", "bcthankyou", 2, "600000", "0" );
 var bctempleservice = new broadcastObj("Tachar Service","bctempleservice",2,"0","0");
 var bcmedical = new broadcastObj("Blood Donation Request","bcmedical",2,"0","0");
 var bcmeeting = new broadcastObj("Meeting in Main","bcmeeting",4,"0","0");
