@@ -27,6 +27,8 @@ var dynamicData = {
 
 /* INITIALISING THE APP */
 
+express.static.mime.define({'audio/ogg;codec=opus': ['opus']})
+
 app.use(express.static('public'));
 app.use(express.static('_includes'));
 
@@ -72,7 +74,6 @@ app.get('*', function(req, res){
 });
 
 io.on('connection', function (socket) {
-
   dynamicData['countClients'] = io.engine.clientsCount;
 
   console.log('\t[ + ] '+dynamicData['countClients']+' active client(s).');
@@ -213,6 +214,43 @@ io.on('connection', function (socket) {
       });
     }
 
+  });
+
+  var pa_name = null;
+  var pa_folder = './public/sounds/audio-pa/';
+    
+  socket.on('startPA', function() {
+    fs.readdir(pa_folder, function(err, files) {
+      var cleantime = new Date((new Date().getTime()) - 60000)
+      if (err) { console.log("PA cleanup readdir error: "+err) }
+      files.forEach(function(file) {
+        if (file) {
+          var path = pa_folder+file
+          fs.stat(path, function(err, stat) {
+            if (err) { console.log("PA cleanup stat error: "+err) }
+            if (stat.ctime < cleantime) {
+              console.log("[PA] unlinking", path, stat.ctime, cleantime)
+              fs.unlink(path, function(err) { if(err) { console.log("PA cleanup unlink error: "+err) } })
+            }
+          })
+        }
+      })
+    })
+    pa_name = 'PA-'+socket.id+'-'+(new Date().toISOString().substring(11,23).replace(/[:.]/g,''))
+
+    fs.mkdir(pa_folder, {recursive: true}, function(err) {
+      if (err) throw(err)
+      fs.truncate(pa_folder+pa_name+'.opus', function(err) { })
+    })
+  });
+  socket.on('uploadPA', function(data) {
+    // TODO: Force maximum length to stop the server from overflowing
+    fs.appendFile(pa_folder+pa_name+'.opus', data, function(err) { if (err) throw(err) })
+  });
+  socket.on('broadcastPA', function() {
+    console.log('[audio] => PA: '+ pa_name);
+    io.emit('playAudioFile', '/audio-pa/'+pa_name+'.opus');
+    eventLogger('AUDIO','audio PA sent: '+ pa_name +'. \n');
   });
 
 });
