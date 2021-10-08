@@ -1,29 +1,68 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 text-center">
+    <div class="col-xs-12 text-center content">
 
-      <div class="whitespace col-md-12"></div>
-
-      <div class="block col-xs-12 col-md-8 col-md-push-2 col-md-pull-2" style="border-top: 1px solid #39DBCC; border-bottom: 1px solid #39DBCC; padding-bottom:0.8rem;">
-        <div class="content">
-          <h2 class"text-bold"><i class="fa fa-info-circle hidden-xs"></i>&nbsp;INFORMATION&nbsp;<i class="fa fa-info-circle hidden-xs"></i></h2>
-        </div>
-      </div>
-
-	  <div class="whitespace col-md-12"></div>
+      <div class="whitespace"></div>
+      <div class="whitespace"></div>
 
       <div class="col-xs-12 col-md-8 col-md-push-2 col-md-pull-2">
-        <div class="content">
-		  <h2 class="text-white">A <span style="color:#4fe38b;">service</span> will commence in the <span style="color:#4fe38b;">Tachar</span>.</h2>
-          <div class="whitespace"></div>
-          <img class="img-center img-responsive" src="../images/mair.svg">
-		  <div class="whitespace"></div>
-		  <p class="text-lg">You are free to attend for mental wellbeing, and spiritual strengthening.</p>
+        <div class="hexagon-wrapper">
+          <div class="hexagon">
+              <img class="img-center img-responsive" src="../images/mair.svg">
+          </div>
         </div>
-      </div>
 
+        <div class="whitespace"></div>
+
+        <div style="border-bottom: 1px solid #39DBCC; padding-bottom:0.8rem;">
+          <h2 class="text-white">A <span style="color:#4fe38b;">service</span> will be held in the Tachar.</h2>
+        </div>
+
+        <div class="whitespace"></div>
+
+        <p class="text-lg">You are invited to attend for mental wellbeing and spiritual strengthening.</p>
+
+      </div>
     </div>
   </div>
 </div>
 
-<script>generateAudioPlayer('announce.ogg','1');</script>
+<script>generateAudioPlayer('notice2.ogg','1');</script>
+
+<style>
+.hexagon-wrapper {
+  text-align: center;
+  position:relative;
+  display: inline-block;
+  top:6vh;
+  width:30vh;
+  height:30vh;
+}
+.hexagon {
+  height: calc(100% * 0.57735);
+  width: 100%;
+  display: inline-block;
+  background-color: #053A47;
+}
+.hexagon:before,
+.hexagon:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #053A47;
+  height: inherit;
+  width: inherit;
+  content: '';
+  z-index: -1;
+}
+.hexagon:before {
+  transform: rotateZ(60deg);
+}
+.hexagon:after {
+  transform: rotateZ(-60deg);
+}
+.hexagon img {
+  width:75%;
+  aspect-ratio: 1/1;
+}
+</style>

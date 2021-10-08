@@ -15,6 +15,8 @@ var icdateCache = "";
 var BCaudioCache = "";
 var customAudioCache = "";
 var notifiContCache = "";
+var loopSoundCounter = 1
+var loopSoundTimer
 
 /* navigate loads (TARGET).HTML into the MAIN SCREEN div. pretending to go to another page but instead putting it into our existing box.*/
 function navigate(target) {
@@ -203,7 +205,12 @@ function sendBroadCast(location) {
 
 /* functie om de duration toch wel werkend te krijgen - oftewel een broadcast CLEAREN na ingestelde tijd.*/
 function clearBroadcast(duration){
-  console.log('clear in :' + duration);
+  console.log( 'clear in :' + duration );
+
+  /* reset soundLoopTimer zodat er geen geluiden spelen na een reset */
+  clearTimeout( loopSoundTimer )
+  loopSoundCounter = 1
+
 
   if(duration != "" && duration != null) {
 
@@ -263,7 +270,7 @@ function generateAudioPlayer(audiofile, repeatcount) {
 
     if(document.getElementById("custom-audio") !== null) {
 
-      console.log('CUSTOM-audio -> play: ' + audiofile + ' * ' + repeatcount + ' time(s). ');
+      console.log('CUSTOM-audio -> play: ' + audiofile + ' * ' + repeatcount + ' time(s). Played ' + loopSoundCounter + ' time(s).');
 
       if ($(window).width() > 960) {
         customAudioCache.empty().html('<audio id="generatedaudioplayer" controls="controls" class="hidden">'
@@ -273,6 +280,7 @@ function generateAudioPlayer(audiofile, repeatcount) {
         $('#generatedaudioplayer').trigger('play');
 
         /* repeat? */
+        loopSound(audiofile, repeatcount)
 
       }
 
@@ -294,6 +302,17 @@ function generateAudioPlayer(audiofile, repeatcount) {
     $('#default-audio').trigger('play');
   }
 
+}
+
+// loop audio breakout want:
+//jquery.min.js:4 Uncaught (in promise) DOMException: play() failed because the user didn't interact with the document first
+function loopSound ( audiofile, repeatcount ) {
+  if ( loopSoundCounter < repeatcount ) {
+    loopSoundCounter++;
+    loopSoundTimer = setTimeout( () => { generateAudioPlayer(audiofile, repeatcount) },2000)
+  } else {
+    loopSoundCounter = 1
+  }
 }
 
 /* audio file functie apart */

@@ -14,7 +14,7 @@
   <div id="btn-admSECURITY" class="btn adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admSECURITY');"><i style="font-size:133%" class="fa fa-exclamation-circle"></i><br/>SECURITY LVL</div>
   <div id="btn-admCMD" class="btn adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admCMD');"><i style="font-size:133%" class="fa fa-terminal"></i><br/>OTHER</div>
 
-  <span class="officer">
+  <span class="portal">
     <div id="btn-admPORTAL" class="btn adm-nav btn-outline-success" onclick="navigateADM('admPORTAL');"><i style="font-size:133%" class="fa fa-opera"></i><br/>PORTAL</div>
   </span>
 
@@ -40,10 +40,14 @@ $(document).ready(function(){
     } else {
       /* decide what the user gets to see */
       switch(admRANK) {
-        case '1': case '2': default:
+        case '1': default:
           $('.overlord').empty(); /* hide the overlord screen and empty all content, just incase. */
+          $('.portal').empty(); /* empty&hide the portal tab. */
           $('.officer').empty(); /* empty&hide the portal tab. */
           break;
+        case '2':
+          $('.overlord').empty(); /* hide the overlord screen and empty all content, just incase. */
+          $('.officer').empty(); /* empty&hide the portal tab. */
         case '3':
           $('.overlord').empty(); /* hide the overlord screen and empty all content, just incase. */
           break;
