@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 text-center content">
+
+      <div class="whitespace"></div>
+      <div class="whitespace"></div>
+
+      <div class="col-xs-12 col-md-8 col-md-push-2 col-md-pull-2">
+        <div class="hexagon-wrapper">
+          <div class="hexagon">
+            <h3 class="text-white" style="font-size:15vh; margin-top:-1vh;">
+              <i class="fa fa-bed"></i>
+            </h3>
+          </div>
+        </div>
+
+        <div class="whitespace"></div>
+
+        <div style="border-bottom: 1px solid #DDDDDD; padding-bottom:0.8rem;">
+          <h2 class="text-white">GOOD NIGHT COLONISTS</h2>
+        </div>
+
+        <div class="whitespace"></div>
+
+        <p class="text-lg">May you have had a productive day! Remember to rest up before the next day.</p>
+        <p class="text-lg">Four hours of sleep is not an opperational amount of sleep. Rest Well at the Bastion.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>generateAudioPlayer('notice2.ogg','1');</script>
+
+<style>
+.hexagon-wrapper {
+  text-align: center;
+  position:relative;
+  display: inline-block;
+  top:6vh;
+  width:30vh;
+  height:30vh;
+}
+.hexagon {
+  height: calc(100% * 0.57735);
+  width: 100%;
+  display: inline-block;
+  background-color: #3A3A3A;
+}
+.hexagon:before,
+.hexagon:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #3A3A3A;
+  height: inherit;
+  width: inherit;
+  content: '';
+  z-index: -1;
+}
+.hexagon:before {
+  transform: rotateZ(60deg);
+}
+.hexagon:after {
+  transform: rotateZ(-60deg);
+}
+</style>

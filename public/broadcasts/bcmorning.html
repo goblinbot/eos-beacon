@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 text-center content">
+
+      <div class="whitespace"></div>
+      <div class="whitespace"></div>
+
+      <div class="col-xs-12 col-md-8 col-md-push-2 col-md-pull-2">
+        <div class="hexagon-wrapper">
+          <div class="hexagon">
+            <h3 class="text-white" style="font-size:18vh; margin-top:-2vh;">
+              <span style="color:#f2A83B;"><i class="fa fa-sun-o"></i></span>
+            </h3>
+          </div>
+        </div>
+
+        <div class="whitespace"></div>
+
+        <div style="border-bottom: 1px solid #f2A83B; padding-bottom:0.8rem;">
+          <h2 class="text-white">GOOD MORNING COLONISTS.</h2>
+        </div>
+
+        <div class="whitespace"></div>
+
+        <p class="text-lg">To maximize productivity, health and happiness, do not skip breakfast.</p>
+        <p class="text-lg">Remember: Interfactional cooperation is key to a healthy bastion.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>generateAudioPlayer('notice2.ogg','1');</script>
+
+<style>
+.hexagon-wrapper {
+  text-align: center;
+  position:relative;
+  display: inline-block;
+  top:6vh;
+  width:30vh;
+  height:30vh;
+}
+.hexagon {
+  height: calc(100% * 0.57735);
+  width: 100%;
+  display: inline-block;
+  background-color: #053A47;
+}
+.hexagon:before,
+.hexagon:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #053A47;
+  height: inherit;
+  width: inherit;
+  content: '';
+  z-index: -1;
+}
+.hexagon:before {
+  transform: rotateZ(60deg);
+}
+.hexagon:after {
+  transform: rotateZ(-60deg);
+}
+</style>
