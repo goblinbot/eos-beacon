@@ -23,51 +23,8 @@
     <br/><br/>
   </div>
 
-  <div class="whitespace">&nbsp;</div>
-  <div class="col-xs-12">
-    <p>Class: Medium priority.</p>
-
-    <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcblood);">
-      <i class="fa fa-medkit"></i>&nbsp;DEMAND BLOOD DONATIONS
-    </button>
-
-    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcmeeting);">
-      <i class="fa fa-users"></i>&nbsp;GATHER ALL COLONISTS
-    </button>
-
-  </div>
-
-  <div class="whitespace">&nbsp;</div>
-  <div class="col-xs-12">
-    <p>Class: Direct threat</p>
-
-    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcbomb); ">
-      <i class="fa fa-bomb"></i>&nbsp;BOMB THREAT
-    </button>
-    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcbiohazard); ">
-      <i class="fa fa-warning"></i>&nbsp;BIOHAZARD
-    </button>
-    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcpsyhazard); ">
-      <i class="fa fa-warning"></i>&nbsp;PSYHAZARD
-    </button>
-
-  </div>
-
-  <div class="whitespace">&nbsp;</div>
-  <div class="col-xs-12">
-    <p>Class: Hostile Contact</p>
-
-    <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bchostileoutside); ">
-      <i class="fa fa-warning"></i>&nbsp;HOSTILES OUTSIDE
-    </button>
-    <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bchostileinside); ">
-      <i class="fa fa-warning"></i>&nbsp;HOSTILES INSIDE
-    </button>
-
-  </div>
-  <div class="whitespace">&nbsp;</div>
-  <div class="col-xs-12">
-    <p>Class: Reminders.</p>
+    <div class="col-xs-12">
+    <p>Class: Reminders, lowest priority</p>
 
     <!-- <div class="col-xs-12">
       <p>Class: Announcements</p> -->
@@ -91,7 +48,7 @@
   </div>
   <div class="whitespace">&nbsp;</div>
   <div class="col-xs-12">
-    <p>Class: Announcements.</p>
+    <p>Class: Announcements, low priority</p>
     <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bctempleservice);">
       <i class="fa fa-bell"></i>&nbsp;TACHAR SERVICE
     </button>
@@ -100,18 +57,40 @@
     </button>
 
   </div>
+  <div class="whitespace">&nbsp;</div>
   <div class="col-xs-12">
+    <p>Class: Medium priority.</p>
 
-    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bclunch);">
-      <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: LUNCH
+    <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcblood);">
+      <i class="fa fa-medkit"></i>&nbsp;DEMAND BLOOD DONATIONS
+    </button>
+  </div>
+
+  <div class="whitespace">&nbsp;</div>
+  <div class="col-xs-12">
+    <p>Class: Direct threat, high priority</p>
+
+    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcbomb); ">
+      <i class="fa fa-bomb"></i>&nbsp;BOMB THREAT
+    </button>
+    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcbiohazard); ">
+      <i class="fa fa-warning"></i>&nbsp;BIOHAZARD
+    </button>
+    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcpsyhazard); ">
+      <i class="fa fa-warning"></i>&nbsp;PSYHAZARD
     </button>
 
-    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcdinner);">
-      <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: DINNER
-    </button>
+  </div>
 
-    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcdishes);">
-      <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: DISHES
+  <div class="whitespace">&nbsp;</div>
+  <div class="col-xs-12">
+    <p>Class: Hostile Contact, high priority</p>
+
+    <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bchostileoutside); ">
+      <i class="fa fa-warning"></i>&nbsp;HOSTILES OUTSIDE
+    </button>
+    <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bchostileinside); ">
+      <i class="fa fa-warning"></i>&nbsp;HOSTILES INSIDE
     </button>
 
   </div>
@@ -208,7 +187,32 @@
   </button>
 
   <hr/>
+  <button class="btn btn-block btn-ui btn-ui-holo" onclick="sendBroadCast(bcmeeting);">
+    <i class="fa fa-users"></i>&nbsp;GATHER ALL COLONISTS
+  </button>
+  <div class="whitespace">&nbsp;</div>
 
+  <h4 class="holoContrast"><i class="fa fa-cutlery"></i>&nbsp;Food Related Alerts</h4>
+
+  <button
+    class="btn btn-block btn-ui btn-ui-holo"
+    onclick="sendBroadCast(bclunch);">
+    <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: LUNCH
+  </button>
+
+  <button
+    class="btn btn-block btn-ui btn-ui-holo"
+    onclick="sendBroadCast(bcdinner);">
+    <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: DINNER
+  </button>
+
+  <button
+    class="btn btn-block btn-ui btn-ui-holo-alt"
+    onclick="sendBroadCast(bcdishes);">
+    <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: DISHES
+  </button>
+
+  <div class="whitespace">&nbsp;</div>
   <!-- A few extra alerts, that you don't want non-admins to push through. -->
   <h4 class="holoContrast"><i class="fa fa-warning"></i>&nbsp;Non-public alerts</h4>
 
