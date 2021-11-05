@@ -37,6 +37,7 @@ var bcblood   = new broadcastObj("Blood Donation Demand","bcblood",4,"0","0");
 /* reminders */
 var bchydrate = new broadcastObj( "Hydration Reminder", "bchydrate", 1, "600000", "0" );
 var bcthankyou = new broadcastObj( "Kindness Reminder", "bcthankyou", 1, "600000", "0" );
+var bctalon = new broadcastObj( "Talon Reminder", "bctalon", 1, "600000", "0" );
 var bcmorning = new broadcastObj( "Morning Reminder", "bcmorning", 1, "3600000", "0" );
 var bcgotobed = new broadcastObj( "Sleep Reminder", "bcgotobed", 1, "10800000", "gray" );
 

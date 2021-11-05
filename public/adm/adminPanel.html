@@ -23,6 +23,40 @@
     <br/><br/>
   </div>
 
+    <div class="col-xs-12">
+    <p>Class: Reminders, lowest priority</p>
+
+    <!-- <div class="col-xs-12">
+      <p>Class: Announcements</p> -->
+    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bchydrate);">
+      <i class="fa fa-coffee"></i>&nbsp;HYDRATION REMINDER
+    </button>
+    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcthankyou);">
+      <i class="fa fa-thumbs-up"></i>&nbsp;KINDNESS REMINDER
+    </button>
+    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bctalon);">
+      <i class="fa fa-twitter"></i>&nbsp;TALON REMINDER
+    </button>
+    </div>
+  <div class="col-xs-12">
+    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcmorning);">
+      <i class="fa fa-sun-o"></i>&nbsp;MORNING REMINDER (10am)
+    </button>
+    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcgotobed);">
+      <i class="fa fa-bed"></i>&nbsp;SLEEP REMINDER (2am)
+    </button>
+  </div>
+  <div class="whitespace">&nbsp;</div>
+  <div class="col-xs-12">
+    <p>Class: Announcements, low priority</p>
+    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bctempleservice);">
+      <i class="fa fa-bell"></i>&nbsp;TACHAR SERVICE
+    </button>
+    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcmedical);">
+      <i class="fa fa-medkit"></i>&nbsp;REQUEST BLOOD DONATIONS
+    </button>
+
+  </div>
   <div class="whitespace">&nbsp;</div>
   <div class="col-xs-12">
     <p>Class: Medium priority.</p>
@@ -30,16 +64,11 @@
     <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcblood);">
       <i class="fa fa-medkit"></i>&nbsp;DEMAND BLOOD DONATIONS
     </button>
-
-    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcmeeting);">
-      <i class="fa fa-users"></i>&nbsp;GATHER ALL COLONISTS
-    </button>
-
   </div>
 
   <div class="whitespace">&nbsp;</div>
   <div class="col-xs-12">
-    <p>Class: Direct threat</p>
+    <p>Class: Direct threat, high priority</p>
 
     <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcbomb); ">
       <i class="fa fa-bomb"></i>&nbsp;BOMB THREAT
@@ -55,60 +84,13 @@
 
   <div class="whitespace">&nbsp;</div>
   <div class="col-xs-12">
-    <p>Class: Hostile Contact</p>
+    <p>Class: Hostile Contact, high priority</p>
 
     <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bchostileoutside); ">
       <i class="fa fa-warning"></i>&nbsp;HOSTILES OUTSIDE
     </button>
     <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bchostileinside); ">
       <i class="fa fa-warning"></i>&nbsp;HOSTILES INSIDE
-    </button>
-
-  </div>
-  <div class="whitespace">&nbsp;</div>
-  <div class="col-xs-12">
-    <p>Class: Reminders.</p>
-
-    <!-- <div class="col-xs-12">
-      <p>Class: Announcements</p> -->
-    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bchydrate);">
-      <i class="fa fa-coffee"></i>&nbsp;HYDRATION REMINDER
-    </button>
-    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcthankyou);">
-      <i class="fa fa-thumbs-up"></i>&nbsp;KINDNESS REMINDER
-    </button>
-    </div>
-  <div class="col-xs-12">
-    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcmorning);">
-      <i class="fa fa-sun-o"></i>&nbsp;MORNING REMINDER (10am)
-    </button>
-    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcgotobed);">
-      <i class="fa fa-bed"></i>&nbsp;SLEEP REMINDER (2am)
-    </button>
-  </div>
-  <div class="whitespace">&nbsp;</div>
-  <div class="col-xs-12">
-    <p>Class: Announcements.</p>
-    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bctempleservice);">
-      <i class="fa fa-bell"></i>&nbsp;TACHAR SERVICE
-    </button>
-    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcmedical);">
-      <i class="fa fa-medkit"></i>&nbsp;REQUEST BLOOD DONATIONS
-    </button>
-
-  </div>
-  <div class="col-xs-12">
-
-    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bclunch);">
-      <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: LUNCH
-    </button>
-
-    <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bcdinner);">
-      <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: DINNER
-    </button>
-
-    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcdishes);">
-      <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: DISHES
     </button>
 
   </div>
@@ -205,7 +187,32 @@
   </button>
 
   <hr/>
+  <button class="btn btn-block btn-ui btn-ui-holo" onclick="sendBroadCast(bcmeeting);">
+    <i class="fa fa-users"></i>&nbsp;GATHER ALL COLONISTS
+  </button>
+  <div class="whitespace">&nbsp;</div>
 
+  <h4 class="holoContrast"><i class="fa fa-cutlery"></i>&nbsp;Food Related Alerts</h4>
+
+  <button
+    class="btn btn-block btn-ui btn-ui-holo"
+    onclick="sendBroadCast(bclunch);">
+    <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: LUNCH
+  </button>
+
+  <button
+    class="btn btn-block btn-ui btn-ui-holo"
+    onclick="sendBroadCast(bcdinner);">
+    <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: DINNER
+  </button>
+
+  <button
+    class="btn btn-block btn-ui btn-ui-holo-alt"
+    onclick="sendBroadCast(bcdishes);">
+    <i class="fa fa-cutlery"></i>&nbsp;KITCHEN: DISHES
+  </button>
+
+  <div class="whitespace">&nbsp;</div>
   <!-- A few extra alerts, that you don't want non-admins to push through. -->
   <h4 class="holoContrast"><i class="fa fa-warning"></i>&nbsp;Non-public alerts</h4>
 
