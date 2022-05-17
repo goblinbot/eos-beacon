@@ -1,20 +1,7 @@
-<!--
-==== =================================================================
-
-==    MAINSCREEN.HTML    ==
-==    Dit bestand word ingeladen in de container in de index.html als het hoofdscherm.
-==    In MAINSCREEN voeren we de broadcasts uit en andere verschillende functies,
-==    daarom is dit te vergelijken met de daadwerkelijke 'homepage'.
-
-==== =================================================================
-==    Door Thijs Boerma, th.boerma@gmail.com | 2017                 ==
-==== =================================================================
--->
-
-<!-- bovenste helft -->
+<!-- Top Half  -->
 <div class="middle row">
 
-  <!-- linkerbar -->
+  <!-- Left sidebar -->
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 pZero">
     <div class="left-bar col-xs-12">
 
@@ -52,7 +39,7 @@
 
   </div>
 
-  <!-- centraal blok -->
+  <!-- Central block -->
   <div class="middle-bar col-xs-12 col-sm-12 col-md-8 col-lg-9">
     <div class="block no-bg">
       <div id="notificationContainer">
@@ -63,7 +50,7 @@
 
       </div>
 
-      <!-- custom audio word hier ingeladen/afgespeeld. -->
+      <!-- custom audio container div -->
       <div id="custom-audio"></div>
 
     </div>
@@ -71,7 +58,7 @@
 
 </div>
 
-<!-- onderste helft -->
+<!-- bottom half -->
 <div class="footer row">
 
   <div class="item col-xs-12 col-sm-12 col-md-4 col-lg-2">
@@ -120,12 +107,11 @@
   <div class="item col-xs-12 col-sm-12 col-md-12 col-lg-5">
     <div class="block">
       <div class="headerblock margin-zero">
-        <h2 class="regularfont">Device &amp; Connection info</h2>
+        <h2 class="regularfont">Operators & Workload &nbsp;|&nbsp;&nbsp;Connection Info</h2>
       </div>
       <div class="content">
 
         <div class="col-xs-12 col-sm-12 col-md-5">
-          <h2>DEVICE:</h2>
           <p id="socket-id"><span class="glitch" data-text="connecting ..">connecting ..</span></p>
         </div>
 
@@ -192,17 +178,13 @@ $(document).ready(function(){
 
     /* updates the portal status to match with the global dynamicdata. */
     updatePortalStatus(dynamicData['portalStatus']);
-
+    $('#socket-id').html('<span class="holoContrast">InfansExNihilo (89%)</span><br/><span class="holoContrast">HÉRITAGE (11%)</span><br/><span class="text-muted">Ascendancy (disabled)<span><br/><span class="text-muted">ProviDNC (disabled)<span>');
 
     /*resume the last broadcast! client only.*/
     if(bcinit == 0) {
       broadCast(window[dynamicData['lastBC']]);
       bcinit = 1;
     }
-
-    /* client device name! Will potentially be removed, due to having no current use. */
-    $('#socket-id').html('&nbsp;CONN->&nbsp;<span class="holoContrast">'+socket.id+'</span>');
-
   });
 
   /* receive portal status updates here (server->client)*/
@@ -225,7 +207,7 @@ $(document).ready(function(){
   socket.on('connect', function(){
     $('#connStatus').addClass('btn-outline-success').removeClass('btn-outline-danger blinkContent').html('<i class="fa fa-link"></i>&nbsp;CONNECTED');
 
-    $('#socket-id').html('&nbsp;CONN->&nbsp;<span class="holoContrast">' + socket.id + '</span>');
+    $('#socket-id').html('<span class="holoContrast">InfansExNihilo (89%)</span><br/><span class="holoContrast">HÉRITAGE (11%)</span><br/><span class="text-muted">Ascendancy (disabled)<span><br/><span class="text-muted">ProviDNC (disabled)<span>');
     countClientsSelector.show();
     $('#notificationTitleSmall').find('h2').html('Waiting for broadcasts ...');
 
