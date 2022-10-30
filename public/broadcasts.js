@@ -59,7 +59,8 @@ var bcportalincdanger = new broadcastObj("Unscheduled Incoming Portal Activation
 var bcportalout = new broadcastObj("Portal Outgoing","bcportalout",3,"17500","0");
 
 /* Overlord-only */
-var bctransmission = new broadcastObj("Standby","bctransmission",5,"0","0");
+var bctransmission = new broadcastObj("Incoming Transmission","bctransmission",5,"0","0");
+var bctransmissionend = new broadcastObj("Incoming Transmission","bctransmissionend",10,"17500","0");
 var bclowpower = new broadcastObj("POWER SUPPLY WARNING","bclowpower",8,"0","gray");
 var bcreactorcrit = new broadcastObj("Reactor Critical","bcreactorcrit",9,"0","attack");
 var bchackattack = new broadcastObj("Security Breach","bchackattack",9,"0","0");
