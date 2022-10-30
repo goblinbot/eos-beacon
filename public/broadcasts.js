@@ -31,7 +31,9 @@ var bcdishes = new broadcastObj("Dishes reminder","bcdishes",2,"0","0");
 var bctempleservice = new broadcastObj("Tachar Service","bctempleservice",2,"600000","0");
 var bcmedical = new broadcastObj("Blood Donation Request","bcmedical",2,"0","0");
 var bcmeeting = new broadcastObj("Meeting in Main","bcmeeting",4,"0","0");
-var bcblood   = new broadcastObj("Blood Donation Demand","bcblood",4,"0","0");
+var bcblood = new broadcastObj( "Blood Donation Demand", "bcblood", 4, "0", "0" );
+var bcmedbay = new broadcastObj("Medical Personel to Medbay","bcmedbay",6,"0","0");
+var bcmedicalsupport = new broadcastObj("Insufficient Medical Staff","bcmedicalsupport",6,"0","0");
 /*var bcMissionOut   = new broadcastObj("STRATI.OS.PUSH","bcMissionOut",5,"0","0");*/
 
 /* reminders */
@@ -57,7 +59,8 @@ var bcportalincdanger = new broadcastObj("Unscheduled Incoming Portal Activation
 var bcportalout = new broadcastObj("Portal Outgoing","bcportalout",3,"17500","0");
 
 /* Overlord-only */
-var bctransmission = new broadcastObj("Standby","bctransmission",5,"0","0");
+var bctransmission = new broadcastObj("Incoming Transmission","bctransmission",5,"0","0");
+var bctransmissionend = new broadcastObj("Incoming Transmission","bctransmissionend",10,"17500","0");
 var bclowpower = new broadcastObj("POWER SUPPLY WARNING","bclowpower",8,"0","gray");
 var bcreactorcrit = new broadcastObj("Reactor Critical","bcreactorcrit",9,"0","attack");
 var bchackattack = new broadcastObj("Security Breach","bchackattack",9,"0","0");
