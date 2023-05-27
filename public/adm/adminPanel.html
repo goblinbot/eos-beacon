@@ -52,23 +52,12 @@
     <button class="btn btn-ui btn-ui-holo" onclick="sendBroadCast(bctempleservice);">
       <i class="fa fa-bell"></i>&nbsp;TACHAR SERVICE
     </button>
-    <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcmedical);">
-      <i class="fa fa-medkit"></i>&nbsp;REQUEST BLOOD DONATIONS
-    </button>
-
   </div>
   <div class="whitespace">&nbsp;</div>
   <div class="col-xs-12">
     <p>Class: Medium priority.</p>
-
-    <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcblood);">
-      <i class="fa fa-medkit"></i>&nbsp;DEMAND BLOOD DONATIONS
-    </button>
     <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcmedbay);">
       <i class="fa fa-medkit"></i>&nbsp;MEDICAL PERSONEL AT MEDBAY
-    </button>
-    <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcmedicalsupport);">
-      <i class="fa fa-medkit"></i>&nbsp;NOT ENOUGH DOCTORS
     </button>
   </div>
 
@@ -343,7 +332,7 @@
     <button class="btn btn-lg btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcportalout);">
       <i class="fa fa-cloud-upload"></i>&nbsp;PORTAL OUTGOING
     </button>
-
+<!--
     <p>Broadcasts with Voice:</p>
 
     <button class="btn btn-lg btn-ui btn-ui-holo" onclick="sendBroadCast(bcportalinc_voice);">
@@ -355,7 +344,7 @@
     <button class="btn btn-lg btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcportalout_voice);">
       <i class="fa fa-comment"></i> <i class="fa fa-cloud-upload"></i>&nbsp;PORTAL OUTGOING
     </button>
-
+-->
     <p>&nbsp;</p>
 
   </div>
@@ -381,6 +370,36 @@
     </div>
 
 
+  </div>
+
+</div>
+
+<!-- TAB: MEDICAL CONTROL, ACCESSIBLE BY RANK 2 AND 4 ONLY. -->
+<div id="admMEDICAL" class="adm-tab default-border hidden col-xs-12">
+  <h2><i class="fa fa-terminal"></i>&nbsp;Medical panel</h2>
+
+  <hr/>
+
+  <div class="col-xs-12">
+    <button class="btn btn-outline-success btn-lg btn-block" onclick="sendBroadCast(bcreset);">
+      <i class="fa fa-check"></i>&nbsp;CLEAR BROADCASTS
+    </button>
+    <br/><br/>
+  </div>
+
+    <div class="col-xs-12">
+      <button class="btn btn-ui btn-ui-holo-alt" onclick="sendBroadCast(bcmedical);">
+        <i class="fa fa-medkit"></i>&nbsp;REQUEST BLOOD DONATIONS
+      </button>
+      <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcblood);">
+        <i class="fa fa-medkit"></i>&nbsp;DEMAND BLOOD DONATIONS
+      </button>
+      <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcmedbay);">
+        <i class="fa fa-medkit"></i>&nbsp;MEDICAL PERSONEL AT MEDBAY
+      </button>
+      <button class="btn btn-ui btn-ui-holo-red" onclick="sendBroadCast(bcmedicalsupport);">
+        <i class="fa fa-medkit"></i>&nbsp;NOT ENOUGH DOCTORS
+      </button>
   </div>
 
 </div>

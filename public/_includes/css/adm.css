@@ -111,6 +111,10 @@ html {
   margin: 1.2rem;
 }
 
+.adm-container .adm-tab#admMEDICAL .btn {
+  margin: 1.2rem;
+}
+
 @media (max-width: 990px) {
   .adm-container .adm-tab .btn {
     width: 100%;
