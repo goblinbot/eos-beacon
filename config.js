@@ -28,8 +28,11 @@ add entries here to make legit accounts, bound to a five-digit code.
 the second digit, which is '1' in our example, determines the user 'rank'. The higher, the better, going from 1 to 4.
 a full admin/gamemaster would be:
   valid_accounts.push(new accountObj('00451','4'));
+at this time, 1 = general use, 2 = medical, 3 = customs, 4 = admin
+
 */
 const valid_accounts = [
+  new accountObj('10100', '1'),
   new accountObj('61021', '2'),
   new accountObj('15101', '3'),
   new accountObj('34471', '4'),

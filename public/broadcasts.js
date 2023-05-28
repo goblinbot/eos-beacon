@@ -58,6 +58,10 @@ var bcportalinc = new broadcastObj("Scheduled Incoming Portal Activation","bcpor
 var bcportalincdanger = new broadcastObj("Unscheduled Incoming Portal Activation","bcportalincdanger",3,"30000","0");
 var bcportalout = new broadcastObj("Portal Outgoing","bcportalout",3,"17500","0");
 
+var bcportalinc_voice = new broadcastObj("Scheduled Incoming Portal Activation","bcportalinc_voice",3,"30000","0");
+var bcportalincdanger_voice = new broadcastObj("Unscheduled Incoming Portal Activation","bcportalincdanger_voice",3,"30000","0");
+var bcportalout_voice = new broadcastObj("Portal Outgoing","bcportalout_voice",3,"17500","0");
+
 /* Overlord-only */
 var bctransmission = new broadcastObj("Incoming Transmission","bctransmission",5,"0","0");
 var bctransmissionend = new broadcastObj("Incoming Transmission","bctransmissionend",10,"17500","0");
