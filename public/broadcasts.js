@@ -38,6 +38,7 @@ var bcmedicalsupport = new broadcastObj("Insufficient Medical Staff","bcmedicals
 
 /* reminders */
 var bchydrate = new broadcastObj( "Hydration Reminder", "bchydrate", 1, "600000", "0" );
+var bcsunscreen = new broadcastObj( "Sunscreen Reminder", "bcsunscreen", 1, "600000", "0" );
 var bcthankyou = new broadcastObj( "Kindness Reminder", "bcthankyou", 1, "600000", "0" );
 var bctalon = new broadcastObj( "Talon Reminder", "bctalon", 1, "600000", "0" );
 var bcmorning = new broadcastObj( "Morning Reminder", "bcmorning", 1, "3600000", "0" );

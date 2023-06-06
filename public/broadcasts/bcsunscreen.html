@@ -1,0 +1,104 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 text-center content">
+
+      <div class="whitespace"></div>
+      <div class="whitespace"></div>
+
+      <div class="col-xs-12 col-md-8 col-md-push-2 col-md-pull-2">
+        <div class="hexagon-wrapper">
+          <div class="hexagon block-medium">
+            <h3 class="dark-color" style="font-size:18vh; margin-top:-2vh;">
+              <span class="pulse sun"><i class="fa fa-sun-o"></i></span>
+            </h3>
+            <h3 class="holoContrast" style="font-size:18vh; margin-top:-2vh;">
+              <span class="sun"><i class="fa fa-sun-o"></i></span>
+            </h3>
+          </div>
+        </div>
+
+        <div class="whitespace"></div>
+
+        <div style="border-bottom: 1px solid #FF9933; padding-bottom:0.8rem;">
+          <h2 class="text-white">Significant amount of <span class="holoContrast">ultraviolet radiation</span> outside.</h2>
+        </div>
+
+        <div class="whitespace"></div>
+
+        <p class="text-lg">Remember to liberally apply sunblock or sunscreen</p>
+        <p class="text-lg">and take appropriate heat safety measures.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>generateAudioPlayer('notice2.ogg','1');</script>
+
+<style>
+.hexagon-wrapper {
+  text-align: center;
+  position:relative;
+  display: inline-block;
+  top:6vh;
+  width:30vh;
+  height:30vh;
+}
+.hexagon {
+  height: calc(100% * 0.57735);
+  width: 100%;
+  display: inline-block;
+ 
+}
+.hexagon:before,
+.hexagon:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: inherit;
+  height: inherit;
+  width: inherit;
+  content: '';
+  z-index: -2;
+}
+.hexagon:before {
+  transform: rotateZ(60deg);
+}
+.hexagon:after {
+  transform: rotateZ(-60deg);
+}
+.sun {
+  position:absolute;
+  left:21%;
+  top:-7.5%;
+}
+.pulse {
+  opacity: 0;
+  animation: pulsing-out 2s infinite ease-in-out;
+}
+
+@keyframes pulsing-out {
+  0% {
+    transform: translate(0px,-3.1px) scale(0.95);
+    opacity: 0;
+  }
+  35% {
+    opacity:1;
+  }
+  50% {
+    transform: translate(0px,-3.1px)  scale(1.25);
+    opacity:0;
+  }
+  65% {
+    transform: translate(0px,-3.1px)  scale(1.6);
+    opacity:0;
+  }
+  80% {
+    opacity:.34;
+  }
+  100% {
+    transform: translate(0px,-3.1px)  scale(1.95);
+    opacity: 0;
+  }
+}
+</style>
