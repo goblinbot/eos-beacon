@@ -19,11 +19,12 @@ const applicationState = {
   alertLevel: default_security_level,
   lastBC: 'bcdefault',
   portalStatus: 'ok',
+  orbStatus: 'active',
 };
 
 /* INITIALISING THE APP */
 
-express.static.mime.define({'audio/ogg;codec=opus': ['opus']});
+express.static.mime.define({ 'audio/ogg;codec=opus': ['opus'] });
 
 app.use(express.static('public'));
 app.use(express.static('_includes'));
@@ -43,17 +44,17 @@ http.listen(port, () => {
   console.log('-------------------------');
   console.log(
     'THANK YOU FOR USING ' +
-      globalSettings.cfg.appname +
-      ' INFORMATION & BROADCASTING SERVICES'
+    globalSettings.cfg.appname +
+    ' INFORMATION & BROADCASTING SERVICES'
   );
 });
 
 /* pathing / routing */
 app.get('/', (req, res) =>
-  res.sendFile('index.html', {root: __dirname + '/public/'})
+  res.sendFile('index.html', { root: __dirname + '/public/' })
 );
 app.get('*', (req, res) =>
-  res.sendFile('404.html', {root: __dirname + '/public/'})
+  res.sendFile('404.html', { root: __dirname + '/public/' })
 );
 
 const sanitizeUserString = (str) =>
@@ -72,16 +73,26 @@ io.on('connection', (socket) => {
   setTimeout(() => socket.emit('startConfig', globalSettings.data), 1000);
 
   socket.on('updateSecurity', (input) => {
-    applicationState['alertLevel'] = sanitizeUserString(input);
+    const _str = sanitizeUserString(input);
+    applicationState['alertLevel'] = _str;
     syncAppState();
-    console.log('[secLVL] level => ' + input);
+    console.log('[secLVL] level => ' + _str);
   });
 
   socket.on('updatePortalStatus', (input) => {
-    applicationState['portalStatus'] = sanitizeUserString(input);
+    const _str = sanitizeUserString(input);
+    applicationState['portalStatus'] = _str;
     syncAppState();
     io.emit('portalfrontend');
-    console.log('[portal] status => ' + input);
+    console.log('[portal] status => ' + _str);
+  });
+
+  socket.on('updateOrbStatus', (input) => {
+    const _str = sanitizeUserString(input);
+    applicationState.orbStatus = _str;
+    syncAppState();
+    io.emit('orbDivFlash');
+    console.log('[orb] status => ' + _str);
   });
 
   // FORCE RESET ::
@@ -209,9 +220,9 @@ io.on('connection', (socket) => {
       '-' +
       new Date().toISOString().substring(11, 23).replace(/[:.]/g, '');
 
-    fs.mkdir(pa_folder, {recursive: true}, function (err) {
+    fs.mkdir(pa_folder, { recursive: true }, function (err) {
       if (err) throw err;
-      fs.truncate(pa_folder + pa_name + '.opus', function (err) {});
+      fs.truncate(pa_folder + pa_name + '.opus', function (err) { });
     });
   });
   socket.on('uploadPA', function (data) {

@@ -15,7 +15,6 @@
     -moz-transform: rotate(180deg);
   }
 }
-
 @keyframes circleSpin {
   0% {
     transform: rotate(0deg);
@@ -27,7 +26,6 @@
     transform: rotate(360deg);
   }
 }
-
 @-moz-keyframes circleSpin {
   0% {
     transform: rotate(0deg);
@@ -39,7 +37,6 @@
     transform: rotate(360deg);
   }
 }
-
 @-webkit-keyframes circleSpin {
   0% {
     transform: rotate(0deg);
@@ -51,7 +48,6 @@
     transform: rotate(360deg);
   }
 }
-
 @-webkit-keyframes expandBlock {
   0% {
     -webkit-transform: scale(0);
@@ -66,7 +62,6 @@
     opacity: 1;
   }
 }
-
 @-moz-keyframes expandBlock {
   0% {
     -moz-transform: scale(0);
@@ -81,7 +76,6 @@
     opacity: 1;
   }
 }
-
 @keyframes expandBlock {
   0% {
     transform: scale(0);
@@ -96,10 +90,9 @@
     opacity: 1;
   }
 }
-
 @-webkit-keyframes blinkText {
   0% {
-    opacity: 1.0;
+    opacity: 1;
   }
   50% {
     opacity: 0.7;
@@ -111,13 +104,12 @@
     opacity: 0.7;
   }
   100% {
-    opacity: 1.0;
+    opacity: 1;
   }
 }
-
 @-moz-keyframes blinkText {
   0% {
-    opacity: 1.0;
+    opacity: 1;
   }
   50% {
     opacity: 0.7;
@@ -129,13 +121,12 @@
     opacity: 0.7;
   }
   100% {
-    opacity: 1.0;
+    opacity: 1;
   }
 }
-
 @keyframes blinkText {
   0% {
-    opacity: 1.0;
+    opacity: 1;
   }
   50% {
     opacity: 0.7;
@@ -147,10 +138,9 @@
     opacity: 0.7;
   }
   100% {
-    opacity: 1.0;
+    opacity: 1;
   }
 }
-
 @-webkit-keyframes showHidden {
   0% {
     visibility: hidden;
@@ -159,7 +149,6 @@
     visibility: visible;
   }
 }
-
 @-moz-keyframes showHidden {
   0% {
     visibility: hidden;
@@ -168,7 +157,6 @@
     visibility: visible;
   }
 }
-
 @keyframes showHidden {
   0% {
     visibility: hidden;
@@ -177,7 +165,6 @@
     visibility: visible;
   }
 }
-
 @keyframes pulseDots {
   0% {
     transform: scale(0);
@@ -200,3 +187,5 @@
     opacity: 1;
   }
 }
+
+/*# sourceMappingURL=keyframes.css.map */
