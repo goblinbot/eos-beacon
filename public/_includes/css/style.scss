@@ -246,7 +246,7 @@ p.text-lg, .text-lg {
         left: 0;
         right: 0;
         top: 0;
-        bottom: ($defaultpadding * 2);
+        bottom: ($defaultpadding * 1.5);
       }
 
       .block {
@@ -274,19 +274,17 @@ p.text-lg, .text-lg {
 
       }
 
-      #portalstatus {
-        padding: $defaultpadding;
+      #portalstatus, #orbstatus {
         position: relative;
         display: flex;
-        margin-top: $defaultpadding;
+        align-items: center;
+        margin-top: 4px;
+        padding: $defaultpadding;
         border-radius: 5px;
         transition: 0.4s;
 
-        .portalstatus-icon .fa {
+        .fa {
           font-size: 48px;
-          margin : {
-            top: 1.2rem;
-          }
         }
 
         .left {
@@ -528,7 +526,7 @@ p.text-lg, .text-lg {
 @keyframes glitch-anim-1 {
   $steps: 20;
   @for $i from 0 through $steps {
-    #{percentage($i*(1/$steps))} {
+    #{percentage($i*($steps))} {
       clip: rect(random(100)+px, 9999px, random(100)+px, 0);
     }
   }
@@ -536,7 +534,7 @@ p.text-lg, .text-lg {
 @keyframes glitch-anim-2 {
   $steps: 20;
   @for $i from 0 through $steps {
-    #{percentage($i*(1/$steps))} {
+    #{percentage($i*($steps))} {
       clip: rect(random(100)+px, 9999px, random(100)+px, 0);
     }
   }

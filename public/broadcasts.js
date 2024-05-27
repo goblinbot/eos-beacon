@@ -22,12 +22,12 @@ function broadcastObj(title, file, priority, duration, colorscheme) {
 var bcdefault = new broadcastObj("Standby","bcdefault",1,"0","0");
 var bcreset = new broadcastObj("Standby","bcdefault",99,"0","0");
 
-/* keuken crew */
+/* kitchen crew */
 var bclunch = new broadcastObj("Lunch announcement","bclunch",2,"0","0");
 var bcdinner = new broadcastObj("Dinner announcement","bcdinner",2,"0","0");
 var bcdishes = new broadcastObj("Dishes reminder","bcdishes",2,"0","0");
 
-/* andere PSA's */
+/* other PSA's */
 var bctempleservice = new broadcastObj("Tachar Service","bctempleservice",2,"600000","0");
 var bcmedical = new broadcastObj("Blood Donation Request","bcmedical",2,"0","0");
 var bcmeeting = new broadcastObj("Meeting in Main","bcmeeting",4,"0","0");
@@ -46,6 +46,10 @@ var bcviral = new broadcastObj("Unknown Viral Pathogens detected","bcviral",8,"0
 var bcbiohazard = new broadcastObj("Environmental Hazard detected","bcbiohazard",8,"0","hazard");
 var bcpsyhazard = new broadcastObj("Psy-hazard detected","bcpsyhazard",8,"0","psyhazard");
 var bcbomb = new broadcastObj("Bomb Alert","bcbomb",8,"0","hazard");
+
+/* Shield-Orb */
+var bcorbactivate = new broadcastObj("Orb reactivation", "bcorbactivate", 8, "45000", "0");
+var bcorbcooldown = new broadcastObj("Orb Cooldown phase", "bcorbcooldown", 8, "0", "psyhazard");
 
 /* confirm hostiles */
 var bchostileoutside = new broadcastObj("Enemy Contact","bchostileoutside",8,"0","0");

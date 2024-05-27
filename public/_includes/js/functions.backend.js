@@ -17,38 +17,45 @@ function cpanelStatus(message) {
   }
 }
 
+function flashAdminTabs() {
+  const FlashFn = FlashBlocks;
+
+  FlashFn('.adm-tab');
+  setTimeout(function(){
+    FlashFn('.adm-tab');
+  },1200);
+}
+
 function updateSecurity(selector) {
-  var newSecLevel = $('#'+selector).val();
-  var FlashFunctie = FlashBlocks;
+  const newSecLevel = $('#'+selector).val();
 
   if(newSecLevel && newSecLevel != "") {
-
     socket.emit( 'updateSecurity', newSecLevel );
-    FlashFunctie('.adm-tab');
-    setTimeout(function(){
-      FlashFunctie('.adm-tab');
-    },1200);
-
+    flashAdminTabs();
   }
 
 }
 
 function updatePortalStatus(selector) {
-  var newStatus = $('#'+selector).val();
-  var FlashFunctie = FlashBlocks;
+  const newStatus = $('#'+selector).val();
 
   if(newStatus && newStatus != "") {
-
     socket.emit( 'updatePortalStatus', newStatus );
-    FlashFunctie('.adm-tab');
-    setTimeout(function(){
-      FlashFunctie('.adm-tab');
-    },1200);
-
+    flashAdminTabs();
   }
+} 
 
+function updateOrbStatus(newStatus) {
+  if(newStatus && newStatus != "") {
+    socket.emit( 'updateOrbStatus', newStatus );
+    flashAdminTabs();
+  }
 }
 
+function updateOrbStatusManually(selector) {
+  const newStatus = $('#'+selector).val();
+  updateOrbStatus(newStatus)
+}
 
 function broadcastAudio(data) {
   socket.emit('broadcastAudio', data);
