@@ -219,7 +219,8 @@ body {
   font-family: "Titillium-Regular", Helvetica, sans-serif;
 }
 
-video, .video-js {
+video,
+.video-js {
   width: 100% !important;
   min-height: 60vh !important;
   max-height: 65.5vh;
@@ -234,7 +235,8 @@ video, .video-js {
   font-weight: bold;
 }
 
-p.text-lg, .text-lg {
+p.text-lg,
+.text-lg {
   font-size: 133%;
 }
 
@@ -307,7 +309,13 @@ p.text-lg, .text-lg {
 .topHeader .text-inline h3 {
   font-size: 1.8rem;
 }
-.topHeader .text-inline h1, .topHeader .text-inline h2, .topHeader .text-inline h3, .topHeader .text-inline h4, .topHeader .text-inline h5, .topHeader .text-inline h6, .topHeader .text-inline p {
+.topHeader .text-inline h1,
+.topHeader .text-inline h2,
+.topHeader .text-inline h3,
+.topHeader .text-inline h4,
+.topHeader .text-inline h5,
+.topHeader .text-inline h6,
+.topHeader .text-inline p {
   display: inline;
   margin-top: 0.8rem;
   margin-right: 0.8rem;
@@ -337,16 +345,24 @@ p.text-lg, .text-lg {
   margin-left: 0;
   margin-right: 0;
 }
-.headerblock h1, .headerblock h2, .headerblock h3 {
+.headerblock h1,
+.headerblock h2,
+.headerblock h3 {
   font-size: 1.8rem;
   margin-top: 0.4rem;
   margin-bottom: 0.4rem;
 }
-.headerblock h1.bold, .headerblock h1 .bold, .headerblock h2.bold, .headerblock h2 .bold, .headerblock h3.bold, .headerblock h3 .bold {
+.headerblock h1.bold,
+.headerblock h1 .bold,
+.headerblock h2.bold,
+.headerblock h2 .bold,
+.headerblock h3.bold,
+.headerblock h3 .bold {
   font-family: "Titillium-Bold", Helvetica, sans-serif;
 }
 
-#loadingScreen .flavor, #loadingScreen .middle {
+#loadingScreen .flavor,
+#loadingScreen .middle {
   margin-left: auto;
   margin-right: auto;
   margin-top: 10rem;
@@ -364,34 +380,40 @@ p.text-lg, .text-lg {
   margin-top: -3.2rem;
 }
 
-.rightflavor, .bottomflavor {
+.rightflavor,
+.bottomflavor {
   visibility: hidden;
   -webkit-animation: showHidden 0.3s linear;
   -moz-animation: showHidden 0.3s linear;
   animation: showHidden 0.3s linear;
   animation-fill-mode: forwards;
 }
-.rightflavor.load2, .bottomflavor.load2 {
+.rightflavor.load2,
+.bottomflavor.load2 {
   animation-delay: 0.3s;
   -moz-animation-delay: 0.3s;
   -webkit-animation-delay: 0.3s;
 }
-.rightflavor.load3, .bottomflavor.load3 {
+.rightflavor.load3,
+.bottomflavor.load3 {
   animation-delay: 0.6s;
   -moz-animation-delay: 0.6s;
   -webkit-animation-delay: 0.6s;
 }
-.rightflavor.load4, .bottomflavor.load4 {
+.rightflavor.load4,
+.bottomflavor.load4 {
   animation-delay: 1s;
   -moz-animation-delay: 1s;
   -webkit-animation-delay: 1s;
 }
-.rightflavor.load5, .bottomflavor.load5 {
+.rightflavor.load5,
+.bottomflavor.load5 {
   animation-delay: 1.3s;
   -moz-animation-delay: 1.3s;
   -webkit-animation-delay: 1.3s;
 }
-.rightflavor.load6, .bottomflavor.load6 {
+.rightflavor.load6,
+.bottomflavor.load6 {
   animation-delay: 1.5s;
   -moz-animation-delay: 1.5s;
   -webkit-animation-delay: 1.5s;
@@ -417,19 +439,25 @@ p.text-lg, .text-lg {
     padding: 1px;
   }
 }
-#main .middle .left-bar .block h1, #main .middle .left-bar .block h4, #main .middle .left-bar .block p {
+#main .middle .left-bar .block h1,
+#main .middle .left-bar .block h4,
+#main .middle .left-bar .block p {
   margin: 1.6rem;
 }
 @media (max-width: 900px) {
-  #main .middle .left-bar .block h1, #main .middle .left-bar .block h4, #main .middle .left-bar .block p {
+  #main .middle .left-bar .block h1,
+  #main .middle .left-bar .block h4,
+  #main .middle .left-bar .block p {
     margin: 0.8rem;
   }
 }
-#main .middle .left-bar .block #clock, #main .middle .left-bar .block h1#clock {
+#main .middle .left-bar .block #clock,
+#main .middle .left-bar .block h1#clock {
   font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif;
   font-size: 30px;
 }
-#main .middle .left-bar #portalstatus, #main .middle .left-bar #orbstatus {
+#main .middle .left-bar #portalstatus,
+#main .middle .left-bar #orbstatus {
   position: relative;
   display: flex;
   align-items: center;
@@ -438,23 +466,34 @@ p.text-lg, .text-lg {
   border-radius: 5px;
   transition: 0.4s;
 }
-#main .middle .left-bar #portalstatus .fa, #main .middle .left-bar #orbstatus .fa {
-  font-size: 48px;
+#main .middle .left-bar #portalstatus .fa,
+#main .middle .left-bar #orbstatus .fa {
+  font-size: 4.8rem;
 }
-#main .middle .left-bar #portalstatus .left, #main .middle .left-bar #orbstatus .left {
+@media (max-width: 768px) {
+  #main .middle .left-bar #portalstatus .fa,
+  #main .middle .left-bar #orbstatus .fa {
+    font-size: 3.6rem;
+  }
+}
+#main .middle .left-bar #portalstatus .left,
+#main .middle .left-bar #orbstatus .left {
   padding-left: 0.8rem;
   padding-right: 0.8rem;
   flex: 1;
 }
-#main .middle .left-bar #portalstatus .right, #main .middle .left-bar #orbstatus .right {
+#main .middle .left-bar #portalstatus .right,
+#main .middle .left-bar #orbstatus .right {
   flex: 5;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
 }
-#main .middle .left-bar #portalstatus .right h4, #main .middle .left-bar #orbstatus .right h4 {
+#main .middle .left-bar #portalstatus .right h4,
+#main .middle .left-bar #orbstatus .right h4 {
   font-weight: bold;
 }
-#main .middle .left-bar #portalstatus .right p, #main .middle .left-bar #orbstatus .right p {
+#main .middle .left-bar #portalstatus .right p,
+#main .middle .left-bar #orbstatus .right p {
   font-weight: bold;
 }
 #main .middle .middle-bar {
@@ -521,7 +560,9 @@ p.text-lg, .text-lg {
   overflow: hidden;
   padding: 1.5rem;
 }
-#main .footer .item .block .content h1, #main .footer .item .block .content h2, #main .footer .item .block .content h3 {
+#main .footer .item .block .content h1,
+#main .footer .item .block .content h2,
+#main .footer .item .block .content h3 {
   margin: 0 0 4px 4px;
 }
 #main .footer .item .bottom-right {
@@ -632,7 +673,8 @@ p.text-lg, .text-lg {
   margin: 0 auto;
 }
 
-.glitch::before, .glitch::after {
+.glitch::before,
+.glitch::after {
   content: attr(data-text);
   position: absolute;
   top: 0;
@@ -655,132 +697,132 @@ p.text-lg, .text-lg {
 
 @keyframes glitch-anim-1 {
   0% {
-    clip: rect(17px, 9999px, 83px, 0);
+    clip: rect(67px, 9999px, 79px, 0);
   }
   2000% {
-    clip: rect(94px, 9999px, 10px, 0);
+    clip: rect(14px, 9999px, 93px, 0);
   }
   4000% {
-    clip: rect(63px, 9999px, 81px, 0);
+    clip: rect(74px, 9999px, 68px, 0);
   }
   6000% {
-    clip: rect(68px, 9999px, 80px, 0);
+    clip: rect(68px, 9999px, 7px, 0);
   }
   8000% {
-    clip: rect(77px, 9999px, 36px, 0);
+    clip: rect(15px, 9999px, 62px, 0);
   }
   10000% {
-    clip: rect(2px, 9999px, 60px, 0);
+    clip: rect(91px, 9999px, 49px, 0);
   }
   12000% {
-    clip: rect(40px, 9999px, 94px, 0);
+    clip: rect(51px, 9999px, 7px, 0);
   }
   14000% {
-    clip: rect(30px, 9999px, 83px, 0);
+    clip: rect(45px, 9999px, 80px, 0);
   }
   16000% {
-    clip: rect(43px, 9999px, 47px, 0);
+    clip: rect(49px, 9999px, 41px, 0);
   }
   18000% {
-    clip: rect(50px, 9999px, 66px, 0);
+    clip: rect(55px, 9999px, 76px, 0);
   }
   20000% {
-    clip: rect(98px, 9999px, 32px, 0);
+    clip: rect(35px, 9999px, 62px, 0);
   }
   22000% {
-    clip: rect(51px, 9999px, 26px, 0);
+    clip: rect(53px, 9999px, 52px, 0);
   }
   24000% {
-    clip: rect(63px, 9999px, 91px, 0);
+    clip: rect(89px, 9999px, 67px, 0);
   }
   26000% {
-    clip: rect(84px, 9999px, 99px, 0);
+    clip: rect(63px, 9999px, 28px, 0);
   }
   28000% {
-    clip: rect(46px, 9999px, 4px, 0);
+    clip: rect(86px, 9999px, 88px, 0);
   }
   30000% {
-    clip: rect(20px, 9999px, 63px, 0);
+    clip: rect(55px, 9999px, 5px, 0);
   }
   32000% {
-    clip: rect(24px, 9999px, 6px, 0);
+    clip: rect(24px, 9999px, 32px, 0);
   }
   34000% {
-    clip: rect(68px, 9999px, 94px, 0);
+    clip: rect(79px, 9999px, 41px, 0);
   }
   36000% {
-    clip: rect(48px, 9999px, 8px, 0);
+    clip: rect(62px, 9999px, 95px, 0);
   }
   38000% {
-    clip: rect(22px, 9999px, 20px, 0);
+    clip: rect(77px, 9999px, 26px, 0);
   }
   40000% {
-    clip: rect(70px, 9999px, 18px, 0);
+    clip: rect(100px, 9999px, 83px, 0);
   }
 }
 @keyframes glitch-anim-2 {
   0% {
-    clip: rect(92px, 9999px, 56px, 0);
+    clip: rect(32px, 9999px, 38px, 0);
   }
   2000% {
-    clip: rect(100px, 9999px, 62px, 0);
+    clip: rect(2px, 9999px, 35px, 0);
   }
   4000% {
-    clip: rect(90px, 9999px, 52px, 0);
+    clip: rect(58px, 9999px, 69px, 0);
   }
   6000% {
-    clip: rect(19px, 9999px, 30px, 0);
+    clip: rect(55px, 9999px, 9px, 0);
   }
   8000% {
-    clip: rect(61px, 9999px, 96px, 0);
+    clip: rect(9px, 9999px, 68px, 0);
   }
   10000% {
-    clip: rect(47px, 9999px, 57px, 0);
+    clip: rect(98px, 9999px, 4px, 0);
   }
   12000% {
-    clip: rect(64px, 9999px, 75px, 0);
+    clip: rect(29px, 9999px, 26px, 0);
   }
   14000% {
-    clip: rect(65px, 9999px, 10px, 0);
+    clip: rect(66px, 9999px, 57px, 0);
   }
   16000% {
-    clip: rect(32px, 9999px, 81px, 0);
+    clip: rect(70px, 9999px, 36px, 0);
   }
   18000% {
-    clip: rect(22px, 9999px, 99px, 0);
+    clip: rect(86px, 9999px, 50px, 0);
   }
   20000% {
-    clip: rect(68px, 9999px, 44px, 0);
+    clip: rect(49px, 9999px, 30px, 0);
   }
   22000% {
-    clip: rect(92px, 9999px, 72px, 0);
+    clip: rect(90px, 9999px, 23px, 0);
   }
   24000% {
-    clip: rect(47px, 9999px, 81px, 0);
+    clip: rect(36px, 9999px, 13px, 0);
   }
   26000% {
-    clip: rect(34px, 9999px, 7px, 0);
+    clip: rect(75px, 9999px, 20px, 0);
   }
   28000% {
-    clip: rect(23px, 9999px, 82px, 0);
+    clip: rect(82px, 9999px, 56px, 0);
   }
   30000% {
-    clip: rect(19px, 9999px, 25px, 0);
+    clip: rect(71px, 9999px, 78px, 0);
   }
   32000% {
-    clip: rect(54px, 9999px, 19px, 0);
+    clip: rect(85px, 9999px, 54px, 0);
   }
   34000% {
-    clip: rect(100px, 9999px, 86px, 0);
+    clip: rect(23px, 9999px, 26px, 0);
   }
   36000% {
-    clip: rect(39px, 9999px, 15px, 0);
+    clip: rect(46px, 9999px, 45px, 0);
   }
   38000% {
-    clip: rect(45px, 9999px, 59px, 0);
+    clip: rect(47px, 9999px, 14px, 0);
   }
   40000% {
-    clip: rect(67px, 9999px, 88px, 0);
+    clip: rect(12px, 9999px, 15px, 0);
   }
 }
 /* extra buttons */
@@ -887,7 +929,13 @@ p.text-lg, .text-lg {
 .titleblock h3 {
   font-size: 1.8rem;
 }
-.titleblock h1, .titleblock h2, .titleblock h3, .titleblock h4, .titleblock h5, .titleblock h6, .titleblock p {
+.titleblock h1,
+.titleblock h2,
+.titleblock h3,
+.titleblock h4,
+.titleblock h5,
+.titleblock h6,
+.titleblock p {
   display: inline;
   margin-top: 0.8rem;
   margin-right: 0.8rem;
