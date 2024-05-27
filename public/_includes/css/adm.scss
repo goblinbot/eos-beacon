@@ -141,6 +141,13 @@ html {
       }
     }
 
+    &#admMEDICAL {
+      .btn {
+        width: 100%;
+        margin: ($defaultpadding * 1.5);
+      }
+    }
+
     // mobile fix
     @media(max-width: 990px) {
       .btn {

@@ -1,0 +1,139 @@
+<style>
+
+#notificationContainer .container-fluid {
+  width: 100%;
+  min-height: 66vh;
+
+  transition: 0.7s;
+  opacity: 0.1;
+
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  grid-template-rows: 66px 1fr 1fr;
+  grid-gap: 16px 16px;
+  grid-template-areas:
+    "Gblank Gblank Gvert"
+    "Galert Galert Gvert"
+    "Gmsg Gmsg Gvert";
+}
+
+#notificationContainer .container-fluid .item {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  padding: 15px;
+}
+
+.Gblank {
+  grid-area: Gblank;
+}
+
+.Gvert {
+  grid-area: Gvert;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  vertical-align: middle;
+}
+
+.Gmsg {
+  grid-area: Gmsg;
+}
+
+.Galert {
+  grid-area: Galert;
+  background: #042A34;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+@media(max-width: 990px) {
+  #notificationContainer .container-fluid {
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr 60px 15px;
+    grid-gap: 8px 8px;
+    grid-template-areas:
+      "Galert"
+      "Gmsg"
+      "Gblank"
+      "Gvert";
+  }
+
+  .Gvert {
+    display: none;
+  }
+}
+</style>
+
+
+<div class="container-fluid">
+
+  <div class="item Gvert">
+
+    <div class="rightflavor load1">
+      <div class="col-xs-12">//Traffic Control closed transmission</div>
+      <div class="col-xs-9">::Event:Comms:Widenet::</div>
+      <div class="col-xs-3">CDCR.931/82G3</div>
+    </div>
+
+    <div class="rightflavor load2">
+      <div class="col-xs-12">//Log Event Start</div>
+      <div class="col-xs-12">::Widenet:Handshake:FTGT-GEOK-TWGI-GT26R::</div>
+      <div class="col-xs-12">::System:Timecheck:1200.01267:ReComp:0.134::</div>
+    </div>
+
+    <div class="rightflavor load3">
+      <div class="col-xs-12">//Handshake FINISHED </div>
+      <div class="col-xs-12">::Validate:::CheckCheck::</div>
+      <div class="col-xs-12">::Security:Validate:<span class="holoContrast">######################</span>::</div>
+      <div class="col-xs-12">//System reports status as: ready, inactive, closed </div>
+      <div class="col-xs-12">::Status:Confirm:A1:G3:T7:K2:W6::</div>
+      <div class="col-xs-12">::Status:CheckReturn::</div>
+    </div>
+
+
+    <div class="rightflavor load5">
+      <div class="col-xs-12">//System reports status as: ready, inactive, closed</div>
+    </div>
+
+    <div class="rightflavor load6">
+
+      <div class="col-xs-12">//Omitting</div>
+
+      <div class="col-xs-9">$ mmi_translate!CLOSE :</div>
+      <div class="col-xs-3">T5.474</div>
+
+      <div class="col-xs-9"><strong>PLAYBACK TOOL</strong></div>
+      <div class="col-xs-3"><i class="fa fa-check"></i></div>
+
+    </div>
+
+    <div class="rightflavor"></div>
+    <div class="rightflavor"></div>
+
+  </div>
+
+  <div class="item Galert">
+    <div></div>
+    <div>
+      <h1 class="text-center text-white"><strong><i class="fa fa-rss"></i>&nbsp;TRANSMISSION ENDED</strong></h1>
+    </div>
+    <div></div>
+
+  </div>
+
+  <div class="item Gmsg">
+    <h2 class="text-center">Closing audio//video feed, thank you for your attention.</h2>
+  </div>
+
+</div>
+
+
+
+<script>
+
+  setTimeout(function(){
+    $('#notificationContainer .container-fluid').css('opacity','1');
+  },333);
+
+</script>

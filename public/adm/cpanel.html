@@ -15,7 +15,10 @@
 <div class="admMENU">
   <div id="btn-admBROADCAST" class="btn active adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admBROADCAST');"><i style="font-size:133%" class="fa fa-wifi"></i><br/>BROADCAST</div>
   <div id="btn-admSECURITY" class="btn adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admSECURITY');"><i style="font-size:133%" class="fa fa-exclamation-circle"></i><br/>SECURITY LVL</div>
-  <div id="btn-admCMD" class="btn adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admCMD');"><i style="font-size:133%" class="fa fa-terminal"></i><br/>OTHER</div>
+
+  <span class="medical">
+    <div id="btn-admMEDICAL" class="btn adm-nav btn-ui btn-ui-holo-red" onclick="navigateADM('admMEDICAL');"><i style="font-size:133%" class="fa fa-medkit"></i><br/>MEDICAL</div>
+  </span>
 
   <span class="portal">
     <div id="btn-admPORTAL" class="btn adm-nav btn-outline-success" onclick="navigateADM('admPORTAL');"><i style="font-size:133%" class="fa fa-opera"></i><br/>PORTAL</div>
@@ -32,6 +35,7 @@
    <span class="officer">
      <div id="btn-admMISSION" class="btn adm-nav btn-ui btn-ui-holo-alt" onclick="navigateADM('admATTACKVECTOR');"><i style="font-size:133%" class="fa fa-code-fork"></i><br/>HACKING</div>
    </span>
+   <div id="btn-admCMD" class="btn adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admCMD');"><i style="font-size:133%" class="fa fa-terminal"></i><br/>OTHER</div>
 </div>
 
 <script>
@@ -49,15 +53,21 @@ $(document).ready(function(){
       switch(admRANK) {
         case '1': default:
           $('.overlord').empty(); /* hide the overlord screen and empty all content, just incase. */
+          $('.medical').empty(); /* empty&hide the medical tab. */
           $('.portal').empty(); /* empty&hide the portal tab. */
           $('.orb').empty(); /* empty&hide the orb tab. */
           $('.officer').empty(); /* empty&hide the portal tab. */
+
           break;
         case '2':
           $('.overlord').empty(); /* hide the overlord screen and empty all content, just incase. */
-          $('.officer').empty(); /* empty&hide the portal tab. */
+          $('.portal').empty(); /* empty&hide the portal tab. */
+          $('.officer').empty(); /* empty&hide the attackvector tab. */
+          break;
         case '3':
           $('.overlord').empty(); /* hide the overlord screen and empty all content, just incase. */
+          $('.medical').empty(); /* empty&hide the medical tab. */
+          $('.officer').empty(); /* empty&hide the attackvector tab. */
           break;
         case '4':
           socket.emit('getMedia'); /* sends a request to the server to obtain the subfolder audio files for later. */
