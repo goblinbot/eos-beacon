@@ -1,17 +1,24 @@
 @import '/_includes/bs3-css/bootstrap.min.css';
 
 $defaultpadding: 0.8rem;
-$whitespace    : 3rem;
-$fontsize      : 1.4rem;
+$whitespace : 3rem;
+$fontsize : 1.4rem;
 $titlefontsize : 3.6rem;
 
-$minhoogte     : 66.5vh;
+$minhoogte : 66.5vh;
 
 // haalt alle fonts die we includen op.
 @import 'fonts.scss';
-$fontStack      : 'Titillium-Regular', Helvetica, sans-serif;
-$altFontStack   : 'ProFontWindows','Titillium-Bold', Helvetica, sans-serif;
-$boldFontStack  : 'Titillium-Bold', Helvetica, sans-serif;
+$fontStack : 'Titillium-Regular',
+Helvetica,
+sans-serif;
+$altFontStack : 'ProFontWindows',
+'Titillium-Bold',
+Helvetica,
+sans-serif;
+$boldFontStack : 'Titillium-Bold',
+Helvetica,
+sans-serif;
 
 @import 'keyframes.scss';
 
@@ -20,16 +27,16 @@ $boldFontStack  : 'Titillium-Bold', Helvetica, sans-serif;
 // @include animation( KEYFRAMENAAM TIJD(bijv. 2.0s) RICHTING(bijv. linear) DURATION (bijv infinite) );
 // @include animation(blinkText 1.6s linear infinite);
 @mixin animation($values) {
-  -webkit-animation   : $values;
-  -moz-animation      : $values;
-  animation           : $values;
+  -webkit-animation: $values;
+  -moz-animation: $values;
+  animation: $values;
 }
 
 // voorbeeld: $delaytimer == 0.4s
 @mixin animationdelay($delaytimer) {
-  animation-delay         : $delaytimer;
-  -moz-animation-delay    : $delaytimer;
-  -webkit-animation-delay : $delaytimer;
+  animation-delay: $delaytimer;
+  -moz-animation-delay: $delaytimer;
+  -webkit-animation-delay: $delaytimer;
 }
 
 @media(min-width: 998px) {
@@ -44,31 +51,37 @@ body {
   font-family: $fontStack;
 }
 
-video, .video-js {
+video,
+.video-js {
   width: 100% !important;
-  min-height: 60vh!important;
+  min-height: 60vh !important;
   max-height: ($minhoogte - 1vh);
 }
 
 .block {
   // padding: $defaultpadding;
   // margin : $defaultpadding;
-  transition  : 1.3s;
-  height      : 100%;
+  transition: 1.3s;
+  height: 100%;
 }
 
 .text-bold {
   font-weight: bold;
 }
 
-p.text-lg, .text-lg {
+p.text-lg,
+.text-lg {
   font-size: 133%;
 }
 
 .danger-line {
-  min-height  : ($defaultpadding * 2);
+  min-height: ($defaultpadding * 2);
+
   // width   : 100%;
-  margin  : { top: 3px; bottom: 3px; }
+  margin : {
+    top: 3px;
+    bottom: 3px;
+  }
 }
 
 .blinkContent {
@@ -82,11 +95,13 @@ p.text-lg, .text-lg {
 .round {
   border-radius: 50%;
 }
+
 .regularfont {
   font-family: $fontStack;
 }
+
 .altfont {
-  font-family : $altFontStack;
+  font-family: $altFontStack;
 }
 
 .whitespace {
@@ -95,12 +110,12 @@ p.text-lg, .text-lg {
 
 // zoals op gubat.nl/test te zien
 .spinCircle {
-  position      : relative;
-  left          : 25%;
-  margin        : 32px;
-  height        : 32px;
-  width         : 32px;
-  border-radius : 50%;
+  position: relative;
+  left: 25%;
+  margin: 32px;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
   @include animation(circleSpin 1.4s linear infinite);
 }
 
@@ -111,35 +126,49 @@ p.text-lg, .text-lg {
 
 .topHeader {
   .text-inline {
-    display   : inline;
-    position  : relative;
-    top       : 15px;
-    font-family : $altFontStack;
+    display: inline;
+    position: relative;
+    top: 15px;
+    font-family: $altFontStack;
+
     h1 {
       font-weight: strong;
       font-size: ($titlefontsize * 1.33);
+
       @media(max-width:900px) {
         font-size: ($fontsize * 3);
       }
     }
+
     h2 {
       font-size: ($titlefontsize * 0.75);
     }
+
     h3 {
       font-size: ($titlefontsize * 0.50);
     }
-    h1, h2, h3, h4, h5, h6, p {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
       display: inline;
       margin-top: $defaultpadding;
       margin-right: $defaultpadding;
     }
 
   }
+
   .text-right {
-    font-family : $altFontStack;
+    font-family: $altFontStack;
+
     h1 {
       font-weight: strong;
       font-size: ($titlefontsize * 1.33);
+
       @media(max-width:900px) {
         font-size: ($fontsize * 1.25);
       }
@@ -149,11 +178,12 @@ p.text-lg, .text-lg {
 
 .headerblock {
   padding : {
-    top   : 0;
+    top: 0;
     bottom: 0;
-    right : 15px;
-    left  : 15px;
+    right: 15px;
+    left: 15px;
   }
+
   margin-left: -15px;
   margin-right: -15px;
 
@@ -164,14 +194,19 @@ p.text-lg, .text-lg {
     }
   }
 
-  h1, h2, h3 {
-    font-size : ($titlefontsize * 0.5);
+  h1,
+  h2,
+  h3 {
+    font-size: ($titlefontsize * 0.5);
+
     margin : {
-      top   : 0.4rem;
+      top: 0.4rem;
       bottom: 0.4rem;
     }
-    &.bold, .bold {
-      font-family : $boldFontStack;
+
+    &.bold,
+    .bold {
+      font-family: $boldFontStack;
     }
   }
 
@@ -181,7 +216,9 @@ p.text-lg, .text-lg {
 
 // loadingscreen
 #loadingScreen {
-  .flavor, .middle {
+
+  .flavor,
+  .middle {
     margin : {
       left: auto;
       right: auto;
@@ -189,45 +226,51 @@ p.text-lg, .text-lg {
       bottom: 0;
     }
   }
+
   .middle {
     text-align: center;
   }
 
   .block {
     padding : {
-      top     : ($defaultpadding * 4);
-      bottom  : ($defaultpadding * 8);
+      top: ($defaultpadding * 4);
+      bottom: ($defaultpadding * 8);
     }
+
     .headerblock {
       margin : {
-        bottom  :   ($defaultpadding * 4);
-        top     :  -($defaultpadding * 4);
+        bottom: ($defaultpadding * 4);
+        top: -($defaultpadding * 4);
       }
     }
   }
 }
 
-.rightflavor, .bottomflavor {
+.rightflavor,
+.bottomflavor {
 
   visibility: hidden;
   @include animation(showHidden 0.3s linear);
   animation-fill-mode: forwards;
 
-  &.load1 {
+  &.load1 {}
 
-  }
   &.load2 {
     @include animationdelay(0.3s);
   }
+
   &.load3 {
     @include animationdelay(0.6s);
   }
+
   &.load4 {
     @include animationdelay(1.0s);
   }
+
   &.load5 {
     @include animationdelay(1.3s);
   }
+
   &.load6 {
     @include animationdelay(1.5s);
   }
@@ -242,50 +285,61 @@ p.text-lg, .text-lg {
 
     .left-bar {
       height: auto;
+
       margin : {
         left: 0;
         right: 0;
         top: 0;
-        bottom: ($defaultpadding * 2);
+        bottom: ($defaultpadding * 1.5);
       }
 
       .block {
-        border  : none;
+        border: none;
 
         margin : {
           top: $defaultpadding;
           bottom: $defaultpadding;
         }
+
         &.clockblock {
           @media(max-width:900px) {
             padding: 1px;
           }
         }
-        h1, h4, p {
-          margin : ($defaultpadding * 2);
+
+        h1,
+        h4,
+        p {
+          margin: ($defaultpadding * 2);
+
           @media(max-width:900px) {
-            margin : ($defaultpadding);
+            margin: ($defaultpadding);
           }
         }
-        #clock,h1#clock{
-          font-family : $altFontStack;
+
+        #clock,
+        h1#clock {
+          font-family: $altFontStack;
           font-size: 30px;
         }
 
       }
 
-      #portalstatus {
-        padding: $defaultpadding;
+      #portalstatus,
+      #orbstatus {
         position: relative;
         display: flex;
-        margin-top: $defaultpadding;
+        align-items: center;
+        margin-top: 4px;
+        padding: $defaultpadding;
         border-radius: 5px;
         transition: 0.4s;
 
-        .portalstatus-icon .fa {
-          font-size: 48px;
-          margin : {
-            top: 1.2rem;
+        .fa {
+          font-size: 4.8rem;
+
+          @media(max-width: 768px) {
+            font-size: 3.6rem;
           }
         }
 
@@ -294,6 +348,7 @@ p.text-lg, .text-lg {
           padding-right: $defaultpadding;
           flex: 1;
         }
+
         .right {
           flex: 5;
           padding-left: $defaultpadding;
@@ -314,9 +369,11 @@ p.text-lg, .text-lg {
     .middle-bar {
       height: auto;
       min-height: 16rem;
+
       .block {
         height: 100%;
       }
+
       @media(max-width:900px) {
         margin-left: 0;
         margin-right: 0;
@@ -326,6 +383,7 @@ p.text-lg, .text-lg {
     .right-bar {
       height: auto;
       min-height: $minhoogte;
+
       @media(max-width: 768px) {
         min-height: 0;
         margin-top: ($defaultpadding*2);
@@ -337,7 +395,9 @@ p.text-lg, .text-lg {
     }
 
 
-  }// einde middle/top van main
+  }
+
+  // einde middle/top van main
 
   .footer {
     margin-top: $whitespace;
@@ -351,11 +411,12 @@ p.text-lg, .text-lg {
 
     .item {
       @media(max-width:998px) {
-        margin-bottom:0.6rem;
+        margin-bottom: 0.6rem;
       }
+
       &:first-child {
         @media(min-width:998px) {
-          padding-left : 0;
+          padding-left: 0;
         }
       }
 
@@ -364,36 +425,42 @@ p.text-lg, .text-lg {
         box-sizing: border-box;
         position: relative;
 
-        &:before, &::before {
-          content:'';
-          position:absolute;
-          bottom:0;
-          right:0;
+        &:before,
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          right: 0;
           border-width: 0 0 30px 30px;
-          border-style:solid;
+          border-style: solid;
         }
 
 
         .content {
           overflow: hidden;
           padding: 1.5rem;
-          h1,h2,h3 {
+
+          h1,
+          h2,
+          h3 {
             margin: 0 0 4px 4px;
           }
         }
 
       }
+
       .bottom-right {
-        text-align:center;
+        text-align: center;
+
         img {
           position: relative;
           top: 3rem;
           -webkit-animation: loadSpinner 2s infinite;
           -moz-animation: loadSpinner 2s infinite;
           -animation: loadSpinner 2s infinite;
-          width:6rem;
-          height:6rem;
-          margin-right:1rem;
+          width: 6rem;
+          height: 6rem;
+          margin-right: 1rem;
         }
       }
 
@@ -401,26 +468,29 @@ p.text-lg, .text-lg {
     }
 
 
-  }//einde footer
+  }
+
+  //einde footer
 }
 
 #securityAlertLevel {
   overflow: hidden;
   text-overflow: ellipsis;
-  word-wrap:break-word;
+  word-wrap: break-word;
 }
 
 .portalCircleContainer {
   min-height: 10rem;
   height: 100%;
+
   .portalCircle {
-    position    : relative;
-    left        : 50%;
-    border      : 16px solid transparent;
-    margin-left : -32px;
-    margin-top  : 32px;
-    height      : 64px;
-    width       : 64px;
+    position: relative;
+    left: 50%;
+    border: 16px solid transparent;
+    margin-left: -32px;
+    margin-top: 32px;
+    height: 64px;
+    width: 64px;
     border-radius: 50%;
     @include animation(portalCircleAnimation 1.4s linear infinite);
   }
@@ -430,11 +500,12 @@ p.text-lg, .text-lg {
 
   width: 100%;
 
-  @media(min-width:769px){
+  @media(min-width:769px) {
     min-height: $minhoogte;
     max-height: $minhoogte;
     overflow: hidden;
   }
+
   .video-container {
     width: 100%;
     overflow: hidden;
@@ -446,11 +517,12 @@ p.text-lg, .text-lg {
       // position: relative;
       z-index: 1;
 
-      @media(min-width:769px){
+      @media(min-width:769px) {
         min-height: $minhoogte;
         overflow: hidden;
       }
-      @media(min-width:1550px){
+
+      @media(min-width:1550px) {
         top: -10vh;
       }
     }
@@ -461,6 +533,7 @@ p.text-lg, .text-lg {
       bottom: 0;
       padding: 1.8rem 1rem;
     }
+
     .overlay-static h2 {
       margin: 6px;
       z-index: 3;
@@ -484,6 +557,7 @@ p.text-lg, .text-lg {
     padding: 2.4rem 1.2rem;
     opacity: 0.9;
     border-radius: 1px;
+
     @media(max-width:991px) {
       left: 0;
     }
@@ -492,9 +566,9 @@ p.text-lg, .text-lg {
   .broadcast {
 
     .fixed-bottom {
-      position  : relative;
-      bottom    : 0;
-      margin    : 2rem 0 1rem 0;
+      position: relative;
+      bottom: 0;
+      margin: 2rem 0 1rem 0;
     }
 
   }
@@ -505,38 +579,44 @@ p.text-lg, .text-lg {
   position: relative;
   margin: 0 auto;
 }
-.glitch::before,.glitch::after{
-  content : attr(data-text);
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
   position: absolute;
-  top     : 0;
-  left    : 0;
-  width   : 100%;
-  height  : 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .glitch::before {
-  left          : 2px;
-  clip:rect(0,900px,0,0);
+  left: 2px;
+  clip: rect(0, 900px, 0, 0);
   animation: glitch-anim-1 3s infinite linear alternate-reverse;
 }
+
 .glitch::after {
-  left          : -2px;
-  clip:rect(0,900px,0,0);
+  left: -2px;
+  clip: rect(0, 900px, 0, 0);
   animation: glitch-anim-2 3s infinite linear alternate-reverse;
 }
 
 @keyframes glitch-anim-1 {
   $steps: 20;
+
   @for $i from 0 through $steps {
-    #{percentage($i*(1/$steps))} {
+    #{percentage($i*($steps))} {
       clip: rect(random(100)+px, 9999px, random(100)+px, 0);
     }
   }
 }
+
 @keyframes glitch-anim-2 {
   $steps: 20;
+
   @for $i from 0 through $steps {
-    #{percentage($i*(1/$steps))} {
+    #{percentage($i*($steps))} {
       clip: rect(random(100)+px, 9999px, random(100)+px, 0);
     }
   }
@@ -546,20 +626,74 @@ p.text-lg, .text-lg {
 
 
 // NORMAAL _BS4 BETA OUTLINE BUTTONS
-  .btn-outline-primary  {  color: #0275D8;     border-color: #0275D8;    background-image: none;   background-color: transparent; }
-  .btn-outline-secondary { color: #CCCCCC;     border-color: #CCCCCC;    background-image: none;   background-color: transparent; }
-  .btn-outline-success  {  color: #5CB85C;     border-color: #5CB85C;    background-image: none;   background-color: transparent; }
-  .btn-outline-warning {   color: #F0AD4E;     border-color: #F0AD4E;    background-image: none;   background-color: transparent; }
-  .btn-outline-danger  {   color: #D9534F;     border-color: #D9534F;    background-image: none;   background-color: transparent; }
+.btn-outline-primary {
+  color: #0275D8;
+  border-color: #0275D8;
+  background-image: none;
+  background-color: transparent;
+}
+
+.btn-outline-secondary {
+  color: #CCCCCC;
+  border-color: #CCCCCC;
+  background-image: none;
+  background-color: transparent;
+}
+
+.btn-outline-success {
+  color: #5CB85C;
+  border-color: #5CB85C;
+  background-image: none;
+  background-color: transparent;
+}
+
+.btn-outline-warning {
+  color: #F0AD4E;
+  border-color: #F0AD4E;
+  background-image: none;
+  background-color: transparent;
+}
+
+.btn-outline-danger {
+  color: #D9534F;
+  border-color: #D9534F;
+  background-image: none;
+  background-color: transparent;
+}
+
 // HOVER _BS4 BETA OUTLINE BUTTONS
-  .btn-outline-primary:hover  {  color: #000;     border-color: #0275D8;    background-color: #0275D8; }
-  .btn-outline-secondary:hover { color: #000;     border-color: #CCCCCC;    background-color: #CCCCCC; }
-  .btn-outline-success:hover  {  color: #000;     border-color: #5CB85C;    background-color: #5CB85C; }
-  .btn-outline-warning:hover {   color: #000;     border-color: #F0AD4E;    background-color: #F0AD4E; }
-  .btn-outline-danger:hover  {   color: #000;     border-color: #D9534F;    background-color: #D9534F; }
+.btn-outline-primary:hover {
+  color: #000;
+  border-color: #0275D8;
+  background-color: #0275D8;
+}
+
+.btn-outline-secondary:hover {
+  color: #000;
+  border-color: #CCCCCC;
+  background-color: #CCCCCC;
+}
+
+.btn-outline-success:hover {
+  color: #000;
+  border-color: #5CB85C;
+  background-color: #5CB85C;
+}
+
+.btn-outline-warning:hover {
+  color: #000;
+  border-color: #F0AD4E;
+  background-color: #F0AD4E;
+}
+
+.btn-outline-danger:hover {
+  color: #000;
+  border-color: #D9534F;
+  background-color: #D9534F;
+}
 
 .loadCircle {
-  border : 0;
+  border: 0;
   padding: 2.5rem;
   -webkit-animation: loadSpinner 2s infinite;
   -moz-animation: loadSpinner 2s infinite;
@@ -572,6 +706,7 @@ p.text-lg, .text-lg {
 .pZero {
   padding: 0;
 }
+
 .margin-zero {
   margin : {
     left: 0;
@@ -588,61 +723,75 @@ p.text-lg, .text-lg {
 ///////////////////////////////////////////////////////////////////////////
 // OUDE CSS COMPATIBLE MAKEN
 ///////////////////////////////
-  .titleblock {
-    display   : inline;
-    position  : relative;
-    top       : 15px;
-    font-family : $altFontStack;
-    h1 {
-      font-weight: strong;
-      font-size: ($titlefontsize * 1.33);
-      @media(max-width:900px) {
-        font-size: ($fontsize * 3);
-      }
-    }
-    h2 {
-      font-size: ($titlefontsize * 0.75);
-    }
-    h3 {
-      font-size: ($titlefontsize * 0.50);
-    }
-    h1, h2, h3, h4, h5, h6, p {
-      display: inline;
-      margin-top: $defaultpadding;
-      margin-right: $defaultpadding;
-    }
+.titleblock {
+  display: inline;
+  position: relative;
+  top: 15px;
+  font-family: $altFontStack;
 
-  }
-  .ipblock {
-    font-family : $altFontStack;
-    h1 {
-      font-weight: strong;
-      font-size: ($titlefontsize * 1.33);
-      @media(max-width:900px) {
-        font-size: ($fontsize * 1.25);
-      }
+  h1 {
+    font-weight: strong;
+    font-size: ($titlefontsize * 1.33);
+
+    @media(max-width:900px) {
+      font-size: ($fontsize * 3);
     }
   }
 
-  .animloadbar {
-    height : 20px;
-    position : relative;
-    border-radius : 25px;
-    padding	: 10px;
-    transition : 1s;
-    overflow : hidden;
-
-    span.animloadbar-bar {
-       display	: block;
-       height : 100%;
-       min-height: 4rem;
-       margin-top: -1rem;
-       border-radius : 0;
-       position : relative;
-       overflow : hidden;
-       transition : 1s;
-       width : 15%;
-       min-width : 35px;
-       animation : animloadbar  3.4s linear infinite;
-     }
+  h2 {
+    font-size: ($titlefontsize * 0.75);
   }
+
+  h3 {
+    font-size: ($titlefontsize * 0.50);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    display: inline;
+    margin-top: $defaultpadding;
+    margin-right: $defaultpadding;
+  }
+
+}
+
+.ipblock {
+  font-family: $altFontStack;
+
+  h1 {
+    font-weight: strong;
+    font-size: ($titlefontsize * 1.33);
+
+    @media(max-width:900px) {
+      font-size: ($fontsize * 1.25);
+    }
+  }
+}
+
+.animloadbar {
+  height: 20px;
+  position: relative;
+  border-radius: 25px;
+  padding: 10px;
+  transition: 1s;
+  overflow: hidden;
+
+  span.animloadbar-bar {
+    display: block;
+    height: 100%;
+    min-height: 4rem;
+    margin-top: -1rem;
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+    transition: 1s;
+    width: 15%;
+    min-width: 35px;
+    animation: animloadbar 3.4s linear infinite;
+  }
+}

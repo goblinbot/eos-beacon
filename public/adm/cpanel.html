@@ -9,6 +9,9 @@
 ==== =================================================================
 -->
 
+
+<!-- 2024 Thijs here; these fake button divs are not <buttons> because adminPanel.html triggers a disable/.disable on all buttons.. it seems. -->
+<!-- +1 reason for the rework. -->
 <div class="admMENU">
   <div id="btn-admBROADCAST" class="btn active adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admBROADCAST');"><i style="font-size:133%" class="fa fa-wifi"></i><br/>BROADCAST</div>
   <div id="btn-admSECURITY" class="btn adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admSECURITY');"><i style="font-size:133%" class="fa fa-exclamation-circle"></i><br/>SECURITY LVL</div>
@@ -19,6 +22,10 @@
 
   <span class="portal">
     <div id="btn-admPORTAL" class="btn adm-nav btn-outline-success" onclick="navigateADM('admPORTAL');"><i style="font-size:133%" class="fa fa-opera"></i><br/>PORTAL</div>
+  </span>
+
+  <span class="orb">
+    <div id="btn-admORB" class="btn adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admORB')"><i style="font-size:133%" class="fa fa-opera"></i><br/>ORB</div>
   </span>
 
   <span class="overlord">
@@ -48,7 +55,9 @@ $(document).ready(function(){
           $('.overlord').empty(); /* hide the overlord screen and empty all content, just incase. */
           $('.medical').empty(); /* empty&hide the medical tab. */
           $('.portal').empty(); /* empty&hide the portal tab. */
-          $('.officer').empty(); /* empty&hide the attackvector tab. */
+          $('.orb').empty(); /* empty&hide the orb tab. */
+          $('.officer').empty(); /* empty&hide the portal tab. */
+
           break;
         case '2':
           $('.overlord').empty(); /* hide the overlord screen and empty all content, just incase. */

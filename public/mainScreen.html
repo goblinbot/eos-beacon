@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="left-bar no-bg col-xs-12">
+    <div class="left-bar no-bg col-xs-12 hidden-xs">
       <div class="headerblock">
         <h2>Portal Status</h2>
       </div>
@@ -26,7 +26,7 @@
       <div id="portalstatus">
 
         <div class="left">
-          <span class="portalstatus-icon"><i class="fa fa-check-circle-o"></i></span>
+          <span class="status-icon"><i class="fa fa-check-circle-o"></i></span>
         </div>
         <div class="right">
           <h4>Operational.</h4>
@@ -34,7 +34,23 @@
         </div>
 
       </div>
+    </div>
 
+    <div class="left-bar no-bg col-xs-12">
+      <div class="headerblock">
+        <h2>ORB/Canopy Status</h2>
+      </div>
+
+      <div id="orbstatus">
+
+        <div class="left">
+          <span class="status-icon"><i class="fa fa-check-circle-o"></i></span>
+        </div>
+        <div class="right">
+          <h4>Operational</h4>
+        </div>
+
+      </div>
     </div>
 
   </div>
@@ -178,6 +194,10 @@ $(document).ready(function(){
 
     /* updates the portal status to match with the global dynamicdata. */
     updatePortalStatus(dynamicData['portalStatus']);
+
+    /* ..and the same for Orb */
+    updateOrbStatus(dynamicData.orbStatus);
+
     $('#socket-id').html('<span class="holoContrast">InfansExNihilo (89%)</span><br/><span class="holoContrast">HÉRITAGE (11%)</span><br/><span class="text-muted">Ascendancy (disabled)<span><br/><span class="text-muted">ProviDNC (disabled)<span>');
 
     /*resume the last broadcast! client only.*/
@@ -195,6 +215,14 @@ $(document).ready(function(){
       $('#portalstatus').removeClass('flash');
     },2500);
   });
+
+  socket.on('orbDivFlash', function() {
+    $('#orbstatus').addClass('flash');
+
+    setTimeout(function(){
+      $('#orbstatus').removeClass('flash');
+    },7500);
+  })
 
   /* receive the request to play audio here: (server->client)
     generateBCaudio will determine what happens next. (play or not to play, etc) */

@@ -24,11 +24,9 @@ hr {
 h1, h2, h3, h4, h5, h6 {
   color: #DDDDDD;
 }
-
 h1.alt-color, h2.alt-color, h3.alt-color, h4.alt-color, h5.alt-color, h6.alt-color {
   color: #DDDDDD;
 }
-
 h1.dark-color, h2.dark-color, h3.dark-color, h4.dark-color, h5.dark-color, h6.dark-color {
   color: #3F3F3F;
 }
@@ -84,7 +82,6 @@ p {
   border-bottom: 1px solid #3F3F3F;
   background: #3A3A3A;
 }
-
 .headerblock h1, .headerblock h2, .headerblock h3 {
   color: #DDDDDD;
 }
@@ -92,31 +89,24 @@ p {
 #main .middle .left-bar {
   background: #333333;
 }
-
 #main .middle .left-bar #clock {
   color: #DDDDDD;
 }
-
 #main .middle .left-bar #clock h1 {
   color: #DDDDDD;
 }
-
 #main .middle .left-bar.no-bg {
   background: none;
 }
-
-#main .middle .left-bar #portalstatus h4 {
+#main .middle .left-bar #portalstatus h4, #main .middle .left-bar #orbstatus h4 {
   color: #DDDDDD;
 }
-
-#main .middle .left-bar #portalstatus .portalstatus-icon .glyphicon, #main .middle .left-bar #portalstatus .portalstatus-icon .fa {
+#main .middle .left-bar #portalstatus .fa, #main .middle .left-bar #orbstatus .fa {
   color: #DDDDDD;
 }
-
 #main .middle .middle-bar .block.no-bg {
   background: none;
 }
-
 #main .footer .item .block::before {
   border-color: transparent #222222 #222222 transparent;
 }
@@ -126,7 +116,6 @@ p {
   border: 3px solid #ed3737;
   color: #FFFFFF;
 }
-
 #notificationContainer .disconnectedPopup h2 {
   color: #FFFFFF;
 }
@@ -141,72 +130,61 @@ p {
   background-image: none;
   background-color: transparent;
 }
-
 .btn-ui.btn-ui-holo .glyphicon, .btn-ui.btn-ui-holo .fa {
   color: #39DBCC;
   border-color: #39DBCC;
   background-image: none;
   background-color: transparent;
 }
-
 .btn-ui.btn-ui-holo:hover, .btn-ui.btn-ui-holo.active {
   color: #222222;
   border-color: #39DBCC;
   background-color: #39DBCC;
 }
-
 .btn-ui.btn-ui-holo:hover .glyphicon, .btn-ui.btn-ui-holo:hover .fa, .btn-ui.btn-ui-holo.active .glyphicon, .btn-ui.btn-ui-holo.active .fa {
   color: #222222;
   border-color: #39DBCC;
   background-color: #39DBCC;
 }
-
 .btn-ui.btn-ui-holo-alt {
   color: #DDDDDD;
   border-color: #DDDDDD;
   background-image: none;
   background-color: transparent;
 }
-
 .btn-ui.btn-ui-holo-alt .glyphicon, .btn-ui.btn-ui-holo-alt .fa {
   color: #DDDDDD;
   border-color: #DDDDDD;
   background-image: none;
   background-color: transparent;
 }
-
 .btn-ui.btn-ui-holo-alt:hover, .btn-ui.btn-ui-holo-alt.active {
   color: #222222;
   border-color: #DDDDDD;
   background-color: #DDDDDD;
 }
-
 .btn-ui.btn-ui-holo-alt:hover .glyphicon, .btn-ui.btn-ui-holo-alt:hover .fa, .btn-ui.btn-ui-holo-alt.active .glyphicon, .btn-ui.btn-ui-holo-alt.active .fa {
   color: #222222;
   border-color: #DDDDDD;
   background-color: #DDDDDD;
 }
-
 .btn-ui.btn-ui-holo-red {
   color: #ed3737;
   border-color: #ed3737;
   background-image: none;
   background-color: transparent;
 }
-
 .btn-ui.btn-ui-holo-red .glyphicon, .btn-ui.btn-ui-holo-red .fa {
   color: #ed3737;
   border-color: #ed3737;
   background-image: none;
   background-color: transparent;
 }
-
 .btn-ui.btn-ui-holo-red:hover, .btn-ui.btn-ui-holo-red.active {
   color: #222222;
   border-color: #ed3737;
   background-color: #ed3737;
 }
-
 .btn-ui.btn-ui-holo-red:hover .glyphicon, .btn-ui.btn-ui-holo-red:hover .fa, .btn-ui.btn-ui-holo-red.active .glyphicon, .btn-ui.btn-ui-holo-red.active .fa {
   color: #222222;
   border-color: #ed3737;
@@ -230,7 +208,6 @@ p {
     border-bottom: 16px solid #39DBCC;
   }
 }
-
 @keyframes animloadbar {
   0% {
     left: -15%;
@@ -249,7 +226,6 @@ p {
     background-color: #1fa99c;
   }
 }
-
 .animloadbar {
   background: #555;
 }
@@ -271,3 +247,5 @@ p {
   text-shadow: 1px 0 #39DBCC;
   background: #222222;
 }
+
+/*# sourceMappingURL=alert-gray.css.map */

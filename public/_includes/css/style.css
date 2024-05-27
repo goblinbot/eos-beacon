@@ -1,30 +1,25 @@
-@import url(/_includes/bs3-css/bootstrap.min.css);
-@import url(/_includes/bs3-css/font-awesome.min.css);
+@import '/_includes/bs3-css/bootstrap.min.css';
+@import '/_includes/bs3-css/font-awesome.min.css';
 @font-face {
-  font-family: 'Titillium-Regular';
+  font-family: "Titillium-Regular";
   src: url(/_includes/fonts/Titillium-Regular.otf);
 }
-
 @font-face {
-  font-family: 'Titillium-Bold';
+  font-family: "Titillium-Bold";
   src: url(/_includes/fonts/Titillium-Bold.otf);
 }
-
 @font-face {
-  font-family: 'Titillium-Light';
+  font-family: "Titillium-Light";
   src: url(/_includes/fonts/Titillium-Light.otf);
 }
-
 @font-face {
-  font-family: 'Titillium-Thin';
+  font-family: "Titillium-Thin";
   src: url(/_includes/fonts/Titillium-Thin.otf);
 }
-
 @font-face {
-  font-family: 'ProFontWindows';
+  font-family: "ProFontWindows";
   src: url(/_includes/fonts/ProFontWindows.ttf);
 }
-
 @keyframes loadSpinner {
   0%, 100% {
     -webkit-transform: rotate(0);
@@ -42,7 +37,6 @@
     -moz-transform: rotate(180deg);
   }
 }
-
 @keyframes circleSpin {
   0% {
     transform: rotate(0deg);
@@ -54,7 +48,6 @@
     transform: rotate(360deg);
   }
 }
-
 @-moz-keyframes circleSpin {
   0% {
     transform: rotate(0deg);
@@ -66,7 +59,6 @@
     transform: rotate(360deg);
   }
 }
-
 @-webkit-keyframes circleSpin {
   0% {
     transform: rotate(0deg);
@@ -78,7 +70,6 @@
     transform: rotate(360deg);
   }
 }
-
 @-webkit-keyframes expandBlock {
   0% {
     -webkit-transform: scale(0);
@@ -93,7 +84,6 @@
     opacity: 1;
   }
 }
-
 @-moz-keyframes expandBlock {
   0% {
     -moz-transform: scale(0);
@@ -108,7 +98,6 @@
     opacity: 1;
   }
 }
-
 @keyframes expandBlock {
   0% {
     transform: scale(0);
@@ -123,10 +112,9 @@
     opacity: 1;
   }
 }
-
 @-webkit-keyframes blinkText {
   0% {
-    opacity: 1.0;
+    opacity: 1;
   }
   50% {
     opacity: 0.7;
@@ -138,13 +126,12 @@
     opacity: 0.7;
   }
   100% {
-    opacity: 1.0;
+    opacity: 1;
   }
 }
-
 @-moz-keyframes blinkText {
   0% {
-    opacity: 1.0;
+    opacity: 1;
   }
   50% {
     opacity: 0.7;
@@ -156,13 +143,12 @@
     opacity: 0.7;
   }
   100% {
-    opacity: 1.0;
+    opacity: 1;
   }
 }
-
 @keyframes blinkText {
   0% {
-    opacity: 1.0;
+    opacity: 1;
   }
   50% {
     opacity: 0.7;
@@ -174,10 +160,9 @@
     opacity: 0.7;
   }
   100% {
-    opacity: 1.0;
+    opacity: 1;
   }
 }
-
 @-webkit-keyframes showHidden {
   0% {
     visibility: hidden;
@@ -186,7 +171,6 @@
     visibility: visible;
   }
 }
-
 @-moz-keyframes showHidden {
   0% {
     visibility: hidden;
@@ -195,7 +179,6 @@
     visibility: visible;
   }
 }
-
 @keyframes showHidden {
   0% {
     visibility: hidden;
@@ -204,7 +187,6 @@
     visibility: visible;
   }
 }
-
 @keyframes pulseDots {
   0% {
     transform: scale(0);
@@ -227,19 +209,18 @@
     opacity: 1;
   }
 }
-
 @media (min-width: 998px) {
   html {
     overflow: hidden;
   }
 }
-
 body {
   font-size: 1.4rem;
   font-family: "Titillium-Regular", Helvetica, sans-serif;
 }
 
-video, .video-js {
+video,
+.video-js {
   width: 100% !important;
   min-height: 60vh !important;
   max-height: 65.5vh;
@@ -254,7 +235,8 @@ video, .video-js {
   font-weight: bold;
 }
 
-p.text-lg, .text-lg {
+p.text-lg,
+.text-lg {
   font-size: 133%;
 }
 
@@ -312,41 +294,39 @@ p.text-lg, .text-lg {
   top: 15px;
   font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif;
 }
-
 .topHeader .text-inline h1 {
   font-weight: strong;
   font-size: 4.788rem;
 }
-
 @media (max-width: 900px) {
   .topHeader .text-inline h1 {
     font-size: 4.2rem;
   }
 }
-
 .topHeader .text-inline h2 {
   font-size: 2.7rem;
 }
-
 .topHeader .text-inline h3 {
   font-size: 1.8rem;
 }
-
-.topHeader .text-inline h1, .topHeader .text-inline h2, .topHeader .text-inline h3, .topHeader .text-inline h4, .topHeader .text-inline h5, .topHeader .text-inline h6, .topHeader .text-inline p {
+.topHeader .text-inline h1,
+.topHeader .text-inline h2,
+.topHeader .text-inline h3,
+.topHeader .text-inline h4,
+.topHeader .text-inline h5,
+.topHeader .text-inline h6,
+.topHeader .text-inline p {
   display: inline;
   margin-top: 0.8rem;
   margin-right: 0.8rem;
 }
-
 .topHeader .text-right {
   font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif;
 }
-
 .topHeader .text-right h1 {
   font-weight: strong;
   font-size: 4.788rem;
 }
-
 @media (max-width: 900px) {
   .topHeader .text-right h1 {
     font-size: 1.75rem;
@@ -361,76 +341,79 @@ p.text-lg, .text-lg {
   margin-left: -15px;
   margin-right: -15px;
 }
-
 .headerblock.margin-zero {
   margin-left: 0;
   margin-right: 0;
 }
-
-.headerblock h1, .headerblock h2, .headerblock h3 {
+.headerblock h1,
+.headerblock h2,
+.headerblock h3 {
   font-size: 1.8rem;
   margin-top: 0.4rem;
   margin-bottom: 0.4rem;
 }
-
-.headerblock h1.bold, .headerblock h1 .bold, .headerblock h2.bold, .headerblock h2 .bold, .headerblock h3.bold, .headerblock h3 .bold {
+.headerblock h1.bold,
+.headerblock h1 .bold,
+.headerblock h2.bold,
+.headerblock h2 .bold,
+.headerblock h3.bold,
+.headerblock h3 .bold {
   font-family: "Titillium-Bold", Helvetica, sans-serif;
 }
 
-#loadingScreen .flavor, #loadingScreen .middle {
+#loadingScreen .flavor,
+#loadingScreen .middle {
   margin-left: auto;
   margin-right: auto;
   margin-top: 10rem;
   margin-bottom: 0;
 }
-
 #loadingScreen .middle {
   text-align: center;
 }
-
 #loadingScreen .block {
   padding-top: 3.2rem;
   padding-bottom: 6.4rem;
 }
-
 #loadingScreen .block .headerblock {
   margin-bottom: 3.2rem;
   margin-top: -3.2rem;
 }
 
-.rightflavor, .bottomflavor {
+.rightflavor,
+.bottomflavor {
   visibility: hidden;
   -webkit-animation: showHidden 0.3s linear;
   -moz-animation: showHidden 0.3s linear;
   animation: showHidden 0.3s linear;
   animation-fill-mode: forwards;
 }
-
-.rightflavor.load2, .bottomflavor.load2 {
+.rightflavor.load2,
+.bottomflavor.load2 {
   animation-delay: 0.3s;
   -moz-animation-delay: 0.3s;
   -webkit-animation-delay: 0.3s;
 }
-
-.rightflavor.load3, .bottomflavor.load3 {
+.rightflavor.load3,
+.bottomflavor.load3 {
   animation-delay: 0.6s;
   -moz-animation-delay: 0.6s;
   -webkit-animation-delay: 0.6s;
 }
-
-.rightflavor.load4, .bottomflavor.load4 {
+.rightflavor.load4,
+.bottomflavor.load4 {
   animation-delay: 1s;
   -moz-animation-delay: 1s;
   -webkit-animation-delay: 1s;
 }
-
-.rightflavor.load5, .bottomflavor.load5 {
+.rightflavor.load5,
+.bottomflavor.load5 {
   animation-delay: 1.3s;
   -moz-animation-delay: 1.3s;
   -webkit-animation-delay: 1.3s;
 }
-
-.rightflavor.load6, .bottomflavor.load6 {
+.rightflavor.load6,
+.bottomflavor.load6 {
   animation-delay: 1.5s;
   -moz-animation-delay: 1.5s;
   -webkit-animation-delay: 1.5s;
@@ -439,161 +422,152 @@ p.text-lg, .text-lg {
 #main {
   min-height: calc(100vh - 85px);
 }
-
 #main .middle .left-bar {
   height: auto;
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.2rem;
 }
-
 #main .middle .left-bar .block {
   border: none;
   margin-top: 0.8rem;
   margin-bottom: 0.8rem;
 }
-
 @media (max-width: 900px) {
   #main .middle .left-bar .block.clockblock {
     padding: 1px;
   }
 }
-
-#main .middle .left-bar .block h1, #main .middle .left-bar .block h4, #main .middle .left-bar .block p {
+#main .middle .left-bar .block h1,
+#main .middle .left-bar .block h4,
+#main .middle .left-bar .block p {
   margin: 1.6rem;
 }
-
 @media (max-width: 900px) {
-  #main .middle .left-bar .block h1, #main .middle .left-bar .block h4, #main .middle .left-bar .block p {
+  #main .middle .left-bar .block h1,
+  #main .middle .left-bar .block h4,
+  #main .middle .left-bar .block p {
     margin: 0.8rem;
   }
 }
-
-#main .middle .left-bar .block #clock, #main .middle .left-bar .block h1#clock {
+#main .middle .left-bar .block #clock,
+#main .middle .left-bar .block h1#clock {
   font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif;
   font-size: 30px;
 }
-
-#main .middle .left-bar #portalstatus {
-  padding: 0.8rem;
+#main .middle .left-bar #portalstatus,
+#main .middle .left-bar #orbstatus {
   position: relative;
   display: flex;
-  margin-top: 0.8rem;
+  align-items: center;
+  margin-top: 4px;
+  padding: 0.8rem;
   border-radius: 5px;
   transition: 0.4s;
 }
-
-#main .middle .left-bar #portalstatus .portalstatus-icon .fa {
-  font-size: 48px;
-  margin-top: 1.2rem;
+#main .middle .left-bar #portalstatus .fa,
+#main .middle .left-bar #orbstatus .fa {
+  font-size: 4.8rem;
 }
-
-#main .middle .left-bar #portalstatus .left {
+@media (max-width: 768px) {
+  #main .middle .left-bar #portalstatus .fa,
+  #main .middle .left-bar #orbstatus .fa {
+    font-size: 3.6rem;
+  }
+}
+#main .middle .left-bar #portalstatus .left,
+#main .middle .left-bar #orbstatus .left {
   padding-left: 0.8rem;
   padding-right: 0.8rem;
   flex: 1;
 }
-
-#main .middle .left-bar #portalstatus .right {
+#main .middle .left-bar #portalstatus .right,
+#main .middle .left-bar #orbstatus .right {
   flex: 5;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
 }
-
-#main .middle .left-bar #portalstatus .right h4 {
+#main .middle .left-bar #portalstatus .right h4,
+#main .middle .left-bar #orbstatus .right h4 {
   font-weight: bold;
 }
-
-#main .middle .left-bar #portalstatus .right p {
+#main .middle .left-bar #portalstatus .right p,
+#main .middle .left-bar #orbstatus .right p {
   font-weight: bold;
 }
-
 #main .middle .middle-bar {
   height: auto;
   min-height: 16rem;
 }
-
 #main .middle .middle-bar .block {
   height: 100%;
 }
-
 @media (max-width: 900px) {
   #main .middle .middle-bar {
     margin-left: 0;
     margin-right: 0;
   }
 }
-
 #main .middle .right-bar {
   height: auto;
   min-height: 66.5vh;
 }
-
 @media (max-width: 768px) {
   #main .middle .right-bar {
     min-height: 0;
     margin-top: 1.6rem;
   }
 }
-
 #main .middle .right-bar #countClientsCounter {
   font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif;
 }
-
 #main .footer {
   margin-top: 3rem;
   font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif;
   display: flex;
   flex-direction: row;
 }
-
 @media (max-width: 990px) {
   #main .footer {
     flex-direction: column;
   }
 }
-
 @media (max-width: 998px) {
   #main .footer .item {
     margin-bottom: 0.6rem;
   }
 }
-
 @media (min-width: 998px) {
   #main .footer .item:first-child {
     padding-left: 0;
   }
 }
-
 #main .footer .item .block {
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
 }
-
 #main .footer .item .block:before, #main .footer .item .block::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   right: 0;
   border-width: 0 0 30px 30px;
   border-style: solid;
 }
-
 #main .footer .item .block .content {
   overflow: hidden;
   padding: 1.5rem;
 }
-
-#main .footer .item .block .content h1, #main .footer .item .block .content h2, #main .footer .item .block .content h3 {
+#main .footer .item .block .content h1,
+#main .footer .item .block .content h2,
+#main .footer .item .block .content h3 {
   margin: 0 0 4px 4px;
 }
-
 #main .footer .item .bottom-right {
   text-align: center;
 }
-
 #main .footer .item .bottom-right img {
   position: relative;
   top: 3rem;
@@ -615,7 +589,6 @@ p.text-lg, .text-lg {
   min-height: 10rem;
   height: 100%;
 }
-
 .portalCircleContainer .portalCircle {
   position: relative;
   left: 50%;
@@ -633,7 +606,6 @@ p.text-lg, .text-lg {
 #notificationContainer {
   width: 100%;
 }
-
 @media (min-width: 769px) {
   #notificationContainer {
     min-height: 66.5vh;
@@ -641,47 +613,39 @@ p.text-lg, .text-lg {
     overflow: hidden;
   }
 }
-
 #notificationContainer .video-container {
   width: 100%;
   overflow: hidden;
   height: 100%;
 }
-
 #notificationContainer .video-container video {
   width: 100%;
   z-index: 1;
 }
-
 @media (min-width: 769px) {
   #notificationContainer .video-container video {
     min-height: 66.5vh;
     overflow: hidden;
   }
 }
-
 @media (min-width: 1550px) {
   #notificationContainer .video-container video {
     top: -10vh;
   }
 }
-
 #notificationContainer .video-container .overlay-static {
   position: absolute;
   z-index: 2;
   bottom: 0;
   padding: 1.8rem 1rem;
 }
-
 #notificationContainer .video-container .overlay-static h2 {
   margin: 6px;
   z-index: 3;
 }
-
 #notificationContainer img {
   max-height: 30vh;
 }
-
 #notificationContainer .disconnectedPopup {
   position: absolute;
   z-index: 99;
@@ -693,13 +657,11 @@ p.text-lg, .text-lg {
   opacity: 0.9;
   border-radius: 1px;
 }
-
 @media (max-width: 991px) {
   #notificationContainer .disconnectedPopup {
     left: 0;
   }
 }
-
 #notificationContainer .broadcast .fixed-bottom {
   position: relative;
   bottom: 0;
@@ -711,7 +673,8 @@ p.text-lg, .text-lg {
   margin: 0 auto;
 }
 
-.glitch::before, .glitch::after {
+.glitch::before,
+.glitch::after {
   content: attr(data-text);
   position: absolute;
   top: 0;
@@ -734,136 +697,134 @@ p.text-lg, .text-lg {
 
 @keyframes glitch-anim-1 {
   0% {
-    clip: rect(89px, 9999px, 76px, 0);
+    clip: rect(67px, 9999px, 79px, 0);
   }
-  5% {
-    clip: rect(13px, 9999px, 53px, 0);
+  2000% {
+    clip: rect(14px, 9999px, 93px, 0);
   }
-  10% {
-    clip: rect(31px, 9999px, 59px, 0);
+  4000% {
+    clip: rect(74px, 9999px, 68px, 0);
   }
-  15% {
-    clip: rect(49px, 9999px, 80px, 0);
+  6000% {
+    clip: rect(68px, 9999px, 7px, 0);
   }
-  20% {
-    clip: rect(29px, 9999px, 9px, 0);
+  8000% {
+    clip: rect(15px, 9999px, 62px, 0);
   }
-  25% {
-    clip: rect(1px, 9999px, 69px, 0);
+  10000% {
+    clip: rect(91px, 9999px, 49px, 0);
   }
-  30% {
-    clip: rect(83px, 9999px, 80px, 0);
+  12000% {
+    clip: rect(51px, 9999px, 7px, 0);
   }
-  35% {
-    clip: rect(31px, 9999px, 87px, 0);
+  14000% {
+    clip: rect(45px, 9999px, 80px, 0);
   }
-  40% {
-    clip: rect(62px, 9999px, 63px, 0);
+  16000% {
+    clip: rect(49px, 9999px, 41px, 0);
   }
-  45% {
-    clip: rect(93px, 9999px, 37px, 0);
+  18000% {
+    clip: rect(55px, 9999px, 76px, 0);
   }
-  50% {
-    clip: rect(53px, 9999px, 77px, 0);
+  20000% {
+    clip: rect(35px, 9999px, 62px, 0);
   }
-  55% {
-    clip: rect(27px, 9999px, 45px, 0);
+  22000% {
+    clip: rect(53px, 9999px, 52px, 0);
   }
-  60% {
-    clip: rect(39px, 9999px, 99px, 0);
+  24000% {
+    clip: rect(89px, 9999px, 67px, 0);
   }
-  65% {
-    clip: rect(81px, 9999px, 33px, 0);
+  26000% {
+    clip: rect(63px, 9999px, 28px, 0);
   }
-  70% {
-    clip: rect(54px, 9999px, 13px, 0);
+  28000% {
+    clip: rect(86px, 9999px, 88px, 0);
   }
-  75% {
-    clip: rect(64px, 9999px, 54px, 0);
+  30000% {
+    clip: rect(55px, 9999px, 5px, 0);
   }
-  80% {
-    clip: rect(69px, 9999px, 64px, 0);
+  32000% {
+    clip: rect(24px, 9999px, 32px, 0);
   }
-  85% {
-    clip: rect(89px, 9999px, 6px, 0);
+  34000% {
+    clip: rect(79px, 9999px, 41px, 0);
   }
-  90% {
-    clip: rect(84px, 9999px, 24px, 0);
+  36000% {
+    clip: rect(62px, 9999px, 95px, 0);
   }
-  95% {
-    clip: rect(71px, 9999px, 33px, 0);
+  38000% {
+    clip: rect(77px, 9999px, 26px, 0);
   }
-  100% {
-    clip: rect(41px, 9999px, 78px, 0);
+  40000% {
+    clip: rect(100px, 9999px, 83px, 0);
   }
 }
-
 @keyframes glitch-anim-2 {
   0% {
-    clip: rect(20px, 9999px, 11px, 0);
+    clip: rect(32px, 9999px, 38px, 0);
   }
-  5% {
-    clip: rect(29px, 9999px, 2px, 0);
+  2000% {
+    clip: rect(2px, 9999px, 35px, 0);
   }
-  10% {
-    clip: rect(46px, 9999px, 65px, 0);
+  4000% {
+    clip: rect(58px, 9999px, 69px, 0);
   }
-  15% {
-    clip: rect(95px, 9999px, 42px, 0);
+  6000% {
+    clip: rect(55px, 9999px, 9px, 0);
   }
-  20% {
-    clip: rect(70px, 9999px, 34px, 0);
+  8000% {
+    clip: rect(9px, 9999px, 68px, 0);
   }
-  25% {
-    clip: rect(49px, 9999px, 15px, 0);
+  10000% {
+    clip: rect(98px, 9999px, 4px, 0);
   }
-  30% {
-    clip: rect(26px, 9999px, 28px, 0);
+  12000% {
+    clip: rect(29px, 9999px, 26px, 0);
   }
-  35% {
-    clip: rect(23px, 9999px, 76px, 0);
+  14000% {
+    clip: rect(66px, 9999px, 57px, 0);
   }
-  40% {
-    clip: rect(11px, 9999px, 83px, 0);
+  16000% {
+    clip: rect(70px, 9999px, 36px, 0);
   }
-  45% {
-    clip: rect(63px, 9999px, 38px, 0);
+  18000% {
+    clip: rect(86px, 9999px, 50px, 0);
   }
-  50% {
-    clip: rect(51px, 9999px, 63px, 0);
+  20000% {
+    clip: rect(49px, 9999px, 30px, 0);
   }
-  55% {
-    clip: rect(63px, 9999px, 75px, 0);
+  22000% {
+    clip: rect(90px, 9999px, 23px, 0);
   }
-  60% {
-    clip: rect(52px, 9999px, 4px, 0);
+  24000% {
+    clip: rect(36px, 9999px, 13px, 0);
   }
-  65% {
-    clip: rect(58px, 9999px, 46px, 0);
+  26000% {
+    clip: rect(75px, 9999px, 20px, 0);
   }
-  70% {
-    clip: rect(29px, 9999px, 5px, 0);
+  28000% {
+    clip: rect(82px, 9999px, 56px, 0);
   }
-  75% {
-    clip: rect(73px, 9999px, 27px, 0);
+  30000% {
+    clip: rect(71px, 9999px, 78px, 0);
   }
-  80% {
-    clip: rect(100px, 9999px, 89px, 0);
+  32000% {
+    clip: rect(85px, 9999px, 54px, 0);
   }
-  85% {
-    clip: rect(72px, 9999px, 44px, 0);
+  34000% {
+    clip: rect(23px, 9999px, 26px, 0);
   }
-  90% {
-    clip: rect(70px, 9999px, 21px, 0);
+  36000% {
+    clip: rect(46px, 9999px, 45px, 0);
   }
-  95% {
-    clip: rect(33px, 9999px, 98px, 0);
+  38000% {
+    clip: rect(47px, 9999px, 14px, 0);
   }
-  100% {
-    clip: rect(87px, 9999px, 77px, 0);
+  40000% {
+    clip: rect(12px, 9999px, 15px, 0);
   }
 }
-
 /* extra buttons */
 .btn-outline-primary {
   color: #0275D8;
@@ -953,27 +914,28 @@ p.text-lg, .text-lg {
   top: 15px;
   font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif;
 }
-
 .titleblock h1 {
   font-weight: strong;
   font-size: 4.788rem;
 }
-
 @media (max-width: 900px) {
   .titleblock h1 {
     font-size: 4.2rem;
   }
 }
-
 .titleblock h2 {
   font-size: 2.7rem;
 }
-
 .titleblock h3 {
   font-size: 1.8rem;
 }
-
-.titleblock h1, .titleblock h2, .titleblock h3, .titleblock h4, .titleblock h5, .titleblock h6, .titleblock p {
+.titleblock h1,
+.titleblock h2,
+.titleblock h3,
+.titleblock h4,
+.titleblock h5,
+.titleblock h6,
+.titleblock p {
   display: inline;
   margin-top: 0.8rem;
   margin-right: 0.8rem;
@@ -982,12 +944,10 @@ p.text-lg, .text-lg {
 .ipblock {
   font-family: "ProFontWindows", "Titillium-Bold", Helvetica, sans-serif;
 }
-
 .ipblock h1 {
   font-weight: strong;
   font-size: 4.788rem;
 }
-
 @media (max-width: 900px) {
   .ipblock h1 {
     font-size: 1.75rem;
@@ -1002,7 +962,6 @@ p.text-lg, .text-lg {
   transition: 1s;
   overflow: hidden;
 }
-
 .animloadbar span.animloadbar-bar {
   display: block;
   height: 100%;
@@ -1014,5 +973,7 @@ p.text-lg, .text-lg {
   transition: 1s;
   width: 15%;
   min-width: 35px;
-  animation: animloadbar  3.4s linear infinite;
+  animation: animloadbar 3.4s linear infinite;
 }
+
+/*# sourceMappingURL=style.css.map */

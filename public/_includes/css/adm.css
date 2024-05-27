@@ -16,7 +16,6 @@ html {
   display: flex;
   flex-direction: column;
 }
-
 .hidden-block .items {
   flex: 1;
   width: 100%;
@@ -30,7 +29,6 @@ html {
   font-size: 2rem;
   border-radius: 0;
 }
-
 .keypad-row #writekeys {
   background: #CCC;
   color: #222;
@@ -53,12 +51,10 @@ html {
   margin-left: 0;
   margin-right: 0;
 }
-
 .adm-container #cPanel {
   min-height: 2rem;
   margin-top: 1.7rem;
 }
-
 .adm-container .adm-tab {
   border-radius: 5px;
   margin-top: 0.8rem;
@@ -66,12 +62,10 @@ html {
   min-height: 50vh;
   padding-bottom: 0.8rem;
 }
-
 .adm-container .adm-tab#admSECURITY .row {
   margin-top: 2.4rem;
   margin-bottom: 2.4rem;
 }
-
 .adm-container .adm-tab#admSECURITY .form-control {
   margin-top: 0.8rem;
   margin-bottom: 0.8rem;
@@ -79,38 +73,30 @@ html {
   color: #FFF;
   border: 1px solid #FFF;
 }
-
 .adm-container .adm-tab#admSECURITY .btn {
   margin-top: 0.8rem;
   margin-bottom: 0.8rem;
 }
-
 .adm-container .adm-tab#admCHAT input, .adm-container .adm-tab#admCHAT textarea, .adm-container .adm-tab#admCHAT .btn {
   margin-top: 0.8rem;
   margin-bottom: 1.6rem;
 }
-
 .adm-container .adm-tab#admBROADCAST .btn {
   margin: 0.4rem;
 }
-
 .adm-container .adm-tab#admCMD {
   padding: 1.6rem 3.2rem;
 }
-
 .adm-container .adm-tab#admOVERLORD {
   padding: 1.6rem 3.2rem;
 }
-
 .adm-container .adm-tab#admOVERLORD .btn {
   margin: 1.2rem 0;
 }
-
 .adm-container .adm-tab#admPORTAL .btn {
   width: 100%;
   margin: 1.2rem;
 }
-
 .adm-container .adm-tab#admMEDICAL .btn {
   margin: 1.2rem;
 }
@@ -121,3 +107,5 @@ html {
     margin: 1.2rem 0;
   }
 }
+
+/*# sourceMappingURL=adm.css.map */

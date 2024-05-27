@@ -358,36 +358,61 @@ function updatePortalStatus(portalstatus) {
 
     } else if(portalstatus == "multirequest") {
 
-      portalStatusSelector.addClass('blinkContent').find('.left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
+      portalStatusSelector.addClass('blinkContent').find('.left').html('<span class="status-icon"><i class="fa fa-warning"></i></span>');
       portalStatusSelector.find('.right').find('h4').html('Multiple requests');
       portalStatusSelector.find('.right').find('p').html('Multiple external requests detected.<br/>Please stand by.');
 
     } else if (portalstatus == "shutdown") {
 
-      portalStatusSelector.addClass('blinkContent').find('.left').html('<span class="portalstatus-icon"><i class="fa fa-warning"></i></span>');
+      portalStatusSelector.addClass('blinkContent').find('.left').html('<span class="status-icon"><i class="fa fa-warning"></i></span>');
       portalStatusSelector.find('.right').find('h4').html('!! OFFLINE !!');
       portalStatusSelector.find('.right').find('p').html('Portal services currently unavailable.');
 
     } else if (portalstatus == "active") {
 
-      portalStatusSelector.addClass('blinkContent').find('.left').html('<span class="portalstatus-icon"><i class="fa fa-cog fa-spin"></i></span>');
+      portalStatusSelector.addClass('blinkContent').find('.left').html('<span class="status-icon"><i class="fa fa-cog fa-spin"></i></span>');
       portalStatusSelector.find('.right').find('h4').html('Active');
       portalStatusSelector.find('.right').find('p').html('Portal activity detected ...');
 
     } else if (portalstatus == "maintenance") {
 
-      portalStatusSelector.addClass('blinkContent').find('.left').html('<span class="portalstatus-icon"><i class="fa fa-info-circle"></i></span>');
+      portalStatusSelector.addClass('blinkContent').find('.left').html('<span class="status-icon"><i class="fa fa-info-circle"></i></span>');
       portalStatusSelector.find('.right').find('h4').html('Maintenance Required');
       portalStatusSelector.find('.right').find('p').html('Safety first.');
 
     } else {
 
-      portalStatusSelector.find('.left').html('<span class="portalstatus-icon"><i class="fa fa-check-circle-o"></i></span>');
+      portalStatusSelector.find('.left').html('<span class="status-icon"><i class="fa fa-check-circle-o"></i></span>');
       portalStatusSelector.find('.right').find('h4').html('Operational');
       portalStatusSelector.find('.right').find('p').html('Nothing to report.');
 
     }
   }
+}
+
+/* orb status change */
+function updateOrbStatus(orbStatus) {
+  const _selector = $('#orbstatus');
+
+  _selector.removeClass('blinkContent');
+  if(_selector.html() != "" && orbStatus != "" && orbStatus != null) {
+
+    switch (orbStatus) {
+      case 'inactive': 
+        _selector.addClass('blinkContent');
+        _selector.find('.left').html('<span class="status-icon"><i class="fa fa-warning"></i></span>');
+        _selector.find('.right').find('h4').html('OFFLINE');
+        break;
+
+      case 'active':
+      default: 
+        _selector.find('.left').html('<span class="status-icon"><i class="fa fa-check-circle-o"></i></span>');
+        _selector.find('.right').find('h4').html('Operational');
+        break;
+    }
+    
+  }
+
 }
 
 /* When changing the portal status, play a tune. Or don't, in the case of most mobile devices. */

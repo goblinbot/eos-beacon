@@ -97,11 +97,11 @@ p {
       &.no-bg {
         background: none;
       }
-      #portalstatus {
+      #portalstatus, #orbstatus {
         h4 {
           color: $altTitleColor;
         }
-        .portalstatus-icon .glyphicon, .portalstatus-icon .fa {
+        .fa {
           color: $altTitleColor;
         }
       }
