@@ -27,7 +27,7 @@
   "author": "Thijs Boerma",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1",
+    "express": "^4.19.2",
     "ip": "^1.1.8",
     "socket.io": "^4.5.0"
   }
