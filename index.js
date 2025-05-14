@@ -3,15 +3,11 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const ip = require('ip');
 const fs = require('fs');
 const globalSettings = require('./config.js');
 
 /* CONFIGURATIE: vaste gegevens bij start up. */
 const port = process.env.PORT || globalSettings.sys.port;
-
-globalSettings.sys.localaddress = ip.address() + ':' + port;
-globalSettings.data.localaddress = globalSettings.sys.localaddress;
 
 const default_security_level = 'Code green - All clear';
 const applicationState = {
@@ -23,7 +19,6 @@ const applicationState = {
 };
 
 /* INITIALISING THE APP */
-
 express.static.mime.define({ 'audio/ogg;codec=opus': ['opus'] });
 
 app.use(express.static('public'));
@@ -36,12 +31,12 @@ http.listen(port, () => {
   console.log('# Initialising ..');
   console.log('# Loading dependancies ..');
   console.log('-------------------------');
-  console.log('# CONNECT DEVICES//USERS TO :');
-  console.log(' ? External IP :\n\t- ' + globalSettings.sys.localaddress);
-  console.log(
-    ' ? Internal IP :\n\t- localhost:' + port + '\n\t- ' + '127.0.0.1:' + port
-  );
-  console.log('-------------------------');
+  // console.log('# CONNECT DEVICES//USERS TO :');
+  // console.log(' ? External IP :\n\t- ' + globalSettings.sys.localaddress);
+  // console.log(
+  //   ' ? Internal IP :\n\t- localhost:' + port + '\n\t- ' + '127.0.0.1:' + port
+  // );
+  // console.log('-------------------------');
   console.log(
     'THANK YOU FOR USING ' +
     globalSettings.cfg.appname +
@@ -70,7 +65,7 @@ io.on('connection', (socket) => {
   console.log(`\t[IO] ${applicationState.countClients} active client(s).`);
 
   // initial configdata
-  setTimeout(() => socket.emit('startConfig', globalSettings.data), 1000);
+  setTimeout(() => socket.emit('startConfig', port), 1000);
 
   socket.on('updateSecurity', (input) => {
     const _str = sanitizeUserString(input);
@@ -152,36 +147,14 @@ io.on('connection', (socket) => {
 
   /* getMedia: function to automatically read audio files into pushable buttons, caused by the adminpanel when logging in with sufficient rights. */
   socket.on('getMedia', () => {
-    /*
-      getMedia has three seperate folders by default: miscAudio, aliceAudio and daveAudio.
-      First, beacon will check if the subfolders actually exist, then read every file and push them into an array.
-      Secondly, we push this array to the admin screen to generate the "play audio" buttons
-    */
     var miscAudio = [];
+
     if (fs.existsSync('./public/sounds/audio-misc')) {
       fs.readdir('./public/sounds/audio-misc', (err, files) => {
         files.forEach((file) => {
           miscAudio.push(file);
         });
         socket.emit('sendMediaMisc', miscAudio);
-      });
-    }
-
-    /* copy of misc audio */
-    const aliceAudio = [];
-    if (fs.existsSync('./public/sounds/audio-alice')) {
-      fs.readdir('./public/sounds/audio-alice', (err, files) => {
-        files.forEach((file) => aliceAudio.push(file));
-        socket.emit('sendMediaAlice', aliceAudio);
-      });
-    }
-
-    /* copy of misc audio */
-    const daveAudio = [];
-    if (fs.existsSync('./public/sounds/audio-dave')) {
-      fs.readdir('./public/sounds/audio-dave', (err, files) => {
-        files.forEach((file) => daveAudio.push(file));
-        socket.emit('sendMediaDave', daveAudio);
       });
     }
   });
