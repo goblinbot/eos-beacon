@@ -189,8 +189,9 @@
 $(document).ready(function(){
 
   /* update all titles, descriptions and the IP adress upper right on load.*/
-  socket.on('startConfig', function(settings){
-    $('#localIP').html(settings['localaddress']);
+  socket.on('startConfig', function(port){
+    // $('#localIP').html(settings['localaddress']);
+    $('#localIP').html(`MNET\\J2405130:${port}`);
   });
 
   /* ForceReset. F5'd the page.*/
