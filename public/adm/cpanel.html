@@ -25,7 +25,7 @@
   </span>
 
   <span class="orb">
-    <div id="btn-admORB" class="btn adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admORB')"><i style="font-size:133%" class="fa fa-opera"></i><br/>ORB</div>
+    <div id="btn-admORB" class="btn adm-nav btn-ui btn-ui-holo" onclick="navigateADM('admORB')"><i style="font-size:133%" class="fa fa-opera"></i><br/>CANOPY</div>
   </span>
 
   <span class="overlord">
@@ -40,7 +40,6 @@
 
 <script>
 $(document).ready(function(){
-
     const admRANK = getCookie('rank');
 
     /* if a person is under or above the accepted values, destroy their login. */
@@ -57,7 +56,6 @@ $(document).ready(function(){
           $('.portal').empty(); /* empty&hide the portal tab. */
           $('.orb').empty(); /* empty&hide the orb tab. */
           $('.officer').empty(); /* empty&hide the portal tab. */
-
           break;
         case '2':
           $('.overlord').empty(); /* hide the overlord screen and empty all content, just incase. */
@@ -70,7 +68,6 @@ $(document).ready(function(){
           $('.officer').empty(); /* empty&hide the attackvector tab. */
           break;
         case '4':
-          socket.emit('getMedia'); /* sends a request to the server to obtain the subfolder audio files for later. */
           break;
       }
     }

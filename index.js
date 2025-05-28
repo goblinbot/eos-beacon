@@ -1,4 +1,3 @@
-/* dependancies verklaren en ophalen */
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
@@ -6,7 +5,7 @@ const io = require('socket.io')(http);
 const fs = require('fs');
 const globalSettings = require('./config.js');
 
-/* CONFIGURATIE: vaste gegevens bij start up. */
+// Defaults
 const port = process.env.PORT || globalSettings.sys.port;
 
 const default_security_level = 'Code green - All clear';
@@ -18,11 +17,16 @@ const applicationState = {
   orbStatus: 'active',
 };
 
-/* INITIALISING THE APP */
+// Init: routing
 express.static.mime.define({ 'audio/ogg;codec=opus': ['opus'] });
-
 app.use(express.static('public'));
 app.use(express.static('_includes'));
+app.get('/', (req, res) =>
+  res.sendFile('index.html', { root: __dirname + '/public/' })
+);
+app.get('*', (req, res) =>
+  res.sendFile('404.html', { root: __dirname + '/public/' })
+);
 
 // Init: FlavorText
 http.listen(port, () => {
@@ -43,14 +47,6 @@ http.listen(port, () => {
     ' INFORMATION & BROADCASTING SERVICES'
   );
 });
-
-/* pathing / routing */
-app.get('/', (req, res) =>
-  res.sendFile('index.html', { root: __dirname + '/public/' })
-);
-app.get('*', (req, res) =>
-  res.sendFile('404.html', { root: __dirname + '/public/' })
-);
 
 const sanitizeUserString = (str) =>
   str.replace(/[`~$^&*_|=;'",<>\{\}\[\]\\\/]/gi, '');
@@ -93,6 +89,7 @@ io.on('connection', (socket) => {
   // FORCE RESET ::
   socket.on('forceReset', () => {
     applicationState['lastBC'] = 'bcdefault';
+    applicationState['alertLevel'] = default_security_level;
     io.emit('F5');
     console.log('[admin] command => FORCE_RESET');
   });
@@ -112,7 +109,7 @@ io.on('connection', (socket) => {
       }, value.duration);
     }
 
-    console.log('[broadcast] sent => ' + value['title']);
+    console.log(`[broadcast] sent => ${value.title}`);
   });
 
   socket.on('disconnect', () => {
@@ -121,19 +118,19 @@ io.on('connection', (socket) => {
   });
 
   socket.on('auth', (keycode) => {
-    var checklogincode = 0;
-    var loginrank = 0;
+    let checkLoginCode = 0;
+    let loginRank = 0;
 
-    for (var i in globalSettings.accounts) {
+    for (let i in globalSettings.accounts) {
       if (globalSettings.accounts[i].logincode == keycode) {
-        checklogincode = 1;
-        loginrank = globalSettings.accounts[i].loginrank;
+        checkLoginCode = 1;
+        loginRank = globalSettings.accounts[i].loginRank;
       }
     }
 
-    if (checklogincode == 1) {
+    if (checkLoginCode == 1) {
       console.log('(i) succesful auth using', keycode);
-      socket.emit('authTrue', keycode, loginrank);
+      socket.emit('authTrue', keycode, loginRank);
     } else {
       socket.emit('authFalse');
     }
@@ -145,67 +142,17 @@ io.on('connection', (socket) => {
     io.emit('playAudioFile', audiofile);
   });
 
-  /* getMedia: function to automatically read audio files into pushable buttons, caused by the adminpanel when logging in with sufficient rights. */
-  socket.on('getMedia', () => {
-    var miscAudio = [];
+  // /* getMedia: function to automatically read audio files into pushable buttons, caused by the adminpanel when logging in with sufficient rights. */
+  // socket.on('getMedia', () => {
+  //   var miscAudio = [];
 
-    if (fs.existsSync('./public/sounds/audio-misc')) {
-      fs.readdir('./public/sounds/audio-misc', (err, files) => {
-        files.forEach((file) => {
-          miscAudio.push(file);
-        });
-        socket.emit('sendMediaMisc', miscAudio);
-      });
-    }
-  });
-
-  var pa_name = null;
-  var pa_folder = './public/sounds/audio-pa/';
-
-  socket.on('startPA', function () {
-    fs.readdir(pa_folder, function (err, files) {
-      var cleantime = new Date(new Date().getTime() - 60000);
-      if (err) {
-        console.log('PA cleanup readdir error: ' + err);
-      }
-      files.forEach(function (file) {
-        if (file) {
-          var path = pa_folder + file;
-          fs.stat(path, function (err, stat) {
-            if (err) {
-              console.log('PA cleanup stat error: ' + err);
-            }
-            if (stat.ctime < cleantime) {
-              console.log('[PA] unlinking', path, stat.ctime, cleantime);
-              fs.unlink(path, function (err) {
-                if (err) {
-                  console.log('PA cleanup unlink error: ' + err);
-                }
-              });
-            }
-          });
-        }
-      });
-    });
-    pa_name =
-      'PA-' +
-      socket.id +
-      '-' +
-      new Date().toISOString().substring(11, 23).replace(/[:.]/g, '');
-
-    fs.mkdir(pa_folder, { recursive: true }, function (err) {
-      if (err) throw err;
-      fs.truncate(pa_folder + pa_name + '.opus', function (err) { });
-    });
-  });
-  socket.on('uploadPA', function (data) {
-    // TODO: Force maximum length to stop the server from overflowing
-    fs.appendFile(pa_folder + pa_name + '.opus', data, function (err) {
-      if (err) throw err;
-    });
-  });
-  socket.on('broadcastPA', function () {
-    console.log('[audio] => PA: ' + pa_name);
-    io.emit('playAudioFile', '/audio-pa/' + pa_name + '.opus');
-  });
+  //   if (fs.existsSync('./public/sounds/audio-misc')) {
+  //     fs.readdir('./public/sounds/audio-misc', (err, files) => {
+  //       files.forEach((file) => {
+  //         miscAudio.push(file);
+  //       });
+  //       socket.emit('sendMediaMisc', miscAudio);
+  //     });
+  //   }
+  // });
 });
