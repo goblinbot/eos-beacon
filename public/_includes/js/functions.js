@@ -201,6 +201,9 @@ function sendBroadCast(location) {
   socket.emit('broadcastSend', location);
 }
 
+function invokeEldritchTruth() {
+  socket.emit('broadcastAudio', '/honk.ogg');
+}
 
 /* functie om de duration toch wel werkend te krijgen - oftewel een broadcast CLEAREN na ingestelde tijd.*/
 function clearBroadcast(duration) {
@@ -315,7 +318,6 @@ function loopSound(audiofile, repeatcount) {
 
 /* audio file functie apart */
 function generateBCaudio(audiofile) {
-
   console.log(audiofile);
 
   if ($(window).width() > 960) {
@@ -324,7 +326,7 @@ function generateBCaudio(audiofile) {
     if (BCaudioCache == "") { BCaudioCache = $('#BCAUDIO'); }
 
     /* empty element, and refill it with the new audio. */
-    BCaudioCache.empty().html('<audio id="generatedBCAUDIO" controls="controls" class="hidden">'
+    BCaudioCache.html('<audio id="generatedBCAUDIO" controls="controls" class="hidden">'
       + '<source src="/sounds' + audiofile + '">'
       + '</audio>');
 

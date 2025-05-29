@@ -18,7 +18,7 @@ const applicationState = {
 };
 
 // Init: routing
-express.static.mime.define({ 'audio/ogg;codec=opus': ['opus'] });
+// express.static.mime.define({ 'audio/ogg;codec=opus': ['opus'] });
 app.use(express.static('public'));
 app.use(express.static('_includes'));
 app.get('/', (req, res) =>
