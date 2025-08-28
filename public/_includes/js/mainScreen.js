@@ -1,0 +1,225 @@
+const workerOptions = {
+  OggOpusEncoderWasmPath: 'https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OggOpusEncoder.wasm',
+  WebMOpusEncoderWasmPath: 'https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/WebMOpusEncoder.wasm'
+};
+$(document).ready(function () {
+  var bcinit = 0;
+  var clientdevice = "";
+  var printresult;
+
+  /* these divs WILL constantly be updated, so let's cache the selector first. */
+  var countClientsSelector = $('#countClientsCounter');
+  var securityLevelSelector = $('#securityAlertLevel');
+
+
+  var currentPortalStatus = "";
+
+  /* after about half a second, request the dynamicdata HERE. (client->server) */
+  setTimeout(function () {
+    socket.emit('requestDynamicData');
+  }, 800);
+
+  /* This is where our client receives the broadcast from the server side .*/
+  socket.on('broadcastReceive', function (location) {
+
+    /* perform the broadcast, client side. */
+    broadCast(location);
+  });
+
+  /* default sound file */
+  var defaultSoundFile = "/sounds/Menu_Select_00.wav";
+
+  /* add soundplayer if screen is wide enough, to prevent mobile phones from constantly beeping. */
+  if ($(window).width() > 960) {
+    $('#audiocontrol').html('<audio id="default-audio" controls="controls" class="hidden">'
+      + '<source src="' + defaultSoundFile + '" type="audio/mpeg">'
+      + '</audio>');
+  }
+
+  /* (server->client) updates our HTML web page to contain the global dynamicdata, instead of default OR outdated content.*/
+  socket.on('updateDynamicData', function (dynamicData) {
+    securityLevelSelector.html(dynamicData['alertLevel']);
+    countClientsSelector.html(dynamicData['countClients']);
+
+    /* updates the portal status to match with the global dynamicdata. */
+    updatePortalStatus(dynamicData['portalStatus']);
+
+    /* ..and the same for Orb */
+    updateOrbStatus(dynamicData.orbStatus);
+
+    $('#socket-id').html('<span class="holoContrast">InfansExNihilo (89%)</span><br/><span class="holoContrast">HÉRITAGE (11%)</span><br/><span class="text-muted">Ascendancy (disabled)<span><br/><span class="text-muted">ProviDNC (disabled)<span>');
+
+    /*resume the last broadcast! client only.*/
+    if (bcinit == 0) {
+      broadCast(window[dynamicData['lastBC']]);
+      bcinit = 1;
+    }
+  });
+
+  /* receive portal status updates here (server->client)*/
+  socket.on('portalfrontend', function () {
+    $('#portalstatus').addClass('flash');
+    playPortalAudio();
+    setTimeout(function () {
+      $('#portalstatus').removeClass('flash');
+    }, 2500);
+  });
+
+  socket.on('orbDivFlash', function () {
+    $('#orbstatus').addClass('flash');
+
+    setTimeout(function () {
+      $('#orbstatus').removeClass('flash');
+    }, 7500);
+  })
+
+  /* receive the request to play audio here: (server->client)
+    generateBCaudio will determine what happens next. (play or not to play, etc) */
+  socket.on('playAudioFile', function (audiofile) {
+    generateBCaudio(audiofile);
+  });
+
+
+  /* reconnect/disconnect events: what to do when losing/gaining connection. */
+  socket.on('connect', function () {
+    $('#connStatus').addClass('btn-outline-success').removeClass('btn-outline-danger blinkContent').html('<i class="fa fa-link"></i>&nbsp;CONNECTED');
+
+    $('#socket-id').html('<span class="holoContrast">InfansExNihilo (89%)</span><br/><span class="holoContrast">HÉRITAGE (11%)</span><br/><span class="text-muted">Ascendancy (disabled)<span><br/><span class="text-muted">ProviDNC (disabled)<span>');
+    countClientsSelector.show();
+    $('#notificationTitleSmall').find('h2').html('Waiting for broadcasts ...');
+
+    $('.disconnectedPopup').empty();
+    $('.disconnectedPopup').remove();
+
+    $('#localIP').removeClass('text-muted blinkContent');
+
+
+    /* ask the server for the current dynamicdata, causing the content to potentially catch up with the rest of the clients */
+    setTimeout(function () {
+      socket.emit('requestDynamicData');
+    }, 800);
+  });
+
+  /* on disconnect: mostly flavor text and effects to make it clear that Beacon has no current active connection. */
+  socket.on('disconnect', function () {
+    $('#connStatus').addClass('btn-outline-danger blinkContent').removeClass('btn-outline-success').html('<i class="fa fa-unlink"></i>&nbsp;OFFLINE');
+
+    $('#socket-id').html('&nbsp;<span class="holoContrast">No active infomorph.</span>');
+    countClientsSelector.hide();
+    $('#notificationTitleSmall').find('h2').html('Attempting to reconnect...');
+
+    $('#notificationContainer').append(
+      '<div class="col-xs-12 col-sm-8 col-md-6 text-center disconnectedPopup">'
+      + '<h2 class="text-bold">'
+      + '<i class="fa fa-warning holoContrast" style="font-size:24px;"></i> '
+      + 'COMMUNICATIONS <span class="holoContrast">OFFLINE</span>'
+      + ' <i class="fa fa-warning holoContrast" style="font-size:24px;"></i>'
+      + '</h2>'
+      + '</div>');
+
+    $('#localIP').addClass('text-muted blinkContent');
+
+    updatePortalStatus("shutdown");
+  });
+
+  $(document).ready(function () {
+    setInterval('updateClock()', 1000);
+  });
+
+  const admRANK = getCookie('rank')
+  if (admRANK >= 1 && navigator.mediaDevices) {
+    $('#pa-broadcast-btn').removeClass('hidden').click(function () {
+      btn = $(this).find('i')
+      if (btn.hasClass('fa-microphone-slash')) {
+        navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(function (stream) {
+          $('#notificationContainer').append(
+            '<div class="col-xs-12 col-sm-8 col-md-6 text-center disconnectedPopup popupBroadcastPA">'
+            + '<h2 class="text-bold">'
+            + '<i class="fa fa-warning holoContrast" style="font-size:24px;"></i> '
+            + 'VOICE BROADCAST ENABLED<br>Hold the space bar to record, it will be broadcast when you release'
+            + ' <i class="fa fa-warning holoContrast" style="font-size:24px;"></i>'
+            + '</h2>'
+            + '</div>');
+          setTimeout(function () { $('.popupBroadcastPA').empty(); $('.popupBroadcastPA').remove() }, 5000)
+          if (stream.stop) { stream.stop() }
+          if (stream.getTracks) {
+            stream.getTracks().forEach(function (track) {
+              track.stop()
+            })
+          }
+          $(window).keydown(startRecording)
+          $(window).keyup(stopRecording)
+        }).catch(function (err) { console.log("Microphone error: " + err) })
+        btn.removeClass('fa-microphone-slash').addClass('fa-microphone')
+      } else {
+        $(window).off('keydown', startRecording)
+        $(window).off('keyup', stopRecording)
+        btn.removeClass('fa-microphone').addClass('fa-microphone-slash')
+        if (mediaRecorder) {
+          mediaRecorder.stop()
+          mediaRecorder = null
+          $('.popupBroadcastPA').empty();
+          $('.popupBroadcastPA').remove();
+        }
+      }
+    })
+  }
+  var mediaRecorder = null
+  var runningRecorder = false
+  function saveTannoy(stream) {
+    mediaRecorder = new OpusMediaRecorder(stream, {}, workerOptions)
+    mediaRecorder.ondataavailable = function (e) {
+      if (e.data.size > 0) {
+        socket.emit('uploadPA', e.data)
+      }
+    }
+    mediaRecorder.onstop = function () {
+      $('#start-broadcast').attr('disabled', false)
+      if (stream.stop) { stream.stop() }
+      if (stream.getTracks) {
+        stream.getTracks().forEach(function (track) { track.stop() })
+      }
+      socket.emit('broadcastPA')
+    }
+    socket.emit('startPA')
+    mediaRecorder.start(1000)
+  }
+  function startRecording(event) {
+    // console.log('keyDown',event.keyCode)
+    if (event.keyCode == 32) {
+      if (!runningRecorder) {
+        runningRecorder = true
+        navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(saveTannoy).catch(function (err) { console.log("Microphone error: ", err) })
+        $('.popupBroadcastPA').empty();
+        $('.popupBroadcastPA').remove();
+        $('#notificationContainer').append(
+          '<div class="col-xs-12 col-sm-8 col-md-6 text-center disconnectedPopup popupBroadcastPA">'
+          + '<h2 class="text-bold">'
+          + '<i class="fa fa-warning holoContrast" style="font-size:24px;"></i> '
+          + 'VOICE BROADCAST IN PROGRESS<br>Whatever you say will be heard by all colonists'
+          + ' <i class="fa fa-warning holoContrast" style="font-size:24px;"></i>'
+          + '</h2>'
+          + '</div>');
+      }
+    }
+    // console.log('keyDown')
+  }
+  function stopRecording(event) {
+    // console.log('keyUp',event.keyCode)
+    if (event.keyCode == 32) {
+      if (mediaRecorder) {
+        mediaRecorder.stop()
+        mediaRecorder = null
+        runningRecorder = false
+        $('.popupBroadcastPA').empty();
+        $('.popupBroadcastPA').remove();
+      }
+    }
+    // console.log('keyUp')
+  }
+  function getCookie(cname) {
+    var ca = document.cookie.match(new RegExp('(?:^|;)\\s*' + cname.replace(/[-\/\\^$.*+?()|[\]{}]/g, '\\$&') + '=([^;]*)'))
+    if (ca) { return ca[1] }
+    return ""
+  }
+});
