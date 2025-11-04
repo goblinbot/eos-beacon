@@ -138,6 +138,7 @@
             <span id="connStatus" style="cursor: default; pointer-events:none;"
               class="btn btn-lg btn-outline-success"><i class="fa fa-link"></i>&nbsp;CONNECTED</span>
             &nbsp;<a href="/adm/" class="btn btn-lg btn-ui btn-ui-holo"><i class="fa fa-cog"></i></a>
+            <span id="pa-broadcast-btn" class="btn btn-lg btn-ui btn-ui-holo hidden"><i class="fa fa-microphone-slash"></i></span>
           </p>
         </div>
 
@@ -147,9 +148,11 @@
 
 </div>
 
+<div id="_extra" class="hidden"></div>
+
 <script>
   $(document).ready(function () {
-    let bcinit = 0;
+    let initialized = 0;
     let clientdevice = "";
     let printresult;
     let lastSecLevel;
@@ -204,10 +207,22 @@
 
       $('#socket-id').html('<span class="holoContrast">InfansExNihilo (89%)</span><br/><span class="holoContrast">HÉRITAGE (11%)</span><br/><span class="text-muted">Ascendancy (disabled)<span><br/><span class="text-muted">ProviDNC (disabled)<span>');
 
-      /*resume the last broadcast! client only.*/
-      if (bcinit == 0) {
+      // First boot! request LAST broadcast and check modular options
+      if (initialized == 0) {
+        console.log('first')
+        console.log(dynamicData)
+
+        if (dynamicData.voiceEnabled) {
+          const _element = $('#_extra');
+          
+          _element.append('<script src=\"https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OpusMediaRecorder.umd.js\">');
+          _element.append('<script src=\"https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/encoderWorker.umd.js\">');
+          _element.append('<script src="./_includes/js/pa.js">');
+
+        }
+
         broadCast(window[dynamicData['lastBC']]);
-        bcinit = 1;
+        initialized = 1;
       }
     });
 
