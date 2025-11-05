@@ -8,17 +8,20 @@ const globalSettings = require('./config.js');
 // Defaults
 const port = process.env.PORT || globalSettings.sys.port;
 
-const default_security_level = 'Code green - All clear';
+const defaultSecurityLevel = 'Code green - All clear';
 const applicationState = {
   countClients: 0,
-  alertLevel: default_security_level,
+  alertLevel: defaultSecurityLevel,
   lastBC: 'bcdefault',
   portalStatus: 'ok',
   orbStatus: 'active',
+  voiceEnabled: globalSettings.sys.voiceEnabled,
 };
 
 // Init: routing
-// express.static.mime.define({ 'audio/ogg;codec=opus': ['opus'] });
+if (globalSettings.sys.voiceEnabled) {
+  express.static.mime.define({ 'audio/ogg;codec=opus': ['opus'] });
+}
 app.use(express.static('public'));
 app.use(express.static('_includes'));
 app.get('/', (req, res) =>
@@ -89,7 +92,7 @@ io.on('connection', (socket) => {
   // FORCE RESET ::
   socket.on('forceReset', () => {
     applicationState['lastBC'] = 'bcdefault';
-    applicationState['alertLevel'] = default_security_level;
+    applicationState['alertLevel'] = defaultSecurityLevel;
     io.emit('F5');
     console.log('[admin] command => FORCE_RESET');
   });
@@ -142,17 +145,74 @@ io.on('connection', (socket) => {
     io.emit('playAudioFile', audiofile);
   });
 
-  // /* getMedia: function to automatically read audio files into pushable buttons, caused by the adminpanel when logging in with sufficient rights. */
-  // socket.on('getMedia', () => {
-  //   var miscAudio = [];
 
-  //   if (fs.existsSync('./public/sounds/audio-misc')) {
-  //     fs.readdir('./public/sounds/audio-misc', (err, files) => {
-  //       files.forEach((file) => {
-  //         miscAudio.push(file);
-  //       });
-  //       socket.emit('sendMediaMisc', miscAudio);
-  //     });
-  //   }
-  // });
+
+  // optional/legacy PA functionality
+  if (globalSettings.sys.voiceEnabled) {
+
+    /* getMedia: function to automatically read audio files into pushable buttons, caused by the adminpanel when logging in with sufficient rights. */
+    socket.on('getMedia', () => {
+      var miscAudio = [];
+
+      if (fs.existsSync('./public/sounds/audio-misc')) {
+        fs.readdir('./public/sounds/audio-misc', (err, files) => {
+          files.forEach((file) => {
+            miscAudio.push(file);
+          });
+          socket.emit('sendMediaMisc', miscAudio);
+        });
+      }
+    });
+
+    var pa_name = null;
+    var pa_folder = './public/sounds/audio-pa/';
+
+    socket.on('startPA', function () {
+      fs.readdir(pa_folder, function (err, files) {
+        var cleantime = new Date(new Date().getTime() - 60000);
+        if (err) {
+          console.log('PA cleanup readdir error: ' + err);
+        }
+        files.forEach(function (file) {
+          if (file) {
+            var path = pa_folder + file;
+            fs.stat(path, function (err, stat) {
+              if (err) {
+                console.log('PA cleanup stat error: ' + err);
+              }
+              if (stat.ctime < cleantime) {
+                console.log('[PA] unlinking', path, stat.ctime, cleantime);
+                fs.unlink(path, function (err) {
+                  if (err) {
+                    console.log('PA cleanup unlink error: ' + err);
+                  }
+                });
+              }
+            });
+          }
+        });
+      });
+      pa_name =
+        'PA-' +
+        socket.id +
+        '-' +
+        new Date().toISOString().substring(11, 23).replace(/[:.]/g, '');
+
+      fs.mkdir(pa_folder, { recursive: true }, function (err) {
+        if (err) throw err;
+        fs.truncate(pa_folder + pa_name + '.opus', function (err) { });
+      });
+    });
+    socket.on('uploadPA', function (data) {
+      // TODO: Force maximum length to stop the server from overflowing
+      fs.appendFile(pa_folder + pa_name + '.opus', data, function (err) {
+        if (err) throw err;
+      });
+    });
+    socket.on('broadcastPA', function () {
+      console.log('[audio] => PA: ' + pa_name);
+      io.emit('playAudioFile', '/audio-pa/' + pa_name + '.opus');
+    });
+  }
+
 });
