@@ -178,11 +178,11 @@
   });
 
   /* positive answer from server: set a login cookie and load the main adminpanel files. */
-  socket.on('authTrue', function(keycode,loginrank){
+  socket.on('authTrue', function(keycode,loginRank){
     attempts = 0;
     setCookie('auth','TRUE','1');
     setCookie('usercode',keycode,'1');
-    setCookie('rank',loginrank,'1');
+    setCookie('rank',loginRank,'1');
     $('#cPanel').load('/adm/cpanel.html');
     navigate('/adm/adminPanel');
   });
