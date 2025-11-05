@@ -16,9 +16,9 @@ APPLICATION_DEFAULTS = {
 }
 
 /* creating the account object, to re use later */
-function accountObj(logincode,loginrank) {
+function accountObj(logincode,loginRank) {
   this.logincode = logincode;
-  this.loginrank = loginrank;
+  this.loginRank = loginRank;
 }
 
 
