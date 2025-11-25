@@ -400,14 +400,14 @@ function updateOrbStatus(orbStatus) {
     switch (orbStatus) {
       case 'inactive':
         _selector.addClass('blinkContent');
-        _selector.find('.top').html('<span class="status-icon"><i class="fa fa-warning"></i></span>');
-        _selector.find('.bottom').html('OFFLINE');
+        _selector.find('.left').html('<span class="status-icon"><i class="fa fa-warning"></i></span>');
+        _selector.find('.right').html('<h4>OFFLINE</h4>');
         break;
 
       case 'active':
       default:
-        _selector.find('.top').html('<span class="status-icon"><i class="fa fa-check-circle-o"></i></span>');
-        _selector.find('.bottom').html('Operational');
+        _selector.find('.left').html('<span class="status-icon"><i class="fa fa-check-circle-o"></i></span>');
+        _selector.find('.right').html('<h4>Operational</h4>');
         break;
     }
 
